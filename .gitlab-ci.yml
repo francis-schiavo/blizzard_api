@@ -1,0 +1,28 @@
+cache:
+  paths:
+    - .env
+
+stages:
+  - prepare
+  - codecheck
+  - test
+
+environment-setup:
+  stage: prepare
+  script:
+    - rvm use 2.5.3 --install
+    - bundle install
+    - cat /dev/null > .env
+    - echo "BNET_APPLICATION_ID=$BNET_APP_ID" >> .env
+    - echo "BNET_APPLICATION_SECRET=$BNET_APP_SECRET" >> .env
+    - echo "USE_CACHE=$USE_CACHE" >> .env
+
+rubocop:
+  stage: codecheck
+  script:
+    - rubocop
+
+minitest:
+  stage: test
+  script:
+    - rake
