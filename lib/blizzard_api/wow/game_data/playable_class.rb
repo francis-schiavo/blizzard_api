@@ -43,10 +43,17 @@ module BlizzardApi
           index_data[:classes].each do |pclass|
             class_id = %r{playable-class/([0-9]+)}.match(pclass[:key].to_s)[1]
             class_data = get class_id, options
-            class_data.delete :_links
             classes.push class_data
           end
         end
+      end
+
+      def get(id, options = {})
+        data = api_request "#{base_url(:game_data)}/#{@endpoint}/#{id}", default_options.merge(options)
+        data[:icon] = get_class_icon data[:media], options
+        data.delete :_links
+        data.delete :media
+        data
       end
 
       protected
@@ -56,6 +63,11 @@ module BlizzardApi
         @namespace = endpoint_namespace :static
         @collection = 'classes'
         @ttl = CACHE_TRIMESTER
+      end
+
+      def get_class_icon(media_url, options)
+        media_data = request media_url[:key][:href], options
+        %r{56/([a-z_]+).jpg}.match(media_data[:assets][0][:value].to_s)[1]
       end
     end
   end

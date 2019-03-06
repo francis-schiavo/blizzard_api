@@ -60,7 +60,7 @@ module BlizzardApi
 
         opts = { ttl: CACHE_DAY, fields: fields.join(',') }.merge(options)
 
-        api_request "#{base_url(:community)}/guild/#{realm}/#{guild}", opts
+        api_request "#{base_url(:community)}/guild/#{realm}/#{URI.encode(guild)}", opts
       end
     end
   end

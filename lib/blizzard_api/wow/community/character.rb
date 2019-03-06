@@ -60,7 +60,7 @@ module BlizzardApi
 
         opts = { ttl: CACHE_DAY, fields: fields.join(',') }.merge(options)
 
-        api_request "#{base_url(:community)}/character/#{realm}/#{CGI.escape(character)}", opts
+        api_request "#{base_url(:community)}/character/#{realm}/#{URI.encode(character)}", opts
       end
 
       ##
@@ -79,7 +79,7 @@ module BlizzardApi
       def get_keystone_profile(realm, character, user_token, season = nil, options = {})
         opts = { ttl: CACHE_HOUR, namespace: "profile-#{region}" }.merge(options)
         opts[:access_token] = user_token
-        url = "#{base_url(:profile)}/character/#{realm}/#{CGI.escape(character)}/mythic-keystone-profile"
+        url = "#{base_url(:profile)}/character/#{realm}/#{URI.encode(character)}/mythic-keystone-profile"
         url += "/season/#{season}" unless season.nil?
         api_request url, opts
       end

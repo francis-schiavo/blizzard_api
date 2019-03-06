@@ -159,7 +159,7 @@ module BlizzardApi
 
       # Executes the request
       http.request(request).tap do |response|
-        raise ApiException.new 'Request failed', response.code unless response.code.to_i == 200
+        raise BlizzardApi::ApiException.new 'Request failed', response.code.to_i unless response.code.to_i == 200
       end
     end
 
