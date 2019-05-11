@@ -8,7 +8,7 @@ module BlizzardApi
       def test_achievement_index
         achievement = BlizzardApi::Wow::Achievement.new
         achievement_data = achievement.index
-        assert_equal 4874, achievement_data[:achievements].count
+        assert_equal 4875, achievement_data[:achievements].count
       end
 
       def test_achievement_get
@@ -33,7 +33,7 @@ module BlizzardApi
       end
 
       def test_achievement_complete
-        assert_raise BlizzardApi::ApiException do
+        assert_raises BlizzardApi::ApiException do
           achievement = BlizzardApi::Wow::Achievement.new
           achievement.complete
         end

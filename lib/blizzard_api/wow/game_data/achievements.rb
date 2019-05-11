@@ -21,9 +21,13 @@ module BlizzardApi
       #
       # @!macro response
       def get(id, options = {})
-        return super options unless options.include? :use_community_endpoint
+        return super id, options unless options.include? :use_community_endpoint
 
         api_request "#{base_url(:community)}/achievement/#{id}", { ttl: CACHE_TRIMESTER }.merge(options)
+      end
+
+      def complete(options = {})
+        raise BlizzardApi::ApiException, 'There are too many achievements to fetch complete data'
       end
 
       ##
