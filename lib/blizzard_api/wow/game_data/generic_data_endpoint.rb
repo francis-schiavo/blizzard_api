@@ -42,8 +42,6 @@ module BlizzardApi
             link = item.key?(:key) ? item[:key][:href] : item[:href]
             item_data = request link
             complete_data.push item_data
-          rescue
-            print item
           end
         end
       end

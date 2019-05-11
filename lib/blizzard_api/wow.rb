@@ -7,7 +7,8 @@ module BlizzardApi
     require_relative 'wow/game_data/generic_data_endpoint'
 
     # WoW data api
-    require_relative 'wow/game_data/achievements'
+    require_relative 'wow/game_data/achievement'
+    require_relative 'wow/game_data/achievement_category'
     require_relative 'wow/game_data/region'
     require_relative 'wow/game_data/realm'
     require_relative 'wow/game_data/connected_realm'
@@ -21,6 +22,12 @@ module BlizzardApi
     # @return {Achievement}
     def self.achievement
       BlizzardApi::Wow::Achievement.new
+    end
+
+    ##
+    # @return {AchievementCategory}
+    def self.achievement_category
+      BlizzardApi::Wow::AchievementCategory.new
     end
 
     ##

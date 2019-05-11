@@ -8,7 +8,7 @@ module BlizzardApi
     # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-game-data-api
     #
     # You can get an instance of this class using the default region as follows:
-    #   api_instance = BlizzardApi::Wow.achievements
+    #   api_instance = BlizzardApi::Wow.achievement
     class Achievement < Wow::GenericDataEndpoint
       ##
       # Fetch all possible data for one of the items listed by the {#index} using its *id*
@@ -26,7 +26,7 @@ module BlizzardApi
         api_request "#{base_url(:community)}/achievement/#{id}", { ttl: CACHE_TRIMESTER }.merge(options)
       end
 
-      def complete(options = {})
+      def complete
         raise BlizzardApi::ApiException, 'There are too many achievements to fetch complete data'
       end
 
