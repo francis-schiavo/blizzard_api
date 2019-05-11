@@ -23,7 +23,7 @@ module BlizzardApi
       end
 
       ##
-      # Fetch all possible data for one of items listed by the {#index} using its *id*
+      # Fetch all possible data for one of the items listed by the {#index} using its *id*
       #
       # @param id [Integer] One of the IDs returned by the {#index}
       # @!macro request_options
@@ -36,10 +36,14 @@ module BlizzardApi
       ##
       # @!macro complete
       def complete(options = {})
-        index_data = index options
-        index_data[@collection.to_sym].tap do |collection|
-          collection.each do |item|
-            item.delete 'key'
+        [].tap do |complete_data|
+          index_data = index options
+          index_data[@collection.to_sym].each do |item|
+            link = item.key?(:key) ? item[:key][:href] : item[:href]
+            item_data = request link
+            complete_data.push item_data
+          rescue
+            print item
           end
         end
       end

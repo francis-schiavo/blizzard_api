@@ -7,6 +7,7 @@ module BlizzardApi
     require_relative 'wow/game_data/generic_data_endpoint'
 
     # WoW data api
+    require_relative 'wow/game_data/achievements'
     require_relative 'wow/game_data/region'
     require_relative 'wow/game_data/realm'
     require_relative 'wow/game_data/connected_realm'
@@ -15,6 +16,12 @@ module BlizzardApi
     require_relative 'wow/game_data/playable_specialization'
     require_relative 'wow/game_data/power_type'
     require_relative 'wow/game_data/mythic_keystone_affix'
+
+    ##
+    # @return {Achievement}
+    def self.achievement
+      BlizzardApi::Wow::Achievement.new
+    end
 
     ##
     # @return {Region}
@@ -65,7 +72,6 @@ module BlizzardApi
     end
 
     # Wow community api
-    require_relative 'wow/community/achievements'
     require_relative 'wow/community/auction'
     require_relative 'wow/community/boss'
     require_relative 'wow/community/challenge'
@@ -79,12 +85,6 @@ module BlizzardApi
     require_relative 'wow/community/recipe'
     require_relative 'wow/community/spell'
     require_relative 'wow/community/zone'
-
-    ##
-    # @return {Achievement}
-    def self.achievement
-      BlizzardApi::Wow::Achievement.new
-    end
 
     ##
     # @return {Auction}

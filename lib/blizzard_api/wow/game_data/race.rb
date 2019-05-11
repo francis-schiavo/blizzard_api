@@ -24,20 +24,6 @@ module BlizzardApi
         api_request "#{base_url(:community)}/data/character/races", { ttl: CACHE_TRIMESTER }.merge(options)
       end
 
-      ##
-      # @!macro complete
-      def complete(options = {})
-        index_data = index options
-        [].tap do |races|
-          index_data[:races].each do |race|
-            race_id = %r{race/([0-9]+)}.match(race[:key].to_s)[1]
-            race_data = get race_id, options
-            race_data.delete :name
-            races.push race_data
-          end
-        end
-      end
-
       protected
 
       def endpoint_setup

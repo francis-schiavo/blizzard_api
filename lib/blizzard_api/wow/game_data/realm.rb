@@ -21,20 +21,6 @@ module BlizzardApi
         api_request "#{base_url(:community)}/realm/status", { ttl: CACHE_MINUTE }.merge(options)
       end
 
-      ##
-      # @!macro complete
-      def complete(options = {})
-        index_data = index options
-        [].tap do |realms|
-          index_data[:realms].each do |realm|
-            realm_data = get realm[:id], options
-            realm_data.delete :_links
-            realm_data[:region].delete :key
-            realms.push realm_data
-          end
-        end
-      end
-
       protected
 
       def endpoint_setup

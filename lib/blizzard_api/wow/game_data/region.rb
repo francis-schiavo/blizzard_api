@@ -11,19 +11,6 @@ module BlizzardApi
     #   api_instance = BlizzardApi::Wow.region
     class Region < Wow::GenericDataEndpoint
       ##
-      # @!macro complete
-      def complete(options = {})
-        [].tap do |data|
-          index_data = index options
-          index_data[:regions].each do |region|
-            region_data = request region[:href], options
-            region_data.delete :_links
-            data.push region_data
-          end
-        end
-      end
-
-      ##
       # Returns data about region battlegroups
       #
       # This method is actually located at the community API, but it is included here due to its relevance.
