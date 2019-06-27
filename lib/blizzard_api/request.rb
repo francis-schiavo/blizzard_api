@@ -45,6 +45,14 @@ module BlizzardApi
     # Three (commercial) months cache
     CACHE_TRIMESTER = CACHE_MONTH * 3
 
+    # Common endpoints
+    BASE_URLS = {
+      game_data: 'https://%s.api.blizzard.com/data/%s',
+      community: 'https://%s.api.blizzard.com/%s',
+      profile: 'https://%s.api.blizzard.com/profile/%s',
+      media: 'https://%s.api.blizzard.com/data/%s/media'
+    }.freeze
+
     ##
     # @!attribute region
     #   @return [String] Api region
@@ -67,16 +75,9 @@ module BlizzardApi
     protected
 
     def base_url(scope)
-      case scope
-      when :game_data
-        "https://#{region}.api.blizzard.com/data/#{@game}"
-      when :community
-        "https://#{region}.api.blizzard.com/#{@game}"
-      when :profile
-        "https://#{region}.api.blizzard.com/profile/#{@game}"
-      else
-        raise ArgumentError
-      end
+      raise ArgumentError, 'Invalid scope' unless BASE_URLS.include? scope
+
+      format BASE_URLS[scope], region, @game
     end
 
     ##
