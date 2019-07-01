@@ -8,7 +8,7 @@ module BlizzardApi
     # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-game-data-api
     #
     # You can get an instance of this class using the default region as follows:
-    #   api_instance = BlizzardApi::Wow.connected_realms
+    #   api_instance = BlizzardApi::Wow.connected_realm
     class ConnectedRealm < Wow::GenericDataEndpoint
       protected
 

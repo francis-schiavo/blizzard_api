@@ -11,7 +11,7 @@ This gem allow you to interface with the new blizzard api (2018) using the OAuth
 ## Table of contents
 1. [Installation](#1-installation)
 2. [Configuration](#2-configuration)
-3. [Basic usage](#1-basic-usage)
+3. [Basic usage](#3-basic-usage)
 4. [Available endpoints](#4-available-endpoints)
    - 4.1. [World of Warcraft endpoints](#41-world-of-warcraft-endpoints)
    - 4.2. [Diablo III endpoints](#42-diablo-iii-endpoints)
@@ -36,7 +36,7 @@ Before you use the api you must create a developer account at https://develop.ba
 Once you have a pair of client ID and SECRET you must set up an initialization code.
 
 ```ruby
-Blizzard.configure do |config|
+BlizzardApi.configure do |config|
   config.app_id = ENV['BNET_APPLICATION_ID']
   config.app_secret = ENV['BNET_APPLICATION_SECRET']
   config.region = 'us'
@@ -84,8 +84,101 @@ Most **data** endpoints will have always 3 methods available `index`, `get` and 
 
 * Blizzard::Wow::Achievement
   - get :id
+  - index
+  - categories
+  - category :id
   - character_achievement_index
   - guild_achievement_index
+  - media :id
+* Blizzard::Wow::ConnectedRealm
+  - index
+  - get :id
+  - complete
+* Blizzard::Wow::Creature
+  - get :id
+  - families
+  - family :id
+  - family_media :id
+  - types
+  - type :id
+  - display_media :id
+* Blizzard::Wow::Guild
+  - rewards
+  - perks
+  - get :realm, :guild
+  - roster :realm, :guild
+  - achievements :realm, :guild
+* Blizzard::Wow::GuildCrest
+  - index
+  - border_media :id
+  - emblem_media :id
+* Blizzard::Wow::MythicKeystonesAffix
+  - index
+  - get :id
+  - complete
+* Blizzard::Wow::MythicKeystone
+  - index
+  - dungeons
+  - dungeon :id
+  - periods
+  - period :id
+  - seasons
+  - season :id
+* Blizzard::Wow::MythicRaidLeaderboard
+  - get :raid_slug, :faction_slug
+* Blizzard::Wow::Mount
+  - index
+  - get :id
+  - complete
+* Blizzard::Wow::MythicKeystoneLeaderboard
+  - index :connected_realm_id
+  - get :connected_realm_id, :dungeon_id, :period
+* Blizzard::Wow::Pet
+  - index
+  - get
+  - ability :id
+  - species :id
+  - stats :level, :breed_id, :quality_id
+  - types
+* Blizzard::Wow::PlayableClass
+  - index
+  - get :id
+  - complete
+  - talent_slots :id
+* Blizzard::Wow::PlayableSpecialization
+  - index
+  - get :id
+  - complete
+* Blizzard::Wow::PowerType
+  - index
+  - get :id
+  - complete
+* Blizzard::Wow::PvpSeason
+  - index
+  - get :id
+  - leaderboards :season_id
+  - leaderboard :season_id, :brackets
+  - rewards :season_id
+* Blizzard::Wow::PvpTier
+  - index
+  - get :id
+  - tier_media :id
+* Blizzard::Wow::Realm
+  - index
+  - get :id
+  - complete
+* Blizzard::Wow::Region
+  - index
+  - get :id
+  - complete
+* Blizzard::Wow::WowToken
+  - get
+* Blizzard::Wow::Race
+  - index
+  - get :id
+  - complete
+
+
 * Blizzard::Wow::Auction
   - get :realm
 * Blizzard::Wow::Boss
@@ -105,14 +198,6 @@ Most **data** endpoints will have always 3 methods available `index`, `get` and 
 * Blizzard::Wow::Item
   - get :id
   - item_set :setId
-* Blizzard::Wow::Mount
-  - index
-* Blizzard::Wow::Pet
-  - index
-  - ability :id
-  - species :id
-  - stats :level, :breed_id, :quality_id
-  - types
 * Blizzard::Wow::PvP
   - get :bracket
 * Blizzard::Wow::Quest
@@ -124,38 +209,12 @@ Most **data** endpoints will have always 3 methods available `index`, `get` and 
 * Blizzard::Wow::Zone
   - index
   - get :id
-* Blizzard::Wow::ConnectedRealm
-  - index
-  - get :id
-  - complete
-* Blizzard::Wow::MythicKeystonesAffix
-  - index
-  - get :id
-  - complete
-* Blizzard::Wow::PlayableClass
-  - index
-  - get :id
-  - complete
-* Blizzard::Wow::PlayableSpecialization
-  - index
-  - get :id
-  - complete
-* Blizzard::Wow::PowerType
-  - index
-  - get :id
-  - complete
-* Blizzard::Wow::Race
-  - index
-  - get :id
-  - complete
-* Blizzard::Wow::Realm
-  - index
-  - get :id
-  - complete
-* Blizzard::Wow::Region
-  - index
-  - get :id
-  - complete
+
+
+* BlizzardApi::Wow::CharacterProfile
+  - get_keystone_profile :realm, :character, :user_token, :season
+  - pvp_summmary :realm, :character, :user_token
+  - pvp_bracket :realm, :character, :bracket, :user_token
 
 ### 4.2. Diablo III endpoints
 

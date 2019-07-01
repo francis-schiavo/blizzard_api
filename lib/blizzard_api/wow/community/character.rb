@@ -60,28 +60,7 @@ module BlizzardApi
 
         opts = { ttl: CACHE_DAY, fields: fields.join(',') }.merge(options)
 
-        api_request "#{base_url(:community)}/character/#{realm}/#{URI.encode(character)}", opts
-      end
-
-      ##
-      # Return the mythic keystone profile of a character
-      #
-      # @note This endpoint requires a user token obtained through the user authorization flow
-      # @see https://develop.battle.net/documentation/guides/using-oauth/authorization-code-flow
-      #
-      # @param realm [String] The character realm's slug
-      # @param character [String] The character name
-      # @param user_token [String] A token obtained by the authorization flow. See link below.
-      # @param season [Integer] Season ID if you want only a specific season or nil to include all.
-      # @!macro request_options
-      #
-      # @!macro response
-      def get_keystone_profile(realm, character, user_token, season = nil, options = {})
-        opts = { ttl: CACHE_HOUR, namespace: "profile-#{region}" }.merge(options)
-        opts[:access_token] = user_token
-        url = "#{base_url(:profile)}/character/#{realm}/#{URI.encode(character)}/mythic-keystone-profile"
-        url += "/season/#{season}" unless season.nil?
-        api_request url, opts
+        api_request "#{base_url(:community)}/character/#{CGI.escape(realm)}/#{CGI.escape(character)}", opts
       end
 
       ##

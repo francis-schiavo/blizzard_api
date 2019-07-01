@@ -90,9 +90,15 @@ module BlizzardApi
         "dynamic-#{region}"
       when :static
         "static-#{region}"
+      when :profile
+        "profile-#{region}"
       else
         raise ArgumentError, 'Invalid namespace scope'
       end
+    end
+
+    def string_to_slug(string)
+      string.downcase.strip.tr(' ', '-').gsub(/[^\w-]/, '')
     end
 
     def create_access_token

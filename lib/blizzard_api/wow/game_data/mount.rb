@@ -3,15 +3,15 @@
 module BlizzardApi
   module Wow
     ##
-    # This class allows access to World of Warcraft playable races
+    # This class allows access to World of Warcraft mounts
     #
     # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-game-data-api
     #
     # You can get an instance of this class using the default region as follows:
-    #   race = BlizzardApi::Wow.race
-    class Race < Wow::GenericDataEndpoint
+    #   api_instance = BlizzardApi::Wow.mount
+    class Mount < Wow::GenericDataEndpoint
       ##
-      # Returns a index of playable races
+      # Returns a index of mounts
       #
       # @!macro request_options
       # @option options [Boolean] :use_community_endpoint If set to true, this method will call the community endpoint
@@ -21,15 +21,15 @@ module BlizzardApi
       def index(options = {})
         return super options unless options.include? :use_community_endpoint
 
-        api_request "#{base_url(:community)}/data/character/races", { ttl: CACHE_TRIMESTER }.merge(options)
+        api_request "#{base_url(:community)}/mount/", { ttl: CACHE_TRIMESTER }.merge(options)
       end
 
       protected
 
       def endpoint_setup
-        @endpoint = 'playable-race'
+        @endpoint = 'mount'
         @namespace = endpoint_namespace :static
-        @collection = 'races'
+        @collection = 'mounts'
         @ttl = CACHE_TRIMESTER
       end
     end

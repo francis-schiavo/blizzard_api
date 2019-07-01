@@ -32,7 +32,7 @@ module BlizzardApi
       #
       # @!macro response
       def talent_slots(id, options = {})
-        api_request "#{base_url(:game_data)}/#{@endpoint}/#{id}/pvp-talent-slots", default_options.merge(options)
+        api_request "#{endpoint_uri}/#{id}/pvp-talent-slots", default_options.merge(options)
       end
 
       ##
@@ -48,11 +48,17 @@ module BlizzardApi
         end
       end
 
+      ##
+      # Return playable class data by its id
+      #
+      # @param id [Integer] Playable class id
+      #
+      # @!macro request_options
+      #
+      # @!macro response
       def get(id, options = {})
-        data = api_request "#{base_url(:game_data)}/#{@endpoint}/#{id}", default_options.merge(options)
+        data = api_request "#{endpoint_uri}/#{id}", default_options.merge(options)
         data[:icon] = get_class_icon data[:media], options
-        data.delete :_links
-        data.delete :media
         data
       end
 

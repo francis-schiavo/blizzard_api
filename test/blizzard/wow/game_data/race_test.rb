@@ -8,7 +8,7 @@ module BlizzardApi
       def test_race_index
         race = BlizzardApi::Wow::Race.new
         race_data = race.index
-        assert_equal 21, race_data[:races].count
+        assert_equal 23, race_data[:races].count
       end
 
       def test_race_get
@@ -20,7 +20,7 @@ module BlizzardApi
       def test_race_complete
         race = BlizzardApi::Wow::Race.new
         race_data = race.complete
-        assert_equal 'Orc', race_data[1][:gender_name][:male_name][:en_US]
+        assert_equal 'Orc', race_data[1][:gender_name][:male][:en_US]
       end
     end
   end

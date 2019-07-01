@@ -8,38 +8,30 @@ module BlizzardApi
 
     # WoW data api
     require_relative 'wow/game_data/achievement'
-    require_relative 'wow/game_data/achievement_category'
-    require_relative 'wow/game_data/region'
-    require_relative 'wow/game_data/realm'
     require_relative 'wow/game_data/connected_realm'
-    require_relative 'wow/game_data/race'
+    require_relative 'wow/game_data/creature'
+    require_relative 'wow/game_data/guild'
+    require_relative 'wow/game_data/guild_crest'
+    require_relative 'wow/game_data/mythic_keystone_affix'
+    require_relative 'wow/game_data/mythic_keystone'
+    require_relative 'wow/game_data/mythic_raid_leaderboard'
+    require_relative 'wow/game_data/mount'
+    require_relative 'wow/game_data/mythic_keystone_leaderboard'
+    require_relative 'wow/game_data/pet'
     require_relative 'wow/game_data/playable_class'
     require_relative 'wow/game_data/playable_specialization'
     require_relative 'wow/game_data/power_type'
-    require_relative 'wow/game_data/mythic_keystone_affix'
+    require_relative 'wow/game_data/pvp_season'
+    require_relative 'wow/game_data/pvp_tier'
+    require_relative 'wow/game_data/realm'
+    require_relative 'wow/game_data/region'
+    require_relative 'wow/game_data/wow_token'
+    require_relative 'wow/game_data/race'
 
     ##
     # @return {Achievement}
     def self.achievement
       BlizzardApi::Wow::Achievement.new
-    end
-
-    ##
-    # @return {AchievementCategory}
-    def self.achievement_category
-      BlizzardApi::Wow::AchievementCategory.new
-    end
-
-    ##
-    # @return {Region}
-    def self.region
-      BlizzardApi::Wow::Region.new
-    end
-
-    ##
-    # @return {Realm}
-    def self.realm
-      BlizzardApi::Wow::Realm.new
     end
 
     ##
@@ -49,9 +41,57 @@ module BlizzardApi
     end
 
     ##
-    # @return {Race}
-    def self.race
-      BlizzardApi::Wow::Race.new
+    # @return {Creature}
+    def self.creature
+      BlizzardApi::Wow::Creature.new
+    end
+
+    ##
+    # @return {Guild}
+    def self.guild
+      BlizzardApi::Wow::Guild.new
+    end
+
+    ##
+    # @return {GuildCrest}
+    def self.guild_crest
+      BlizzardApi::Wow::GuildCrest.new
+    end
+
+    ##
+    # @return {MythicKeystoneAffix}
+    def self.mythic_keystone_affix
+      BlizzardApi::Wow::MythicKeystoneAffix.new
+    end
+
+    ##
+    # @return {MythicKeystone}
+    def self.mythic_keystone
+      BlizzardApi::Wow::MythicKeystone.new
+    end
+
+    ##
+    # @return {MythicRaidLeaderboard}
+    def self.mythic_raid_leaderboard
+      BlizzardApi::Wow::MythicRaidLeaderboard.new
+    end
+
+    ##
+    # @return {Mount}
+    def self.mount
+      BlizzardApi::Wow::Mount.new
+    end
+
+    ##
+    # @return {MythicKeystoneLeaderboard}
+    def self.mythic_keystone_leaderboard
+      BlizzardApi::Wow::MythicKeystoneLeaderboard.new
+    end
+
+    ##
+    # @return {Pet}
+    def self.pet
+      BlizzardApi::Wow::Pet.new
     end
 
     ##
@@ -73,9 +113,39 @@ module BlizzardApi
     end
 
     ##
-    # @return {MythicKeystoneAffix}
-    def self.mythic_keystone_affix
-      BlizzardApi::Wow::MythicKeystoneAffix.new
+    # @return {PvpSeason}
+    def self.pvp_season
+      BlizzardApi::Wow::PvpSeason.new
+    end
+
+    ##
+    # @return {PvpTier}
+    def self.pvp_tier
+      BlizzardApi::Wow::PvpTier.new
+    end
+
+    ##
+    # @return {Realm}
+    def self.realm
+      BlizzardApi::Wow::Realm.new
+    end
+
+    ##
+    # @return {Region}
+    def self.region
+      BlizzardApi::Wow::Region.new
+    end
+
+    ##
+    # @return {WowToken}
+    def self.wow_token
+      BlizzardApi::Wow::WowToken.new
+    end
+
+    ##
+    # @return {Race}
+    def self.race
+      BlizzardApi::Wow::Race.new
     end
 
     # Wow community api
@@ -83,10 +153,7 @@ module BlizzardApi
     require_relative 'wow/community/boss'
     require_relative 'wow/community/challenge'
     require_relative 'wow/community/character'
-    require_relative 'wow/community/guild'
     require_relative 'wow/community/item'
-    require_relative 'wow/community/mount'
-    require_relative 'wow/community/pets'
     require_relative 'wow/community/pvp'
     require_relative 'wow/community/quest'
     require_relative 'wow/community/recipe'
@@ -118,27 +185,9 @@ module BlizzardApi
     end
 
     ##
-    # @return {Guild}
-    def self.guild
-      BlizzardApi::Wow::Guild.new
-    end
-
-    ##
     # @return {Item}
     def self.item
       BlizzardApi::Wow::Item.new
-    end
-
-    ##
-    # @return {Mount}
-    def self.mount
-      BlizzardApi::Wow::Mount.new
-    end
-
-    ##
-    # @return {Pet}
-    def self.pet
-      BlizzardApi::Wow::Pet.new
     end
 
     ##
@@ -169,6 +218,14 @@ module BlizzardApi
     # @return {Zone}
     def self.zone
       BlizzardApi::Wow::Zone.new
+    end
+
+    require_relative 'wow/profile/character_profile'
+
+    ##
+    # @return {CharacterProfile}
+    def self.character_profile
+      BlizzardApi::Wow::CharacterProfile.new
     end
   end
 end

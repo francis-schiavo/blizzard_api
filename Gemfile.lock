@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    blizzard_api (0.2.1)
+    blizzard_api (0.2.2)
       redis (~> 4.1, >= 4.1.0)
 
 GEM
@@ -17,7 +17,7 @@ GEM
     powerpack (0.1.2)
     rainbow (3.0.0)
     rake (10.5.0)
-    redis (4.1.0)
+    redis (4.1.1)
     rubocop (0.61.1)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)

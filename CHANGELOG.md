@@ -1,5 +1,8 @@
 Please view this file on the master branch, otherwise it may be outdated
 
+**Version 0.2.2**
+* Added new api endpoints listed here: https://us.battle.net/forums/en/bnet/topic/20771546990
+
 **Version 0.2.1**
 * Added icon to playable_class return value
 * Temporarily ignoring some rubocop offenses as the recommended alternatives are not suitable

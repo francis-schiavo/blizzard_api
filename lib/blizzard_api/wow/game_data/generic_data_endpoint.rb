@@ -19,7 +19,7 @@ module BlizzardApi
       # @!macro request_options
       # @!macro response
       def index(options = {})
-        api_request "#{base_url(:game_data)}/#{@endpoint}/index", default_options.merge(options)
+        api_request "#{endpoint_uri}/index", default_options.merge(options)
       end
 
       ##
@@ -30,7 +30,7 @@ module BlizzardApi
       #
       # @!macro response
       def get(id, options = {})
-        api_request "#{base_url(:game_data)}/#{@endpoint}/#{id}", default_options.merge(options)
+        api_request "#{endpoint_uri}/#{id}", default_options.merge(options)
       end
 
       ##
@@ -47,6 +47,11 @@ module BlizzardApi
       end
 
       protected
+
+      def endpoint_uri(variant = nil)
+        endpoint = variant ? "#{@endpoint}-#{variant}" : @endpoint
+        "#{base_url(:game_data)}/#{endpoint}"
+      end
 
       def endpoint_setup
         raise NotImplementedError, 'You must override this method to properly set up the endpoint'

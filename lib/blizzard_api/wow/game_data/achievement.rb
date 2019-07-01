@@ -26,8 +26,32 @@ module BlizzardApi
         api_request "#{base_url(:community)}/achievement/#{id}", { ttl: CACHE_TRIMESTER }.merge(options)
       end
 
+      ##
+      # This method overrides the inherited default behavior to prevent high server load and fetch time
+      #
+      # @!macro response
       def complete
         raise BlizzardApi::ApiException, 'There are too many achievements to fetch complete data'
+      end
+
+      ##
+      # Return a list of possible achievement categories.
+      #
+      # @!macro request_options
+      #
+      # @!macro response
+      def categories(options = {})
+        api_request "#{endpoint_uri('category')}/index", default_options.merge(options)
+      end
+
+      ##
+      # Return a achievement category.
+      #
+      # @!macro request_options
+      #
+      # @!macro response
+      def category(id, options = {})
+        api_request "#{endpoint_uri('category')}/#{id}", default_options.merge(options)
       end
 
       ##
@@ -52,6 +76,16 @@ module BlizzardApi
       # @!macro response
       def guild_achievement_index(options = {})
         api_request "#{base_url(:community)}/data/guild/achievements", { ttl: CACHE_TRIMESTER }.merge(options)
+      end
+
+      ##
+      # Fetch media assets for the specified achievement
+      #
+      # @!macro request_options
+      #
+      # @!macro response
+      def media(id, options = {})
+        api_request "#{base_url(:media)}/achievement/#{id}", default_options.merge(options)
       end
 
       protected

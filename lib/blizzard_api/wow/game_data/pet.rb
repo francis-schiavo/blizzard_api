@@ -9,7 +9,7 @@ module BlizzardApi
     #
     # You can get an instance of this class using the default region as follows:
     #   api_instance = BlizzardApi::Wow.pet
-    class Pet < Wow::Request
+    class Pet < Wow::GenericDataEndpoint
       # Poor (gray) quality pet
       PET_QUALITY_POOR = 0
       # Common (white) quality pet
@@ -27,9 +27,13 @@ module BlizzardApi
       # Return a list of all available pets
       #
       # @!macro request_options
+      # @option options [Boolean] :use_community_endpoint If set to true, this method will call the community endpoint
+      #   instead of the data endpoint https://develop.battle.net/documentation/api-reference/world-of-warcraft-community-api
       #
       # @!macro response
       def index(options = {})
+        return super options unless options.include? :use_community_endpoint
+
         api_request "#{base_url(:community)}/pet/", { ttl: CACHE_TRIMESTER }.merge(options)
       end
 
@@ -79,6 +83,15 @@ module BlizzardApi
       # @!macro response
       def types(options = {})
         api_request "#{base_url(:community)}/data/pet/types", { ttl: CACHE_TRIMESTER }.merge(options)
+      end
+
+      protected
+
+      def endpoint_setup
+        @endpoint = 'pet'
+        @namespace = endpoint_namespace :static
+        @collection = 'pets'
+        @ttl = CACHE_TRIMESTER
       end
     end
   end
