@@ -4,7 +4,7 @@ require 'test_helper'
 
 module BlizzardApi
   module Wow
-    class PlayableClassTest < Minitest::Test
+    class PlayableSpecializationTest < Minitest::Test
       def test_specialization_index
         specs = BlizzardApi::Wow::PlayableSpecialization.new
         specs_data = specs.index

@@ -1,5 +1,8 @@
 Please view this file on the master branch, otherwise it may be outdated
 
+**Version 0.2.3**
+* Added new api endpoints listed here: https://us.battle.net/forums/en/bnet/topic/20772337044
+
 **Version 0.2.2**
 * Added new api endpoints listed here: https://us.battle.net/forums/en/bnet/topic/20771546990
 

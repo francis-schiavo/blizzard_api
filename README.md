@@ -177,7 +177,18 @@ Most **data** endpoints will have always 3 methods available `index`, `get` and 
   - index
   - get :id
   - complete
-
+* Blizzard::Wow::Title
+  - index
+  - get :id
+* Blizzard::Wow::Item
+  - get :id
+  - item_set :id
+  - classes
+  - class :id
+  - subclass :class_id, :subclass_id
+* Blizzard::Wow::AzeriteEssence
+  - index
+  - get :id
 
 * Blizzard::Wow::Auction
   - get :realm
@@ -195,9 +206,6 @@ Most **data** endpoints will have always 3 methods available `index`, `get` and 
   - get :relam, :name, :fields
   - rewards
   - perks
-* Blizzard::Wow::Item
-  - get :id
-  - item_set :setId
 * Blizzard::Wow::PvP
   - get :bracket
 * Blizzard::Wow::Quest

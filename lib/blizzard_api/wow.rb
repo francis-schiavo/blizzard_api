@@ -27,6 +27,9 @@ module BlizzardApi
     require_relative 'wow/game_data/region'
     require_relative 'wow/game_data/wow_token'
     require_relative 'wow/game_data/race'
+    require_relative 'wow/game_data/title'
+    require_relative 'wow/game_data/item'
+    require_relative 'wow/game_data/azerite_essence'
 
     ##
     # @return {Achievement}
@@ -148,12 +151,29 @@ module BlizzardApi
       BlizzardApi::Wow::Race.new
     end
 
+    ##
+    # @return {Title}
+    def self.title
+      BlizzardApi::Wow::Title.new
+    end
+
+    ##
+    # @return {Item}
+    def self.item
+      BlizzardApi::Wow::Item.new
+    end
+
+    ##
+    # @return {AzeriteEssence}
+    def self.azerite_essence
+      BlizzardApi::Wow::AzeriteEssence.new
+    end
+
     # Wow community api
     require_relative 'wow/community/auction'
     require_relative 'wow/community/boss'
     require_relative 'wow/community/challenge'
     require_relative 'wow/community/character'
-    require_relative 'wow/community/item'
     require_relative 'wow/community/pvp'
     require_relative 'wow/community/quest'
     require_relative 'wow/community/recipe'
@@ -182,12 +202,6 @@ module BlizzardApi
     # @return {Character}
     def self.character
       BlizzardApi::Wow::Character.new
-    end
-
-    ##
-    # @return {Item}
-    def self.item
-      BlizzardApi::Wow::Item.new
     end
 
     ##

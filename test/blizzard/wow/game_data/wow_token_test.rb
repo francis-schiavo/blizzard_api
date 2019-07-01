@@ -4,7 +4,7 @@ require 'test_helper'
 
 module BlizzardApi
   module Wow
-    class RegionTest < Minitest::Test
+    class WowTokenTest < Minitest::Test
       def test_wow_token
         token = BlizzardApi::Wow::WowToken.new
         token_data = token.get
