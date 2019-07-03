@@ -93,7 +93,7 @@ module BlizzardApi
     # @yield self
     #
     # @example
-    #   Blizzard.configure do |config|
+    #   BlizzardApi.configure do |config|
     #     config.app_id = ENV['BNET_APPLICATION_ID']
     #     config.app_secret = ENV['BNET_APPLICATION_SECRET']
     #     config.region = 'us'
