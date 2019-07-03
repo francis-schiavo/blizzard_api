@@ -68,7 +68,7 @@ module BlizzardApi
 
     ##
     # @!attribute guild_emblem_directory
-    #   Guild crest images directory. Some sub directories will be crated.
+    #   Guild crest images directory. Some sub directories will be created.
     #   @see https://develop.battle.net/access/clients
     #   @return [String] Guild crest directory
     attr_accessor :wow_guild_crest_directory

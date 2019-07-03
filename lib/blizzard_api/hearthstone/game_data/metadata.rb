@@ -3,7 +3,7 @@
 module BlizzardApi
   module Hearthstone
     ##
-    # This class allows access to Hearthstone card data
+    # This class allows access to Hearthstone metadata data
     #
     # @see https://develop.battle.net/documentation/api-reference/hearthstone-game-data-api
     #
