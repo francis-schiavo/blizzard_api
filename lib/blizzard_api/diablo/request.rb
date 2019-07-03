@@ -2,7 +2,7 @@
 
 module BlizzardApi
   module Diablo
-    # World of Warcraft requests
+    # Diablo III requests
     class Request < BlizzardApi::Request
       ##
       # @!macro regions
