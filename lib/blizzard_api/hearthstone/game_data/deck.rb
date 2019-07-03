@@ -9,15 +9,9 @@ module BlizzardApi
     #
     # You can get an instance of this class using the default region as follows:
     #   api_instance = BlizzardApi::Hearthstone.deck
-    class Deck < Hearthstone::Request
-      def initialize(region = nil)
-        super region
-        endpoint_setup
-        @ttl ||= CACHE_DAY
-      end
-
-      def get(deck_code, options = {})
-        api_request "#{base_url(:community)}/#{@endpoint}/#{deck_code}", default_options.merge(options)
+    class Deck < Hearthstone::GenericDataEndpoint
+      def index
+        raise ApiException, 'This endpoint does not have a index method'
       end
 
       protected

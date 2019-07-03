@@ -1,5 +1,9 @@
 Please view this file on the master branch, otherwise it may be outdated
 
+**Version 0.2.4**
+* Added new WoW profile endpoints: #2 https://us.battle.net/forums/en/bnet/topic/20772457051
+* Added support for HearthStone: !1 (Thanks Bradyn Glines for implementing this)
+
 **Version 0.2.3**
 * Added new api endpoints listed here: https://us.battle.net/forums/en/bnet/topic/20772337044
 
