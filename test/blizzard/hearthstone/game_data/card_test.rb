@@ -13,8 +13,8 @@ module BlizzardApi
 
       def test_card_get
         card = BlizzardApi::Hearthstone::Card.new
-        card_data = card.index
-        assert card_data[:cards]
+        card_data = card.get 254
+        assert card_data[:slug]
       end
 
       def test_card_search
