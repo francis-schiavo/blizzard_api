@@ -11,62 +11,168 @@ module BlizzardApi
     #   api_instance = BlizzardApi::Wow.achievement
     class CharacterProfile < Wow::Request
       ##
-      # Return the mythic keystone profile of a character
+      # Return character achievements
       #
-      # @note This endpoint requires a user token obtained through the user authorization flow
-      # @see https://develop.battle.net/documentation/guides/using-oauth/authorization-code-flow
+      # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
       #
       # @param realm [String] The character realm's slug
       # @param character [String] The character name
-      # @param user_token [String] A token obtained by the authorization flow. See link below.
-      # @param season [Integer] Season ID if you want only a specific season or nil to include all.
       # @!macro request_options
       #
       # @!macro response
-      def get_keystone_profile(realm, character, user_token, season = nil, options = {})
-        url = "#{endpoint_uri(realm, character)}/mythic-keystone-profile"
-        url += "/season/#{season}" unless season.nil?
-        api_request url, default_options(user_token).merge(options)
+      def achievements(realm, character, options = {})
+        api_request "#{endpoint_uri(realm, character)}/achievements", default_options.merge(options)
       end
 
       ##
-      # Return the pvp summary of a character
+      # Return character appearance
       #
-      # @note This endpoint requires a user token obtained through the user authorization flow
-      # @see https://develop.battle.net/documentation/guides/using-oauth/authorization-code-flow
+      # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
       #
       # @param realm [String] The character realm's slug
       # @param character [String] The character name
-      # @param user_token [String] A token obtained by the authorization flow. See link below.
       # @!macro request_options
       #
       # @!macro response
-      def pvp_summmary(realm, character, user_token, options = {})
-        api_request "#{endpoint_uri(realm, character)}/pvp-summary", default_options(user_token).merge(options)
+      def appearance(realm, character, options = {})
+        api_request "#{endpoint_uri(realm, character)}/appearance", default_options.merge(options)
+      end
+
+      ##
+      # Return character equipment
+      #
+      # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
+      #
+      # @param realm [String] The character realm's slug
+      # @param character [String] The character name
+      # @!macro request_options
+      #
+      # @!macro response
+      def equipment(realm, character, options = {})
+        api_request "#{endpoint_uri(realm, character)}/equipment", default_options.merge(options)
+      end
+
+      ##
+      # Return character media
+      #
+      # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
+      #
+      # @param realm [String] The character realm's slug
+      # @param character [String] The character name
+      # @!macro request_options
+      #
+      # @!macro response
+      def media(realm, character, options = {})
+        api_request "#{endpoint_uri(realm, character)}/character-media", default_options.merge(options)
       end
 
       ##
       # Return the pvp bracket of a character
       #
-      # @note This endpoint requires a user token obtained through the user authorization flow
-      # @see https://develop.battle.net/documentation/guides/using-oauth/authorization-code-flow
+      # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
       #
       # @param realm [String] The character realm's slug
       # @param character [String] The character name
       # @param bracket [String] Pvp bracket
-      # @param user_token [String] A token obtained by the authorization flow. See link below.
       # @!macro request_options
       #
       # @!macro response
-      def pvp_bracket(realm, character, bracket, user_token, options = {})
-        api_request "#{endpoint_uri(realm, character)}/pvp-bracket/#{bracket}",
-                    default_options(user_token).merge(options)
+      def pvp_bracket(realm, character, bracket, options = {})
+        api_request "#{endpoint_uri(realm, character)}/pvp-bracket/#{bracket}", default_options.merge(options)
+      end
+
+      ##
+      # Return the pvp summary of a character
+      #
+      # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
+      #
+      # @param realm [String] The character realm's slug
+      # @param character [String] The character name
+      # @!macro request_options
+      #
+      # @!macro response
+      def pvp_summary(realm, character, options = {})
+        api_request "#{endpoint_uri(realm, character)}/pvp-summary", default_options.merge(options)
+      end
+
+      ##
+      # Return a character's specialization
+      #
+      # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
+      #
+      # @param realm [String] The character realm's slug
+      # @param character [String] The character name
+      # @!macro request_options
+      #
+      # @!macro response
+      def specializations(realm, character, options = {})
+        api_request "#{endpoint_uri(realm, character)}/specializations", default_options.merge(options)
+      end
+
+      ##
+      # Return a character's statistics
+      #
+      # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
+      #
+      # @param realm [String] The character realm's slug
+      # @param character [String] The character name
+      # @!macro request_options
+      #
+      # @!macro response
+      def statistics(realm, character, options = {})
+        api_request "#{endpoint_uri(realm, character)}/statistics", default_options.merge(options)
+      end
+
+      ##
+      # Return a character's titles
+      #
+      # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
+      #
+      # @param realm [String] The character realm's slug
+      # @param character [String] The character name
+      # @!macro request_options
+      #
+      # @!macro response
+      def titles(realm, character, options = {})
+        api_request "#{endpoint_uri(realm, character)}/titles", default_options.merge(options)
+      end
+
+      ##
+      # Return the mythic keystone profile of a character
+      #
+      # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
+      #
+      # @param realm [String] The character realm's slug
+      # @param character [String] The character name
+      # @!macro request_options
+      #
+      # @!macro response
+      def keystone_profile(realm, character, options = {})
+        api_request "#{endpoint_uri(realm, character)}/mythic-keystone-profile", default_options.merge(options)
+      end
+
+      ##
+      # Return the mythic keystone profile of a character
+      #
+      # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
+      #
+      # @param realm [String] The character realm's slug
+      # @param character [String] The character name
+      # @param season [Integer] Season ID if you want only a specific season or nil to include all.
+      # @!macro request_options
+      #
+      # @!macro response
+      def keystone_season_details(realm, character, season = nil, options = {})
+        api_request api_request "#{endpoint_uri(realm, character)}/mythic-keystone-profile/season/#{season}",
+                                default_options.merge(options)
       end
 
       private
 
-      def default_options(user_token)
-        { ttl: CACHE_HOUR, namespace: endpoint_namespace(:profile), access_token: user_token }
+      def default_options(user_token = nil)
+        opts = { ttl: CACHE_HOUR, namespace: endpoint_namespace(:profile) }
+        opts.merge access_token: user_token if user_token
+        opts
       end
 
       def endpoint_uri(realm, character)

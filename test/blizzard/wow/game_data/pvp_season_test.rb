@@ -26,7 +26,7 @@ module BlizzardApi
 
       def test_pvp_season_leaderboard
         pvp_data = @pvp.leaderboard 27, '3v3'
-        assert_equal 5_008, pvp_data[:entries].count
+        assert_equal 5_007, pvp_data[:entries].count
       end
 
       def test_pvp_season_rewards
