@@ -16,6 +16,7 @@ This gem allow you to interface with the new blizzard api (2018) using the OAuth
    - 4.1. [World of Warcraft endpoints](#41-world-of-warcraft-endpoints)
    - 4.2. [Diablo III endpoints](#42-diablo-iii-endpoints)
    - 4.3. [Starcraft II endpoints](#43-starcraft-ii-endpoints)
+   - 4.4. [Hearthstone endpoints](#44-hearthstone-endpoints)
 
 ## 1. Installation
 
@@ -265,6 +266,17 @@ Every endpoint requiring a *region_id* parameter will accepts either the integer
   - season :region_id
 * BlizzardApi::Starcraft::Account
   - player :account_id
+
+### 4.4. Hearthstone endpoints
+
+* BlizzardApi::Hearthstone::Card
+  - index
+  - get :id_or_slug
+* BlizzardApi::Hearthstone::Deck
+  - get :deck_code
+* BlizzardApi::Hearthstone::Metadata
+  - index
+  - get :type
 
 ## Contributing
 
