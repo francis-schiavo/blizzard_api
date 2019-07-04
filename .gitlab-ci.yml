@@ -10,6 +10,7 @@ stages:
 environment-setup:
   stage: prepare
   script:
+    - gem install bundler -v 1.17.3
     - rvm use 2.5.3 --install
     - bundle install
     - cat /dev/null > .env

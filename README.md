@@ -272,6 +272,7 @@ Every endpoint requiring a *region_id* parameter will accepts either the integer
 * BlizzardApi::Hearthstone::Card
   - index
   - get :id_or_slug
+  - search :search_options
 * BlizzardApi::Hearthstone::Deck
   - get :deck_code
 * BlizzardApi::Hearthstone::Metadata
