@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    blizzard_api (0.2.3)
+    blizzard_api (0.2.5)
       redis (~> 4.1, >= 4.1.0)
 
 GEM

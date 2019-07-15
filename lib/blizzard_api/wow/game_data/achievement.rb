@@ -55,30 +55,6 @@ module BlizzardApi
       end
 
       ##
-      # Return a list of possible character achievements.
-      # This endpoint uses a community endpoint. It is recommended to use the new data endpoint using {#index}.
-      # @see https://us.battle.net/forums/en/bnet/topic/20771546990
-      #
-      # @!macro request_options
-      #
-      # @!macro response
-      def character_achievement_index(options = {})
-        api_request "#{base_url(:community)}/data/character/achievements", { ttl: CACHE_TRIMESTER }.merge(options)
-      end
-
-      ##
-      # Return a list of possible guild achievements
-      # This endpoint uses a community endpoint. It is recommended to use the new data endpoint using {#index}.
-      # @see https://us.battle.net/forums/en/bnet/topic/20771546990
-      #
-      # @!macro request_options
-      #
-      # @!macro response
-      def guild_achievement_index(options = {})
-        api_request "#{base_url(:community)}/data/guild/achievements", { ttl: CACHE_TRIMESTER }.merge(options)
-      end
-
-      ##
       # Fetch media assets for the specified achievement
       #
       # @!macro request_options

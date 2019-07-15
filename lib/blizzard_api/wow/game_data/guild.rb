@@ -12,7 +12,8 @@ module BlizzardApi
     #   api_instance = BlizzardApi::Wow.guild
     class Guild < Wow::Request
       # Valid fields for guild profile request
-      VALID_FIELDS = %w[achievements challenge members news].freeze
+      VALID_FIELDS = %w[achievements achievementsCompleted achievementsCompletedTimestamp criteria criteriaCreated
+                        criteriaQuantity criteriaTimestamp challenge members news].freeze
 
       ##
       # Helper method for checking valid fields. Use this to validate an array of fields if you are not sure about their
@@ -84,11 +85,16 @@ module BlizzardApi
       #
       # @param realm [String] The guild realm's slug
       # @param guild [String] The guild's name
-      #
       # @!macro request_options
+      # @option options [Boolean] :use_community_endpoint If set to true, this method will call the community endpoint
+      #   instead of the data endpoint https://develop.battle.net/documentation/api-reference/world-of-warcraft-community-api
       #
       # @!macro response
       def achievements(realm, guild, options = {})
+        if options.include? :use_community_endpoint
+          return api_request "#{base_url(:community)}/data/guild/achievements", { ttl: CACHE_TRIMESTER }.merge(options)
+        end
+
         guild_request realm, guild, options, 'achievements'
       end
 

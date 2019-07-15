@@ -25,7 +25,7 @@ module BlizzardApi
       #
       # @!macro response
       def dungeons(options = {})
-        api_request "#{endpoint_uri}/period/index", default_options.merge(options)
+        api_request "#{endpoint_uri}/dungeon/index", default_options.merge(options)
       end
 
       ##

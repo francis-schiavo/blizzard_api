@@ -173,7 +173,6 @@ module BlizzardApi
     require_relative 'wow/community/auction'
     require_relative 'wow/community/boss'
     require_relative 'wow/community/challenge'
-    require_relative 'wow/community/character'
     require_relative 'wow/community/pvp'
     require_relative 'wow/community/quest'
     require_relative 'wow/community/recipe'

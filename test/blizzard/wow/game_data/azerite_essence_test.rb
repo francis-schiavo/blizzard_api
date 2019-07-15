@@ -18,6 +18,11 @@ module BlizzardApi
         title_data = @azerite_essence.get 2
         assert_equal 'Azeroth\'s Undying Gift', title_data[:name][:en_US]
       end
+
+      def test_azerite_essence_media
+        item_data = @azerite_essence.media 2
+        assert item_data.key? :assets
+      end
     end
   end
 end

@@ -91,6 +91,18 @@ module BlizzardApi
         api_request "#{endpoint_uri('class')}/#{id}/item-subclass/#{subclass_id}", default_options.merge(options)
       end
 
+      ##
+      # Fetch media for an item using its *id*
+      #
+      # @param id [Integer] Item id
+      #
+      # @!macro request_options
+      #
+      # @!macro response
+      def media(id, options = {})
+        api_request "#{base_url(:media)}/item/#{id}", default_options.merge(options)
+      end
+
       protected
 
       def endpoint_setup

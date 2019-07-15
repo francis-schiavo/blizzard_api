@@ -11,7 +11,7 @@ module BlizzardApi
 
       def test_title_index
         title_data = @title.index
-        assert_equal 365, title_data[:titles].count
+        assert_equal 366, title_data[:titles].count
       end
 
       def test_title_get

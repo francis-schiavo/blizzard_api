@@ -10,6 +10,18 @@ module BlizzardApi
     # You can get an instance of this class using the default region as follows:
     #   api_instance = BlizzardApi::Wow.azerite_essence
     class AzeriteEssence < Wow::GenericDataEndpoint
+      ##
+      # Fetch media for one of the azerite essences listed by the {#index} using its *id*
+      #
+      # @param id [Integer] Azerite essence id
+      #
+      # @!macro request_options
+      #
+      # @!macro response
+      def media(id, options = {})
+        api_request "#{base_url(:media)}/azerite-essence/#{id}", default_options.merge(options)
+      end
+
       protected
 
       def endpoint_setup

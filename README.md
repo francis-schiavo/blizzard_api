@@ -88,8 +88,6 @@ Most **data** endpoints will have always 3 methods available `index`, `get` and 
   - index
   - categories
   - category :id
-  - character_achievement_index
-  - guild_achievement_index
   - media :id
 * Blizzard::Wow::ConnectedRealm
   - index
@@ -168,6 +166,7 @@ Most **data** endpoints will have always 3 methods available `index`, `get` and 
   - index
   - get :id
   - complete
+  - status :realms
 * Blizzard::Wow::Region
   - index
   - get :id
@@ -187,9 +186,11 @@ Most **data** endpoints will have always 3 methods available `index`, `get` and 
   - classes
   - class :id
   - subclass :class_id, :subclass_id
+  - media :id
 * Blizzard::Wow::AzeriteEssence
   - index
   - get :id
+  - media :id
 
 * Blizzard::Wow::Auction
   - get :realm
@@ -199,10 +200,6 @@ Most **data** endpoints will have always 3 methods available `index`, `get` and 
 * Blizzard::Wow::Challenge
   - realm_index
   - region_index
-* Blizzard::Wow::Character
-  - get :realm, :character, :fields
-  - get_keystone_profile :realm, :character, :user_token, :season
-  - get_user_characters :user_token
 * Blizzard::Wow::Guild
   - get :relam, :name, :fields
   - rewards
@@ -219,11 +216,24 @@ Most **data** endpoints will have always 3 methods available `index`, `get` and 
   - index
   - get :id
 
-
 * BlizzardApi::Wow::CharacterProfile
-  - get_keystone_profile :realm, :character, :user_token, :season
+  - get_user_characters :user_token
+  - get :realm, :character, :fields
   - pvp_summmary :realm, :character, :user_token
   - pvp_bracket :realm, :character, :bracket, :user_token
+  - achievements :realm, :character
+  - appearance :realm, :character
+  - equipment :realm, :character
+  - media :realm, :character
+  - pvp_bracket :realm, :character, :bracket
+  - pvp_summary :realm, :character
+  - specializations :realm, :character
+  - statistics :realm, :character
+  - titles :realm, :character
+  - mythic_keystone_profile :realm, :character
+  - mythic_keystone_seasons :realm, :character
+  - collections :realm, :character (Not active yet on Blizzard servers)
+  - raid_progression :realm, :character (Not active yet on Blizzard servers)
 
 ### 4.2. Diablo III endpoints
 
