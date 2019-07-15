@@ -39,6 +39,11 @@ module BlizzardApi
         item_data = @item.subclass 1, 1
         assert_equal 'Soul Bag', item_data[:display_name][:en_US]
       end
+
+      def test_item_media
+        item_data = @item.media 35_000
+        assert item_data.key? :assets
+      end
     end
   end
 end

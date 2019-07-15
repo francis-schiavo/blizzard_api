@@ -8,7 +8,7 @@ module BlizzardApi
       def test_achievement_index
         achievement = BlizzardApi::Wow::Achievement.new
         achievement_data = achievement.index
-        assert_equal 5028, achievement_data[:achievements].count
+        assert_equal 5029, achievement_data[:achievements].count
       end
 
       def test_achievement_get
@@ -18,18 +18,6 @@ module BlizzardApi
 
         achievement_data = achievement.get 2144, use_community_endpoint: true
         assert_equal 50, achievement_data[:points]
-      end
-
-      def test_character_achievement_index
-        achievement = BlizzardApi::Wow::Achievement.new
-        achievement_data = achievement.character_achievement_index
-        assert_equal 92, achievement_data[:achievements][0][:id]
-      end
-
-      def test_guild_achievement_index
-        achievement = BlizzardApi::Wow::Achievement.new
-        achievement_data = achievement.guild_achievement_index
-        assert_equal 15_088, achievement_data[:achievements][0][:id]
       end
 
       def test_achievement_complete

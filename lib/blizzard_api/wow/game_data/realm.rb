@@ -14,10 +14,12 @@ module BlizzardApi
       # This method is actually located at the community scope, but included here because of its relevance
       # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-community-api
       #
+      # @param realms [Array<String>] An optional list of realm-slugs to filter results
       # @!macro request_options
       #
       # @!macro response
-      def status(options = {})
+      def status(realms = [], options = {})
+        options[:realms] = realms.map(&:string_to_slug).join(',') if realms.count.positive?
         api_request "#{base_url(:community)}/realm/status", { ttl: CACHE_MINUTE }.merge(options)
       end
 
