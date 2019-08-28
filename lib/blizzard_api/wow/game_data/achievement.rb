@@ -68,7 +68,7 @@ module BlizzardApi
 
       def endpoint_setup
         @endpoint = 'achievement'
-        @namespace = endpoint_namespace :static
+        @namespace = :static
         @collection = 'achievements'
         @ttl = CACHE_TRIMESTER
       end

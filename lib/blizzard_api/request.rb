@@ -83,13 +83,13 @@ module BlizzardApi
     ##
     # Returns a valid namespace string for consuming the api endpoints
     #
-    # @param [Symbol] scope Scope of the namespace to be used. *:dynamic* or *:static*
-    def endpoint_namespace(scope)
-      case scope
+    # @param [Hash] options A hash containing the namespace key
+    def endpoint_namespace(options)
+      case options[:namespace]
       when :dynamic
         "dynamic-#{region}"
       when :static
-        "static-#{region}"
+        options.include?(:classic) ? "static-classic-#{region}" : "static-#{region}"
       when :profile
         "profile-#{region}"
       else
@@ -139,10 +139,13 @@ module BlizzardApi
 
     def api_request(uri, query_string = {})
       # List of request options
-      options_key = %i[ignore_cache ttl format access_token]
+      options_key = %i[ignore_cache ttl format access_token namespace classic]
 
       # Separates request options from api fields and options. Any user-defined option will be treated as api field.
       options = query_string.select { |k, _v| query_string.delete(k) || true if options_key.include? k }
+
+      # Namespace
+      query_string[:namespace] = endpoint_namespace(options) if options.include? :namespace
 
       # In case uri already have query string parameters joins them with &
       if query_string.size.positive?

@@ -20,6 +20,7 @@ module BlizzardApi
       # @param id [Integer] Border id
       #
       # @!macro request_options
+      # @option options [Boolean] :classic If set to true, this method will call the classic version
       #
       # @!macro response
       def border_media(id, options = {})
@@ -30,6 +31,7 @@ module BlizzardApi
       # Return guild embelm assets by its id
       #
       # @param id [Integer] Emblem id
+      # @option options [Boolean] :classic If set to true, this method will call the classic version
       #
       # @!macro request_options
       #
@@ -42,7 +44,7 @@ module BlizzardApi
 
       def endpoint_setup
         @endpoint = 'guild-crest'
-        @namespace = endpoint_namespace(:static)
+        @namespace = :static
         @ttl = CACHE_TRIMESTER
       end
     end

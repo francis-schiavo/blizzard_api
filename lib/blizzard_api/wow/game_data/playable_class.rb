@@ -16,6 +16,7 @@ module BlizzardApi
       # @!macro request_options
       # @option options [Boolean] :use_community_endpoint If set to true, this method will call the community endpoint
       #   instead of the data endpoint https://develop.battle.net/documentation/api-reference/world-of-warcraft-community-api
+      # @option options [Boolean] :classic If set to true, this method will call the classic version
       #
       # @!macro response
       def index(options = {})
@@ -37,6 +38,8 @@ module BlizzardApi
 
       ##
       # @!macro complete
+      #
+      # @option options [Boolean] :classic If set to true, this method will call the classic version
       def complete(options = {})
         index_data = index options
         [].tap do |classes|
@@ -54,6 +57,7 @@ module BlizzardApi
       # @param id [Integer] Playable class id
       #
       # @!macro request_options
+      # @option options [Boolean] :classic If set to true, this method will call the classic version
       #
       # @!macro response
       def get(id, options = {})
@@ -66,12 +70,14 @@ module BlizzardApi
 
       def endpoint_setup
         @endpoint = 'playable-class'
-        @namespace = endpoint_namespace :static
+        @namespace = :static
         @collection = 'classes'
         @ttl = CACHE_TRIMESTER
       end
 
       def get_class_icon(media_url, options)
+        return if options.include? :classic
+
         media_data = request media_url[:key][:href], options
         %r{56/([a-z_]+).jpg}.match(media_data[:assets][0][:value].to_s)[1]
       end

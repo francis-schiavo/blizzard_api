@@ -17,7 +17,7 @@ module BlizzardApi
       #
       # @!macro response
       def get(options = {})
-        opts = { namespace: endpoint_namespace(:dynamic), ttl: CACHE_HOUR }.merge(options)
+        opts = { namespace: :dynamic, ttl: CACHE_HOUR }.merge(options)
         api_request "#{base_url(:game_data)}/token/index", opts
       end
     end

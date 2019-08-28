@@ -28,7 +28,7 @@ module BlizzardApi
 
       def endpoint_setup
         @endpoint = 'mount'
-        @namespace = endpoint_namespace :static
+        @namespace = :static
         @collection = 'mounts'
         @ttl = CACHE_TRIMESTER
       end

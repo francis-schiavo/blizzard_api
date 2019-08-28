@@ -24,7 +24,7 @@ module BlizzardApi
 
       def endpoint_setup
         @endpoint = 'playable-specialization'
-        @namespace = endpoint_namespace :static
+        @namespace = :static
         @collection = 'playable_specialization'
         @ttl = CACHE_TRIMESTER
       end

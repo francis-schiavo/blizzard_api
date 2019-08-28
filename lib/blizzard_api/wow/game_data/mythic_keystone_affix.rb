@@ -14,7 +14,7 @@ module BlizzardApi
 
       def endpoint_setup
         @endpoint = 'keystone-affix'
-        @namespace = endpoint_namespace :static
+        @namespace = :static
         @collection = 'affixes'
         @ttl = CACHE_TRIMESTER
       end

@@ -16,6 +16,7 @@ module BlizzardApi
       # @!macro request_options
       # @option options [Boolean] :use_community_endpoint If set to true, this method will call the community endpoint
       #   instead of the data endpoint https://develop.battle.net/documentation/api-reference/world-of-warcraft-community-api
+      # @option options [Boolean] :classic If set to true, this method will call the classic version
       #
       # @!macro response
       def index(options = {})
@@ -28,7 +29,7 @@ module BlizzardApi
 
       def endpoint_setup
         @endpoint = 'playable-race'
-        @namespace = endpoint_namespace :static
+        @namespace = :static
         @collection = 'races'
         @ttl = CACHE_TRIMESTER
       end

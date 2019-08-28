@@ -24,7 +24,7 @@ module BlizzardApi
 
       def endpoint_setup
         @endpoint = 'pvp-tier'
-        @namespace = endpoint_namespace :static
+        @namespace = :static
         @collection = 'tiers'
         @ttl = CACHE_TRIMESTER
       end

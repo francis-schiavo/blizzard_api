@@ -22,7 +22,7 @@ module BlizzardApi
 
       def endpoint_setup
         @endpoint = 'title'
-        @namespace = endpoint_namespace :static
+        @namespace = :static
         @collection = 'titles'
         @ttl = CACHE_TRIMESTER
       end
