@@ -1,22 +1,12 @@
 image: ruby:2.6
 
 stages:
-  - prepare
-  - codecheck
   - test
 
-environment-setup:
-  stage: prepare
+test:
+  stage: test
   script:
     - gem install bundler -v 1.17.3
     - bundle install
-
-rubocop:
-  stage: codecheck
-  script:
     - rubocop
-
-minitest:
-  stage: test
-  script:
     - rake
