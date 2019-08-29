@@ -81,6 +81,10 @@ Most **data** endpoints will have always 3 methods available `index`, `get` and 
 * **ignore_cache**: true - Ignores the cache and forces an api request (Only works if you have redis enabled)
 * **locale**: < locale id > - Changes the default locale (if any)
 
+**World of Warcraft** supports two additional options:
+* **use_community_endpoint**: Some methods in game data still have an odl community version available.
+* **classic**: Set to true to query WoW Classic data, only works for some game data endpoints.  
+
 ### 4.1. World of Warcraft endpoints
 
 * Blizzard::Wow::Achievement
