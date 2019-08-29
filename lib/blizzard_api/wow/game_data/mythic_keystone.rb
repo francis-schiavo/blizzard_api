@@ -88,7 +88,7 @@ module BlizzardApi
 
       def endpoint_setup
         @endpoint = 'mythic-keystone'
-        @namespace = endpoint_namespace :dynamic
+        @namespace = :dynamic
         @collection = 'mythic-keystones'
         @ttl = CACHE_TRIMESTER
       end

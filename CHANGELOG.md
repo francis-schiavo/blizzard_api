@@ -1,5 +1,9 @@
 Please view this file on the master branch, otherwise it may be outdated
 
+**Version 0.2.6**
+* Added namespace `static-classic` for wow classic support.
+* Some WoW endpoints now support the `classic: true` option.
+
 **Version 0.2.5**
 * Added two unreleased endpoints for character profile(`raid_progression` and `collections`).
 * Added new WoW profile endpoints

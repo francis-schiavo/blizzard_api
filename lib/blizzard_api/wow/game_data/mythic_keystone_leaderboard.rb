@@ -37,7 +37,7 @@ module BlizzardApi
       private
 
       def default_options(options)
-        { ttl: CACHE_DAY, namespace: endpoint_namespace(:dynamic) }.merge options
+        { ttl: CACHE_DAY, namespace: :dynamic }.merge options
       end
 
       def endpoint_uri(connected_realm_id)

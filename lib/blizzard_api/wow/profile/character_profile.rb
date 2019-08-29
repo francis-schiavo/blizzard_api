@@ -274,7 +274,7 @@ module BlizzardApi
       private
 
       def default_options(user_token = nil)
-        opts = { ttl: CACHE_HOUR, namespace: endpoint_namespace(:profile) }
+        opts = { ttl: CACHE_HOUR, namespace: :profile }
         opts.merge access_token: user_token if user_token
         opts
       end

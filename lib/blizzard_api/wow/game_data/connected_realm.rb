@@ -14,7 +14,7 @@ module BlizzardApi
 
       def endpoint_setup
         @endpoint = 'connected-realm'
-        @namespace = endpoint_namespace :dynamic
+        @namespace = :dynamic
         @collection = 'connected_realms'
         @ttl = CACHE_TRIMESTER
       end

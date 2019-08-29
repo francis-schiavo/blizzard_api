@@ -33,6 +33,7 @@ module BlizzardApi
       # @!macro request_options
       # @option options [Boolean] :use_community_endpoint If set to true, this method will call the community endpoint
       #   instead of the data endpoint https://develop.battle.net/documentation/api-reference/world-of-warcraft-community-api
+      # @option options [Boolean] :classic If set to true, this method will call the classic version
       #
       # @!macro response
       def get(id, options = {})
@@ -58,6 +59,7 @@ module BlizzardApi
       # @!macro request_options
       # @option options [Boolean] :use_community_endpoint If set to true, this method will call the community endpoint
       #   instead of the data endpoint https://develop.battle.net/documentation/api-reference/world-of-warcraft-community-api
+      # @option options [Boolean] :classic If set to true, this method will call the classic version
       #
       # @!macro response
       def classes(options = {})
@@ -73,6 +75,7 @@ module BlizzardApi
       #
       # @param id [Integer] Item class id
       # @!macro request_options
+      # @option options [Boolean] :classic If set to true, this method will call the classic version
       #
       # @!macro response
       def class(id, options = {})
@@ -85,6 +88,7 @@ module BlizzardApi
       # @param id [Integer] Item class id
       # @param subclass_id [Integer] Item subclass id
       # @!macro request_options
+      # @option options [Boolean] :classic If set to true, this method will call the classic version
       #
       # @!macro response
       def subclass(id, subclass_id, options = {})
@@ -97,6 +101,7 @@ module BlizzardApi
       # @param id [Integer] Item id
       #
       # @!macro request_options
+      # @option options [Boolean] :classic If set to true, this method will call the classic version
       #
       # @!macro response
       def media(id, options = {})
@@ -107,7 +112,7 @@ module BlizzardApi
 
       def endpoint_setup
         @endpoint = 'item'
-        @namespace = endpoint_namespace :static
+        @namespace = :static
         @collection = 'items'
         @ttl = CACHE_TRIMESTER
       end

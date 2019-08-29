@@ -105,7 +105,7 @@ module BlizzardApi
         guild = CGI.escape string_to_slug(guild)
         url = "#{base_url(:game_data)}/guild/#{realm}/#{guild}"
         url += "/#{variant}" if variant
-        api_request url, { ttl: CACHE_DAY, namespace: endpoint_namespace(:profile) }.merge(options)
+        api_request url, { ttl: CACHE_DAY, namespace: :profile }.merge(options)
       end
     end
   end

@@ -14,7 +14,7 @@ module BlizzardApi
 
       def endpoint_setup
         @endpoint = 'power-type'
-        @namespace = endpoint_namespace :static
+        @namespace = :static
         @collection = 'power_types'
         @ttl = CACHE_TRIMESTER
       end

@@ -26,7 +26,7 @@ module BlizzardApi
 
       def endpoint_setup
         @endpoint = 'azerite-essence'
-        @namespace = endpoint_namespace :static
+        @namespace = :static
         @collection = 'azerite_essences'
         @ttl = CACHE_TRIMESTER
       end

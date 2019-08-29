@@ -13,6 +13,9 @@ module BlizzardApi
         item_data = @item.get 35_000
         assert_equal 'Brutal Gladiator\'s Dragonhide Legguards', item_data[:name][:en_US]
 
+        item_data = @item.get 25, classic: true
+        assert_equal 'Worn Shortsword', item_data[:name][:en_US]
+
         item_data = @item.get 18_803, use_community_endpoint: true
         assert_equal 'inv_gizmo_02', item_data[:icon]
       end
@@ -26,6 +29,9 @@ module BlizzardApi
         item_data = @item.classes
         assert_equal 17, item_data[:item_classes].count
 
+        item_data = @item.classes classic: true
+        assert_equal 12, item_data[:item_classes].count
+
         item_data = @item.classes use_community_endpoint: true
         assert_equal 16, item_data[:classes].count
       end
@@ -33,15 +39,24 @@ module BlizzardApi
       def test_item_class
         item_data = @item.class 1
         assert_equal 11, item_data[:item_subclasses].count
+
+        item_data = @item.class 1, classic: true
+        assert_equal 5, item_data[:item_subclasses].count
       end
 
       def test_subclass
         item_data = @item.subclass 1, 1
         assert_equal 'Soul Bag', item_data[:display_name][:en_US]
+
+        item_data = @item.subclass 1, 1, classic: true
+        assert_equal 'Soul Bag', item_data[:display_name][:en_US]
       end
 
       def test_item_media
         item_data = @item.media 35_000
+        assert item_data.key? :assets
+
+        item_data = @item.media 25, classic: true
         assert item_data.key? :assets
       end
     end

@@ -44,7 +44,7 @@ module BlizzardApi
 
       def endpoint_setup
         @endpoint = 'pvp-season'
-        @namespace = endpoint_namespace :dynamic
+        @namespace = :dynamic
         @collection = 'power_types'
         @ttl = CACHE_TRIMESTER
       end

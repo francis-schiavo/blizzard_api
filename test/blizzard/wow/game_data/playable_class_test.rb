@@ -9,17 +9,26 @@ module BlizzardApi
         classes = BlizzardApi::Wow::PlayableClass.new
         classes_data = classes.index
         assert_equal 12, classes_data[:classes].count
+
+        classes_data = classes.index classic: true
+        assert_equal 9, classes_data[:classes].count
       end
 
       def test_playable_class_get
         playable_class = BlizzardApi::Wow::PlayableClass.new
         playable_class_data = playable_class.get 11
         assert_equal 'Druid', playable_class_data[:name][:en_US]
+
+        playable_class_data = playable_class.get 11, classic: true
+        assert_equal 'Druid', playable_class_data[:name][:en_US]
       end
 
       def test_playable_class_complete
         playable_class = BlizzardApi::Wow::PlayableClass.new
         playable_class_data = playable_class.complete
+        assert_equal 'Warrior', playable_class_data[0][:name][:en_US]
+
+        playable_class_data = playable_class.complete classic: true
         assert_equal 'Warrior', playable_class_data[0][:name][:en_US]
       end
 
