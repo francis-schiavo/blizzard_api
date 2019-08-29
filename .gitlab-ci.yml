@@ -1,6 +1,4 @@
-cache:
-  paths:
-    - .env
+image: ruby:2.6
 
 stages:
   - prepare
@@ -11,12 +9,7 @@ environment-setup:
   stage: prepare
   script:
     - gem install bundler -v 1.17.3
-    - rvm use 2.5.3 --install
     - bundle install
-    - cat /dev/null > .env
-    - echo "BNET_APPLICATION_ID=$BNET_APP_ID" >> .env
-    - echo "BNET_APPLICATION_SECRET=$BNET_APP_SECRET" >> .env
-    - echo "USE_CACHE=$USE_CACHE" >> .env
 
 rubocop:
   stage: codecheck

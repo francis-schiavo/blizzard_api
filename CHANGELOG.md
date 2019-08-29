@@ -1,5 +1,8 @@
 Please view this file on the master branch, otherwise it may be outdated
 
+**Version 0.2.7**
+* Changed CI process to use docker ruby images.
+
 **Version 0.2.6**
 * Added namespace `static-classic` for wow classic support.
 * Some WoW endpoints now support the `classic: true` option.

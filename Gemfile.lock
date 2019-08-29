@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    blizzard_api (0.2.6)
+    blizzard_api (0.2.7)
       redis (~> 4.1, >= 4.1.0)
 
 GEM
@@ -32,7 +32,7 @@ PLATFORMS
 
 DEPENDENCIES
   blizzard_api!
-  bundler (~> 1.17.3)
+  bundler (~> 1.17.3, >= 1.17.3)
   dotenv (~> 2.5)
   minitest (~> 5.0)
   rake (~> 10.0)
