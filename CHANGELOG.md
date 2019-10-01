@@ -1,5 +1,8 @@
 Please view this file on the master branch, otherwise it may be outdated
 
+**Version 0.2.8**
+* Added the new character status endpoint
+
 **Version 0.2.7**
 * Changed CI process to use docker ruby images.
 

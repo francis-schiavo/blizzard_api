@@ -11,10 +11,10 @@ module BlizzardApi
 
       def test_mount_index
         mount_data = @mount.index
-        assert_equal 770, mount_data[:mounts].count
+        assert_equal 777, mount_data[:mounts].count
 
         mount_data = @mount.index use_community_endpoint: true
-        assert_equal 919, mount_data[:mounts].count
+        assert_equal 930, mount_data[:mounts].count
       end
 
       def test_mount_get
