@@ -84,6 +84,21 @@ module BlizzardApi
       end
 
       ##
+      # Return character status
+      #
+      # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
+      # @see https://us.forums.blizzard.com/en/blizzard/t/data-protection-notice-and-faq/609
+      #
+      # @param realm [String] The character realm's slug
+      # @param character [String] The character name
+      # @!macro request_options
+      #
+      # @!macro response
+      def status(realm, character, options = {})
+        character_request realm, character, options, 'status'
+      end
+
+      ##
       # Return character achievements
       #
       # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api

@@ -223,6 +223,7 @@ Most **data** endpoints will have always 3 methods available `index`, `get` and 
 * BlizzardApi::Wow::CharacterProfile
   - get_user_characters :user_token
   - get :realm, :character, :fields
+  - status :realm, :character
   - pvp_summmary :realm, :character, :user_token
   - pvp_bracket :realm, :character, :bracket, :user_token
   - achievements :realm, :character
