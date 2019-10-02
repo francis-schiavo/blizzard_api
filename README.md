@@ -195,6 +195,12 @@ Most **data** endpoints will have always 3 methods available `index`, `get` and 
   - index
   - get :id
   - media :id
+* Blizzard::Wow::ReputationTier
+  - index
+  - get :id
+* Blizzard::Wow::ReputationFaction
+  - index
+  - get :id
 
 * Blizzard::Wow::Auction
   - get :realm
@@ -237,7 +243,11 @@ Most **data** endpoints will have always 3 methods available `index`, `get` and 
   - titles :realm, :character
   - mythic_keystone_profile :realm, :character
   - mythic_keystone_seasons :realm, :character
-  - collections :realm, :character (Not active yet on Blizzard servers)
+  - collections :realm, :character
+  - pets :realm, :character
+  - mounts :realm, :character
+  - hunter_pets :realm, :character
+  - reputations :realm, :character
   - raid_progression :realm, :character (Not active yet on Blizzard servers)
 
 ### 4.2. Diablo III endpoints

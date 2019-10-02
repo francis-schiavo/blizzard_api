@@ -1,5 +1,20 @@
 Please view this file on the master branch, otherwise it may be outdated
 
+**Version 0.2.9**
+https://us.forums.blizzard.com/en/blizzard/t/world-of-warcraft-api-update-collections-hunter-pets-and-reputations/757
+* Added new character endpoints: 
+  * reputations
+  * hunter-pets
+  * collections
+  * pets
+  * mounts
+
+* Added new endpoints:
+  * reputation-tiers
+  * reputation-faction
+
+* Marked all WoW community endpoints as deprecated: https://us.forums.blizzard.com/en/blizzard/t/world-of-warcraft-community-api-migration/767
+
 **Version 0.2.8**
 * Added the new character status endpoint
 

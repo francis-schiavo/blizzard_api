@@ -30,6 +30,8 @@ module BlizzardApi
     require_relative 'wow/game_data/title'
     require_relative 'wow/game_data/item'
     require_relative 'wow/game_data/azerite_essence'
+    require_relative 'wow/game_data/reputation_tier'
+    require_relative 'wow/game_data/reputation_faction'
 
     ##
     # @return {Achievement}
@@ -167,6 +169,18 @@ module BlizzardApi
     # @return {AzeriteEssence}
     def self.azerite_essence
       BlizzardApi::Wow::AzeriteEssence.new
+    end
+
+    ##
+    # @return {ReputationTier}
+    def self.reputation_tier
+      BlizzardApi::Wow::ReputationTier.new
+    end
+
+    ##
+    # @return {ReputationFaction}
+    def self.reputation_faction
+      BlizzardApi::Wow::ReputationFaction.new
     end
 
     # Wow community api
