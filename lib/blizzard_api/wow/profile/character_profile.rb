@@ -12,25 +12,8 @@ module BlizzardApi
     class CharacterProfile < Wow::Request
       # Valid fields for character profile requests
       VALID_FIELDS = %w[
-        achievements
-        appearance
-        feed
-        guild
-        hunterPets
-        items
-        mounts
-        pets
-        petSlots
-        professions
-        progression
-        pvp
-        quests
-        reputation
-        statistics
-        stats
-        talents
-        titles
-        audit
+        achievements appearance feed guild hunterPets items mounts pets petSlots professions progression
+        pvp quests reputation statistics stats talents titles audit
       ].freeze
 
       ##
@@ -270,6 +253,62 @@ module BlizzardApi
       # @!macro response
       def collections(realm, character, options = {})
         character_request realm, character, options, 'collections'
+      end
+
+      ##
+      # Return a character's pet collection
+      #
+      # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
+      #
+      # @param realm [String] The character realm's slug
+      # @param character [String] The character name
+      # @!macro request_options
+      #
+      # @!macro response
+      def pets(realm, character, options = {})
+        character_request realm, character, options, 'collections/pets'
+      end
+
+      ##
+      # Return a character's mount collection
+      #
+      # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
+      #
+      # @param realm [String] The character realm's slug
+      # @param character [String] The character name
+      # @!macro request_options
+      #
+      # @!macro response
+      def mounts(realm, character, options = {})
+        character_request realm, character, options, 'collections/mounts'
+      end
+
+      ##
+      # Return a character's reputations
+      #
+      # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
+      #
+      # @param realm [String] The character realm's slug
+      # @param character [String] The character name
+      # @!macro request_options
+      #
+      # @!macro response
+      def reputation(realm, character, options = {})
+        character_request realm, character, options, 'reputations'
+      end
+
+      ##
+      # Return a character's hunter pets
+      #
+      # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
+      #
+      # @param realm [String] The character realm's slug
+      # @param character [String] The character name
+      # @!macro request_options
+      #
+      # @!macro response
+      def hunter_pets(realm, character, options = {})
+        character_request realm, character, options, 'hunter-pets'
       end
 
       ##

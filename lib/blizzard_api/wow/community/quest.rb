@@ -7,6 +7,8 @@ module BlizzardApi
     #
     # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-community-api
     #
+    # @deprecated See https://us.forums.blizzard.com/en/blizzard/t/world-of-warcraft-community-api-migration/767
+    #
     # You can get an instance of this class using the default region as follows:
     #   api_instance = BlizzardApi::Wow.quest
     class Quest < Wow::Request

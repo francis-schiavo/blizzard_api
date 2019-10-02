@@ -3,7 +3,7 @@
 module BlizzardApi
   module Wow
     ##
-    # This class allows access to World of Warcraft achievements
+    # This class allows access to World of Warcraft creatures
     #
     # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-game-data-api
     #

@@ -5,6 +5,8 @@ module BlizzardApi
     ##
     # This class allows access to World of Warcraft auctions
     #
+    # @deprecated See https://us.forums.blizzard.com/en/blizzard/t/world-of-warcraft-community-api-migration/767
+    #
     # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-community-api
     #
     # You can get an instance of this class using the default region as follows:
