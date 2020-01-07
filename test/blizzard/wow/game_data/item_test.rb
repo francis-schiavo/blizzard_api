@@ -30,7 +30,7 @@ module BlizzardApi
         assert_equal 17, item_data[:item_classes].count
 
         item_data = @item.classes classic: true
-        assert_equal 12, item_data[:item_classes].count
+        assert_equal 13, item_data[:item_classes].count
 
         item_data = @item.classes use_community_endpoint: true
         assert_equal 16, item_data[:classes].count

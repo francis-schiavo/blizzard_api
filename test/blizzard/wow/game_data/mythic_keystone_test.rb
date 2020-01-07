@@ -27,7 +27,7 @@ module BlizzardApi
 
       def test_mythic_keystone_periods
         mythic_keystone_periods = @mythic_keystone_leaderboard.periods
-        assert_equal 89, mythic_keystone_periods[:periods].count
+        assert_equal 92, mythic_keystone_periods[:periods].count
       end
 
       def test_mythic_keystone_period
