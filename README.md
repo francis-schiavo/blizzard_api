@@ -15,8 +15,7 @@ This gem allow you to interface with the new blizzard api (2018) using the OAuth
 4. [Available endpoints](#4-available-endpoints)
    - 4.1. [World of Warcraft endpoints](#41-world-of-warcraft-endpoints)
    - 4.2. [Diablo III endpoints](#42-diablo-iii-endpoints)
-   - 4.3. [Starcraft II endpoints](#43-starcraft-ii-endpoints)
-   - 4.4. [Hearthstone endpoints](#44-hearthstone-endpoints)
+   - 4.3. [Hearthstone endpoints](#43-hearthstone-endpoints)
 
 ## 1. Installation
 
@@ -273,26 +272,8 @@ Most **data** endpoints will have always 3 methods available `index`, `get` and 
   - hero :battletag, :oauth_token, :hero_id
   - hero_items :battletag, :oauth_token, :hero_id
   - hero_follower_items :battletag, :oauth_token, :hero_id
-  
-### 4.3. Starcraft II endpoints
 
-Every endpoint requiring a *region_id* parameter will accepts either the integer representation of the region described in the api docs or a symbol: `:US`, `:EU`, `:KO` or `:TW` 
-
-* BlizzardApi::Starcraft::League
-  - get :season_id, :queue_id, :team_type, :league_id
-* BlizzardApi::Starcraft::Profile
-  - static :region_id
-  - metadata :region_id, :realm_id, :profile_id
-  - profile :region_id, :realm_id, :profile_id
-  - ladder_summary :region_id, :realm_id, :profile_id
-  - ladder :region_id, :realm_id, :profile_id, :ladder_id
-* BlizzardApi::Starcraft::Ladder
-  - grandmaster :region_id, :options
-  - season :region_id
-* BlizzardApi::Starcraft::Account
-  - player :account_id
-
-### 4.4. Hearthstone endpoints
+### 4.3. Hearthstone endpoints
 
 * BlizzardApi::Hearthstone::Card
   - index

@@ -1,6 +1,13 @@
 Please view this file on the master branch, otherwise it may be outdated
 
+**Version 0.3.0**
+
+https://us.forums.blizzard.com/en/blizzard/t/starcraft-ii-community-api-update/2652
+
+Removed all Starcraft II related code.
+
 **Version 0.2.9**
+
 https://us.forums.blizzard.com/en/blizzard/t/world-of-warcraft-api-update-collections-hunter-pets-and-reputations/757
 * Added new character endpoints: 
   * reputations
