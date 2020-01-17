@@ -6,6 +6,7 @@ module BlizzardApi
     # This class allows access to Hearthstone deck data
     #
     # @see https://develop.battle.net/documentation/api-reference/hearthstone-game-data-api
+    # @see https://develop.battle.net/documentation/hearthstone/guides/decks
     #
     # You can get an instance of this class using the default region as follows:
     #   api_instance = BlizzardApi::Hearthstone.deck

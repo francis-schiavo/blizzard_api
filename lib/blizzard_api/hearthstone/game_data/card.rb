@@ -6,6 +6,7 @@ module BlizzardApi
     # This class allows access to Hearthstone card data
     #
     # @see https://develop.battle.net/documentation/api-reference/hearthstone-game-data-api
+    # @see https://develop.battle.net/documentation/hearthstone/guides/card-search
     #
     # You can get an instance of this class using the default region as follows:
     #   api_instance = BlizzardApi::Hearthstone.card
@@ -23,6 +24,7 @@ module BlizzardApi
         minionType
         keyword
         textFilter
+        gameMode
         page
         pageSize
         sort
@@ -55,6 +57,8 @@ module BlizzardApi
       #     and so on). This value must match the keyword slugs found in metadata.
       #   @option search_options [String] :textFilter A text string used to filter cards.
       #     You must include a locale along with the textFilter parameter.
+      #   @option search_options [String] :gameMode A recognized game mode (for example, battlegrounds or constructed).
+      #     The default value is constructed. See the Game Modes Guide for more information.
       #   @option search_options [Integer] :page A page number.
       #   @option search_options [Integer] :pageSize The number of results to choose per page.
       #     A value will be selected automatically if you do not supply a pageSize or if the pageSize is higher than the
@@ -72,6 +76,22 @@ module BlizzardApi
         validate_search_options search_options if options.include? :validate_fields
 
         api_request "#{base_url(:community)}/cards", default_options.merge(options).merge(search_options)
+      end
+
+      ##
+      # Returns the card with an ID or slug that matches the one you specify. For more information, see the Card Search Guide.
+      #
+      # @see https://develop.battle.net/documentation/hearthstone/guides/card-search
+      # @see https://develop.battle.net/documentation/hearthstone/guides/game-modes
+      #
+      # @param id_or_slug [String] Card ID or slug
+      # @param game_mode [String] A recognized game mode (for example, battlegrounds or constructed).
+      #   The default value is constructed. See the Game Modes Guide for more information.
+      # @!macro request_options
+      #
+      # @!macro response
+      def get(id_or_slug, game_mode = 'constructed', options = {})
+        super id_or_slug, { gameMode: game_mode }.merge(options)
       end
 
       protected

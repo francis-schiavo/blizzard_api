@@ -6,7 +6,7 @@ stages:
 test:
   stage: test
   script:
-    - gem install bundler -v 1.17.3
+    - gem install bundler -v 2.1.2
     - bundle install
     - rubocop
     - rake

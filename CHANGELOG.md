@@ -1,5 +1,14 @@
 Please view this file on the master branch, otherwise it may be outdated
 
+**Version 0.3.1**
+
+https://us.forums.blizzard.com/en/blizzard/t/hearthstone-api-updates/2978
+
+Hearthstone updates:
+
+* Added the new Cardback endpoint
+* Card endpoint now supports the new `gameMode` search option
+
 **Version 0.3.0**
 
 https://us.forums.blizzard.com/en/blizzard/t/starcraft-ii-community-api-update/2652

@@ -8,6 +8,7 @@ module BlizzardApi
 
     # Hearthstone data api
     require_relative 'hearthstone/game_data/card'
+    require_relative 'hearthstone/game_data/back'
     require_relative 'hearthstone/game_data/deck'
     require_relative 'hearthstone/game_data/metadata'
 
@@ -15,6 +16,12 @@ module BlizzardApi
     # @return {Card}
     def self.card
       BlizzardApi::Hearthstone::Card.new
+    end
+
+    ##
+    # @return {Back}
+    def self.back
+      BlizzardApi::Hearthstone::Back.new
     end
 
     ##

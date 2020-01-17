@@ -27,7 +27,7 @@ module BlizzardApi
       ##
       # Fetch all possible data for one of items listed by the {#index} using its *id*
       #
-      # @param [Integer] id One of the IDs returned by the {#index}
+      # @param [Integer|String] id One of the IDs returned by the {#index}
       # @!macro request_options
       #
       # @!macro response

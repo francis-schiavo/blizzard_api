@@ -11,10 +11,10 @@ module BlizzardApi
 
       def test_pet_index
         pet_data = @pet.index
-        assert_equal 1248, pet_data[:pets].count
+        assert_equal 1280, pet_data[:pets].count
 
         pet_data = @pet.index use_community_endpoint: true
-        assert_equal 1244, pet_data[:pets].count
+        assert_equal 1280, pet_data[:pets].count
       end
 
       def test_pet_get

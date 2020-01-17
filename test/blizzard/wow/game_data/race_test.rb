@@ -8,10 +8,10 @@ module BlizzardApi
       def test_race_index
         race = BlizzardApi::Wow::Race.new
         race_data = race.index
-        assert_equal 23, race_data[:races].count
+        assert_equal 25, race_data[:races].count
 
         race_data = race.index
-        assert_equal 23, race_data[:races].count
+        assert_equal 25, race_data[:races].count
       end
 
       def test_race_get

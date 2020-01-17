@@ -11,7 +11,7 @@ module BlizzardApi
 
       def test_azerite_essence_index
         title_data = @azerite_essence.index
-        assert_equal 21, title_data[:azerite_essences].count
+        assert_equal 28, title_data[:azerite_essences].count
       end
 
       def test_azerite_essence_get
