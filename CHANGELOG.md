@@ -1,5 +1,11 @@
 Please view this file on the master branch, otherwise it may be outdated
 
+**Version 0.3.2**
+
+Added new WoW endpoints: https://us.forums.blizzard.com/en/blizzard/t/world-of-warcraft-api-update-visions-of-nzoth/3461
+
+**Attention:** Removed compatibility with community endpoints for all migrated endpoints.
+
 **Version 0.3.1**
 
 https://us.forums.blizzard.com/en/blizzard/t/hearthstone-api-updates/2978

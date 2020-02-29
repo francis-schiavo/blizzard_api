@@ -15,14 +15,16 @@ module BlizzardApi
 
         item_data = @item.get 25, classic: true
         assert_equal 'Worn Shortsword', item_data[:name][:en_US]
+      end
 
-        item_data = @item.get 18_803, use_community_endpoint: true
-        assert_equal 'inv_gizmo_02', item_data[:icon]
+      def test_item_set_index
+        item_data = @item.sets
+        assert_equal 'The Gladiator', item_data[:item_sets][0][:name][:en_US]
       end
 
       def test_item_set
-        item_data = @item.item_set 1060
-        assert_equal 76_749, item_data[:items][0]
+        item_data = @item.set 1
+        assert_equal 'The Gladiator', item_data[:name][:en_US]
       end
 
       def test_item_classes
@@ -31,9 +33,6 @@ module BlizzardApi
 
         item_data = @item.classes classic: true
         assert_equal 13, item_data[:item_classes].count
-
-        item_data = @item.classes use_community_endpoint: true
-        assert_equal 16, item_data[:classes].count
       end
 
       def test_item_class

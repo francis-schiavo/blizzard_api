@@ -15,9 +15,6 @@ module BlizzardApi
         achievement = BlizzardApi::Wow::Achievement.new
         achievement_data = achievement.get 6
         assert_equal 'Level 10', achievement_data[:name][:en_US]
-
-        achievement_data = achievement.get 2144, use_community_endpoint: true
-        assert_equal 50, achievement_data[:points]
       end
 
       def test_achievement_complete

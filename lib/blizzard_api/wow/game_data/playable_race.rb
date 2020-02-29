@@ -3,19 +3,19 @@
 module BlizzardApi
   module Wow
     ##
-    # This class allows access to World of Warcraft reputation
+    # This class allows access to World of Warcraft playable races
     #
     # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-game-data-api
     #
     # You can get an instance of this class using the default region as follows:
-    #   api_instance = BlizzardApi::Wow.creature
-    class ReputationFaction < Wow::GenericDataEndpoint
+    #   race = BlizzardApi::Wow.playable_race
+    class PlayableRace < Wow::GenericDataEndpoint
       protected
 
       def endpoint_setup
-        @endpoint = 'reputation-faction'
+        @endpoint = 'playable-race'
         @namespace = :static
-        @collection = 'achievements'
+        @collection = 'races'
         @ttl = CACHE_TRIMESTER
       end
     end

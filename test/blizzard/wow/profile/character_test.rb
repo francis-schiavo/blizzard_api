@@ -19,6 +19,11 @@ module BlizzardApi
         assert character_data.key? :total_quantity
       end
 
+      def test_character_achievement_statistics
+        character_data = @character.achievement_statistics 'Azralon', 'Schiller'
+        assert character_data.key? :statistics
+      end
+
       def test_character_appearance
         character_data = @character.appearance 'Azralon', 'Schiller'
         assert_equal 4, character_data[:appearance][:face_variation]
@@ -37,6 +42,14 @@ module BlizzardApi
       def test_character_pvp_summary
         character_data = @character.pvp_summary 'Azralon', 'Schiller'
         assert character_data.key? :honorable_kills
+      end
+
+      def test_character_quest
+        character_data = @character.quests 'Azralon', 'Schiller'
+        assert character_data.key? :in_progress
+
+        character_data = @character.quests 'Azralon', 'Schiller', true
+        assert_equal 8985, character_data[:quests].count
       end
 
       def test_character_specializations

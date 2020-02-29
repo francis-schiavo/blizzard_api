@@ -11,7 +11,7 @@ module BlizzardApi
 
       def test_pvp_season_index
         pvp_data = @pvp.index
-        assert_equal 7, pvp_data[:seasons].count
+        assert pvp_data.key? :seasons
       end
 
       def test_pvp_season_get

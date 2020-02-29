@@ -8,35 +8,50 @@ module BlizzardApi
 
     # WoW data api
     require_relative 'wow/game_data/achievement'
+    require_relative 'wow/game_data/auction'
+    require_relative 'wow/game_data/azerite_essence'
     require_relative 'wow/game_data/connected_realm'
     require_relative 'wow/game_data/creature'
-    require_relative 'wow/game_data/guild'
     require_relative 'wow/game_data/guild_crest'
+    require_relative 'wow/game_data/item'
+    require_relative 'wow/game_data/journal'
+    require_relative 'wow/game_data/mount'
     require_relative 'wow/game_data/mythic_keystone_affix'
     require_relative 'wow/game_data/mythic_keystone'
     require_relative 'wow/game_data/mythic_raid_leaderboard'
-    require_relative 'wow/game_data/mount'
     require_relative 'wow/game_data/mythic_keystone_leaderboard'
     require_relative 'wow/game_data/pet'
     require_relative 'wow/game_data/playable_class'
+    require_relative 'wow/game_data/playable_race'
     require_relative 'wow/game_data/playable_specialization'
     require_relative 'wow/game_data/power_type'
     require_relative 'wow/game_data/pvp_season'
     require_relative 'wow/game_data/pvp_tier'
+    require_relative 'wow/game_data/quest'
     require_relative 'wow/game_data/realm'
     require_relative 'wow/game_data/region'
-    require_relative 'wow/game_data/wow_token'
-    require_relative 'wow/game_data/race'
+    require_relative 'wow/game_data/reputation'
+    require_relative 'wow/game_data/spell'
+    require_relative 'wow/game_data/talent'
     require_relative 'wow/game_data/title'
-    require_relative 'wow/game_data/item'
-    require_relative 'wow/game_data/azerite_essence'
-    require_relative 'wow/game_data/reputation_tier'
-    require_relative 'wow/game_data/reputation_faction'
+    require_relative 'wow/game_data/wow_token'
 
     ##
     # @return {Achievement}
     def self.achievement
       BlizzardApi::Wow::Achievement.new
+    end
+
+    ##
+    # @return {Auction}
+    def self.auction
+      BlizzardApi::Wow::Auction.new
+    end
+
+    ##
+    # @return {AzeriteEssence}
+    def self.azerite_essence
+      BlizzardApi::Wow::AzeriteEssence.new
     end
 
     ##
@@ -52,15 +67,27 @@ module BlizzardApi
     end
 
     ##
-    # @return {Guild}
-    def self.guild
-      BlizzardApi::Wow::Guild.new
-    end
-
-    ##
     # @return {GuildCrest}
     def self.guild_crest
       BlizzardApi::Wow::GuildCrest.new
+    end
+
+    ##
+    # @return {Item}
+    def self.item
+      BlizzardApi::Wow::Item.new
+    end
+
+    ##
+    # @return {Journal}
+    def self.journal
+      BlizzardApi::Wow::Journal.new
+    end
+
+    ##
+    # @return {Mount}
+    def self.mount
+      BlizzardApi::Wow::Mount.new
     end
 
     ##
@@ -82,12 +109,6 @@ module BlizzardApi
     end
 
     ##
-    # @return {Mount}
-    def self.mount
-      BlizzardApi::Wow::Mount.new
-    end
-
-    ##
     # @return {MythicKeystoneLeaderboard}
     def self.mythic_keystone_leaderboard
       BlizzardApi::Wow::MythicKeystoneLeaderboard.new
@@ -103,6 +124,12 @@ module BlizzardApi
     # @return {PlayableClass}
     def self.playable_class
       BlizzardApi::Wow::PlayableClass.new
+    end
+
+    ##
+    # @return {Race}
+    def self.playable_race
+      BlizzardApi::Wow::PlayableRace.new
     end
 
     ##
@@ -130,6 +157,12 @@ module BlizzardApi
     end
 
     ##
+    # @return {Quest}
+    def self.quest
+      BlizzardApi::Wow::Quest.new
+    end
+
+    ##
     # @return {Realm}
     def self.realm
       BlizzardApi::Wow::Realm.new
@@ -142,15 +175,21 @@ module BlizzardApi
     end
 
     ##
-    # @return {WowToken}
-    def self.wow_token
-      BlizzardApi::Wow::WowToken.new
+    # @return {Reputation}
+    def self.reputation
+      BlizzardApi::Wow::Reputation.new
     end
 
     ##
-    # @return {Race}
-    def self.race
-      BlizzardApi::Wow::Race.new
+    # @return {Spell}
+    def self.spell
+      BlizzardApi::Wow::Spell.new
+    end
+
+    ##
+    # @return {Talent}
+    def self.talent
+      BlizzardApi::Wow::Talent.new
     end
 
     ##
@@ -160,44 +199,17 @@ module BlizzardApi
     end
 
     ##
-    # @return {Item}
-    def self.item
-      BlizzardApi::Wow::Item.new
-    end
-
-    ##
-    # @return {AzeriteEssence}
-    def self.azerite_essence
-      BlizzardApi::Wow::AzeriteEssence.new
-    end
-
-    ##
-    # @return {ReputationTier}
-    def self.reputation_tier
-      BlizzardApi::Wow::ReputationTier.new
-    end
-
-    ##
-    # @return {ReputationFaction}
-    def self.reputation_faction
-      BlizzardApi::Wow::ReputationFaction.new
+    # @return {WowToken}
+    def self.wow_token
+      BlizzardApi::Wow::WowToken.new
     end
 
     # Wow community api
-    require_relative 'wow/community/auction'
     require_relative 'wow/community/boss'
     require_relative 'wow/community/challenge'
     require_relative 'wow/community/pvp'
-    require_relative 'wow/community/quest'
     require_relative 'wow/community/recipe'
-    require_relative 'wow/community/spell'
     require_relative 'wow/community/zone'
-
-    ##
-    # @return {Auction}
-    def self.auction
-      BlizzardApi::Wow::Auction.new
-    end
 
     ##
     # @return {Boss}
@@ -224,21 +236,9 @@ module BlizzardApi
     end
 
     ##
-    # @return {Quest}
-    def self.quest
-      BlizzardApi::Wow::Quest.new
-    end
-
-    ##
     # @return {Recipe}
     def self.recipe
       BlizzardApi::Wow::Recipe.new
-    end
-
-    ##
-    # @return {Spell}
-    def self.spell
-      BlizzardApi::Wow::Spell.new
     end
 
     ##
@@ -247,7 +247,25 @@ module BlizzardApi
       BlizzardApi::Wow::Zone.new
     end
 
+    require_relative 'wow/profile/profile'
+    require_relative 'wow/profile/guild'
     require_relative 'wow/profile/character_profile'
+
+    ##
+    # @param token [String] A token obtained using the authorization_code flow
+    #
+    # @!macro request_options
+    #
+    # @return {Profile}
+    def self.profile(token)
+      BlizzardApi::Wow::Profile.new(token)
+    end
+
+    ##
+    # @return {Guild}
+    def self.guild
+      BlizzardApi::Wow::Guild.new
+    end
 
     ##
     # @return {CharacterProfile}

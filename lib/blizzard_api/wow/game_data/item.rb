@@ -5,7 +5,7 @@ module BlizzardApi
     ##
     # This class allows access to World of Warcraft item data
     #
-    # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-community-api
+    # @see https://develop.battle.net/documentation/world-of-warcraft/game-data-apis
     #
     # You can get an instance of this class using the default region as follows:
     #   api_instance = BlizzardApi::Wow.item
@@ -27,46 +27,13 @@ module BlizzardApi
       end
 
       ##
-      # Return complete data of an item by id
-      #
-      # @param id [Integer] Item id
-      # @!macro request_options
-      # @option options [Boolean] :use_community_endpoint If set to true, this method will call the community endpoint
-      #   instead of the data endpoint https://develop.battle.net/documentation/api-reference/world-of-warcraft-community-api
-      # @option options [Boolean] :classic If set to true, this method will call the classic version
-      #
-      # @!macro response
-      def get(id, options = {})
-        return super id, options unless options.include? :use_community_endpoint
-
-        api_request "#{base_url(:community)}/item/#{id}", { ttl: CACHE_TRIMESTER }.merge(options)
-      end
-
-      ##
-      # Return complete data of an item set by id
-      #
-      # @param set_id [Integer] Item set id
-      # @!macro request_options
-      #
-      # @!macro response
-      def item_set(set_id, options = {})
-        api_request "#{base_url(:community)}/item/set/#{set_id}", { ttl: CACHE_TRIMESTER }.merge(options)
-      end
-
-      ##
       # Return a list of item classes
       #
       # @!macro request_options
-      # @option options [Boolean] :use_community_endpoint If set to true, this method will call the community endpoint
-      #   instead of the data endpoint https://develop.battle.net/documentation/api-reference/world-of-warcraft-community-api
       # @option options [Boolean] :classic If set to true, this method will call the classic version
       #
       # @!macro response
       def classes(options = {})
-        if options.include? :use_community_endpoint
-          return api_request "#{base_url(:community)}/data/item/classes", { ttl: CACHE_TRIMESTER }.merge(options)
-        end
-
         api_request "#{endpoint_uri('class')}/index", default_options.merge(options)
       end
 
@@ -106,6 +73,27 @@ module BlizzardApi
       # @!macro response
       def media(id, options = {})
         api_request "#{base_url(:media)}/item/#{id}", default_options.merge(options)
+      end
+
+      ##
+      # Return a list of item sets
+      #
+      # @!macro request_options
+      #
+      # @!macro response
+      def sets(options = {})
+        api_request "#{endpoint_uri('set')}/index", default_options.merge(options)
+      end
+
+      ##
+      # Return data about an item set
+      #
+      # @param id [Integer] Item set id
+      # @!macro request_options
+      #
+      # @!macro response
+      def set(id, options = {})
+        api_request "#{endpoint_uri('set')}/#{id}", default_options.merge(options)
       end
 
       protected

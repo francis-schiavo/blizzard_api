@@ -11,21 +11,6 @@ module BlizzardApi
     #   api_instance = BlizzardApi::Wow.playable_class
     class PlayableClass < Wow::GenericDataEndpoint
       ##
-      # Returns a index of playable classes
-      #
-      # @!macro request_options
-      # @option options [Boolean] :use_community_endpoint If set to true, this method will call the community endpoint
-      #   instead of the data endpoint https://develop.battle.net/documentation/api-reference/world-of-warcraft-community-api
-      # @option options [Boolean] :classic If set to true, this method will call the classic version
-      #
-      # @!macro response
-      def index(options = {})
-        return super options unless options.include? :use_community_endpoint
-
-        api_request "#{base_url(:community)}/data/character/classes", { ttl: CACHE_TRIMESTER }.merge(options)
-      end
-
-      ##
       # Returns the PvP talent slots data of a specific class
       #
       # @param id [Integer] Class id to fetch talent data. One of the IDs returned by the {index} method

@@ -11,22 +11,6 @@ module BlizzardApi
     #   api_instance = BlizzardApi::Wow.achievement
     class Achievement < Wow::GenericDataEndpoint
       ##
-      # Fetch all possible data for one of the items listed by the {#index} using its *id*
-      #
-      # @param id [Integer] One of the IDs returned by the {#index}
-      #
-      # @!macro request_options
-      # @option options [Boolean] :use_community_endpoint If set to true, this method will call the community endpoint
-      #   instead of the data endpoint https://develop.battle.net/documentation/api-reference/world-of-warcraft-community-api
-      #
-      # @!macro response
-      def get(id, options = {})
-        return super id, options unless options.include? :use_community_endpoint
-
-        api_request "#{base_url(:community)}/achievement/#{id}", { ttl: CACHE_TRIMESTER }.merge(options)
-      end
-
-      ##
       # This method overrides the inherited default behavior to prevent high server load and fetch time
       #
       # @!macro response

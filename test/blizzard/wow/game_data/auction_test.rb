@@ -5,10 +5,13 @@ require 'test_helper'
 module BlizzardApi
   module Wow
     class AuctionTest < Minitest::Test
+      def setup
+        @auction = BlizzardApi::Wow::Auction.new
+      end
+
       def test_auction_get
-        auction = BlizzardApi::Wow::Auction.new
-        auction_data = auction.get 'medivh'
-        assert auction_data[:files]
+        auction_data = @auction.get 1146
+        assert auction_data.key? :auctions
       end
     end
   end
