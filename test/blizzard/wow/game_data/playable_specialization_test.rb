@@ -8,6 +8,7 @@ module BlizzardApi
       def setup
         @playable_specialization = BlizzardApi::Wow::PlayableSpecialization.new
       end
+
       def test_specialization_index
         specs_data = @playable_specialization.index
         assert_equal 62, specs_data[:character_specializations][0][:id]
