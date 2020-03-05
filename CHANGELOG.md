@@ -1,5 +1,9 @@
 Please view this file on the master branch, otherwise it may be outdated
 
+**Version 0.3.4**
+
+Fixed account endpoints
+
 **Version 0.3.3**
 
 Added character profile encounter endpoints:

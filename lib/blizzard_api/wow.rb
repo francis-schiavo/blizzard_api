@@ -258,7 +258,7 @@ module BlizzardApi
     #
     # @return {Profile}
     def self.profile(token)
-      BlizzardApi::Wow::Profile.new(token)
+      BlizzardApi::Wow::AccountProfile.new(token)
     end
 
     ##

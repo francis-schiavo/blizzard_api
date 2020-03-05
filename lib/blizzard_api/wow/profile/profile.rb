@@ -7,7 +7,8 @@ module BlizzardApi
     class AccountProfile < Request
       ##
       # @param token [String] A token obtained using the authorization_code flow
-      def initialize(token)
+      def initialize(token, region = nil)
+        super region
         @token = token
       end
 
@@ -17,8 +18,8 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def get(_options = {})
-        api_request base_url(:user_profile).to_s
+      def get(options = {})
+        api_request base_url(:user_profile).to_s, default_options.merge(options)
       end
 
       ##
@@ -67,8 +68,9 @@ module BlizzardApi
         { ttl: CACHE_HOUR, namespace: :profile }
       end
 
-      def api_request(_uri, query_string = nil)
-        query_string[:access_token] = @token
+      def api_request(_uri, query_string = {})
+        query_string.merge! access_token: @token
+        super
       end
     end
   end
