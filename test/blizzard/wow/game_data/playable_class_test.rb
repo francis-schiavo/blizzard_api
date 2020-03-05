@@ -5,37 +5,42 @@ require 'test_helper'
 module BlizzardApi
   module Wow
     class PlayableClassTest < Minitest::Test
-      def test_playable_class_index
-        classes = BlizzardApi::Wow::PlayableClass.new
-        classes_data = classes.index
-        assert_equal 12, classes_data[:classes].count
+      def setup
+        @playable_class = BlizzardApi::Wow::PlayableClass.new
+      end
 
-        classes_data = classes.index classic: true
-        assert_equal 9, classes_data[:classes].count
+      def test_playable_class_index
+        data = @playable_class.index
+        assert_equal 12, data[:classes].count
+
+        data = @playable_class.index classic: true
+        assert_equal 9, data[:classes].count
       end
 
       def test_playable_class_get
-        playable_class = BlizzardApi::Wow::PlayableClass.new
-        playable_class_data = playable_class.get 11
-        assert_equal 'Druid', playable_class_data[:name][:en_US]
+        data = @playable_class.get 11
+        assert_equal 'Druid', data[:name][:en_US]
 
-        playable_class_data = playable_class.get 11, classic: true
-        assert_equal 'Druid', playable_class_data[:name][:en_US]
+        data = @playable_class.get 11, classic: true
+        assert_equal 'Druid', data[:name][:en_US]
       end
 
       def test_playable_class_complete
-        playable_class = BlizzardApi::Wow::PlayableClass.new
-        playable_class_data = playable_class.complete
-        assert_equal 'Warrior', playable_class_data[0][:name][:en_US]
+        data = @playable_class.complete
+        assert_equal 'Warrior', data[0][:name][:en_US]
 
-        playable_class_data = playable_class.complete classic: true
-        assert_equal 'Warrior', playable_class_data[0][:name][:en_US]
+        data = @playable_class.complete classic: true
+        assert_equal 'Warrior', data[0][:name][:en_US]
       end
 
-      def test_class_talent_slots
-        playable_class = BlizzardApi::Wow::PlayableClass.new
-        talent_slots_data = playable_class.talent_slots 11
-        assert_equal 20, talent_slots_data[:talent_slots][0][:unlock_player_level]
+      def test_playable_class_talent_slots
+        data = @playable_class.talent_slots 11
+        assert_equal 20, data[:talent_slots][0][:unlock_player_level]
+      end
+
+      def test_playable_class_media
+        data = @playable_class.media 11
+        assert_equal 'https://render-us.worldofwarcraft.com/icons/56/classicon_druid.jpg', data[:assets][0][:value]
       end
     end
   end

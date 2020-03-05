@@ -20,6 +20,18 @@ module BlizzardApi
         response_data
       end
 
+      ##
+      # Fetch media for one of the playable specializations listed by the {#index} using its *id*
+      #
+      # @param id [Integer] Playable specialization id
+      #
+      # @!macro request_options
+      #
+      # @!macro response
+      def media(id, options = {})
+        api_request "#{base_url(:media)}/playable-specialization/#{id}", default_options.merge(options)
+      end
+
       protected
 
       def endpoint_setup

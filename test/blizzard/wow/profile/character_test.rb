@@ -29,6 +29,22 @@ module BlizzardApi
         assert_equal 4, character_data[:appearance][:face_variation]
       end
 
+      def test_character_encounters
+        character_data = @character.encounters 'Azralon', 'Schiller'
+        assert character_data.key? :dungeons
+        assert character_data.key? :raids
+      end
+
+      def test_character_dungeons
+        character_data = @character.dungeons 'Azralon', 'Schiller'
+        assert character_data.key? :expansions
+      end
+
+      def test_character_raids
+        character_data = @character.raids 'Azralon', 'Schiller'
+        assert character_data.key? :expansions
+      end
+
       def test_character_equipment
         character_data = @character.equipment 'Azralon', 'Schiller'
         assert character_data.key? :equipped_items

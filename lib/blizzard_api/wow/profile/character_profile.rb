@@ -40,21 +40,6 @@ module BlizzardApi
       end
 
       ##
-      # Return character status
-      #
-      # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
-      # @see https://us.forums.blizzard.com/en/blizzard/t/data-protection-notice-and-faq/609
-      #
-      # @param realm [String] The character realm's slug
-      # @param character [String] The character name
-      # @!macro request_options
-      #
-      # @!macro response
-      def status(realm, character, options = {})
-        character_request realm, character, options, 'status'
-      end
-
-      ##
       # Return character achievements
       #
       # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
@@ -97,6 +82,90 @@ module BlizzardApi
       end
 
       ##
+      # Return a character's collections
+      #
+      # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
+      #
+      # @param realm [String] The character realm's slug
+      # @param character [String] The character name
+      # @!macro request_options
+      #
+      # @!macro response
+      def collections(realm, character, options = {})
+        character_request realm, character, options, 'collections'
+      end
+
+      ##
+      # Return a character's pet collection
+      #
+      # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
+      #
+      # @param realm [String] The character realm's slug
+      # @param character [String] The character name
+      # @!macro request_options
+      #
+      # @!macro response
+      def pets(realm, character, options = {})
+        character_request realm, character, options, 'collections/pets'
+      end
+
+      ##
+      # Return a character's mount collection
+      #
+      # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
+      #
+      # @param realm [String] The character realm's slug
+      # @param character [String] The character name
+      # @!macro request_options
+      #
+      # @!macro response
+      def mounts(realm, character, options = {})
+        character_request realm, character, options, 'collections/mounts'
+      end
+
+      ##
+      # Return a character's encounter summary
+      #
+      # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
+      #
+      # @param realm [String] The character realm's slug
+      # @param character [String] The character name
+      # @!macro request_options
+      #
+      # @!macro response
+      def encounters(realm, character, options = {})
+        character_request realm, character, options, 'encounters'
+      end
+
+      ##
+      # Return a character's dungeon progress
+      #
+      # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
+      #
+      # @param realm [String] The character realm's slug
+      # @param character [String] The character name
+      # @!macro request_options
+      #
+      # @!macro response
+      def dungeons(realm, character, options = {})
+        character_request realm, character, options, 'encounters/dungeons'
+      end
+
+      ##
+      # Return a character's raid progress
+      #
+      # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
+      #
+      # @param realm [String] The character realm's slug
+      # @param character [String] The character name
+      # @!macro request_options
+      #
+      # @!macro response
+      def raids(realm, character, options = {})
+        character_request realm, character, options, 'encounters/raids'
+      end
+
+      ##
       # Return character equipment
       #
       # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
@@ -111,6 +180,20 @@ module BlizzardApi
       end
 
       ##
+      # Return a character's hunter pets
+      #
+      # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
+      #
+      # @param realm [String] The character realm's slug
+      # @param character [String] The character name
+      # @!macro request_options
+      #
+      # @!macro response
+      def hunter_pets(realm, character, options = {})
+        character_request realm, character, options, 'hunter-pets'
+      end
+
+      ##
       # Return character media
       #
       # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
@@ -122,6 +205,50 @@ module BlizzardApi
       # @!macro response
       def media(realm, character, options = {})
         character_request realm, character, options, 'character-media'
+      end
+
+      ##
+      # Return the mythic keystone profile of a character
+      #
+      # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
+      #
+      # @param realm [String] The character realm's slug
+      # @param character [String] The character name
+      # @!macro request_options
+      #
+      # @!macro response
+      def mythic_keystone_profile(realm, character, options = {})
+        character_request realm, character, options, 'mythic-keystone-profile'
+      end
+
+      ##
+      # Return the mythic keystone profile of a character
+      #
+      # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
+      #
+      # @param realm [String] The character realm's slug
+      # @param character [String] The character name
+      # @param season [Integer] Season ID if you want only a specific season or nil to include all.
+      # @!macro request_options
+      #
+      # @!macro response
+      def mythic_keystone_seasons(realm, character, season = nil, options = {})
+        character_request realm, character, options, "mythic-keystone-profile/season/#{season}"
+      end
+
+      ##
+      # Return character status
+      #
+      # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
+      # @see https://us.forums.blizzard.com/en/blizzard/t/data-protection-notice-and-faq/609
+      #
+      # @param realm [String] The character realm's slug
+      # @param character [String] The character name
+      # @!macro request_options
+      #
+      # @!macro response
+      def status(realm, character, options = {})
+        character_request realm, character, options, 'status'
       end
 
       ##
@@ -170,6 +297,20 @@ module BlizzardApi
       end
 
       ##
+      # Return a character's reputations
+      #
+      # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
+      #
+      # @param realm [String] The character realm's slug
+      # @param character [String] The character name
+      # @!macro request_options
+      #
+      # @!macro response
+      def reputation(realm, character, options = {})
+        character_request realm, character, options, 'reputations'
+      end
+
+      ##
       # Return a character's specialization
       #
       # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
@@ -209,119 +350,6 @@ module BlizzardApi
       # @!macro response
       def titles(realm, character, options = {})
         character_request realm, character, options, 'titles'
-      end
-
-      ##
-      # Return the mythic keystone profile of a character
-      #
-      # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
-      #
-      # @param realm [String] The character realm's slug
-      # @param character [String] The character name
-      # @!macro request_options
-      #
-      # @!macro response
-      def mythic_keystone_profile(realm, character, options = {})
-        character_request realm, character, options, 'mythic-keystone-profile'
-      end
-
-      ##
-      # Return the mythic keystone profile of a character
-      #
-      # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
-      #
-      # @param realm [String] The character realm's slug
-      # @param character [String] The character name
-      # @param season [Integer] Season ID if you want only a specific season or nil to include all.
-      # @!macro request_options
-      #
-      # @!macro response
-      def mythic_keystone_seasons(realm, character, season = nil, options = {})
-        character_request realm, character, options, "mythic-keystone-profile/season/#{season}"
-      end
-
-      ##
-      # Return a character's collections
-      #
-      # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
-      #
-      # @param realm [String] The character realm's slug
-      # @param character [String] The character name
-      # @!macro request_options
-      #
-      # @!macro response
-      def collections(realm, character, options = {})
-        character_request realm, character, options, 'collections'
-      end
-
-      ##
-      # Return a character's pet collection
-      #
-      # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
-      #
-      # @param realm [String] The character realm's slug
-      # @param character [String] The character name
-      # @!macro request_options
-      #
-      # @!macro response
-      def pets(realm, character, options = {})
-        character_request realm, character, options, 'collections/pets'
-      end
-
-      ##
-      # Return a character's mount collection
-      #
-      # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
-      #
-      # @param realm [String] The character realm's slug
-      # @param character [String] The character name
-      # @!macro request_options
-      #
-      # @!macro response
-      def mounts(realm, character, options = {})
-        character_request realm, character, options, 'collections/mounts'
-      end
-
-      ##
-      # Return a character's reputations
-      #
-      # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
-      #
-      # @param realm [String] The character realm's slug
-      # @param character [String] The character name
-      # @!macro request_options
-      #
-      # @!macro response
-      def reputation(realm, character, options = {})
-        character_request realm, character, options, 'reputations'
-      end
-
-      ##
-      # Return a character's hunter pets
-      #
-      # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
-      #
-      # @param realm [String] The character realm's slug
-      # @param character [String] The character name
-      # @!macro request_options
-      #
-      # @!macro response
-      def hunter_pets(realm, character, options = {})
-        character_request realm, character, options, 'hunter-pets'
-      end
-
-      ##
-      # Return a character's raid progression
-      #
-      # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
-      #
-      # @param realm [String] The character realm's slug
-      # @param character [String] The character name
-      # @!macro request_options
-      #
-      # @!macro response
-      def raid_progression(realm, character, options = {})
-        character_request realm, character, options, 'raid-progression'
       end
 
       private
