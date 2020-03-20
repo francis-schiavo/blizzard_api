@@ -22,12 +22,6 @@ module BlizzardApi
         region_data = region.complete
         assert_equal 'North America', region_data[0][:name][:en_US]
       end
-
-      def test_battlegroups
-        region = BlizzardApi::Wow::Region.new
-        region_data = region.battlegroups
-        assert region_data[:battlegroups]
-      end
     end
   end
 end

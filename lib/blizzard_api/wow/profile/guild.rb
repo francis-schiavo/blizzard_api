@@ -11,26 +11,6 @@ module BlizzardApi
     #   api_instance = BlizzardApi::Wow.guild
     class Guild < Wow::Request
       ##
-      # Return a list with all possible rewards.
-      #
-      # @!macro request_options
-      #
-      # @!macro response
-      def rewards(options = {})
-        api_request "#{base_url(:community)}/data/guild/rewards", { ttl: CACHE_TRIMESTER }.merge(options)
-      end
-
-      ##
-      # Return a list with all possible perks
-      #
-      # @!macro request_options
-      #
-      # @!macro response
-      def perks(options = {})
-        api_request "#{base_url(:community)}/data/guild/perks", { ttl: CACHE_TRIMESTER }.merge(options)
-      end
-
-      ##
       # Return data about the specified guild
       #
       # @param realm [String] The guild realm's slug
@@ -82,8 +62,8 @@ module BlizzardApi
       private
 
       def guild_request(realm, guild, options = {}, variant = nil)
-        realm = CGI.escape string_to_slug(realm)
-        guild = CGI.escape string_to_slug(guild)
+        realm = string_to_slug(realm)
+        guild = string_to_slug(guild)
         url = "#{base_url(:game_data)}/guild/#{realm}/#{guild}"
         url += "/#{variant}" if variant
         api_request url, { ttl: CACHE_DAY, namespace: :profile }.merge(options)

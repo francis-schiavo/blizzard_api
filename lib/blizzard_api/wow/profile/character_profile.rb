@@ -11,21 +11,6 @@ module BlizzardApi
     #   api_instance = BlizzardApi::Wow.achievement
     class CharacterProfile < Wow::Request
       ##
-      # Return a list containing all WoW characters of a BNet account
-      #
-      # @note This endpoint requires a user token obtained through the user authorization flow
-      # @see https://develop.battle.net/documentation/guides/using-oauth/authorization-code-flow
-      #
-      # @param user_token [String] A token obtained by the authorization flow. See link below.
-      # @!macro request_options
-      #
-      # @!macro response
-      def get_user_characters(user_token, options = {})
-        opts = { ttl: CACHE_HOUR, access_token: user_token }.merge(options)
-        api_request "#{base_url(:community)}/user/characters", opts
-      end
-
-      ##
       # Return character achievements
       #
       # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
@@ -361,7 +346,7 @@ module BlizzardApi
       end
 
       def character_request(realm, character, options = {}, variant = nil)
-        uri = "#{base_url(:profile)}/character/#{CGI.escape(realm.downcase)}/#{CGI.escape(character.downcase)}"
+        uri = "#{base_url(:profile)}/character/#{string_to_slug(realm)}/#{string_to_slug(character)}"
         uri += "/#{variant}" if variant
         api_request uri, default_options.merge(options)
       end

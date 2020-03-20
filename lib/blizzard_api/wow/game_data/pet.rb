@@ -5,7 +5,7 @@ module BlizzardApi
     ##
     # This class allows access to World of Warcraft pet data
     #
-    # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-community-api
+    # @see https://develop.battle.net/documentation/world-of-warcraft/game-data-apis
     #
     # You can get an instance of this class using the default region as follows:
     #   api_instance = BlizzardApi::Wow.pet

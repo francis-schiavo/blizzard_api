@@ -99,7 +99,7 @@ module BlizzardApi
     end
 
     def string_to_slug(string)
-      string.downcase.strip.tr(' ', '-').gsub(/[^\w-]/, '')
+      CGI.escape(string.downcase.tr(' ', '-'))
     end
 
     def create_access_token

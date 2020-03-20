@@ -1,5 +1,11 @@
 Please view this file on the master branch, otherwise it may be outdated
 
+**Version 0.3.5**
+
+Fixed a bug for generating slugs for Korean
+
+Removed deprecated WoW community endpoints.
+
 **Version 0.3.4**
 
 Fixed account endpoints

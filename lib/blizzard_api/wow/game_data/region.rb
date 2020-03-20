@@ -10,19 +10,6 @@ module BlizzardApi
     # You can get an instance of this class using the default region as follows:
     #   api_instance = BlizzardApi::Wow.region
     class Region < Wow::GenericDataEndpoint
-      ##
-      # Returns data about region battlegroups
-      #
-      # This method is actually located at the community API, but it is included here due to its relevance.
-      # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-community-api
-      #
-      # @!macro request_options
-      #
-      # @!macro response
-      def battlegroups(options = {})
-        api_request "#{base_url(:community)}/data/battlegroups/", { ttl: CACHE_TRIMESTER }.merge(options)
-      end
-
       protected
 
       def endpoint_setup

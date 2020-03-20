@@ -9,16 +9,6 @@ module BlizzardApi
         @guild = BlizzardApi::Wow::Guild.new
       end
 
-      def test_guild_rewards
-        guild_data = @guild.rewards
-        assert guild_data[:rewards]
-      end
-
-      def test_guild_perks
-        guild_data = @guild.perks
-        assert guild_data[:perks]
-      end
-
       def test_guild_get
         guild_data = @guild.get 'Azralon', 'Mitocracia'
         assert_equal 'Mitocracia', guild_data[:name]

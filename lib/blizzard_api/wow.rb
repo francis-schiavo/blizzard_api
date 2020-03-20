@@ -204,13 +204,6 @@ module BlizzardApi
       BlizzardApi::Wow::WowToken.new
     end
 
-    # Wow community api
-    require_relative 'wow/community/boss'
-    require_relative 'wow/community/challenge'
-    require_relative 'wow/community/pvp'
-    require_relative 'wow/community/recipe'
-    require_relative 'wow/community/zone'
-
     ##
     # @return {Boss}
     def self.boss
