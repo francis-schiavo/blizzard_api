@@ -12,13 +12,13 @@ module BlizzardApi
 
     ##
     # @return {Season}
-    def season
+    def self.season
       BlizzardApi::Diablo::Season.new
     end
 
     ##
     # @return {Era}
-    def era
+    def self.era
       BlizzardApi::Diablo::Era.new
     end
 
@@ -33,43 +33,43 @@ module BlizzardApi
 
     ##
     # @return {Act}
-    def act
+    def self.act
       BlizzardApi::Diablo::Act.new
     end
 
     ##
     # @return {Artisan}
-    def artisan
+    def self.artisan
       BlizzardApi::Diablo::Artisan.new
     end
 
     ##
     # @return {Follower}
-    def follower
+    def self.follower
       BlizzardApi::Diablo::Follower.new
     end
 
     ##
     # @return {Character}
-    def character
+    def self.character
       BlizzardApi::Diablo::Character.new
     end
 
     ##
     # @return {ItemType}
-    def item_type
+    def self.item_type
       BlizzardApi::Diablo::ItemType.new
     end
 
     ##
     # @return {Type}
-    def item
+    def self.item
       BlizzardApi::Diablo::Item.new
     end
 
     ##
     # @return {Profile}
-    def profile
+    def self.profile
       BlizzardApi::Diablo::Profile.new
     end
   end

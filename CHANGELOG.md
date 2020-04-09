@@ -1,5 +1,12 @@
 Please view this file on the master branch, otherwise it may be outdated
 
+**Version 0.3.6**
+
+Fix Diablo shortcuts.
+Adding SC2 endpoints back.
+ 
+https://us.forums.blizzard.com/en/blizzard/t/starcraft-ii-community-api-update/2652/5
+
 **Version 0.3.5**
 
 Fixed a bug for generating slugs for Korean

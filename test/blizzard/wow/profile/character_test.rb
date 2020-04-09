@@ -21,7 +21,7 @@ module BlizzardApi
 
       def test_character_achievement_statistics
         character_data = @character.achievement_statistics 'Azralon', 'Schiller'
-        assert character_data.key? :statistics
+        assert character_data.key? :categories
       end
 
       def test_character_appearance
@@ -65,7 +65,7 @@ module BlizzardApi
         assert character_data.key? :in_progress
 
         character_data = @character.quests 'Azralon', 'Schiller', true
-        assert_equal 8985, character_data[:quests].count
+        assert character_data.key? :quests
       end
 
       def test_character_specializations

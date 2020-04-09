@@ -7,6 +7,7 @@ require_relative 'blizzard_api/version'
 require_relative 'blizzard_api/wow'
 require_relative 'blizzard_api/diablo'
 require_relative 'blizzard_api/hearthstone'
+require_relative 'blizzard_api/starcraft'
 
 # Blizzard namespace
 module BlizzardApi

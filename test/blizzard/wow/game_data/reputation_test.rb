@@ -11,7 +11,7 @@ module BlizzardApi
 
       def test_reputation_faction_index
         reputation_data = @reputation.factions
-        assert_equal 199, reputation_data[:factions].count
+        assert reputation_data.key? :factions
       end
 
       def test_reputation_faction_get
