@@ -6,7 +6,7 @@ module BlizzardApi
   module Wow
     class SpellTest < Minitest::Test
       def setup
-        @spell = BlizzardApi::Wow::Spell.new
+        @spell = BlizzardApi::Wow.spell
       end
 
       def test_spell_get

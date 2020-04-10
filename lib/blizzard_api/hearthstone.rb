@@ -13,27 +13,31 @@ module BlizzardApi
     require_relative 'hearthstone/game_data/metadata'
 
     ##
+    # @param region [String] API Region
     # @return {Card}
-    def self.card
-      BlizzardApi::Hearthstone::Card.new
+    def self.card(region = BlizzardApi.region)
+      BlizzardApi::Hearthstone::Card.new(region)
     end
 
     ##
+    # @param region [String] API Region
     # @return {Back}
-    def self.back
-      BlizzardApi::Hearthstone::Back.new
+    def self.back(region = BlizzardApi.region)
+      BlizzardApi::Hearthstone::Back.new(region)
     end
 
     ##
+    # @param region [String] API Region
     # @return {Deck}
-    def self.deck
-      BlizzardApi::Hearthstone::Deck.new
+    def self.deck(region = BlizzardApi.region)
+      BlizzardApi::Hearthstone::Deck.new(region)
     end
 
     ##
+    # @param region [String] API Region
     # @return {Metadata}
-    def self.metadata
-      BlizzardApi::Hearthstone::Metadata.new
+    def self.metadata(region = BlizzardApi.region)
+      BlizzardApi::Hearthstone::Metadata.new(region)
     end
   end
 end

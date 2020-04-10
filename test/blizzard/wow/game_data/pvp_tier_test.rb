@@ -6,7 +6,7 @@ module BlizzardApi
   module Wow
     class PvpTierTest < Minitest::Test
       def setup
-        @pvp = BlizzardApi::Wow::PvpTier.new
+        @pvp = BlizzardApi::Wow.pvp_tier
       end
 
       def test_pvp_tier_index

@@ -6,7 +6,7 @@ module BlizzardApi
   module Wow
     class GuildCrestTest < Minitest::Test
       def setup
-        @guild_crest = BlizzardApi::Wow::GuildCrest.new
+        @guild_crest = BlizzardApi::Wow.guild_crest
       end
 
       def test_guild_crest_index

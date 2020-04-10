@@ -6,7 +6,7 @@ module BlizzardApi
   module Wow
     class GuildTest < Minitest::Test
       def setup
-        @guild = BlizzardApi::Wow::Guild.new
+        @guild = BlizzardApi::Wow.guild
       end
 
       def test_guild_get

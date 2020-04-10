@@ -6,7 +6,7 @@ module BlizzardApi
   module Wow
     class WowTokenTest < Minitest::Test
       def test_wow_token
-        token = BlizzardApi::Wow::WowToken.new
+        token = BlizzardApi::Wow.wow_token
         token_data = token.get
         assert token_data.include? :price
       end

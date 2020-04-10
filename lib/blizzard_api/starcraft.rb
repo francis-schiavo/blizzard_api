@@ -9,9 +9,10 @@ module BlizzardApi
     require_relative 'starcraft/game_data/league'
 
     ##
+    # @param region [String] API Region
     # @return {League}
-    def self.league
-      BlizzardApi::Starcraft::League.new
+    def self.league(region = BlizzardApi.region)
+      BlizzardApi::Starcraft::League.new(region)
     end
 
     # Starcraft community api
@@ -20,21 +21,24 @@ module BlizzardApi
     require_relative 'starcraft/community/account'
 
     ##
+    # @param region [String] API Region
     # @return {Profile}
-    def self.profile
-      BlizzardApi::Starcraft::Profile.new
+    def self.profile(region = BlizzardApi.region)
+      BlizzardApi::Starcraft::Profile.new(region)
     end
 
     ##
+    # @param region [String] API Region
     # @return {Ladder}
-    def self.ladder
-      BlizzardApi::Starcraft::Ladder.new
+    def self.ladder(region = BlizzardApi.region)
+      BlizzardApi::Starcraft::Ladder.new(region)
     end
 
     ##
+    # @param region [String] API Region
     # @return {Account}
-    def self.account
-      BlizzardApi::Starcraft::Account.new
+    def self.account(region = BlizzardApi.region)
+      BlizzardApi::Starcraft::Account.new(region)
     end
   end
 end

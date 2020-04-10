@@ -7,15 +7,17 @@ require 'test_helper'
 module BlizzardApi
   module Diablo
     class CharacterTest < Minitest::Test
+      def setup
+        @character = BlizzardApi::Diablo.character
+      end
+
       def test_character_index
-        character = BlizzardApi::Diablo::Character.new
-        character_data = character.get 'barbarian'
+        character_data = @character.get 'barbarian'
         assert character_data[:skillCategories]
       end
 
       def test_character_get
-        character = BlizzardApi::Diablo::Character.new
-        character_data = character.skill 'barbarian', 'bash'
+        character_data = @character.skill 'barbarian', 'bash'
         assert character_data[:skill]
       end
     end

@@ -6,7 +6,7 @@ module BlizzardApi
   module Wow
     class JournalTest < Minitest::Test
       def setup
-        @journal = BlizzardApi::Wow::Journal.new
+        @journal = BlizzardApi::Wow.journal
       end
 
       def test_journal_expansions

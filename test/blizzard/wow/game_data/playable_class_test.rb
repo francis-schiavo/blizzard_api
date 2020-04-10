@@ -6,7 +6,7 @@ module BlizzardApi
   module Wow
     class PlayableClassTest < Minitest::Test
       def setup
-        @playable_class = BlizzardApi::Wow::PlayableClass.new
+        @playable_class = BlizzardApi::Wow.playable_class
       end
 
       def test_playable_class_index

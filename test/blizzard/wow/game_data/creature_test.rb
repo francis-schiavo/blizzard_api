@@ -6,7 +6,7 @@ module BlizzardApi
   module Wow
     class CreatureTest < Minitest::Test
       def setup
-        @creature = BlizzardApi::Wow::Creature.new
+        @creature = BlizzardApi::Wow.creature
       end
 
       def test_creature_get

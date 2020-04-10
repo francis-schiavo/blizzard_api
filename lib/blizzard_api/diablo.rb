@@ -11,15 +11,17 @@ module BlizzardApi
     require_relative 'diablo/game_data/era'
 
     ##
+    # @param region [String] API Region
     # @return {Season}
-    def self.season
-      BlizzardApi::Diablo::Season.new
+    def self.season(region = BlizzardApi.region)
+      BlizzardApi::Diablo::Season.new(region)
     end
 
     ##
+    # @param region [String] API Region
     # @return {Era}
-    def self.era
-      BlizzardApi::Diablo::Era.new
+    def self.era(region = BlizzardApi.region)
+      BlizzardApi::Diablo::Era.new(region)
     end
 
     # Diablo community api
@@ -32,45 +34,52 @@ module BlizzardApi
     require_relative 'diablo/community/profile'
 
     ##
+    # @param region [String] API Region
     # @return {Act}
-    def self.act
-      BlizzardApi::Diablo::Act.new
+    def self.act(region = BlizzardApi.region)
+      BlizzardApi::Diablo::Act.new(region)
     end
 
     ##
+    # @param region [String] API Region
     # @return {Artisan}
-    def self.artisan
-      BlizzardApi::Diablo::Artisan.new
+    def self.artisan(region = BlizzardApi.region)
+      BlizzardApi::Diablo::Artisan.new(region)
     end
 
     ##
+    # @param region [String] API Region
     # @return {Follower}
-    def self.follower
-      BlizzardApi::Diablo::Follower.new
+    def self.follower(region = BlizzardApi.region)
+      BlizzardApi::Diablo::Follower.new(region)
     end
 
     ##
+    # @param region [String] API Region
     # @return {Character}
-    def self.character
-      BlizzardApi::Diablo::Character.new
+    def self.character(region = BlizzardApi.region)
+      BlizzardApi::Diablo::Character.new(region)
     end
 
     ##
+    # @param region [String] API Region
     # @return {ItemType}
-    def self.item_type
-      BlizzardApi::Diablo::ItemType.new
+    def self.item_type(region = BlizzardApi.region)
+      BlizzardApi::Diablo::ItemType.new(region)
     end
 
     ##
+    # @param region [String] API Region
     # @return {Type}
-    def self.item
-      BlizzardApi::Diablo::Item.new
+    def self.item(region = BlizzardApi.region)
+      BlizzardApi::Diablo::Item.new(region)
     end
 
     ##
+    # @param region [String] API Region
     # @return {Profile}
-    def self.profile
-      BlizzardApi::Diablo::Profile.new
+    def self.profile(region = BlizzardApi.region)
+      BlizzardApi::Diablo::Profile.new(region)
     end
   end
 end

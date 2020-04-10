@@ -6,7 +6,7 @@ module BlizzardApi
   module Wow
     class TitleTest < Minitest::Test
       def setup
-        @title = BlizzardApi::Wow::Title.new
+        @title = BlizzardApi::Wow.title
       end
 
       def test_title_index

@@ -6,7 +6,7 @@ module BlizzardApi
   module Wow
     class QuestTest < Minitest::Test
       def setup
-        @quest = BlizzardApi::Wow::Quest.new
+        @quest = BlizzardApi::Wow.quest
       end
 
       def test_quest_index

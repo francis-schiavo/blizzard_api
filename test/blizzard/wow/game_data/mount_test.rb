@@ -6,7 +6,7 @@ module BlizzardApi
   module Wow
     class MountTest < Minitest::Test
       def setup
-        @mount = BlizzardApi::Wow::Mount.new
+        @mount = BlizzardApi::Wow.mount
       end
 
       def test_mount_index

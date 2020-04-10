@@ -6,7 +6,7 @@ module BlizzardApi
   module Wow
     class CharacterTest < Minitest::Test
       def setup
-        @character = BlizzardApi::Wow::CharacterProfile.new
+        @character = BlizzardApi::Wow.character_profile
       end
 
       def test_character_get

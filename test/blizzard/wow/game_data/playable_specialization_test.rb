@@ -6,7 +6,7 @@ module BlizzardApi
   module Wow
     class PlayableSpecializationTest < Minitest::Test
       def setup
-        @playable_specialization = BlizzardApi::Wow::PlayableSpecialization.new
+        @playable_specialization = BlizzardApi::Wow.playable_specialization
       end
 
       def test_specialization_index

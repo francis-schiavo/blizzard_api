@@ -6,7 +6,7 @@ module BlizzardApi
   module Wow
     class RealmTest < Minitest::Test
       def test_realm_index
-        realm = BlizzardApi::Wow::Realm.new
+        realm = BlizzardApi::Wow.realm
         realm_data = realm.index
         assert realm_data[:realms]
       end

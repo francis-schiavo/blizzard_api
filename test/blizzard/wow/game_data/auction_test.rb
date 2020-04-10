@@ -6,7 +6,7 @@ module BlizzardApi
   module Wow
     class AuctionTest < Minitest::Test
       def setup
-        @auction = BlizzardApi::Wow::Auction.new
+        @auction = BlizzardApi::Wow.auction
       end
 
       def test_auction_get

@@ -6,7 +6,7 @@ module BlizzardApi
   module Wow
     class MythicKeystoneAffixTest < Minitest::Test
       def setup
-        @affix = BlizzardApi::Wow::MythicKeystoneAffix.new
+        @affix = BlizzardApi::Wow.mythic_keystone_affix
       end
 
       def test_mythic_keystone_affix_index

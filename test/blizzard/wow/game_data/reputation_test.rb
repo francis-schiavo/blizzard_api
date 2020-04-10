@@ -6,7 +6,7 @@ module BlizzardApi
   module Wow
     class ReputationTest < Minitest::Test
       def setup
-        @reputation = BlizzardApi::Wow::Reputation.new
+        @reputation = BlizzardApi::Wow.reputation
       end
 
       def test_reputation_faction_index

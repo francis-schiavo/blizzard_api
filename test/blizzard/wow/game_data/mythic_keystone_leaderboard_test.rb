@@ -6,7 +6,7 @@ module BlizzardApi
   module Wow
     class MythicKeystoneLeaderboardTest < Minitest::Test
       def setup
-        @mythic_keystone_leaderboard = BlizzardApi::Wow::MythicKeystoneLeaderboard.new
+        @mythic_keystone_leaderboard = BlizzardApi::Wow.mythic_keystone_leaderboard
       end
 
       def test_mythic_keystone_dungeons

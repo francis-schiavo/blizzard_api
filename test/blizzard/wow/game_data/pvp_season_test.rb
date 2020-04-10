@@ -6,7 +6,7 @@ module BlizzardApi
   module Wow
     class PvpSeasonTest < Minitest::Test
       def setup
-        @pvp = BlizzardApi::Wow::PvpSeason.new
+        @pvp = BlizzardApi::Wow.pvp_season
       end
 
       def test_pvp_season_index

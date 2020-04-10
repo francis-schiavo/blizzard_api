@@ -6,7 +6,7 @@ module BlizzardApi
   module Wow
     class PetTest < Minitest::Test
       def setup
-        @pet = BlizzardApi::Wow::Pet.new
+        @pet = BlizzardApi::Wow.pet
       end
 
       def test_pet_index

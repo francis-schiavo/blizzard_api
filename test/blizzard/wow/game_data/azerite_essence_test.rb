@@ -6,7 +6,7 @@ module BlizzardApi
   module Wow
     class AzeriteEssenceTest < Minitest::Test
       def setup
-        @azerite_essence = BlizzardApi::Wow::AzeriteEssence.new
+        @azerite_essence = BlizzardApi::Wow.azerite_essence
       end
 
       def test_azerite_essence_index

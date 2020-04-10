@@ -6,7 +6,7 @@ module BlizzardApi
   module Wow
     class PlayableRaceTest < Minitest::Test
       def setup
-        @race = BlizzardApi::Wow::PlayableRace.new
+        @race = BlizzardApi::Wow.playable_race
       end
 
       def test_playable_race_index

@@ -37,207 +37,206 @@ module BlizzardApi
     require_relative 'wow/game_data/wow_token'
 
     ##
+    # @param region [String] API Region
     # @return {Achievement}
-    def self.achievement
-      BlizzardApi::Wow::Achievement.new
+    def self.achievement(region = BlizzardApi.region)
+      BlizzardApi::Wow::Achievement.new(region)
     end
 
     ##
+    # @param region [String] API Region
     # @return {Auction}
-    def self.auction
-      BlizzardApi::Wow::Auction.new
+    def self.auction(region = BlizzardApi.region)
+      BlizzardApi::Wow::Auction.new(region)
     end
 
     ##
+    # @param region [String] API Region
     # @return {AzeriteEssence}
-    def self.azerite_essence
-      BlizzardApi::Wow::AzeriteEssence.new
+    def self.azerite_essence(region = BlizzardApi.region)
+      BlizzardApi::Wow::AzeriteEssence.new(region)
     end
 
     ##
+    # @param region [String] API Region
     # @return {ConnectedRealm}
-    def self.connected_realm
-      BlizzardApi::Wow::ConnectedRealm.new
+    def self.connected_realm(region = BlizzardApi.region)
+      BlizzardApi::Wow::ConnectedRealm.new(region)
     end
 
     ##
+    # @param region [String] API Region
     # @return {Creature}
-    def self.creature
-      BlizzardApi::Wow::Creature.new
+    def self.creature(region = BlizzardApi.region)
+      BlizzardApi::Wow::Creature.new(region)
     end
 
     ##
+    # @param region [String] API Region
     # @return {GuildCrest}
-    def self.guild_crest
-      BlizzardApi::Wow::GuildCrest.new
+    def self.guild_crest(region = BlizzardApi.region)
+      BlizzardApi::Wow::GuildCrest.new(region)
     end
 
     ##
+    # @param region [String] API Region
     # @return {Item}
-    def self.item
-      BlizzardApi::Wow::Item.new
+    def self.item(region = BlizzardApi.region)
+      BlizzardApi::Wow::Item.new(region)
     end
 
     ##
+    # @param region [String] API Region
     # @return {Journal}
-    def self.journal
-      BlizzardApi::Wow::Journal.new
+    def self.journal(region = BlizzardApi.region)
+      BlizzardApi::Wow::Journal.new(region)
     end
 
     ##
+    # @param region [String] API Region
     # @return {Mount}
-    def self.mount
-      BlizzardApi::Wow::Mount.new
+    def self.mount(region = BlizzardApi.region)
+      BlizzardApi::Wow::Mount.new(region)
     end
 
     ##
+    # @param region [String] API Region
     # @return {MythicKeystoneAffix}
-    def self.mythic_keystone_affix
-      BlizzardApi::Wow::MythicKeystoneAffix.new
+    def self.mythic_keystone_affix(region = BlizzardApi.region)
+      BlizzardApi::Wow::MythicKeystoneAffix.new(region)
     end
 
     ##
+    # @param region [String] API Region
     # @return {MythicKeystone}
-    def self.mythic_keystone
-      BlizzardApi::Wow::MythicKeystone.new
+    def self.mythic_keystone(region = BlizzardApi.region)
+      BlizzardApi::Wow::MythicKeystone.new(region)
     end
 
     ##
+    # @param region [String] API Region
     # @return {MythicRaidLeaderboard}
-    def self.mythic_raid_leaderboard
-      BlizzardApi::Wow::MythicRaidLeaderboard.new
+    def self.mythic_raid_leaderboard(region = BlizzardApi.region)
+      BlizzardApi::Wow::MythicRaidLeaderboard.new(region)
     end
 
     ##
+    # @param region [String] API Region
     # @return {MythicKeystoneLeaderboard}
-    def self.mythic_keystone_leaderboard
-      BlizzardApi::Wow::MythicKeystoneLeaderboard.new
+    def self.mythic_keystone_leaderboard(region = BlizzardApi.region)
+      BlizzardApi::Wow::MythicKeystoneLeaderboard.new(region)
     end
 
     ##
+    # @param region [String] API Region
     # @return {Pet}
-    def self.pet
-      BlizzardApi::Wow::Pet.new
+    def self.pet(region = BlizzardApi.region)
+      BlizzardApi::Wow::Pet.new(region)
     end
 
     ##
+    # @param region [String] API Region
     # @return {PlayableClass}
-    def self.playable_class
-      BlizzardApi::Wow::PlayableClass.new
+    def self.playable_class(region = BlizzardApi.region)
+      BlizzardApi::Wow::PlayableClass.new(region)
     end
 
     ##
+    # @param region [String] API Region
     # @return {Race}
-    def self.playable_race
-      BlizzardApi::Wow::PlayableRace.new
+    def self.playable_race(region = BlizzardApi.region)
+      BlizzardApi::Wow::PlayableRace.new(region)
     end
 
     ##
+    # @param region [String] API Region
     # @return {PlayableSpecialization}
-    def self.playable_specialization
-      BlizzardApi::Wow::PlayableSpecialization.new
+    def self.playable_specialization(region = BlizzardApi.region)
+      BlizzardApi::Wow::PlayableSpecialization.new(region)
     end
 
     ##
+    # @param region [String] API Region
     # @return {PowerType}
-    def self.power_type
-      BlizzardApi::Wow::PowerType.new
+    def self.power_type(region = BlizzardApi.region)
+      BlizzardApi::Wow::PowerType.new(region)
     end
 
     ##
+    # @param region [String] API Region
     # @return {PvpSeason}
-    def self.pvp_season
-      BlizzardApi::Wow::PvpSeason.new
+    def self.pvp_season(region = BlizzardApi.region)
+      BlizzardApi::Wow::PvpSeason.new(region)
     end
 
     ##
+    # @param region [String] API Region
     # @return {PvpTier}
-    def self.pvp_tier
-      BlizzardApi::Wow::PvpTier.new
+    def self.pvp_tier(region = BlizzardApi.region)
+      BlizzardApi::Wow::PvpTier.new(region)
     end
 
     ##
+    # @param region [String] API Region
     # @return {Quest}
-    def self.quest
-      BlizzardApi::Wow::Quest.new
+    def self.quest(region = BlizzardApi.region)
+      BlizzardApi::Wow::Quest.new(region)
     end
 
     ##
+    # @param region [String] API Region
     # @return {Realm}
-    def self.realm
-      BlizzardApi::Wow::Realm.new
+    def self.realm(region = BlizzardApi.region)
+      BlizzardApi::Wow::Realm.new(region)
     end
 
     ##
+    # @param region [String] API Region
     # @return {Region}
-    def self.region
-      BlizzardApi::Wow::Region.new
+    def self.region(region = BlizzardApi.region)
+      BlizzardApi::Wow::Region.new(region)
     end
 
     ##
+    # @param region [String] API Region
     # @return {Reputation}
-    def self.reputation
-      BlizzardApi::Wow::Reputation.new
+    def self.reputation(region = BlizzardApi.region)
+      BlizzardApi::Wow::Reputation.new(region)
     end
 
     ##
+    # @param region [String] API Region
     # @return {Spell}
-    def self.spell
-      BlizzardApi::Wow::Spell.new
+    def self.spell(region = BlizzardApi.region)
+      BlizzardApi::Wow::Spell.new(region)
     end
 
     ##
+    # @param region [String] API Region
     # @return {Talent}
-    def self.talent
-      BlizzardApi::Wow::Talent.new
+    def self.talent(region = BlizzardApi.region)
+      BlizzardApi::Wow::Talent.new(region)
     end
 
     ##
+    # @param region [String] API Region
     # @return {Title}
-    def self.title
-      BlizzardApi::Wow::Title.new
+    def self.title(region = BlizzardApi.region)
+      BlizzardApi::Wow::Title.new(region)
     end
 
     ##
+    # @param region [String] API Region
     # @return {WowToken}
-    def self.wow_token
-      BlizzardApi::Wow::WowToken.new
+    def self.wow_token(region = BlizzardApi.region)
+      BlizzardApi::Wow::WowToken.new(region)
     end
 
     ##
-    # @return {Boss}
-    def self.boss
-      BlizzardApi::Wow::Boss.new
-    end
-
-    ##
-    # @return {Challenge}
-    def self.challenge
-      BlizzardApi::Wow::Challenge.new
-    end
-
-    ##
+    # @param region [String] API Region
     # @return {Character}
-    def self.character
-      BlizzardApi::Wow::Character.new
-    end
-
-    ##
-    # @return {PvP}
-    def self.pvp
-      BlizzardApi::Wow::PvP.new
-    end
-
-    ##
-    # @return {Recipe}
-    def self.recipe
-      BlizzardApi::Wow::Recipe.new
-    end
-
-    ##
-    # @return {Zone}
-    def self.zone
-      BlizzardApi::Wow::Zone.new
+    def self.character(region = BlizzardApi.region)
+      BlizzardApi::Wow::Character.new(region)
     end
 
     require_relative 'wow/profile/profile'
@@ -246,24 +245,25 @@ module BlizzardApi
 
     ##
     # @param token [String] A token obtained using the authorization_code flow
-    #
-    # @!macro request_options
+    # @param region [String] API Region
     #
     # @return {Profile}
-    def self.profile(token)
-      BlizzardApi::Wow::AccountProfile.new(token)
+    def self.profile(token, region = BlizzardApi.region)
+      BlizzardApi::Wow::AccountProfile.new(token, region)
     end
 
     ##
+    # @param region [String] API Region
     # @return {Guild}
-    def self.guild
-      BlizzardApi::Wow::Guild.new
+    def self.guild(region = BlizzardApi.region)
+      BlizzardApi::Wow::Guild.new(region)
     end
 
     ##
+    # @param region [String] API Region
     # @return {CharacterProfile}
-    def self.character_profile
-      BlizzardApi::Wow::CharacterProfile.new
+    def self.character_profile(region = BlizzardApi.region)
+      BlizzardApi::Wow::CharacterProfile.new(region)
     end
   end
 end

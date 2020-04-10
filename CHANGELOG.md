@@ -1,5 +1,10 @@
 Please view this file on the master branch, otherwise it may be outdated
 
+**Version 0.3.7**
+
+Automated test improvements
+Added region parameters to all game module methods. This will allow multi-region applications to have more flexibility when creating instances.
+
 **Version 0.3.6**
 
 Fix Diablo shortcuts.

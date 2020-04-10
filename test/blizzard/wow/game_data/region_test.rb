@@ -6,7 +6,7 @@ module BlizzardApi
   module Wow
     class RegionTest < Minitest::Test
       def test_region_index
-        region = BlizzardApi::Wow::Region.new
+        region = BlizzardApi::Wow.region
         region_data = region.index
         assert_equal 1, region_data[:regions].count
       end

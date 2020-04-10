@@ -6,7 +6,7 @@ module BlizzardApi
   module Wow
     class ItemTest < Minitest::Test
       def setup
-        @item = BlizzardApi::Wow::Item.new
+        @item = BlizzardApi::Wow.item
       end
 
       def test_item_get

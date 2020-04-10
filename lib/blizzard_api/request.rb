@@ -3,7 +3,6 @@
 ##
 # @!macro [new] request_options
 #   @param {Hash} options You can specify some options
-#   @option options [String] :region Overrides the default region for a single call
 #   @option options [String] :locale Overrides the default locale for a single call
 #   @option options [String] :namespace Overrides the default namespace for a single call
 #   @option options [String] :access_token Overrides the access_token for a single call

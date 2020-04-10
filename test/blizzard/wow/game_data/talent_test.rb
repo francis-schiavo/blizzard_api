@@ -6,7 +6,7 @@ module BlizzardApi
   module Wow
     class TalentTest < Minitest::Test
       def setup
-        @talent = BlizzardApi::Wow::Talent.new
+        @talent = BlizzardApi::Wow.talent
       end
 
       def test_talent_index
