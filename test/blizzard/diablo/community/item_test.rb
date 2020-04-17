@@ -12,7 +12,7 @@ module BlizzardApi
       end
 
       def test_item_get
-        item_data = @item.get 'corrupted-ashbringer', 'Unique_Sword_2H_104_x1'
+        item_data = @item.get 'corrupted-ashbringer-Unique_Sword_2H_104_x1'
         assert_equal 'unique_sword_2h_104_x1_demonhunter_male', item_data[:icon]
       end
     end

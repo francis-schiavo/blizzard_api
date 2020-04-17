@@ -14,12 +14,11 @@ module BlizzardApi
       # Return information about an item
       #
       # @param item_slug [String] Item slug
-      # @param item_id [Integer] Item id
       # @!macro request_options
       #
       # @!macro response
-      def get(item_slug, item_id, options = {})
-        api_request "#{base_url(:community)}/data/item/#{item_slug}-#{item_id}", { ttl: CACHE_TRIMESTER }.merge(options)
+      def get(item_slug_and_id, options = {})
+        api_request "#{base_url(:community)}/data/item/#{item_slug_and_id}", { ttl: CACHE_TRIMESTER }.merge(options)
       end
     end
   end

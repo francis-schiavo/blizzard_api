@@ -1,5 +1,9 @@
 Please view this file on the master branch, otherwise it may be outdated
 
+**Version 0.3.11**
+
+Fixed D3 item URL.
+
 **Version 0.3.10**
 
 Really fixed D3 profile URLs this time.
