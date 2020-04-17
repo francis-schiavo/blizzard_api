@@ -22,7 +22,7 @@ module BlizzardApi
       # @see https://develop.battle.net/documentation/guides/using-oauth/authorization-code-flow
       def index(battletag, oauth_token, options = {})
         opts = { access_token: oauth_token, ttl: CACHE_TRIMESTER }.merge(options)
-        api_request "#{base_url(:community)}/profile/#{parse_battle_tag(battletag)}", opts
+        api_request "#{base_url(:community)}/profile/#{parse_battle_tag(battletag)}/", opts
       end
 
       ##

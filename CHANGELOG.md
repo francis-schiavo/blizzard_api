@@ -1,5 +1,9 @@
 Please view this file on the master branch, otherwise it may be outdated
 
+**Version 0.3.10**
+
+Really fixed D3 profile URLs this time.
+
 **Version 0.3.9**
 
 Fix D3 profile URLs.
