@@ -25,6 +25,7 @@ module BlizzardApi
     require_relative 'wow/game_data/playable_race'
     require_relative 'wow/game_data/playable_specialization'
     require_relative 'wow/game_data/power_type'
+    require_relative 'wow/game_data/profession'
     require_relative 'wow/game_data/pvp_season'
     require_relative 'wow/game_data/pvp_tier'
     require_relative 'wow/game_data/quest'
@@ -160,6 +161,13 @@ module BlizzardApi
     # @return {PowerType}
     def self.power_type(region = BlizzardApi.region)
       BlizzardApi::Wow::PowerType.new(region)
+    end
+
+    ##
+    # @param region [String] API Region
+    # @return {Profession}
+    def self.profession(region = BlizzardApi.region)
+      BlizzardApi::Wow::Profession.new(region)
     end
 
     ##

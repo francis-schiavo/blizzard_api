@@ -222,6 +222,20 @@ module BlizzardApi
       end
 
       ##
+      # Return professions from a character
+      #
+      # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
+      #
+      # @param realm [String] The character realm's slug
+      # @param character [String] The character name
+      # @!macro request_options
+      #
+      # @!macro response
+      def professions(realm, character, options = {})
+        character_request realm, character, options, 'professions'
+      end
+
+      ##
       # Return character status
       #
       # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api

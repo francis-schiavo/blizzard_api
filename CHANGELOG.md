@@ -1,5 +1,10 @@
 Please view this file on the master branch, otherwise it may be outdated
 
+**Version 0.3.8**
+Added new profession endpoints.
+
+https://us.forums.blizzard.com/en/blizzard/t/world-of-warcraft-api-patch-notes-20200414/5680
+
 **Version 0.3.7**
 
 Automated test improvements
