@@ -22,7 +22,7 @@ module BlizzardApi
       # @see https://develop.battle.net/documentation/guides/using-oauth/authorization-code-flow
       def index(battletag, oauth_token, options = {})
         opts = { access_token: oauth_token, ttl: CACHE_TRIMESTER }.merge(options)
-        api_request "#{base_url(:community)}/data/profile/#{parse_battle_tag(battletag)}", opts
+        api_request "#{base_url(:community)}/profile/#{parse_battle_tag(battletag)}", opts
       end
 
       ##
@@ -38,7 +38,7 @@ module BlizzardApi
       # @see https://develop.battle.net/documentation/guides/using-oauth/authorization-code-flow
       def hero(battletag, oauth_token, hero_id, options = {})
         opts = { access_token: oauth_token, ttl: CACHE_TRIMESTER }.merge(options)
-        api_request "#{base_url(:community)}/data/profile/#{parse_battle_tag(battletag)}/hero/#{hero_id}", opts
+        api_request "#{base_url(:community)}/profile/#{parse_battle_tag(battletag)}/hero/#{hero_id}", opts
       end
 
       ##
@@ -54,7 +54,7 @@ module BlizzardApi
       # @see https://develop.battle.net/documentation/guides/using-oauth/authorization-code-flow
       def hero_items(battletag, oauth_token, hero_id, options = {})
         opts = { access_token: oauth_token, ttl: CACHE_TRIMESTER }.merge(options)
-        api_request "#{base_url(:community)}/data/profile/#{parse_battle_tag(battletag)}/hero/#{hero_id}/items", opts
+        api_request "#{base_url(:community)}/profile/#{parse_battle_tag(battletag)}/hero/#{hero_id}/items", opts
       end
 
       ##
@@ -70,7 +70,7 @@ module BlizzardApi
       # @see https://develop.battle.net/documentation/guides/using-oauth/authorization-code-flow
       def hero_follower_items(battletag, oauth_token, hero_id, options = {})
         opts = { access_token: oauth_token, ttl: CACHE_TRIMESTER }.merge(options)
-        api_request "#{base_url(:community)}/data/profile/#{parse_battle_tag(battletag)}/hero/#{hero_id}/follower-items", opts
+        api_request "#{base_url(:community)}/profile/#{parse_battle_tag(battletag)}/hero/#{hero_id}/follower-items", opts
       end
 
       private
