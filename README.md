@@ -73,6 +73,46 @@ Most **data** endpoints will have always 3 methods available `index`, `get` and 
 * `get` is used to get all information about a entry of the index returned data. It receives an id or slug as the first parameter, that depends on the endpoint.
 * `complete` is a complete information of all items listed in index. **This may perform various calls to the blizzard api** only use if you really need all information.
 
+### 3.1 Searchable endpoints
+
+Some endpoints support search filters. To perform a search you can use the following formats:
+
+
+To use the **or** operator you may pass an array of values as argument to `where` or `where_not` methods.
+```ruby
+realm = BlizzardApi::Wow.realm
+realm_data = realm.search(1, 100) do |options|
+  options.where 'name.en_US', %w[Azralon Nemesis]
+end
+```
+ 
+To use the **and** operator you may call `where` or `where_not` multiple times methods.
+```ruby
+realm = BlizzardApi::Wow.realm
+realm_data = realm.search(1, 100) do |options|
+  options.where 'name.en_US', 'Azralon'
+  options.where 'id', 3209
+end
+```
+
+To use the **range** operator you may pass a hash to `where` or `where_not`.
+```ruby
+realm = BlizzardApi::Wow.realm
+realm_data = realm.search(1, 100) do |options|
+  options.where 'id', min: 3209, max: 4000, mode: :exclusive
+end
+```
+*Note*: If you don't pass the `mode` key as `:exclusive` it will be `:inclusive` by default.
+
+To **sort** fields you may call the `order_by` method multiple times:
+```ruby
+realm = BlizzardApi::Wow.realm
+realm_data = realm.search(1, 100) do |options|
+  options.where 'id', min: 3209, max: 4000, mode: :exclusive
+  options.order_by 'id', :desc
+end
+```
+
 ## 4. Available endpoints
 
 **Hint**: All methods support an additional optional hash parameter that allows you to override the following configurations for a single call:

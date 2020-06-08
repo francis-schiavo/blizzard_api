@@ -13,7 +13,7 @@ module BlizzardApi
       ##
       # Return information about an item
       #
-      # @param item_slug [String] Item slug
+      # @param item_slug_and_id [String] Item slug
       # @!macro request_options
       #
       # @!macro response

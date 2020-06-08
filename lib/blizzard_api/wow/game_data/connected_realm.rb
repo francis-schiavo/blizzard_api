@@ -10,6 +10,8 @@ module BlizzardApi
     # You can get an instance of this class using the default region as follows:
     #   api_instance = BlizzardApi::Wow.connected_realm
     class ConnectedRealm < Wow::GenericDataEndpoint
+      include BlizzardApi::Wow::Searchable
+
       protected
 
       def endpoint_setup

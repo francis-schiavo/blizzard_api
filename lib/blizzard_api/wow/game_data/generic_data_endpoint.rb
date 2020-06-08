@@ -48,9 +48,9 @@ module BlizzardApi
 
       protected
 
-      def endpoint_uri(variant = nil)
+      def endpoint_uri(variant = nil, scope = :game_data)
         endpoint = variant ? "#{@endpoint}-#{variant}" : @endpoint
-        "#{base_url(:game_data)}/#{endpoint}"
+        "#{base_url(scope)}/#{endpoint}"
       end
 
       def endpoint_setup

@@ -50,7 +50,8 @@ module BlizzardApi
       community: 'https://%s.api.blizzard.com/%s',
       profile: 'https://%s.api.blizzard.com/profile/%s',
       media: 'https://%s.api.blizzard.com/data/%s/media',
-      user_profile: 'https://%s.api.blizzard.com/profile/user/%s'
+      user_profile: 'https://%s.api.blizzard.com/profile/user/%s',
+      search: 'https://%s.api.blizzard.com/data/%s/search'
     }.freeze
 
     ##

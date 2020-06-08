@@ -1,5 +1,11 @@
 Please view this file on the master branch, otherwise it may be outdated
 
+**Version 0.4.0**
+
+Added support to searchable endpoints
+
+https://develop.battle.net/documentation/world-of-warcraft/guides/search
+
 **Version 0.3.11**
 
 Fixed D3 item URL.
