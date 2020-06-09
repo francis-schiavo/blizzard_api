@@ -88,7 +88,7 @@ module BlizzardApi
     def endpoint_namespace(options)
       case options[:namespace]
       when :dynamic
-        "dynamic-#{region}"
+        options.include?(:classic) ? "dynamic-classic-#{region}" : "dynamic-#{region}"
       when :static
         options.include?(:classic) ? "static-classic-#{region}" : "static-#{region}"
       when :profile
