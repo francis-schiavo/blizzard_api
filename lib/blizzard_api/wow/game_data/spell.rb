@@ -10,6 +10,8 @@ module BlizzardApi
     # You can get an instance of this class using the default region as follows:
     #   api_instance = BlizzardApi::Wow.spell
     class Spell < Wow::GenericDataEndpoint
+      include BlizzardApi::Wow::Searchable
+
       ##
       # This method overrides the inherited default behavior to prevent high server load and fetch time
       #

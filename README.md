@@ -145,6 +145,7 @@ end
   - types
   - type :id
   - display_media :id
+  - search
 * Blizzard::Wow::Guild
   - rewards
   - perks
@@ -211,6 +212,7 @@ end
   - get :id
   - complete
   - status :realms
+  - search
 * Blizzard::Wow::Region
   - index
   - get :id
@@ -231,10 +233,12 @@ end
   - class :id
   - subclass :class_id, :subclass_id
   - media :id
+  - search
 * Blizzard::Wow::AzeriteEssence
   - index
   - get :id
   - media :id
+  - search
 * Blizzard::Wow::ReputationTier
   - index
   - get :id
@@ -262,6 +266,7 @@ end
   - get :id
 * Blizzard::Wow::Spell
   - get :id
+  - search
 * Blizzard::Wow::Zone
   - index
   - get :id

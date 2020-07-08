@@ -10,6 +10,8 @@ module BlizzardApi
     # You can get an instance of this class using the default region as follows:
     #   api_instance = BlizzardApi::Wow.azerite_essence
     class AzeriteEssence < Wow::GenericDataEndpoint
+      include BlizzardApi::Wow::Searchable
+
       ##
       # Fetch media for one of the azerite essences listed by the {#index} using its *id*
       #

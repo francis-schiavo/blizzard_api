@@ -39,8 +39,8 @@ module BlizzardApi
         end
         assert_equal 2, realm_data[:results].size
 
-        realm_data = @realm.search(1, 100, classic: true) do |options|
-          options.where 'name.en_US', %w[Mankrik Pagle]
+        realm_data = @realm.search(1, 100, classic: true) do |search_options|
+          search_options.where 'name.en_US', %w[Mankrik Pagle]
         end
         assert_equal 2, realm_data[:results].size
       end

@@ -9,15 +9,27 @@ module BlizzardApi
     #
     # You can get an instance of this class using the default region as follows:
     #   api_instance = BlizzardApi::Wow.mount
-    class Mount < Wow::GenericDataEndpoint
+    class Media < Wow::GenericDataEndpoint
       include BlizzardApi::Wow::Searchable
+
+      def index(_options = nil)
+        raise BlizzardApi::ApiException, 'This endpoint does not have a index method'
+      end
+
+      def get(_options = nil)
+        raise BlizzardApi::ApiException, 'This endpoint does not have a get method'
+      end
+
+      def complete(_options = nil)
+        raise BlizzardApi::ApiException, 'This endpoint does not have a complete method'
+      end
 
       protected
 
       def endpoint_setup
-        @endpoint = 'mount'
+        @endpoint = 'media'
         @namespace = :static
-        @collection = 'mounts'
+        @collection = 'medias'
         @ttl = CACHE_TRIMESTER
       end
     end

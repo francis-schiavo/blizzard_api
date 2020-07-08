@@ -20,7 +20,7 @@ module BlizzardApi
       # The second argument takes a simple value, an array of values or a hash for range searches.
       #
       # @param field [String] Field name
-      # @param value [String|Integer|Hash|Array<Integer|String>]
+      # @param value [String|Integer|Hash|Array<Integer>|Array<String>]
       # @option value [Integer] :min Range start
       # @option value [Integer] :max Range end
       # @option value [Integer] :mode Range mode (:inclusive|:exclusive)
@@ -37,7 +37,7 @@ module BlizzardApi
       # The second argument takes a simple value, an array of values or a hash for range searches.
       #
       # @param field [String] Field name
-      # @param value [String|Integer|Hash|Array<Integer|String>]
+      # @param value [String|Integer|Hash|Array<Integer>|Array<String>]
       # @option value [Integer] :min Range start
       # @option value [Integer] :max Range end
       # @option value [Integer] :mode Range mode (:inclusive|:exclusive)

@@ -6,7 +6,7 @@ module BlizzardApi
     # Added search support to an endpoint
     module Searchable
       ##
-      # Fetch data base on search criteria
+      # Fetch data based on search criteria
       #
       # @param page [Integer] Page o return
       # @param page_size [Integer] Amount of items per page

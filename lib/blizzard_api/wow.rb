@@ -17,6 +17,7 @@ module BlizzardApi
     require_relative 'wow/game_data/guild_crest'
     require_relative 'wow/game_data/item'
     require_relative 'wow/game_data/journal'
+    require_relative 'wow/game_data/media'
     require_relative 'wow/game_data/mount'
     require_relative 'wow/game_data/mythic_keystone_affix'
     require_relative 'wow/game_data/mythic_keystone'
@@ -93,6 +94,13 @@ module BlizzardApi
     # @return {Journal}
     def self.journal(region = BlizzardApi.region)
       BlizzardApi::Wow::Journal.new(region)
+    end
+
+    ##
+    # @param region [String] API Region
+    # @return {Media}
+    def self.media(region = BlizzardApi.region)
+      BlizzardApi::Wow::Media.new(region)
     end
 
     ##

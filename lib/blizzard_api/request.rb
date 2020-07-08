@@ -183,7 +183,7 @@ module BlizzardApi
     def find_in_cache(resource_url)
       return false unless BlizzardApi.use_cache
 
-      @redis.get resource_url if @redis.exists resource_url
+      @redis.get resource_url if @redis.exists? resource_url
     end
 
     def format_response(data)

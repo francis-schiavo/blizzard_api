@@ -10,18 +10,25 @@ module BlizzardApi
       end
 
       def test_azerite_essence_index
-        title_data = @azerite_essence.index
-        assert_equal 28, title_data[:azerite_essences].count
+        data = @azerite_essence.index
+        assert_equal 28, data[:azerite_essences].count
       end
 
       def test_azerite_essence_get
-        title_data = @azerite_essence.get 2
-        assert_equal 'Azeroth\'s Undying Gift', title_data[:name][:en_US]
+        data = @azerite_essence.get 2
+        assert_equal 'Azeroth\'s Undying Gift', data[:name][:en_US]
       end
 
       def test_azerite_essence_media
-        item_data = @azerite_essence.media 2
-        assert item_data.key? :assets
+        data = @azerite_essence.media 2
+        assert data.key? :assets
+      end
+
+      def test_azerite_essence_search
+        data = @azerite_essence.search(1, 100) do |search_options|
+          search_options.where 'name.en_US', 'Worldvein Resonance'
+        end
+        assert_equal 'Ressonância da Veia do Mundo', data[:results][0][:data][:name][:pt_BR]
       end
     end
   end

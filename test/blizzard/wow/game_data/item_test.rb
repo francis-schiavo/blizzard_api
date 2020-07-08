@@ -58,6 +58,14 @@ module BlizzardApi
         item_data = @item.media 25, classic: true
         assert item_data.key? :assets
       end
+
+      def test_item_search
+        data = @item.search(1, 100) do |search_options|
+          search_options.where 'name.en_US', 'Booterang'
+          search_options.order_by 'id'
+        end
+        assert_equal 'Botarangue', data[:results][0][:data][:name][:pt_BR]
+      end
     end
   end
 end

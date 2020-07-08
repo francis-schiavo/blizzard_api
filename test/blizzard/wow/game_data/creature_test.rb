@@ -68,6 +68,14 @@ module BlizzardApi
         assert_equal 'https://render-classic-us.worldofwarcraft.com/npcs/portrait/creature-display-180.jpg',
                      creature_display_media_data[:assets][0][:value]
       end
+
+      def test_creature_search
+        data = @creature.search(1, 100) do |search_options|
+          search_options.where 'name.en_US', 'Dragon'
+          search_options.order_by 'id'
+        end
+        assert_equal 'Pequeno Dragão Verde', data[:results][0][:data][:name][:pt_BR]
+      end
     end
   end
 end

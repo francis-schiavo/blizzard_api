@@ -10,6 +10,8 @@ module BlizzardApi
     # You can get an instance of this class using the default region as follows:
     #   api_instance = BlizzardApi::Wow.creature
     class Creature < Wow::GenericDataEndpoint
+      include BlizzardApi::Wow::Searchable
+
       def index
         raise BlizzardApi::ApiException, 'Creatures endpoint doesn\'t have a index method'
       end
