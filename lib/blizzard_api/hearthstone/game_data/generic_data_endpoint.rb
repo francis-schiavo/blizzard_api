@@ -4,8 +4,8 @@ module BlizzardApi
   module Hearthstone
     # Generic endpoint to support most data requests with minor configurations
     class GenericDataEndpoint < Hearthstone::Request
-      def initialize(region = nil)
-        super region
+      def initialize(region = nil, mode = :regular)
+        super region, mode
         endpoint_setup
         @ttl ||= CACHE_DAY
       end

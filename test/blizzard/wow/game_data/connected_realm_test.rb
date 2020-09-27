@@ -48,7 +48,7 @@ module BlizzardApi
         realm_data = @connected_realm.search(1, 100) do |options|
           options.where 'id', min: 60, max: 100
         end
-        assert_equal 26, realm_data[:results].size
+        assert_equal 18, realm_data[:results].size
       end
     end
   end

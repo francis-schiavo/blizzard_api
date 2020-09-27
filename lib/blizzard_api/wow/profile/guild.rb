@@ -10,6 +10,8 @@ module BlizzardApi
     # You can get an instance of this class using the default region as follows:
     #   api_instance = BlizzardApi::Wow.guild
     class Guild < Wow::Request
+      include BlizzardApi::Wow::Slug
+
       ##
       # Return data about the specified guild
       #

@@ -68,7 +68,7 @@ module BlizzardApi
       # @return {String}
       def to_search_query
         query_string = "_page=#{page}&_pageSize=#{page_size}"
-        query_string += '&' + fields.join('&') unless fields.size.zero?
+        query_string += "&#{fields.join('&')}" unless fields.size.zero?
         query_string += "&orderby=#{order.join(',')}" unless order.size.zero?
         query_string
       end

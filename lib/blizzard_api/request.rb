@@ -8,6 +8,7 @@
 #   @option options [String] :access_token Overrides the access_token for a single call
 #   @option options [Boolean] :ignore_cache If set to true the request will not use the cache
 #   @option options [Integer] :ttl Override the default time (in seconds) a request should be cached
+#   @option options [DateTime] :since Adds the If-modified-since headers. Will always ignore cache when set.
 
 ##
 # @!macro [new] regions
@@ -31,18 +32,12 @@ module BlizzardApi
   ##
   # Simplifies the requests to Blizzard APIS
   class Request
-    # One minute cache
-    CACHE_MINUTE = 60
     # One hour cache
-    CACHE_HOUR = 60 * CACHE_MINUTE
+    CACHE_HOUR = 3600
     # One day cache
     CACHE_DAY = 24 * CACHE_HOUR
-    # One week cache
-    CACHE_WEEK = CACHE_DAY * 7
-    # One (commercial) month cache
-    CACHE_MONTH = CACHE_DAY * 30
     # Three (commercial) months cache
-    CACHE_TRIMESTER = CACHE_MONTH * 3
+    CACHE_TRIMESTER = CACHE_DAY * 90
 
     # Common endpoints
     BASE_URLS = {
@@ -60,12 +55,19 @@ module BlizzardApi
     attr_accessor :region
 
     ##
+    # @!attribute mode
+    #   @return [:regular, :extended]
+    attr_accessor :mode
+
+    ##
     # @!macro regions
-    def initialize(region = nil)
+    def initialize(region = nil, mode = :regular)
       self.region = region || BlizzardApi.region
       @redis = Redis.new(host: BlizzardApi.redis_host, port: BlizzardApi.redis_port) if BlizzardApi.use_cache
       # Use the shared access_token, or create one if it doesn't exists. This avoids unnecessary calls to create tokens.
       @access_token = BlizzardApi.access_token || create_access_token
+      # Mode
+      @mode = mode
     end
 
     require 'net/http'
@@ -98,10 +100,6 @@ module BlizzardApi
       end
     end
 
-    def string_to_slug(string)
-      CGI.escape(string.downcase.tr(' ', '-'))
-    end
-
     def create_access_token
       uri = URI.parse("https://#{BlizzardApi.region}.battle.net/oauth/token")
 
@@ -121,26 +119,24 @@ module BlizzardApi
       # Creates the whole url for request
       parsed_url = URI.parse(url)
 
-      data = options[:ignore_cache] ? nil : find_in_cache(parsed_url.to_s)
+      data = using_cache?(options) ? find_in_cache(parsed_url.to_s) : nil
+
       # If data was found that means cache is enabled and valid
-      return format_response data if data
+      return JSON.parse(data, symbolize_names: true) if data
 
-      # Override access_token
-      @access_token = options[:access_token] if options.include? :access_token
+      response = consume_api parsed_url, options
 
-      response = consume_api parsed_url
+      save_in_cache parsed_url.to_s, response.body, options[:ttl] || CACHE_DAY if using_cache? options
 
-      unless options[:ignore_cache]
-        ttl = options[:ttl] || CACHE_DAY
-        save_in_cache parsed_url.to_s, response.body, ttl
-      end
+      response_data = response.code.to_i.eql?(304) ? nil : JSON.parse(response.body, symbolize_names: true)
+      return [response, response_data] if mode.eql? :extended
 
-      format_response response.body
+      response_data
     end
 
     def api_request(uri, query_string = {})
       # List of request options
-      options_key = %i[ignore_cache ttl format access_token namespace classic]
+      options_key = %i[ignore_cache ttl format access_token namespace classic headers since]
 
       # Separates request options from api fields and options. Any user-defined option will be treated as api field.
       options = query_string.select { |k, _v| query_string.delete(k) || true if options_key.include? k }
@@ -159,35 +155,46 @@ module BlizzardApi
 
     private
 
-    def consume_api(url)
+    ##
+    # @param options [Hash] Request options
+    def using_cache?(options)
+      return false if mode.eql?(:extended) || options.key?(:since)
+
+      !options.fetch(:ignore_cache, false)
+    end
+
+    def consume_api(url, options = {})
       # Creates a HTTP connection and request to ensure thread safety
       http = Net::HTTP.new(url.host, url.port)
       http.use_ssl = true
       request = Net::HTTP::Get.new(url)
 
-      # Blizzard API documentation states the preferred way to send the access_token is using Bearer token on header
-      request['Authorization'] = "Bearer #{@access_token}"
+      add_headers request, options
 
       # Executes the request
       http.request(request).tap do |response|
-        raise BlizzardApi::ApiException.new 'Request failed', response.code.to_i unless response.code.to_i == 200
+        if mode.eql?(:regular) && ![200, 304].include?(response.code.to_i)
+          raise BlizzardApi::ApiException.new 'Request failed', response.code.to_i
+        end
       end
     end
 
-    def save_in_cache(resource_url, data, ttl)
-      return nil unless BlizzardApi.use_cache
+    def add_headers(request, options)
+      # Blizzard API documentation states the preferred way to send the access_token is using Bearer token on header
+      request['Authorization'] = "Bearer #{options.fetch(:access_token, @access_token)}"
+      # Format If-modified-since option
+      request['If-Modified-Since'] = options[:since].httpdate if options.key? :since
+      options[:headers]&.each { |header, content| request[header] = content }
+    end
 
-      @redis.setex resource_url, ttl, data
+    def save_in_cache(resource_url, data, ttl)
+      @redis.setex resource_url, ttl, data if BlizzardApi.use_cache
     end
 
     def find_in_cache(resource_url)
       return false unless BlizzardApi.use_cache
 
       @redis.get resource_url if @redis.exists? resource_url
-    end
-
-    def format_response(data)
-      JSON.parse(data, symbolize_names: true)
     end
   end
 end

@@ -1,5 +1,48 @@
 Please view this file on the master branch, otherwise it may be outdated
 
+**Version 0.5.0**
+
+This version brings a lot of internal changes to the way the gem works. While
+there no breaking change is expected use it carefully.
+
+## New features:
+
+### Extended mode
+
+When creating a request you can now specify **mode** as the last argument. Available modes:
+* **regular**: No changes, should work as it always did.
+* **extended**: All requests now return an array with two objects, the actual HTTPResponse object and the usual Hash.
+
+```ruby
+api_client = BlizzardApi::Wow::Item.new 'us', :extended
+response, item_data = api_client.get 35_000
+
+puts response.code # 200
+puts item_data[:name][:en_US] # Brutal Gladiator's Dragonhide Legguards
+```
+
+This is intended to expose the response code and headers.
+
+**Important**: Extended mode completely disables the cache.
+
+### Custom headers
+
+You an now pass custom headers in the **options** hash.
+
+There is also a new shorthand for the `If-Modified-Since` header.
+
+```ruby
+# If-Modified-Since shorhand
+auction_data = BlizzardApi::Wow.auction.get 1146, since: DateTime.parse('2099-01-01Z')
+
+# Using custom headers
+auction_data = BlizzardApi::Wow.auction.get 1146, headers: { 'If-Modified-Since' => 'Sun, 27 Sep 2020 02:17:03 GMT' }
+```
+
+**Important**
+* Headers are not part of the cache key, use the option `ignore_cache: true` when needed.
+* The `since` shorthand will always disable the cache.
+
 **Version 0.4.2**
 
 Added new retail and classic search endpoints described here: https://us.forums.blizzard.com/en/blizzard/t/world-of-warcraft-api-patch-notes-20200708/10310

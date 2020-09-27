@@ -10,6 +10,8 @@ module BlizzardApi
     # You can get an instance of this class using the default region as follows:
     #   api_instance = BlizzardApi::Wow.achievement
     class CharacterProfile < Wow::Request
+      include BlizzardApi::Wow::Slug
+
       ##
       # Return character achievements
       #
@@ -287,9 +289,11 @@ module BlizzardApi
       # @param realm [String] The character realm's slug
       # @param character [String] The character name
       # @!macro request_options
+      #   @option options [Boolean] :completed Should return completed quests
       #
       # @!macro response
-      def quests(realm, character, completed = false, options = {})
+      def quests(realm, character, options = {})
+        completed = options.delete(:completed) || false
         return character_request realm, character, options, 'quests/completed' if completed
 
         character_request realm, character, options, 'quests'

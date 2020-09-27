@@ -7,8 +7,8 @@ module BlizzardApi
     class Request < BlizzardApi::Request
       ##
       # @!macro regions
-      def initialize(region = nil)
-        super region
+      def initialize(region = nil, mode = :regular)
+        super region, mode
         @game = 'wow'
       end
     end

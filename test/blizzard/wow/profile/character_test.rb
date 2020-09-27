@@ -64,7 +64,7 @@ module BlizzardApi
         character_data = @character.quests 'Azralon', 'Schiller'
         assert character_data.key? :in_progress
 
-        character_data = @character.quests 'Azralon', 'Schiller', true
+        character_data = @character.quests 'Azralon', 'Schiller', completed: true
         assert character_data.key? :quests
       end
 

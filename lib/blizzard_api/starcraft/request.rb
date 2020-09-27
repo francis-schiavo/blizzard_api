@@ -15,8 +15,8 @@ module BlizzardApi
 
       ##
       # @!macro regions
-      def initialize(region = nil)
-        super region
+      def initialize(region = nil, mode = :regular)
+        super region, mode
         @game = 'sc2'
       end
 

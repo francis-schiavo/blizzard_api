@@ -66,6 +66,13 @@ module BlizzardApi
         end
         assert_equal 'Botarangue', data[:results][0][:data][:name][:pt_BR]
       end
+
+      def test_extended_mode
+        api_client = BlizzardApi::Wow::Item.new 'us', :extended
+        response, item_data = api_client.get 35_000
+        assert_equal '200', response.code
+        assert_equal 'Brutal Gladiator\'s Dragonhide Legguards', item_data[:name][:en_US]
+      end
     end
   end
 end

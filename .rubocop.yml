@@ -1,6 +1,6 @@
 inherit_from: .rubocop_todo.yml
 
-Metrics/LineLength:
+Layout/LineLength:
   Max: 140
 
 Metrics/ModuleLength:
@@ -12,6 +12,7 @@ Metrics/AbcSize:
 
 AllCops:
   TargetRubyVersion: 2.5
+  NewCops: enable
   Exclude:
     - 'vendor/**/*'
     - 'bin/**/*'

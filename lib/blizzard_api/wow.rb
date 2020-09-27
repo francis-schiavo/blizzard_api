@@ -7,6 +7,7 @@ module BlizzardApi
     require_relative 'wow/game_data/generic_data_endpoint'
     require_relative 'wow/search/search_composer'
     require_relative 'wow/search/search_request'
+    require_relative 'wow/slug'
 
     # WoW data api
     require_relative 'wow/game_data/achievement'

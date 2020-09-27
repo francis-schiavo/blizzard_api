@@ -7,8 +7,8 @@ module BlizzardApi
     class GenericDataEndpoint < Wow::Request
       ##
       # @!macro regions
-      def initialize(region = nil)
-        super region
+      def initialize(region = nil, mode = :regular)
+        super region, mode
         endpoint_setup
         @ttl ||= CACHE_DAY
       end
