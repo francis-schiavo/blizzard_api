@@ -19,6 +19,7 @@ module BlizzardApi
     require_relative 'wow/game_data/item'
     require_relative 'wow/game_data/journal'
     require_relative 'wow/game_data/media'
+    require_relative 'wow/game_data/modified_crafting'
     require_relative 'wow/game_data/mount'
     require_relative 'wow/game_data/mythic_keystone_affix'
     require_relative 'wow/game_data/mythic_keystone'
@@ -102,6 +103,13 @@ module BlizzardApi
     # @return {Media}
     def self.media(region = BlizzardApi.region)
       BlizzardApi::Wow::Media.new(region)
+    end
+
+    ##
+    # @param region [String] API Region
+    # @return {ModifiedCrafting}
+    def self.modified_crafting(region = BlizzardApi.region)
+      BlizzardApi::Wow::ModifiedCrafting.new(region)
     end
 
     ##

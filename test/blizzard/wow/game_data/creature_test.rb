@@ -19,7 +19,7 @@ module BlizzardApi
 
       def test_creature_families
         creature_families_data = @creature.families
-        assert_equal 78, creature_families_data[:creature_families].count
+        assert_equal 81, creature_families_data[:creature_families].count
 
         creature_families_data = @creature.families classic: true
         assert_equal 23, creature_families_data[:creature_families].count

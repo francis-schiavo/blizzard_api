@@ -11,7 +11,7 @@ module BlizzardApi
 
       def test_pet_index
         pet_data = @pet.index
-        assert_equal 1280, pet_data[:pets].count
+        assert_equal 1365, pet_data[:pets].count
       end
 
       def test_pet_get
@@ -26,7 +26,7 @@ module BlizzardApi
 
       def test_pet_ability_index
         pet_data = @pet.abilities
-        assert_equal 656, pet_data[:abilities].count
+        assert_equal 669, pet_data[:abilities].count
       end
 
       def test_pet_ability_get

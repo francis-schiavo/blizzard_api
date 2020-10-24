@@ -35,7 +35,7 @@ module BlizzardApi
 
       def test_playable_class_talent_slots
         data = @playable_class.talent_slots 11
-        assert_equal 20, data[:talent_slots][0][:unlock_player_level]
+        assert_equal 10, data[:talent_slots][0][:unlock_player_level]
       end
 
       def test_playable_class_media

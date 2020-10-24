@@ -11,7 +11,7 @@ module BlizzardApi
 
       def test_journal_expansions
         journal_data = @journal.expansions
-        assert_equal 8, journal_data[:tiers].count
+        assert_equal 9, journal_data[:tiers].count
       end
 
       def test_journal_expansion
