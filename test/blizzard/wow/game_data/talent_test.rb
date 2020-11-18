@@ -11,7 +11,7 @@ module BlizzardApi
 
       def test_talent_index
         talent_data = @talent.index
-        assert_equal 636, talent_data[:talents].count
+        assert talent_data.key? :talents
       end
 
       def test_talent_get
@@ -21,7 +21,7 @@ module BlizzardApi
 
       def test_pvp_talent_index
         talent_data = @talent.pvp_talents
-        assert_equal 389, talent_data[:pvp_talents].count
+        assert_equal 390, talent_data[:pvp_talents].count
       end
 
       def test_pvp_talent_get

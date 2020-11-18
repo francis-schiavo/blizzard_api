@@ -1,5 +1,9 @@
 Please view this file on the master branch, otherwise it may be outdated
 
+**Version 0.5.2**
+
+Added new endpoints: https://us.forums.blizzard.com/en/blizzard/t/wow-shadowlands-api-update-covenenats-soulbinds-more/13385
+
 **Version 0.5.1**
 
 Added new endpoints: https://us.forums.blizzard.com/en/blizzard/t/wow-game-data-api-modified-crafting-support/12727

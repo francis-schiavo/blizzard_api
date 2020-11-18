@@ -14,6 +14,7 @@ module BlizzardApi
     require_relative 'wow/game_data/auction'
     require_relative 'wow/game_data/azerite_essence'
     require_relative 'wow/game_data/connected_realm'
+    require_relative 'wow/game_data/covenant'
     require_relative 'wow/game_data/creature'
     require_relative 'wow/game_data/guild_crest'
     require_relative 'wow/game_data/item'
@@ -39,6 +40,7 @@ module BlizzardApi
     require_relative 'wow/game_data/reputation'
     require_relative 'wow/game_data/spell'
     require_relative 'wow/game_data/talent'
+    require_relative 'wow/game_data/tech_talent'
     require_relative 'wow/game_data/title'
     require_relative 'wow/game_data/wow_token'
 
@@ -68,6 +70,13 @@ module BlizzardApi
     # @return {ConnectedRealm}
     def self.connected_realm(region = BlizzardApi.region)
       BlizzardApi::Wow::ConnectedRealm.new(region)
+    end
+
+    ##
+    # @param region [String] API Region
+    # @return {Covenant}
+    def self.covenant(region = BlizzardApi.region)
+      BlizzardApi::Wow::Covenant.new(region)
     end
 
     ##
@@ -243,6 +252,13 @@ module BlizzardApi
     # @return {Talent}
     def self.talent(region = BlizzardApi.region)
       BlizzardApi::Wow::Talent.new(region)
+    end
+
+    ##
+    # @param region [String] API Region
+    # @return {TechTalent}
+    def self.tech_talent(region = BlizzardApi.region)
+      BlizzardApi::Wow::TechTalent.new(region)
     end
 
     ##

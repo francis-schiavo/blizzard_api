@@ -11,7 +11,7 @@ module BlizzardApi
 
       def test_achievement_index
         achievement_data = @achievement.index
-        assert_equal 5418, achievement_data[:achievements].count
+        assert achievement_data.key? :achievements
       end
 
       def test_achievement_get

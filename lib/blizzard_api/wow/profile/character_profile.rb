@@ -314,6 +314,20 @@ module BlizzardApi
       end
 
       ##
+      # Return a character's soulbinds
+      #
+      # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
+      #
+      # @param realm [String] The character realm's slug
+      # @param character [String] The character name
+      # @!macro request_options
+      #
+      # @!macro response
+      def soulbinds(realm, character, options = {})
+        character_request realm, character, options, 'soulbinds'
+      end
+
+      ##
       # Return a character's specialization
       #
       # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api

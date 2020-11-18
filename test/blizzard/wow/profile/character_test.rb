@@ -26,7 +26,7 @@ module BlizzardApi
 
       def test_character_appearance
         character_data = @character.appearance 'Azralon', 'Schiller'
-        assert_equal 4, character_data[:appearance][:face_variation]
+        assert character_data.key? :customizations
       end
 
       def test_character_encounters
@@ -52,7 +52,7 @@ module BlizzardApi
 
       def test_character_media
         character_data = @character.media 'Azralon', 'Schiller'
-        assert character_data.key? :avatar_url
+        assert character_data[:assets].map { |item| item[:key] }.include?('avatar')
       end
 
       def test_character_pvp_summary
