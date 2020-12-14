@@ -18,6 +18,7 @@ module BlizzardApi
     require_relative 'starcraft/community/profile'
     require_relative 'starcraft/community/ladder'
     require_relative 'starcraft/community/account'
+    require_relative 'starcraft/community/legacy'
 
     ##
     # @return {Profile}
@@ -35,6 +36,12 @@ module BlizzardApi
     # @return {Account}
     def self.account
       BlizzardApi::Starcraft::Account.new
+    end
+    
+    ##
+    # @return {Legacy}
+    def self.legacy
+      BlizzardApi::Starcraft::Legacy.new
     end
   end
 end
