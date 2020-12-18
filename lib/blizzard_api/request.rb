@@ -17,7 +17,7 @@
 
 ##
 # @!macro [new] response
-#   @return [OpenStruct,Array] API Response. The actual type of the returned object depends on the *format* option
+#   @return [Hash] API Response. The actual type of the returned object depends on the *format* option
 #   in the configuration module
 
 ##

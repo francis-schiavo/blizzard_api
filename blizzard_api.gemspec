@@ -9,10 +9,10 @@ Gem::Specification.new do |spec|
   spec.name = 'blizzard_api'
   spec.version = BlizzardApi::VERSION
   spec.authors = ['Francis Schiavo']
-  spec.email = ['francis.schiavo@francisschiavo.com']
+  spec.email = ['francis@schiavo.dev']
   spec.summary = 'Unofficial Ruby client for Blizzard Entertainment API'
   spec.description = 'This is a simple interface to obtain data from Blizzard API'
-  spec.homepage = 'https://gitlab.com/francisschiavo/blizzard_api'
+  spec.homepage = 'https://github.com/francis-schiavo/blizzard_api'
   spec.license = 'MIT'
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
@@ -20,8 +20,10 @@ Gem::Specification.new do |spec|
   raise 'RubyGems 2.0 or newer is required to protect against public gem pushes.' unless spec.respond_to?(:metadata)
 
   spec.metadata['homepage_uri'] = spec.homepage
-  spec.metadata['source_code_uri'] = 'https://gitlab.com/francisschiavo/blizzard_api'
-  spec.metadata['changelog_uri'] = 'https://gitlab.com/francisschiavo/blizzard_api/blob/master/CHANGELOG.md'
+  spec.metadata['source_code_uri'] = 'https://github.com/francis-schiavo/blizzard_api'
+  spec.metadata['bug_tracker_uri'] = 'https://github.com/francis-schiavo/blizzard_api/issues'
+  spec.metadata['changelog_uri'] = 'https://github.com/francis-schiavo/blizzard_api/blob/master/CHANGELOG.md'
+  spec.metadata['documentation_uri'] = 'https://rubydoc.info/gems/blizzard_api'
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
