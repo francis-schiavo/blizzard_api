@@ -19,6 +19,7 @@ module BlizzardApi
     require_relative 'starcraft/community/profile'
     require_relative 'starcraft/community/ladder'
     require_relative 'starcraft/community/account'
+    require_relative 'starcraft/community/legacy'
 
     ##
     # @param region [String] API Region
@@ -39,6 +40,12 @@ module BlizzardApi
     # @return {Account}
     def self.account(region = BlizzardApi.region)
       BlizzardApi::Starcraft::Account.new(region)
+    end
+    
+    ##
+    # @return {Legacy}
+    def self.legacy
+      BlizzardApi::Starcraft::Legacy.new
     end
   end
 end
