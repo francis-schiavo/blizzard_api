@@ -11,7 +11,7 @@ module BlizzardApi
 
       def test_mythic_keystone_dungeons
         mythic_keystone_leaderboard_data = @mythic_keystone_leaderboard.index 11
-        assert_equal 12, mythic_keystone_leaderboard_data[:current_leaderboards].count
+        assert_equal 8, mythic_keystone_leaderboard_data[:current_leaderboards].count
       end
 
       def test_mythic_keystone_dungeon

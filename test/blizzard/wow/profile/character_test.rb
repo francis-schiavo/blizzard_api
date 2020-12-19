@@ -80,7 +80,7 @@ module BlizzardApi
 
       def test_character_titles
         character_data = @character.titles 'Azralon', 'Schiller'
-        assert_equal 'the Tranquil Master', character_data[:active_title][:name][:en_US]
+        assert character_data[:active_title][:name][:en_US]
       end
 
       def test_character_mythic_keystone_profile

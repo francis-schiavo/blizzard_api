@@ -1,8 +1,6 @@
 # Blizzard Api
 
-[![pipeline status](https://gitlab.com/francisschiavo/blizzard_api/badges/master/pipeline.svg)](https://gitlab.com/francisschiavo/blizzard_api/commits/master)
 [![Gem Version](https://badge.fury.io/rb/blizzard_api.svg)](https://badge.fury.io/rb/blizzard_api)
-
 
 This gem allow you to interface with the new blizzard api (2018) using the OAuth2 protocol for every request.
 
