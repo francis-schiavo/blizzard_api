@@ -349,7 +349,7 @@ Every endpoint requiring a *region_id* parameter will accepts either the integer
 
 ## Contributing
 
-Bug reports and pull requests are welcome on Gitlab at https://gitlab.com/francisschiavo/blizzard_api/issues
+Bug reports and pull requests are welcome on Github at https://github.com/francis-schiavo/blizzard_api/issues
 
 ## License
 
