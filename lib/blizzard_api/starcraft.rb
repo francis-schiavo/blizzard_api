@@ -44,8 +44,8 @@ module BlizzardApi
     
     ##
     # @return {Legacy}
-    def self.legacy
-      BlizzardApi::Starcraft::Legacy.new
+    def self.legacy(region = BlizzardApi.region)
+      BlizzardApi::Starcraft::Legacy.new(region)
     end
   end
 end
