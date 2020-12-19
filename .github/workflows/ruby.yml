@@ -5,10 +5,6 @@ on: push
 jobs:
   test:
     runs-on: ubuntu-latest
-    env:
-      BNET_APPLICATION_ID: ${{ secrets.BNET_APPLICATION_ID }}
-      BNET_APPLICATION_SECRET: ${{ secrets.BNET_APPLICATION_SECRET }}
-      USE_CACHE: false
     steps:
       - uses: actions/checkout@v2
       - name: Set up Ruby
@@ -19,3 +15,7 @@ jobs:
         run: bundle install
       - name: Run tests
         run: bundle exec rake
+        env:
+          BNET_APPLICATION_ID: ${{ secrets.BNET_APPLICATION_ID }}
+          BNET_APPLICATION_SECRET: ${{ secrets.BNET_APPLICATION_SECRET }}
+          USE_CACHE: false
