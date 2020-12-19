@@ -1,5 +1,11 @@
 Please view this file on the master branch, otherwise it may be outdated
 
+**Version 0.5.3**
+
+Added missing legacy SC2 endpoints
+
+See https://github.com/francis-schiavo/blizzard_api/pull/2
+
 **Version 0.5.2**
 
 Added new endpoints: https://us.forums.blizzard.com/en/blizzard/t/wow-shadowlands-api-update-covenenats-soulbinds-more/13385
