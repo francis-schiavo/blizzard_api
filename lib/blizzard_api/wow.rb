@@ -276,10 +276,13 @@ module BlizzardApi
     end
 
     ##
+    # Alias for {character_profile}.
+    #
     # @param region [String] API Region
-    # @return {Character}
+    # @return {CharacterProfile}
+    # @see character_profile
     def self.character(region = BlizzardApi.region)
-      BlizzardApi::Wow::Character.new(region)
+      character_profile(region)
     end
 
     require_relative 'wow/profile/profile'
