@@ -15,13 +15,13 @@ module BlizzardApi
       end
 
       def test_tech_talent_get
-        talent_data = @talent.get 807
-        assert_equal 'Skillful Duelist', talent_data[:name][:en_US]
+        talent_data = @talent.get 863
+        assert_equal 'Run Without Tiring', talent_data[:name][:en_US]
       end
 
       def test_tech_talent_media
-        talent_data = @talent.media 807
-        assert_equal 'https://render-us.worldofwarcraft.com/icons/56/inv_tabard_duelersguild.jpg', talent_data[:assets][0][:value]
+        talent_data = @talent.media 863
+        assert_equal 'https://render-us.worldofwarcraft.com/icons/56/ability_racial_runningwild.jpg', talent_data[:assets][0][:value]
       end
 
       def test_tech_talent_tree_index

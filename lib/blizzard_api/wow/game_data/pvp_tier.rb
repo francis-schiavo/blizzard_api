@@ -16,7 +16,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def tier_media(id, options = {})
+      def tier_media(id, **options)
         api_request "#{base_url(:media)}/#{@endpoint}/#{id}", default_options.merge(options)
       end
 

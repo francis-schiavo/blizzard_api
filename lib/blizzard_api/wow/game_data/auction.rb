@@ -17,7 +17,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def get(connected_realm_id, options = {})
+      def get(connected_realm_id, **options)
         opts = { ttl: CACHE_HOUR, namespace: :dynamic }.merge(options)
         api_request "#{base_url(:game_data)}/connected-realm/#{connected_realm_id}/auctions", opts
       end

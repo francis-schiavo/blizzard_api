@@ -20,7 +20,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def media(id, options = {})
+      def media(id, **options)
         api_request "#{base_url(:media)}/azerite-essence/#{id}", default_options.merge(options)
       end
 

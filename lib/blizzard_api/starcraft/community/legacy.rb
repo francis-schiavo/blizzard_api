@@ -18,7 +18,7 @@ module BlizzardApi
       # @param [Integer] realm_id Realm ID
       # @param [Integer] profile_id Profile ID
       # @!macro request_options
-      def profile(region_id, realm_id, profile_id, options = {})
+      def profile(region_id, realm_id, profile_id, **options)
         reg = resolve_region(region_id)
         opts = { ttl: CACHE_DAY }.merge(options)
         api_request "#{base_url(:community)}/legacy/profile/#{reg}/#{realm_id}/#{profile_id}", opts
@@ -31,7 +31,7 @@ module BlizzardApi
       # @param [Integer] realm_id Realm ID
       # @param [Integer] profile_id Profile ID
       # @!macro request_options
-      def ladders(region_id, realm_id, profile_id, options = {})
+      def ladders(region_id, realm_id, profile_id, **options)
         reg = resolve_region(region_id)
         opts = { ttl: CACHE_DAY }.merge(options)
         api_request "#{base_url(:community)}/legacy/profile/#{reg}/#{realm_id}/#{profile_id}/ladder ", opts
@@ -44,7 +44,7 @@ module BlizzardApi
       # @param [Integer] realm_id Realm ID
       # @param [Integer] profile_id Profile ID
       # @!macro request_options
-      def match(region_id, realm_id, profile_id, options = {})
+      def match(region_id, realm_id, profile_id, **options)
         reg = resolve_region(region_id)
         opts = { ttl: CACHE_DAY }.merge(options)
         api_request "#{base_url(:community)}/legacy/profile/#{reg}/#{realm_id}/#{profile_id}/matches", opts
@@ -56,7 +56,7 @@ module BlizzardApi
       # @!macro sc2_regions
       # @param [Integer] ladder_id Ladder ID
       # @!macro request_options
-      def ladder(region_id, ladder_id, options = {})
+      def ladder(region_id, ladder_id, **options)
         reg = resolve_region(region_id)
         opts = { ttl: CACHE_DAY }.merge(options)
         api_request "#{base_url(:community)}/legacy/ladder/#{reg}/#{ladder_id}", opts
@@ -67,7 +67,7 @@ module BlizzardApi
       #
       # @!macro sc2_regions
       # @!macro request_options
-      def achievements(region_id, options = {})
+      def achievements(region_id, **options)
         reg = resolve_region(region_id)
         opts = { ttl: CACHE_DAY }.merge(options)
         api_request "#{base_url(:community)}/legacy/data/achievements/#{reg}", opts
@@ -78,7 +78,7 @@ module BlizzardApi
       #
       # @!macro sc2_regions
       # @!macro request_options
-      def rewards(region_id, options = {})
+      def rewards(region_id, **options)
         reg = resolve_region(region_id)
         opts = { ttl: CACHE_DAY }.merge(options)
         api_request "#{base_url(:community)}/legacy/data/rewards/#{reg}", opts

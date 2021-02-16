@@ -20,7 +20,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def index(options = {})
+      def index(**options)
         api_request "#{base_url(:community)}/#{@endpoint}/", default_options.merge(options)
       end
 
@@ -31,7 +31,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def get(id, options = {})
+      def get(id, **options)
         api_request "#{base_url(:community)}/#{@endpoint}/#{id}", default_options.merge(options)
       end
 

@@ -18,7 +18,7 @@ module BlizzardApi
       # Fetch modified crafting category index
       #
       # @!macro request_options
-      def categories(options = {})
+      def categories(**options)
         api_request "#{base_url(:game_data)}/modified-crafting/category/index", default_options.merge(options)
       end
 
@@ -30,7 +30,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def category(id, options = {})
+      def category(id, **options)
         api_request "#{base_url(:game_data)}/modified-crafting/category/#{id}", default_options.merge(options)
       end
 
@@ -38,7 +38,7 @@ module BlizzardApi
       # Fetch modified crafting slot type index
       #
       # @!macro request_options
-      def slot_types(options = {})
+      def slot_types(**options)
         api_request "#{base_url(:game_data)}/modified-crafting/reagent-slot-type/index", default_options.merge(options)
       end
 
@@ -50,7 +50,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def slot_type(id, options = {})
+      def slot_type(id, **options)
         api_request "#{base_url(:game_data)}/modified-crafting/reagent-slot-type/#{id}", default_options.merge(options)
       end
 

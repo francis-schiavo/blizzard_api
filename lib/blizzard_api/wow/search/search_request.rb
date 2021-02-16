@@ -13,7 +13,7 @@ module BlizzardApi
       #
       # @!macro request_options
       # @!macro response
-      def search(page = 1, page_size = 100, options = {})
+      def search(page = 1, page_size = 100, **options)
         search_options = SearchComposer.new(page, page_size)
         yield search_options if block_given?
 

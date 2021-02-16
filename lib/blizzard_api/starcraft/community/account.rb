@@ -15,7 +15,7 @@ module BlizzardApi
       #
       # @param [Integer] account_id Account ID
       # @!macro request_options
-      def player(account_id, options = {})
+      def player(account_id, **options)
         api_request "#{base_url(:community)}/player/#{account_id}", { ttl: CACHE_DAY }.merge(options)
       end
     end

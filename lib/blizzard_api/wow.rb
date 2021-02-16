@@ -275,13 +275,6 @@ module BlizzardApi
       BlizzardApi::Wow::WowToken.new(region)
     end
 
-    ##
-    # @param region [String] API Region
-    # @return {Character}
-    def self.character(region = BlizzardApi.region)
-      BlizzardApi::Wow::Character.new(region)
-    end
-
     require_relative 'wow/profile/profile'
     require_relative 'wow/profile/guild'
     require_relative 'wow/profile/character_profile'

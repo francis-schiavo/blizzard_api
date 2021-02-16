@@ -23,7 +23,7 @@ module BlizzardApi
       # @option options [Boolean] :classic If set to true, this method will call the classic version
       #
       # @!macro response
-      def border_media(id, options = {})
+      def border_media(id, **options)
         api_request "#{base_url(:media)}/#{@endpoint}/border/#{id}", default_options.merge(options)
       end
 
@@ -36,7 +36,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def emblem_media(id, options = {})
+      def emblem_media(id, **options)
         api_request "#{base_url(:media)}/#{@endpoint}/emblem/#{id}", default_options.merge(options)
       end
 

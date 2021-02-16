@@ -20,7 +20,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def get(realm, guild, options = {})
+      def get(realm, guild, **options)
         guild_request(realm, guild, options)
       end
 
@@ -33,8 +33,8 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def roster(realm, guild, options = {})
-        guild_request realm, guild, options, 'roster'
+      def roster(realm, guild, **options)
+        guild_request realm, guild, 'roster', options
       end
 
       ##
@@ -45,8 +45,8 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def achievements(realm, guild, options = {})
-        guild_request realm, guild, options, 'achievements'
+      def achievements(realm, guild, **options)
+        guild_request realm, guild, 'achievements', options
       end
 
       ##
@@ -57,13 +57,13 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def activity(realm, guild, options = {})
-        guild_request realm, guild, options, 'activity'
+      def activity(realm, guild, **options)
+        guild_request realm, guild, 'activity', options
       end
 
       private
 
-      def guild_request(realm, guild, options = {}, variant = nil)
+      def guild_request(realm, guild, variant = nil, **options)
         realm = string_to_slug(realm)
         guild = string_to_slug(guild)
         url = "#{base_url(:game_data)}/guild/#{realm}/#{guild}"

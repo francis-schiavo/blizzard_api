@@ -18,7 +18,7 @@ module BlizzardApi
       #
       # @!macro request_options
       # @!macro response
-      def index(options = {})
+      def index(**options)
         api_request "#{endpoint_uri}/index", default_options.merge(options)
       end
 
@@ -29,13 +29,13 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def get(id, options = {})
+      def get(id, **options)
         api_request "#{endpoint_uri}/#{id}", default_options.merge(options)
       end
 
       ##
       # @!macro complete
-      def complete(options = {})
+      def complete(**options)
         [].tap do |complete_data|
           index_data = index options
           index_data[@collection.to_sym].each do |item|

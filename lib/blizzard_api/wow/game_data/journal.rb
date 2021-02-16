@@ -30,7 +30,7 @@ module BlizzardApi
       # This method overrides the inherited default behavior to prevent high server load and fetch time
       #
       # @!macro response
-      def get(_id, _options = {})
+      def get(_id, **options)
         raise BlizzardApi::ApiException, 'This endpoint does not have a get method'
       end
 
@@ -40,7 +40,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def expansions(options = {})
+      def expansions(**options)
         api_request "#{endpoint_uri('expansion')}/index", default_options.merge(options)
       end
 
@@ -51,7 +51,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def expansion(id, options = {})
+      def expansion(id, **options)
         api_request "#{endpoint_uri('expansion')}/#{id}", default_options.merge(options)
       end
 
@@ -61,7 +61,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def instances(options = {})
+      def instances(**options)
         api_request "#{endpoint_uri('instance')}/index", default_options.merge(options)
       end
 
@@ -72,7 +72,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def instance(id, options = {})
+      def instance(id, **options)
         api_request "#{endpoint_uri('instance')}/#{id}", default_options.merge(options)
       end
 
@@ -82,7 +82,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def encounters(options = {})
+      def encounters(**options)
         api_request "#{endpoint_uri('encounter')}/index", default_options.merge(options)
       end
 
@@ -93,7 +93,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def encounter(id, options = {})
+      def encounter(id, **options)
         api_request "#{endpoint_uri('encounter')}/#{id}", default_options.merge(options)
       end
 
@@ -105,7 +105,7 @@ module BlizzardApi
       #
       # @!macro request_options
       # @!macro response
-      def encounter_search(page = 1, page_size = 100, options = {})
+      def encounter_search(page = 1, page_size = 100, **options)
         search_options = SearchComposer.new(page, page_size)
         yield search_options if block_given?
 

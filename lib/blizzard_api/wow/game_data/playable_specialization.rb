@@ -12,7 +12,7 @@ module BlizzardApi
     class PlayableSpecialization < Wow::GenericDataEndpoint
       ##
       # @!macro complete
-      def complete(options = {})
+      def complete(**options)
         index_data = index options
         response_data = OpenStruct.new
         response_data.character_specializations = character_data(index_data, options)
@@ -28,7 +28,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def media(id, options = {})
+      def media(id, **options)
         api_request "#{base_url(:media)}/playable-specialization/#{id}", default_options.merge(options)
       end
 

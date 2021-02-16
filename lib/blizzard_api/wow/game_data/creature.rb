@@ -27,7 +27,7 @@ module BlizzardApi
       # @option options [Boolean] :classic If set to true, this method will call the classic version
       #
       # @!macro response
-      def families(options = {})
+      def families(**options)
         api_request "#{endpoint_uri('family')}/index", default_options.merge(options)
       end
 
@@ -40,7 +40,7 @@ module BlizzardApi
       # @option options [Boolean] :classic If set to true, this method will call the classic version
       #
       # @!macro response
-      def family(id, options = {})
+      def family(id, **options)
         api_request "#{endpoint_uri('family')}/#{id}", default_options.merge(options)
       end
 
@@ -53,7 +53,7 @@ module BlizzardApi
       # @option options [Boolean] :classic If set to true, this method will call the classic version
       #
       # @!macro response
-      def family_media(id, options = {})
+      def family_media(id, **options)
         api_request "#{base_url(:media)}/creature-family/#{id}", default_options.merge(options)
       end
 
@@ -64,7 +64,7 @@ module BlizzardApi
       # @option options [Boolean] :classic If set to true, this method will call the classic version
       #
       # @!macro response
-      def types(options = {})
+      def types(**options)
         api_request "#{endpoint_uri('type')}/index", default_options.merge(options)
       end
 
@@ -77,7 +77,7 @@ module BlizzardApi
       # @option options [Boolean] :classic If set to true, this method will call the classic version
       #
       # @!macro response
-      def type(id, options = {})
+      def type(id, **options)
         api_request "#{endpoint_uri('type')}/#{id}", default_options.merge(options)
       end
 
@@ -90,7 +90,7 @@ module BlizzardApi
       # @option options [Boolean] :classic If set to true, this method will call the classic version
       #
       # @!macro response
-      def display_media(id, options = {})
+      def display_media(id, **options)
         api_request "#{base_url(:media)}/creature-display/#{id}", default_options.merge(options)
       end
 
