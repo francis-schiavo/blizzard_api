@@ -24,7 +24,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def categories(options = {})
+      def categories(**options)
         api_request "#{endpoint_uri('category')}/index", default_options.merge(options)
       end
 
@@ -34,7 +34,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def category(id, options = {})
+      def category(id, **options)
         api_request "#{endpoint_uri('category')}/#{id}", default_options.merge(options)
       end
 
@@ -44,7 +44,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def media(id, options = {})
+      def media(id, **options)
         api_request "#{base_url(:media)}/achievement/#{id}", default_options.merge(options)
       end
 

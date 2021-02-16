@@ -18,7 +18,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def media(id, options = {})
+      def media(id, **options)
         api_request "#{base_url(:media)}/profession/#{id}", default_options.merge(options)
       end
 
@@ -31,7 +31,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def skill_tier(id, tier_id, options = {})
+      def skill_tier(id, tier_id, **options)
         api_request "#{base_url(:game_data)}/profession/#{id}/skill-tier/#{tier_id}", default_options.merge(options)
       end
 
@@ -43,7 +43,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def recipe(id, options = {})
+      def recipe(id, **options)
         api_request "#{base_url(:game_data)}/recipe/#{id}", default_options.merge(options)
       end
 
@@ -55,7 +55,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def recipe_media(id, options = {})
+      def recipe_media(id, **options)
         api_request "#{base_url(:media)}/recipe/#{id}", default_options.merge(options)
       end
 

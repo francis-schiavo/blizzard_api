@@ -35,7 +35,7 @@ module BlizzardApi
       # @option options [Boolean] :classic If set to true, this method will call the classic version
       #
       # @!macro response
-      def classes(options = {})
+      def classes(**options)
         api_request "#{endpoint_uri('class')}/index", default_options.merge(options)
       end
 
@@ -47,7 +47,7 @@ module BlizzardApi
       # @option options [Boolean] :classic If set to true, this method will call the classic version
       #
       # @!macro response
-      def class(id, options = {})
+      def class(id, **options)
         api_request "#{endpoint_uri('class')}/#{id}", default_options.merge(options)
       end
 
@@ -60,7 +60,7 @@ module BlizzardApi
       # @option options [Boolean] :classic If set to true, this method will call the classic version
       #
       # @!macro response
-      def subclass(id, subclass_id, options = {})
+      def subclass(id, subclass_id, **options)
         api_request "#{endpoint_uri('class')}/#{id}/item-subclass/#{subclass_id}", default_options.merge(options)
       end
 
@@ -73,7 +73,7 @@ module BlizzardApi
       # @option options [Boolean] :classic If set to true, this method will call the classic version
       #
       # @!macro response
-      def media(id, options = {})
+      def media(id, **options)
         api_request "#{base_url(:media)}/item/#{id}", default_options.merge(options)
       end
 
@@ -83,7 +83,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def sets(options = {})
+      def sets(**options)
         api_request "#{endpoint_uri('set')}/index", default_options.merge(options)
       end
 
@@ -94,7 +94,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def set(id, options = {})
+      def set(id, **options)
         api_request "#{endpoint_uri('set')}/#{id}", default_options.merge(options)
       end
 

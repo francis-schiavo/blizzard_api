@@ -16,7 +16,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def index(options = {})
+      def index(**options)
         api_request "#{base_url(:game_data)}/#{@endpoint}/", default_options.merge(options)
       end
 
@@ -27,7 +27,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def get(id, options = {})
+      def get(id, **options)
         api_request "#{base_url(:game_data)}/#{@endpoint}/#{id}", default_options.merge(options)
       end
 
@@ -39,7 +39,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def leaderboard(id, leaderboard_id, options = {})
+      def leaderboard(id, leaderboard_id, **options)
         opts = default_options.merge(options)
         api_request "#{base_url(:game_data)}/#{@endpoint}/#{id}/leaderboard/#{leaderboard_id}", opts
       end

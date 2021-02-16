@@ -36,7 +36,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def display_media(id, options = {})
+      def display_media(id, **options)
         api_request "#{base_url(:media)}/spell/#{id}", default_options.merge(options)
       end
 

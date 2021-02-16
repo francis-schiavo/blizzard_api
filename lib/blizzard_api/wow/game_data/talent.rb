@@ -16,7 +16,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def pvp_talents(options = {})
+      def pvp_talents(**options)
         api_request "#{base_url(:game_data)}/pvp-talent/index", default_options.merge(options)
       end
 
@@ -28,7 +28,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def pvp_talent(id, options = {})
+      def pvp_talent(id, **options)
         api_request "#{base_url(:game_data)}/pvp-talent/#{id}", default_options.merge(options)
       end
 

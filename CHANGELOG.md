@@ -1,6 +1,14 @@
 Please view this file on the master branch, otherwise it may be outdated
 
-**Version 0.5.3**
+**Version 0.5.5**
+
+Removing old and deprecated function from community endpoint.
+
+Refactored all `options` arguments to use double splat syntax.
+
+Modified README.md to point to the actual documentation and include missing endpoints.
+
+**Version 0.5.4**
 
 Added missing legacy SC2 endpoints
 

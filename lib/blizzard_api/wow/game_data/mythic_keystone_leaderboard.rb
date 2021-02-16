@@ -18,7 +18,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def index(connected_realm_id, options = {})
+      def index(connected_realm_id, **options)
         api_request "#{endpoint_uri(connected_realm_id)}/index", default_options(options)
       end
 
@@ -30,7 +30,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def get(connected_realm_id, dungeon_id, period, options = {})
+      def get(connected_realm_id, dungeon_id, period, **options)
         api_request "#{endpoint_uri(connected_realm_id)}/#{dungeon_id}/period/#{period}", default_options(options)
       end
 

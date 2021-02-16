@@ -18,7 +18,7 @@ module BlizzardApi
       # @param [Integer] team_type Team type
       # @param [Integer] league_id League id
       # @!macro request_options
-      def get(season_id, queue_id, team_type, league_id, options = {})
+      def get(season_id, queue_id, team_type, league_id, **options)
         opts = { ttl: CACHE_DAY }.merge(options)
         api_request "#{base_url(:game_data)}/league/#{season_id}/#{queue_id}/#{team_type}/#{league_id}", opts
       end

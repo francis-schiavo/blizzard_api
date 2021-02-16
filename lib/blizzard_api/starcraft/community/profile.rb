@@ -15,7 +15,7 @@ module BlizzardApi
       #
       # @!macro sc2_regions
       # @!macro request_options
-      def static(region_id, options = {})
+      def static(region_id, **options)
         reg = resolve_region(region_id)
         api_request "#{base_url(:community)}/static/profile/#{reg}", { ttl: CACHE_DAY }.merge(options)
       end
@@ -27,7 +27,7 @@ module BlizzardApi
       # @param [Integer] realm_id Realm ID
       # @param [Integer] profile_id Profile ID
       # @!macro request_options
-      def metadata(region_id, realm_id, profile_id, options = {})
+      def metadata(region_id, realm_id, profile_id, **options)
         reg = resolve_region(region_id)
         opts = { ttl: CACHE_DAY }.merge(options)
         api_request "#{base_url(:community)}/metadata/profile/#{reg}/#{realm_id}/#{profile_id}", opts
@@ -40,7 +40,7 @@ module BlizzardApi
       # @param [Integer] realm_id Realm ID
       # @param [Integer] profile_id Profile ID
       # @!macro request_options
-      def profile(region_id, realm_id, profile_id, options = {})
+      def profile(region_id, realm_id, profile_id, **options)
         reg = resolve_region(region_id)
         opts = { ttl: CACHE_DAY }.merge(options)
         api_request "#{base_url(:community)}/profile/#{reg}/#{realm_id}/#{profile_id}", opts
@@ -53,7 +53,7 @@ module BlizzardApi
       # @param [Integer] realm_id Realm ID
       # @param [Integer] profile_id Profile ID
       # @!macro request_options
-      def ladder_summary(region_id, realm_id, profile_id, options = {})
+      def ladder_summary(region_id, realm_id, profile_id, **options)
         reg = resolve_region(region_id)
         opts = { ttl: CACHE_DAY }.merge(options)
         api_request "#{base_url(:community)}profile/#{reg}/#{realm_id}/#{profile_id}/ladder/summary ", opts
@@ -66,7 +66,7 @@ module BlizzardApi
       # @param [Integer] realm_id Realm ID
       # @param [Integer] profile_id Profile ID
       # @!macro request_options
-      def ladder(region_id, realm_id, profile_id, ladder_id, options = {})
+      def ladder(region_id, realm_id, profile_id, ladder_id, **options)
         reg = resolve_region(region_id)
         opts = { ttl: CACHE_DAY }.merge(options)
         api_request "#{base_url(:community)}/profile/#{reg}/#{realm_id}/#{profile_id}/ladder/#{ladder_id}", opts

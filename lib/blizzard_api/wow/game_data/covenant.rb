@@ -18,7 +18,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def media(id, options = {})
+      def media(id, **options)
         api_request "#{base_url(:media)}/covenant/#{id}", default_options.merge(options)
       end
 
@@ -28,7 +28,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def soulbinds(options = {})
+      def soulbinds(**options)
         api_request "#{base_url(:game_data)}/covenant/soulbind/index", default_options.merge(options)
       end
 
@@ -40,7 +40,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def soulbind(id, options = {})
+      def soulbind(id, **options)
         api_request "#{base_url(:game_data)}/covenant/soulbind/#{id}", default_options.merge(options)
       end
 
@@ -50,7 +50,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def conduits(options = {})
+      def conduits(**options)
         api_request "#{base_url(:game_data)}/covenant/conduit/index", default_options.merge(options)
       end
 
@@ -62,7 +62,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def conduit(id, options = {})
+      def conduit(id, **options)
         api_request "#{base_url(:game_data)}/covenant/conduit/#{id}", default_options.merge(options)
       end
 

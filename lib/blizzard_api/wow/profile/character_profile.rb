@@ -22,7 +22,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def get(realm, character, options = {})
+      def get(realm, character, **options)
         character_request realm, character, options
       end
 
@@ -36,8 +36,8 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def achievements(realm, character, options = {})
-        character_request realm, character, options, 'achievements'
+      def achievements(realm, character, **options)
+        character_request realm, character, 'achievements', options
       end
 
       ##
@@ -50,8 +50,8 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def achievement_statistics(realm, character, options = {})
-        character_request realm, character, options, 'achievements/statistics'
+      def achievement_statistics(realm, character, **options)
+        character_request realm, character, 'achievements/statistics', options
       end
 
       ##
@@ -64,8 +64,8 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def appearance(realm, character, options = {})
-        character_request realm, character, options, 'appearance'
+      def appearance(realm, character, **options)
+        character_request realm, character, 'appearance', options
       end
 
       ##
@@ -78,8 +78,8 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def collections(realm, character, options = {})
-        character_request realm, character, options, 'collections'
+      def collections(realm, character, **options)
+        character_request realm, character, 'collections', options
       end
 
       ##
@@ -92,8 +92,8 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def pets(realm, character, options = {})
-        character_request realm, character, options, 'collections/pets'
+      def pets(realm, character, **options)
+        character_request realm, character, 'collections/pets', options
       end
 
       ##
@@ -106,8 +106,8 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def mounts(realm, character, options = {})
-        character_request realm, character, options, 'collections/mounts'
+      def mounts(realm, character, **options)
+        character_request realm, character, 'collections/mounts', options
       end
 
       ##
@@ -120,8 +120,8 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def encounters(realm, character, options = {})
-        character_request realm, character, options, 'encounters'
+      def encounters(realm, character, **options)
+        character_request realm, character, 'encounters', options
       end
 
       ##
@@ -134,8 +134,8 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def dungeons(realm, character, options = {})
-        character_request realm, character, options, 'encounters/dungeons'
+      def dungeons(realm, character, **options)
+        character_request realm, character, 'encounters/dungeons', options
       end
 
       ##
@@ -148,8 +148,8 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def raids(realm, character, options = {})
-        character_request realm, character, options, 'encounters/raids'
+      def raids(realm, character, **options)
+        character_request realm, character, 'encounters/raids', options
       end
 
       ##
@@ -162,8 +162,8 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def equipment(realm, character, options = {})
-        character_request realm, character, options, 'equipment'
+      def equipment(realm, character, **options)
+        character_request realm, character, 'equipment', options
       end
 
       ##
@@ -176,8 +176,8 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def hunter_pets(realm, character, options = {})
-        character_request realm, character, options, 'hunter-pets'
+      def hunter_pets(realm, character, **options)
+        character_request realm, character, 'hunter-pets', options
       end
 
       ##
@@ -190,8 +190,8 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def media(realm, character, options = {})
-        character_request realm, character, options, 'character-media'
+      def media(realm, character, **options)
+        character_request realm, character, 'character-media', options
       end
 
       ##
@@ -204,8 +204,8 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def mythic_keystone_profile(realm, character, options = {})
-        character_request realm, character, options, 'mythic-keystone-profile'
+      def mythic_keystone_profile(realm, character, **options)
+        character_request realm, character, 'mythic-keystone-profile', options
       end
 
       ##
@@ -219,8 +219,8 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def mythic_keystone_seasons(realm, character, season = nil, options = {})
-        character_request realm, character, options, "mythic-keystone-profile/season/#{season}"
+      def mythic_keystone_seasons(realm, character, season = nil, **options)
+        character_request realm, character, "mythic-keystone-profile/season/#{season}", options
       end
 
       ##
@@ -233,8 +233,8 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def professions(realm, character, options = {})
-        character_request realm, character, options, 'professions'
+      def professions(realm, character, **options)
+        character_request realm, character, 'professions', options
       end
 
       ##
@@ -248,8 +248,8 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def status(realm, character, options = {})
-        character_request realm, character, options, 'status'
+      def status(realm, character, **options)
+        character_request realm, character, 'status', options
       end
 
       ##
@@ -263,8 +263,8 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def pvp_bracket(realm, character, bracket, options = {})
-        character_request realm, character, options, "pvp-bracket/#{bracket}"
+      def pvp_bracket(realm, character, bracket, **options)
+        character_request realm, character, "pvp-bracket/#{bracket}", options
       end
 
       ##
@@ -277,8 +277,8 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def pvp_summary(realm, character, options = {})
-        character_request realm, character, options, 'pvp-summary'
+      def pvp_summary(realm, character, **options)
+        character_request realm, character, 'pvp-summary', options
       end
 
       ##
@@ -292,11 +292,11 @@ module BlizzardApi
       #   @option options [Boolean] :completed Should return completed quests
       #
       # @!macro response
-      def quests(realm, character, options = {})
+      def quests(realm, character, **options)
         completed = options.delete(:completed) || false
-        return character_request realm, character, options, 'quests/completed' if completed
+        return character_request realm, character, 'quests/completed', options if completed
 
-        character_request realm, character, options, 'quests'
+        character_request realm, character, 'quests', options
       end
 
       ##
@@ -309,8 +309,8 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def reputation(realm, character, options = {})
-        character_request realm, character, options, 'reputations'
+      def reputation(realm, character, **options)
+        character_request realm, character, 'reputations', options
       end
 
       ##
@@ -323,8 +323,8 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def soulbinds(realm, character, options = {})
-        character_request realm, character, options, 'soulbinds'
+      def soulbinds(realm, character, **options)
+        character_request realm, character, 'soulbinds', options
       end
 
       ##
@@ -337,8 +337,8 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def specializations(realm, character, options = {})
-        character_request realm, character, options, 'specializations'
+      def specializations(realm, character, **options)
+        character_request realm, character, 'specializations', options
       end
 
       ##
@@ -351,8 +351,8 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def statistics(realm, character, options = {})
-        character_request realm, character, options, 'statistics'
+      def statistics(realm, character, **options)
+        character_request realm, character, 'statistics', options
       end
 
       ##
@@ -365,8 +365,8 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def titles(realm, character, options = {})
-        character_request realm, character, options, 'titles'
+      def titles(realm, character, **options)
+        character_request realm, character, 'titles', options
       end
 
       private
@@ -377,7 +377,7 @@ module BlizzardApi
         opts
       end
 
-      def character_request(realm, character, options = {}, variant = nil)
+      def character_request(realm, character, variant = nil, **options)
         uri = "#{base_url(:profile)}/character/#{string_to_slug(realm)}/#{string_to_slug(character)}"
         uri += "/#{variant}" if variant
         api_request uri, default_options.merge(options)

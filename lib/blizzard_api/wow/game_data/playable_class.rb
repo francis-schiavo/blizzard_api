@@ -17,7 +17,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def talent_slots(id, options = {})
+      def talent_slots(id, **options)
         api_request "#{endpoint_uri}/#{id}/pvp-talent-slots", default_options.merge(options)
       end
 
@@ -25,7 +25,7 @@ module BlizzardApi
       # @!macro complete
       #
       # @option options [Boolean] :classic If set to true, this method will call the classic version
-      def complete(options = {})
+      def complete(**options)
         index_data = index options
         [].tap do |classes|
           index_data[:classes].each do |pclass|
@@ -45,7 +45,7 @@ module BlizzardApi
       # @option options [Boolean] :classic If set to true, this method will call the classic version
       #
       # @!macro response
-      def get(id, options = {})
+      def get(id, **options)
         data = api_request "#{endpoint_uri}/#{id}", default_options.merge(options)
         data[:icon] = get_class_icon data[:media], options
         data
@@ -59,7 +59,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def media(id, options = {})
+      def media(id, **options)
         api_request "#{base_url(:media)}/playable-class/#{id}", default_options.merge(options)
       end
 

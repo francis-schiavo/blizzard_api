@@ -63,18 +63,15 @@ race = BlizzardApi::Wow.race
 race_data = race.complete
 ```
 
-:bulb: If you use the wrapper it will always use the default region specified in the configuration file.
+Most **game data** endpoints will have always 3 methods available `index`, `get` and `complete`.
 
-Most **data** endpoints will have always 3 methods available `index`, `get` and `complete`.
-
-* `index` is used to get a list of all resources od that endpoint.
+* `index` is used to get a list of all resources of that endpoint.
 * `get` is used to get all information about a entry of the index returned data. It receives an id or slug as the first parameter, that depends on the endpoint.
 * `complete` is a complete information of all items listed in index. **This may perform various calls to the blizzard api** only use if you really need all information.
 
 ### 3.1 Searchable endpoints
 
 Some endpoints support search filters. To perform a search you can use the following formats:
-
 
 To use the **or** operator you may pass an array of values as argument to `where` or `where_not` methods.
 ```ruby
@@ -125,227 +122,72 @@ end
 
 ### 4.1. World of Warcraft endpoints
 
-* Blizzard::Wow::Achievement
-  - get :id
-  - index
-  - categories
-  - category :id
-  - media :id
-* Blizzard::Wow::ConnectedRealm
-  - index
-  - get :id
-  - complete
-* Blizzard::Wow::Creature
-  - get :id
-  - families
-  - family :id
-  - family_media :id
-  - types
-  - type :id
-  - display_media :id
-  - search
-* Blizzard::Wow::Guild
-  - rewards
-  - perks
-  - get :realm, :guild
-  - roster :realm, :guild
-  - achievements :realm, :guild
-* Blizzard::Wow::GuildCrest
-  - index
-  - border_media :id
-  - emblem_media :id
-* Blizzard::Wow::MythicKeystonesAffix
-  - index
-  - get :id
-  - complete
-* Blizzard::Wow::MythicKeystone
-  - index
-  - dungeons
-  - dungeon :id
-  - periods
-  - period :id
-  - seasons
-  - season :id
-* Blizzard::Wow::MythicRaidLeaderboard
-  - get :raid_slug, :faction_slug
-* Blizzard::Wow::Mount
-  - index
-  - get :id
-  - complete
-* Blizzard::Wow::MythicKeystoneLeaderboard
-  - index :connected_realm_id
-  - get :connected_realm_id, :dungeon_id, :period
-* Blizzard::Wow::Pet
-  - index
-  - get
-  - ability :id
-  - species :id
-  - stats :level, :breed_id, :quality_id
-  - types
-* Blizzard::Wow::PlayableClass
-  - index
-  - get :id
-  - complete
-  - talent_slots :id
-* Blizzard::Wow::PlayableSpecialization
-  - index
-  - get :id
-  - complete
-* Blizzard::Wow::PowerType
-  - index
-  - get :id
-  - complete
-* Blizzard::Wow::PvpSeason
-  - index
-  - get :id
-  - leaderboards :season_id
-  - leaderboard :season_id, :brackets
-  - rewards :season_id
-* Blizzard::Wow::PvpTier
-  - index
-  - get :id
-  - tier_media :id
-* Blizzard::Wow::Realm
-  - index
-  - get :id
-  - complete
-  - status :realms
-  - search
-* Blizzard::Wow::Region
-  - index
-  - get :id
-  - complete
-* Blizzard::Wow::WowToken
-  - get
-* Blizzard::Wow::Race
-  - index
-  - get :id
-  - complete
-* Blizzard::Wow::Title
-  - index
-  - get :id
-* Blizzard::Wow::Item
-  - get :id
-  - item_set :id
-  - classes
-  - class :id
-  - subclass :class_id, :subclass_id
-  - media :id
-  - search
-* Blizzard::Wow::AzeriteEssence
-  - index
-  - get :id
-  - media :id
-  - search
-* Blizzard::Wow::ReputationTier
-  - index
-  - get :id
-* Blizzard::Wow::ReputationFaction
-  - index
-  - get :id
+* [BlizzardApi::Wow.achievement](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/Achievement)
+* [BlizzardApi::Wow.auction](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/Auction)
+* [BlizzardApi::Wow.azerite_essence](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/AzeriteEssence)
+* [BlizzardApi::Wow.connected_realm](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/ConnectedRealm)
+* [BlizzardApi::Wow.covenant](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/Covenant)
+* [BlizzardApi::Wow.creature](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/Creature)
+* [BlizzardApi::Wow.guild_crest](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/GuildCrest)
+* [BlizzardApi::Wow.item](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/Item)
+* [BlizzardApi::Wow.journal](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/Journal)
+* [BlizzardApi::Wow.media](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/Media)
+* [BlizzardApi::Wow.modified_crafting](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/ModifiedCrafting)
+* [BlizzardApi::Wow.mount](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/Mount)
+* [BlizzardApi::Wow.mythic_keystone_affix](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/MythicKeystoneAffix)
+* [BlizzardApi::Wow.mythic_keystone](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/MythicKeystone)
+* [BlizzardApi::Wow.mythic_raid_leaderboard](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/MythicRaidLeaderboard)
+* [BlizzardApi::Wow.mythic_keystone_leaderboard](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/MythicKeystoneLeaderboard)
+* [BlizzardApi::Wow.pet](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/Pet)
+* [BlizzardApi::Wow.playable_class](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/PlayableClass)
+* [BlizzardApi::Wow.playable_race](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/PlayableRace)
+* [BlizzardApi::Wow.playable_specialization](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/PlayableSpecialization)
+* [BlizzardApi::Wow.power_type](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/PowerType)
+* [BlizzardApi::Wow.profession](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/Profession)
+* [BlizzardApi::Wow.pvp_season](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/PvpSeason)
+* [BlizzardApi::Wow.pvp_tier](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/PvpTier)
+* [BlizzardApi::Wow.quest](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/Quest)
+* [BlizzardApi::Wow.realm](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/Realm)
+* [BlizzardApi::Wow.region](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/Region)
+* [BlizzardApi::Wow.reputation](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/Reputation)
+* [BlizzardApi::Wow.spell](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/Spell)
+* [BlizzardApi::Wow.talent](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/Talent)
+* [BlizzardApi::Wow.tech_talent](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/TechTalent)
+* [BlizzardApi::Wow.title](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/Title)
+* [BlizzardApi::Wow.wow_token](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/WowToken)
 
-* Blizzard::Wow::Auction
-  - get :realm
-* Blizzard::Wow::Boss
-  - index
-  - get :id
-* Blizzard::Wow::Challenge
-  - realm_index
-  - region_index
-* Blizzard::Wow::Guild
-  - get :relam, :name, :fields
-  - rewards
-  - perks
-* Blizzard::Wow::PvP
-  - get :bracket
-* Blizzard::Wow::Quest
-  - get :id
-* Blizzard::Wow::Recipe
-  - get :id
-* Blizzard::Wow::Spell
-  - get :id
-  - search
-* Blizzard::Wow::Zone
-  - index
-  - get :id
-
-* BlizzardApi::Wow::CharacterProfile
-  - get_user_characters :user_token
-  - get :realm, :character, :fields
-  - status :realm, :character
-  - pvp_summmary :realm, :character, :user_token
-  - pvp_bracket :realm, :character, :bracket, :user_token
-  - achievements :realm, :character
-  - appearance :realm, :character
-  - equipment :realm, :character
-  - media :realm, :character
-  - pvp_bracket :realm, :character, :bracket
-  - pvp_summary :realm, :character
-  - specializations :realm, :character
-  - statistics :realm, :character
-  - titles :realm, :character
-  - mythic_keystone_profile :realm, :character
-  - mythic_keystone_seasons :realm, :character
-  - collections :realm, :character
-  - pets :realm, :character
-  - mounts :realm, :character
-  - hunter_pets :realm, :character
-  - reputations :realm, :character
-  - raid_progression :realm, :character (Not active yet on Blizzard servers)
+* [BlizzardApi::Wow.profile](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/Profile)
+* [BlizzardApi::Wow.guild](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/Guild)
+* [BlizzardApi::Wow.character_profile](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/CharacterProfile)
 
 ### 4.2. Diablo III endpoints
 
-* BlizzardApi::Diablo::Act
-  - index
-  - get :id
-* BlizzardApi::Diablo::Artisan
-  - get :artisan_slug
-  - recipe :artisan_slug, :recipe_slug
-* BlizzardApi::Diablo::Follower
-  - get :slug
-* BlizzardApi::Diablo::Character
-  - get :class_slug
-  - skill :class_slug, :skill_slug
-* BlizzardApi::Diablo::ItemType
-  - index
-  - get :item_type_slug
-* BlizzardApi::Diablo::Item
-  - get :item_slug, :item_id
-* BlizzardApi::Diablo::Profile
-  - index :battletag, :oauth_token
-  - hero :battletag, :oauth_token, :hero_id
-  - hero_items :battletag, :oauth_token, :hero_id
-  - hero_follower_items :battletag, :oauth_token, :hero_id
+* [BlizzardApi::Diablo.season](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Diablo/Season)
+* [BlizzardApi::Diablo.era](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Diablo/Era)
+* [BlizzardApi::Diablo.act](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Diablo/Act)
+* [BlizzardApi::Diablo.artisan](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Diablo/Artisan)
+* [BlizzardApi::Diablo.follower](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Diablo/Follower)
+* [BlizzardApi::Diablo.character](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Diablo/Character)
+* [BlizzardApi::Diablo.item_type](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Diablo/ItemType)
+* [BlizzardApi::Diablo.item](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Diablo/Item)
+* [BlizzardApi::Diablo.profile](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Diablo/Profile)
 
 ### 4.3. Hearthstone endpoints
 
-* BlizzardApi::Hearthstone::Card
-  - index
-  - get :id_or_slug
-  - search :search_options
-* BlizzardApi::Hearthstone::Deck
-  - get :deck_code
-* BlizzardApi::Hearthstone::Metadata
-  - index
-  - get :type
+* [BlizzardApi::Hearthstone.card](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Hearthstone/Card)
+* [BlizzardApi::Hearthstone.back](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Hearthstone/Back)
+* [BlizzardApi::Hearthstone.deck](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Hearthstone/Deck)
+* [BlizzardApi::Hearthstone.metadata](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Hearthstone/Metadata)
   
 ### 4.4. Starcraft II endpoints
 
 Every endpoint requiring a *region_id* parameter will accepts either the integer representation of the region described in the api docs or a symbol: `:US`, `:EU`, `:KO` or `:TW` 
 
-* BlizzardApi::Starcraft::League
-  - get :season_id, :queue_id, :team_type, :league_id
-* BlizzardApi::Starcraft::Profile
-  - static :region_id
-  - metadata :region_id, :realm_id, :profile_id
-  - profile :region_id, :realm_id, :profile_id
-  - ladder_summary :region_id, :realm_id, :profile_id
-  - ladder :region_id, :realm_id, :profile_id, :ladder_id
-* BlizzardApi::Starcraft::Ladder
-  - grandmaster :region_id, :options
-  - season :region_id
-* BlizzardApi::Starcraft::Account
-  - player :account_id
+* [BlizzardApi::Starcraft.profile](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Starcraft/Profile)
+* [BlizzardApi::Starcraft.ladder](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Starcraft/Ladder)
+* [BlizzardApi::Starcraft.account](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Starcraft/Account)
+* [BlizzardApi::Starcraft.legacy](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Starcraft/Legacy)
+* [BlizzardApi::Starcraft.league](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Starcraft/League)
 
 ## Contributing
 

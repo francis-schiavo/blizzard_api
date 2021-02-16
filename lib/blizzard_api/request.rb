@@ -115,7 +115,7 @@ module BlizzardApi
       BlizzardApi.access_token = JSON.parse(response.body)['access_token']
     end
 
-    def request(url, options = {})
+    def request(url, **options)
       # Creates the whole url for request
       parsed_url = URI.parse(url)
 
@@ -163,7 +163,7 @@ module BlizzardApi
       !options.fetch(:ignore_cache, false)
     end
 
-    def consume_api(url, options = {})
+    def consume_api(url, **options)
       # Creates a HTTP connection and request to ensure thread safety
       http = Net::HTTP.new(url.host, url.port)
       http.use_ssl = true

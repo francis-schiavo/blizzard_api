@@ -16,7 +16,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def index(options = {})
+      def index(**options)
         api_request "#{base_url(:community)}/data/act", { ttl: CACHE_TRIMESTER }.merge(options)
       end
 
@@ -27,7 +27,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def get(id, options = {})
+      def get(id, **options)
         api_request "#{base_url(:community)}/data/act/#{id}", { ttl: CACHE_TRIMESTER }.merge(options)
       end
     end

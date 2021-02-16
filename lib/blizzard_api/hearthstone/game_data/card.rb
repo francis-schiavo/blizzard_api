@@ -72,7 +72,7 @@ module BlizzardApi
       #   option is invalid
       #
       # @!macro response
-      def search(search_options = {}, options = {})
+      def search(search_options = {}, **options)
         validate_search_options search_options if options.include? :validate_fields
 
         api_request "#{base_url(:community)}/cards", default_options.merge(options).merge(search_options)
@@ -90,7 +90,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def get(id_or_slug, game_mode = 'constructed', options = {})
+      def get(id_or_slug, game_mode = 'constructed', **options)
         super id_or_slug, { gameMode: game_mode }.merge(options)
       end
 

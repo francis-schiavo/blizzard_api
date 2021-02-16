@@ -17,7 +17,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def get(artisan_slug, options = {})
+      def get(artisan_slug, **options)
         api_request "#{base_url(:community)}/data/artisan/#{artisan_slug}", { ttl: CACHE_TRIMESTER }.merge(options)
       end
 
@@ -29,7 +29,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def recipe(artisan_slug, recipe_slug, options = {})
+      def recipe(artisan_slug, recipe_slug, **options)
         opts = { ttl: CACHE_TRIMESTER }.merge(options)
         api_request "#{base_url(:community)}/data/artisan/#{artisan_slug}/recipe/#{recipe_slug}", opts
       end
