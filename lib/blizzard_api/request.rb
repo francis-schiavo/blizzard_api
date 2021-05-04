@@ -174,7 +174,7 @@ module BlizzardApi
       # Executes the request
       http.request(request).tap do |response|
         if mode.eql?(:regular) && ![200, 304].include?(response.code.to_i)
-          raise BlizzardApi::ApiException.new "Request failed with code #{response.code}", response.code.to_i
+          raise BlizzardApi::ApiException.new "Request failed with code '#{response.code}' details: #{response.to_hash}", response.code.to_i
         end
       end
     end
