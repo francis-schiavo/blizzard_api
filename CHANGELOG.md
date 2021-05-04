@@ -1,5 +1,9 @@
 Please view this file on the master branch, otherwise it may be outdated
 
+**Version 0.5.6**
+
+Upgrade gem dependencies to fix a security vulnerability 
+
 **Version 0.5.5**
 
 Removing old and deprecated function from community endpoint.
