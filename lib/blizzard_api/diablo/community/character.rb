@@ -18,7 +18,7 @@ module BlizzardApi
       #
       # @!macro response
       def get(class_slug, **options)
-        api_request "#{base_url(:community)}/data/hero/#{class_slug}", { ttl: CACHE_TRIMESTER }.merge(options)
+        api_request "#{base_url(:community)}/data/hero/#{class_slug}", **{ ttl: CACHE_TRIMESTER }.merge(options)
       end
 
       ##
@@ -31,7 +31,7 @@ module BlizzardApi
       # @!macro response
       def skill(class_slug, skill_slug, **options)
         opts = { ttl: CACHE_TRIMESTER }.merge(options)
-        api_request "#{base_url(:community)}/data/hero/#{class_slug}/skill/#{skill_slug}", opts
+        api_request "#{base_url(:community)}/data/hero/#{class_slug}/skill/#{skill_slug}", **opts
       end
     end
   end

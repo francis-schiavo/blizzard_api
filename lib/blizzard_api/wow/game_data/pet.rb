@@ -19,7 +19,7 @@ module BlizzardApi
       #
       # @!macro response
       def media(id, **options)
-        api_request "#{base_url(:media)}/pet/#{id}", default_options.merge(options)
+        api_request "#{base_url(:media)}/pet/#{id}", **default_options.merge(options)
       end
 
       ##
@@ -29,7 +29,7 @@ module BlizzardApi
       #
       # @!macro response
       def abilities(**options)
-        api_request "#{endpoint_uri('ability')}/index", default_options.merge(options)
+        api_request "#{endpoint_uri('ability')}/index", **default_options.merge(options)
       end
 
       ##
@@ -41,7 +41,7 @@ module BlizzardApi
       #
       # @!macro response
       def ability(id, **options)
-        api_request "#{endpoint_uri('ability')}/#{id}", default_options.merge(options)
+        api_request "#{endpoint_uri('ability')}/#{id}", **default_options.merge(options)
       end
 
       ##
@@ -53,7 +53,7 @@ module BlizzardApi
       #
       # @!macro response
       def ability_media(id, **options)
-        api_request "#{base_url(:media)}/pet-ability/#{id}", default_options.merge(options)
+        api_request "#{base_url(:media)}/pet-ability/#{id}", **default_options.merge(options)
       end
 
       protected

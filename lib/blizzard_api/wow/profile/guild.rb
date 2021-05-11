@@ -21,7 +21,7 @@ module BlizzardApi
       #
       # @!macro response
       def get(realm, guild, **options)
-        guild_request(realm, guild, options)
+        guild_request(realm, guild, **options)
       end
 
       ##
@@ -34,7 +34,7 @@ module BlizzardApi
       #
       # @!macro response
       def roster(realm, guild, **options)
-        guild_request realm, guild, 'roster', options
+        guild_request realm, guild, 'roster', **options
       end
 
       ##
@@ -46,7 +46,7 @@ module BlizzardApi
       #
       # @!macro response
       def achievements(realm, guild, **options)
-        guild_request realm, guild, 'achievements', options
+        guild_request realm, guild, 'achievements', **options
       end
 
       ##
@@ -58,7 +58,7 @@ module BlizzardApi
       #
       # @!macro response
       def activity(realm, guild, **options)
-        guild_request realm, guild, 'activity', options
+        guild_request realm, guild, 'activity', **options
       end
 
       private
@@ -68,7 +68,7 @@ module BlizzardApi
         guild = string_to_slug(guild)
         url = "#{base_url(:game_data)}/guild/#{realm}/#{guild}"
         url += "/#{variant}" if variant
-        api_request url, { ttl: CACHE_DAY, namespace: :profile }.merge(options)
+        api_request url, **{ ttl: CACHE_DAY, namespace: :profile }.merge(options)
       end
     end
   end

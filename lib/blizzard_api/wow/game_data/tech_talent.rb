@@ -17,7 +17,7 @@ module BlizzardApi
       #
       # @!macro response
       def tech_talent_trees(**options)
-        api_request "#{base_url(:game_data)}/tech-talent-tree/index", default_options.merge(options)
+        api_request "#{base_url(:game_data)}/tech-talent-tree/index", **default_options.merge(options)
       end
 
       ##
@@ -29,7 +29,7 @@ module BlizzardApi
       #
       # @!macro response
       def tech_talent_tree(id, **options)
-        api_request "#{base_url(:game_data)}/tech-talent-tree/#{id}", default_options.merge(options)
+        api_request "#{base_url(:game_data)}/tech-talent-tree/#{id}", **default_options.merge(options)
       end
 
       ##
@@ -41,7 +41,7 @@ module BlizzardApi
       #
       # @!macro response
       def media(id, **options)
-        api_request "#{base_url(:media)}/tech-talent/#{id}", default_options.merge(options)
+        api_request "#{base_url(:media)}/tech-talent/#{id}", **default_options.merge(options)
       end
 
       protected

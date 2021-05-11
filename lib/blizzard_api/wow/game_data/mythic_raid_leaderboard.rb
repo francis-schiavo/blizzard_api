@@ -21,7 +21,7 @@ module BlizzardApi
       # @!macro response
       def get(raid, faction, **options)
         opts = options.merge(namespace: :dynamic, ttl: CACHE_DAY)
-        api_request "#{base_url(:game_data)}/leaderboard/hall-of-fame/#{raid}/#{faction}", opts
+        api_request "#{base_url(:game_data)}/leaderboard/hall-of-fame/#{raid}/#{faction}", **opts
       end
     end
   end

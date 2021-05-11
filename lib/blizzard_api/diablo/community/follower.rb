@@ -18,7 +18,7 @@ module BlizzardApi
       #
       # @!macro response
       def get(follower_slug, **options)
-        api_request "#{base_url(:community)}/data/follower/#{follower_slug}", { ttl: CACHE_TRIMESTER }.merge(options)
+        api_request "#{base_url(:community)}/data/follower/#{follower_slug}", **{ ttl: CACHE_TRIMESTER }.merge(options)
       end
     end
   end

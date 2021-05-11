@@ -45,46 +45,18 @@ module BlizzardApi
     attr_accessor :redis_port
 
     ##
-    # @!attribute format
-    #   Response format:
-    #   * *:raw* plain text (String)
-    #   * *:json* for native ruby json (Array).
-    #   * Any other value *OpenStruct* will be used.
-    #   @return [Symbol] Response format.
-    attr_accessor :format
+    #
+    # @!attribute concurrency
+    #   How many threads to use for WoW game data `complete` payloads. Defaults to 4.
+    #   Should be set to the amount of available cores on the system.
+    #   @return [Integer] Concurrency
+    attr_accessor :concurrency
 
     ##
     # @!attribute access_token
     #   Access token. Optional. If you don't provide one it will be generate using your client credentials.
     #   @return [String] Access token.
     attr_accessor :access_token
-
-    ##
-    # @!attribute icons_directory
-    #   Icons directory.
-    #   This directory stores icons for many World of Warcraft endpoints.
-    #   @return [String] icons_directory
-    attr_accessor :wow_icons_directory
-
-    ##
-    # @!attribute guild_emblem_directory
-    #   Guild crest images directory. Some sub directories will be created.
-    #   @see https://develop.battle.net/access/clients
-    #   @return [String] Guild crest directory
-    attr_accessor :wow_guild_crest_directory
-
-    ##
-    # @!attribute wow_character_profile_directory
-    #   This directory stores images for World of Warcraft character profiles. Sub directories will be created for
-    #   each realm and character.
-    #   @return [String] Character profile media directory
-    attr_accessor :wow_character_profile_directory
-
-    ##
-    # @!attribute wow_npc_directory
-    #   This directory stores images for World of Warcraft NPCs and creatures.
-    #   @return [String] NPCs media directory
-    attr_accessor :wow_npc_directory
 
     ##
     # This method return the singleton instance of the configuration module. Use this to initialize the default values
@@ -109,6 +81,10 @@ module BlizzardApi
     #   end
     def configure
       yield self
+    end
+
+    def concurrency
+      @concurrency ||= 4
     end
   end
 end

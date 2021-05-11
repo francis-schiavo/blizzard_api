@@ -1,14 +1,16 @@
 PATH
   remote: .
   specs:
-    blizzard_api (0.5.6)
+    blizzard_api (0.6.0)
       redis (~> 4.1, >= 4.1.0)
+      thwait (~> 0.2.0)
 
 GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.2)
     dotenv (2.7.6)
+    e2mmap (0.1.0)
     minitest (5.14.4)
     parallel (1.20.1)
     parser (3.0.1.1)
@@ -30,6 +32,8 @@ GEM
     rubocop-ast (1.5.0)
       parser (>= 3.0.1.1)
     ruby-progressbar (1.11.0)
+    thwait (0.2.0)
+      e2mmap
     unicode-display_width (1.7.0)
     yard (0.9.26)
 
@@ -45,4 +49,4 @@ DEPENDENCIES
   yard
 
 BUNDLED WITH
-   2.1.4
+   2.2.17
