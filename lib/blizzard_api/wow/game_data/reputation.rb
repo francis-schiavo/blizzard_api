@@ -33,7 +33,7 @@ module BlizzardApi
       #
       # @!macro response
       def factions(**options)
-        api_request "#{endpoint_uri('faction')}/index", default_options.merge(options)
+        api_request "#{endpoint_uri('faction')}/index", **default_options.merge(options)
       end
 
       ##
@@ -44,7 +44,7 @@ module BlizzardApi
       #
       # @!macro response
       def faction(id, **options)
-        api_request "#{endpoint_uri('faction')}/#{id}", default_options.merge(options)
+        api_request "#{endpoint_uri('faction')}/#{id}", **default_options.merge(options)
       end
 
       ##
@@ -54,7 +54,7 @@ module BlizzardApi
       #
       # @!macro response
       def tiers(**options)
-        api_request "#{endpoint_uri('tiers')}/index", default_options.merge(options)
+        api_request "#{endpoint_uri('tiers')}/index", **default_options.merge(options)
       end
 
       ##
@@ -65,7 +65,7 @@ module BlizzardApi
       #
       # @!macro response
       def tier(id, **options)
-        api_request "#{endpoint_uri('tiers')}/#{id}", default_options.merge(options)
+        api_request "#{endpoint_uri('tiers')}/#{id}", **default_options.merge(options)
       end
 
       protected

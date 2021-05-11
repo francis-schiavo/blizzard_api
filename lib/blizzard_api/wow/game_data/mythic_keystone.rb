@@ -25,7 +25,7 @@ module BlizzardApi
       #
       # @!macro response
       def dungeons(**options)
-        api_request "#{endpoint_uri}/dungeon/index", default_options.merge(options)
+        api_request "#{endpoint_uri}/dungeon/index", **default_options.merge(options)
       end
 
       ##
@@ -37,7 +37,7 @@ module BlizzardApi
       #
       # @!macro response
       def dungeon(id, **options)
-        api_request "#{endpoint_uri}/dungeon/#{id}", default_options.merge(options)
+        api_request "#{endpoint_uri}/dungeon/#{id}", **default_options.merge(options)
       end
 
       ##
@@ -47,7 +47,7 @@ module BlizzardApi
       #
       # @!macro response
       def periods(**options)
-        api_request "#{endpoint_uri}/period/index", default_options.merge(options)
+        api_request "#{endpoint_uri}/period/index", **default_options.merge(options)
       end
 
       ##
@@ -59,7 +59,7 @@ module BlizzardApi
       #
       # @!macro response
       def period(id, **options)
-        api_request "#{endpoint_uri}/period/#{id}", default_options.merge(options)
+        api_request "#{endpoint_uri}/period/#{id}", **default_options.merge(options)
       end
 
       ##
@@ -69,7 +69,7 @@ module BlizzardApi
       #
       # @!macro response
       def seasons(**options)
-        api_request "#{endpoint_uri}/season/index", default_options.merge(options)
+        api_request "#{endpoint_uri}/season/index", **default_options.merge(options)
       end
 
       ##
@@ -81,7 +81,7 @@ module BlizzardApi
       #
       # @!macro response
       def season(id, **options)
-        api_request "#{endpoint_uri}/season/#{id}", default_options.merge(options)
+        api_request "#{endpoint_uri}/season/#{id}", **default_options.merge(options)
       end
 
       protected

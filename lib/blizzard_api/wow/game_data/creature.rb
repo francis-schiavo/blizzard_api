@@ -28,7 +28,7 @@ module BlizzardApi
       #
       # @!macro response
       def families(**options)
-        api_request "#{endpoint_uri('family')}/index", default_options.merge(options)
+        api_request "#{endpoint_uri('family')}/index", **default_options.merge(options)
       end
 
       ##
@@ -41,7 +41,7 @@ module BlizzardApi
       #
       # @!macro response
       def family(id, **options)
-        api_request "#{endpoint_uri('family')}/#{id}", default_options.merge(options)
+        api_request "#{endpoint_uri('family')}/#{id}", **default_options.merge(options)
       end
 
       ##
@@ -54,7 +54,7 @@ module BlizzardApi
       #
       # @!macro response
       def family_media(id, **options)
-        api_request "#{base_url(:media)}/creature-family/#{id}", default_options.merge(options)
+        api_request "#{base_url(:media)}/creature-family/#{id}", **default_options.merge(options)
       end
 
       ##
@@ -65,7 +65,7 @@ module BlizzardApi
       #
       # @!macro response
       def types(**options)
-        api_request "#{endpoint_uri('type')}/index", default_options.merge(options)
+        api_request "#{endpoint_uri('type')}/index", **default_options.merge(options)
       end
 
       ##
@@ -78,7 +78,7 @@ module BlizzardApi
       #
       # @!macro response
       def type(id, **options)
-        api_request "#{endpoint_uri('type')}/#{id}", default_options.merge(options)
+        api_request "#{endpoint_uri('type')}/#{id}", **default_options.merge(options)
       end
 
       ##
@@ -91,7 +91,7 @@ module BlizzardApi
       #
       # @!macro response
       def display_media(id, **options)
-        api_request "#{base_url(:media)}/creature-display/#{id}", default_options.merge(options)
+        api_request "#{base_url(:media)}/creature-display/#{id}", **default_options.merge(options)
       end
 
       protected

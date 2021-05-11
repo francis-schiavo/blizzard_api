@@ -30,7 +30,7 @@ module BlizzardApi
         assert_equal 'lightbringer', realm_data[0][:slug]
 
         realm_data = @realm.complete classic: true
-        assert_equal 'atiesh', realm_data[0][:slug]
+        assert_equal 'herod', realm_data[0][:slug]
       end
 
       def test_realm_search
@@ -42,7 +42,7 @@ module BlizzardApi
         realm_data = @realm.search(1, 100, classic: true) do |search_options|
           search_options.where 'name.en_US', %w[Mankrik Pagle]
         end
-        assert_equal 2, realm_data[:results].size
+        assert_equal 4, realm_data[:results].size
       end
     end
   end

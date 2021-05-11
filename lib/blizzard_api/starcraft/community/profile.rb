@@ -17,7 +17,7 @@ module BlizzardApi
       # @!macro request_options
       def static(region_id, **options)
         reg = resolve_region(region_id)
-        api_request "#{base_url(:community)}/static/profile/#{reg}", { ttl: CACHE_DAY }.merge(options)
+        api_request "#{base_url(:community)}/static/profile/#{reg}", **{ ttl: CACHE_DAY }.merge(options)
       end
 
       ##
@@ -30,7 +30,7 @@ module BlizzardApi
       def metadata(region_id, realm_id, profile_id, **options)
         reg = resolve_region(region_id)
         opts = { ttl: CACHE_DAY }.merge(options)
-        api_request "#{base_url(:community)}/metadata/profile/#{reg}/#{realm_id}/#{profile_id}", opts
+        api_request "#{base_url(:community)}/metadata/profile/#{reg}/#{realm_id}/#{profile_id}", **opts
       end
 
       ##
@@ -43,7 +43,7 @@ module BlizzardApi
       def profile(region_id, realm_id, profile_id, **options)
         reg = resolve_region(region_id)
         opts = { ttl: CACHE_DAY }.merge(options)
-        api_request "#{base_url(:community)}/profile/#{reg}/#{realm_id}/#{profile_id}", opts
+        api_request "#{base_url(:community)}/profile/#{reg}/#{realm_id}/#{profile_id}", **opts
       end
 
       ##
@@ -56,7 +56,7 @@ module BlizzardApi
       def ladder_summary(region_id, realm_id, profile_id, **options)
         reg = resolve_region(region_id)
         opts = { ttl: CACHE_DAY }.merge(options)
-        api_request "#{base_url(:community)}profile/#{reg}/#{realm_id}/#{profile_id}/ladder/summary ", opts
+        api_request "#{base_url(:community)}profile/#{reg}/#{realm_id}/#{profile_id}/ladder/summary ", **opts
       end
 
       ##
@@ -69,7 +69,7 @@ module BlizzardApi
       def ladder(region_id, realm_id, profile_id, ladder_id, **options)
         reg = resolve_region(region_id)
         opts = { ttl: CACHE_DAY }.merge(options)
-        api_request "#{base_url(:community)}/profile/#{reg}/#{realm_id}/#{profile_id}/ladder/#{ladder_id}", opts
+        api_request "#{base_url(:community)}/profile/#{reg}/#{realm_id}/#{profile_id}/ladder/#{ladder_id}", **opts
       end
     end
   end

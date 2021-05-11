@@ -17,7 +17,7 @@ module BlizzardApi
       #
       # @!macro response
       def categories(**options)
-        api_request "#{endpoint_uri}/category/index", default_options.merge(options)
+        api_request "#{endpoint_uri}/category/index", **default_options.merge(options)
       end
 
       ##
@@ -28,7 +28,7 @@ module BlizzardApi
       #
       # @!macro response
       def category(id, **options)
-        api_request "#{endpoint_uri}/category/#{id}", default_options.merge(options)
+        api_request "#{endpoint_uri}/category/#{id}", **default_options.merge(options)
       end
 
       ##
@@ -38,7 +38,7 @@ module BlizzardApi
       #
       # @!macro response
       def areas(**options)
-        api_request "#{endpoint_uri}/area/index", default_options.merge(options)
+        api_request "#{endpoint_uri}/area/index", **default_options.merge(options)
       end
 
       ##
@@ -49,7 +49,7 @@ module BlizzardApi
       #
       # @!macro response
       def area(id, **options)
-        api_request "#{endpoint_uri}/area/#{id}", default_options.merge(options)
+        api_request "#{endpoint_uri}/area/#{id}", **default_options.merge(options)
       end
 
       ##
@@ -59,7 +59,7 @@ module BlizzardApi
       #
       # @!macro response
       def types(**options)
-        api_request "#{endpoint_uri}/type/index", default_options.merge(options)
+        api_request "#{endpoint_uri}/type/index", **default_options.merge(options)
       end
 
       ##
@@ -70,7 +70,7 @@ module BlizzardApi
       #
       # @!macro response
       def type(id, **options)
-        api_request "#{endpoint_uri}/type/#{id}", default_options.merge(options)
+        api_request "#{endpoint_uri}/type/#{id}", **default_options.merge(options)
       end
 
       protected

@@ -36,7 +36,7 @@ module BlizzardApi
       #
       # @!macro response
       def classes(**options)
-        api_request "#{endpoint_uri('class')}/index", default_options.merge(options)
+        api_request "#{endpoint_uri('class')}/index", **default_options.merge(options)
       end
 
       ##
@@ -48,7 +48,7 @@ module BlizzardApi
       #
       # @!macro response
       def class(id, **options)
-        api_request "#{endpoint_uri('class')}/#{id}", default_options.merge(options)
+        api_request "#{endpoint_uri('class')}/#{id}", **default_options.merge(options)
       end
 
       ##
@@ -61,7 +61,7 @@ module BlizzardApi
       #
       # @!macro response
       def subclass(id, subclass_id, **options)
-        api_request "#{endpoint_uri('class')}/#{id}/item-subclass/#{subclass_id}", default_options.merge(options)
+        api_request "#{endpoint_uri('class')}/#{id}/item-subclass/#{subclass_id}", **default_options.merge(options)
       end
 
       ##
@@ -74,7 +74,7 @@ module BlizzardApi
       #
       # @!macro response
       def media(id, **options)
-        api_request "#{base_url(:media)}/item/#{id}", default_options.merge(options)
+        api_request "#{base_url(:media)}/item/#{id}", **default_options.merge(options)
       end
 
       ##
@@ -84,7 +84,7 @@ module BlizzardApi
       #
       # @!macro response
       def sets(**options)
-        api_request "#{endpoint_uri('set')}/index", default_options.merge(options)
+        api_request "#{endpoint_uri('set')}/index", **default_options.merge(options)
       end
 
       ##
@@ -95,7 +95,7 @@ module BlizzardApi
       #
       # @!macro response
       def set(id, **options)
-        api_request "#{endpoint_uri('set')}/#{id}", default_options.merge(options)
+        api_request "#{endpoint_uri('set')}/#{id}", **default_options.merge(options)
       end
 
       protected

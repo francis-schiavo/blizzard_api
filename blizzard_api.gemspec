@@ -5,7 +5,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'blizzard_api/version'
 
 Gem::Specification.new do |spec|
-  spec.required_ruby_version = '>= 2.5'
+  spec.required_ruby_version = '>= 2.7.2'
   spec.name = 'blizzard_api'
   spec.version = BlizzardApi::VERSION
   spec.authors = ['Francis Schiavo']
@@ -35,6 +35,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_runtime_dependency 'redis', '~> 4.1', '>= 4.1.0'
+  spec.add_runtime_dependency 'thwait', '~> 0.2.0'
 
   spec.add_development_dependency 'dotenv'
   spec.add_development_dependency 'minitest', '~> 5.0'

@@ -17,7 +17,7 @@ module BlizzardApi
       #
       # @!macro response
       def leaderboards(season_id, **options)
-        api_request "#{endpoint_uri}/#{season_id}/pvp-leaderboard/index", default_options.merge(options)
+        api_request "#{endpoint_uri}/#{season_id}/pvp-leaderboard/index", **default_options.merge(options)
       end
 
       ##
@@ -27,7 +27,7 @@ module BlizzardApi
       #
       # @!macro response
       def leaderboard(season_id, brackets, **options)
-        api_request "#{endpoint_uri}/#{season_id}/pvp-leaderboard/#{brackets}", default_options.merge(options)
+        api_request "#{endpoint_uri}/#{season_id}/pvp-leaderboard/#{brackets}", **default_options.merge(options)
       end
 
       ##
@@ -37,7 +37,7 @@ module BlizzardApi
       #
       # @!macro response
       def rewards(season_id, **options)
-        api_request "#{endpoint_uri}/#{season_id}/pvp-reward/index", default_options.merge(options)
+        api_request "#{endpoint_uri}/#{season_id}/pvp-reward/index", **default_options.merge(options)
       end
 
       protected

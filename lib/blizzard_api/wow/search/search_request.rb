@@ -17,7 +17,7 @@ module BlizzardApi
         search_options = SearchComposer.new(page, page_size)
         yield search_options if block_given?
 
-        api_request "#{endpoint_uri(nil, :search)}?#{search_options.to_search_query}", default_options.merge(options)
+        api_request "#{endpoint_uri(nil, :search)}?#{search_options.to_search_query}", **default_options.merge(options)
       end
     end
   end

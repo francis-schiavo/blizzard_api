@@ -17,7 +17,7 @@ module BlizzardApi
       # @!macro request_options
       def grandmaster(region_id, **options)
         reg = resolve_region(region_id)
-        api_request "#{base_url(:community)}/ladder/grandmaster/#{reg}", { ttl: CACHE_DAY }.merge(options)
+        api_request "#{base_url(:community)}/ladder/grandmaster/#{reg}", **{ ttl: CACHE_DAY }.merge(options)
       end
 
       ##
@@ -27,7 +27,7 @@ module BlizzardApi
       # @!macro request_options
       def season(region_id, **options)
         reg = resolve_region(region_id)
-        api_request "#{base_url(:community)}/ladder/season/#{reg}", { ttl: CACHE_DAY }.merge(options)
+        api_request "#{base_url(:community)}/ladder/season/#{reg}", **{ ttl: CACHE_DAY }.merge(options)
       end
     end
   end

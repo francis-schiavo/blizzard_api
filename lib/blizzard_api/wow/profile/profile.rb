@@ -19,7 +19,7 @@ module BlizzardApi
       #
       # @!macro response
       def get(**options)
-        api_request base_url(:user_profile).to_s, default_options.merge(options)
+        api_request base_url(:user_profile).to_s, **default_options.merge(options)
       end
 
       ##
@@ -29,7 +29,7 @@ module BlizzardApi
       #
       # @!macro response
       def protected_character(realm_id, character_id, **options)
-        api_request "#{base_url(:user_profile)}/protected-character/#{realm_id}-#{character_id}", default_options.merge(options)
+        api_request "#{base_url(:user_profile)}/protected-character/#{realm_id}-#{character_id}", **default_options.merge(options)
       end
 
       ##
@@ -39,7 +39,7 @@ module BlizzardApi
       #
       # @!macro response
       def collection(**options)
-        api_request "#{base_url(:user_profile)}/collections", default_options.merge(options)
+        api_request "#{base_url(:user_profile)}/collections", **default_options.merge(options)
       end
 
       ##
@@ -49,7 +49,7 @@ module BlizzardApi
       #
       # @!macro response
       def mounts(**options)
-        api_request "#{base_url(:user_profile)}/collections/mounts", default_options.merge(options)
+        api_request "#{base_url(:user_profile)}/collections/mounts", **default_options.merge(options)
       end
 
       ##
@@ -59,7 +59,7 @@ module BlizzardApi
       #
       # @!macro response
       def pets(**options)
-        api_request "#{base_url(:user_profile)}/collections/pets", default_options.merge(options)
+        api_request "#{base_url(:user_profile)}/collections/pets", **default_options.merge(options)
       end
 
       protected

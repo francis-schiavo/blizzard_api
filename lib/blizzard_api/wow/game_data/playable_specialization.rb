@@ -13,11 +13,11 @@ module BlizzardApi
       ##
       # @!macro complete
       def complete(**options)
-        index_data = index options
-        response_data = OpenStruct.new
-        response_data.character_specializations = character_data(index_data, options)
-        response_data.pet_specializations = pet_data(index_data, options)
-        response_data
+        index_data = index(**options)
+        {}.tap do |response_data|
+          response_data[:character_specializations] = character_data(index_data, options)
+          response_data[:pet_specializations] = pet_data(index_data, options)
+        end
       end
 
       ##
@@ -29,7 +29,7 @@ module BlizzardApi
       #
       # @!macro response
       def media(id, **options)
-        api_request "#{base_url(:media)}/playable-specialization/#{id}", default_options.merge(options)
+        api_request "#{base_url(:media)}/playable-specialization/#{id}", **default_options.merge(options)
       end
 
       protected
@@ -47,7 +47,7 @@ module BlizzardApi
         [].tap do |specs|
           index_data[:character_specializations].each do |spec|
             spec_id = %r{playable-specialization/([0-9]+)}.match(spec[:key].to_s)[1]
-            spec_data = get spec_id, options
+            spec_data = get spec_id, **options
             spec_data[:icon] = resolve_icon(spec_data[:media][:key][:href])
             cleanup spec_data
             specs.push spec_data
@@ -59,7 +59,7 @@ module BlizzardApi
         [].tap do |specs|
           index_data[:pet_specializations].each do |spec|
             spec_id = %r{playable-specialization/([0-9]+)}.match(spec[:key].to_s)[1]
-            spec_data = get spec_id, options
+            spec_data = get spec_id, **options
             spec_data[:icon] = resolve_icon(spec_data[:media][:key][:href])
             cleanup spec_data
             specs.push spec_data

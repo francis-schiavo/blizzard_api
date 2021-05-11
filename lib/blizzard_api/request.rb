@@ -9,6 +9,7 @@
 #   @option options [Boolean] :ignore_cache If set to true the request will not use the cache
 #   @option options [Integer] :ttl Override the default time (in seconds) a request should be cached
 #   @option options [DateTime] :since Adds the If-modified-since headers. Will always ignore cache when set.
+#   @option options [Integer] :concurrency How many threads to use for complete sets of data. BEWARE: Might cause 429 responses, in this case lower the number.
 
 ##
 # @!macro [new] regions
@@ -124,7 +125,7 @@ module BlizzardApi
       # If data was found that means cache is enabled and valid
       return JSON.parse(data, symbolize_names: true) if data
 
-      response = consume_api parsed_url, options
+      response = consume_api parsed_url, **options
 
       save_in_cache parsed_url.to_s, response.body, options[:ttl] || CACHE_DAY if using_cache? options
 
@@ -134,7 +135,7 @@ module BlizzardApi
       response_data
     end
 
-    def api_request(uri, query_string = {})
+    def api_request(uri, **query_string)
       # List of request options
       options_key = %i[ignore_cache ttl format access_token namespace classic headers since]
 
@@ -150,7 +151,7 @@ module BlizzardApi
         uri = uri.include?('?') ? "#{uri}&#{query_string}" : "#{uri}?#{query_string}"
       end
 
-      request uri, options
+      request uri, **options
     end
 
     private

@@ -39,7 +39,7 @@ module BlizzardApi
       def search(search_options = {}, **options)
         validate_search_options search_options if options.include? :validate_fields
 
-        api_request "#{base_url(:community)}/cardbacks", default_options.merge(options).merge(search_options)
+        api_request "#{base_url(:community)}/cardbacks", **default_options.merge(options).merge(search_options)
       end
 
       protected

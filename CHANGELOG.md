@@ -1,5 +1,11 @@
 Please view this file on the master branch, otherwise it may be outdated
 
+**Version 0.6.0**
+
+Upgraded gem dependencies and refactored the code to support Ruby 3.0.0
+Required ruby version upgraded to 2.7.2
+Added concurrency to all WoW game data *complete* methods. Default of 4 threads. Should be close to # of threads available.
+
 **Version 0.5.6**
 
 Upgrade gem dependencies to fix a security vulnerability 

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'thwait'
+
 module BlizzardApi
   module Wow
     ##
@@ -19,7 +21,7 @@ module BlizzardApi
       # @!macro request_options
       # @!macro response
       def index(**options)
-        api_request "#{endpoint_uri}/index", default_options.merge(options)
+        api_request "#{endpoint_uri}/index", **default_options.merge(options)
       end
 
       ##
@@ -30,20 +32,30 @@ module BlizzardApi
       #
       # @!macro response
       def get(id, **options)
-        api_request "#{endpoint_uri}/#{id}", default_options.merge(options)
+        api_request "#{endpoint_uri}/#{id}", **default_options.merge(options)
       end
 
       ##
       # @!macro complete
       def complete(**options)
-        [].tap do |complete_data|
-          index_data = index options
-          index_data[@collection.to_sym].each do |item|
-            link = item.key?(:key) ? item[:key][:href] : item[:href]
-            item_data = request link
-            complete_data.push item_data
+        payload = [].tap do |complete_data|
+          index_data = index(**options)
+          threads = []
+
+          concurrency = options.key?(:concurrency) ? options[:concurrency].to_i : BlizzardApi.concurrency
+          concurrency.times do
+            threads << Thread.new do
+              while index_data[@collection.to_sym].size.positive?
+                item = index_data[@collection.to_sym].pop
+                link = item.key?(:key) ? item[:key][:href] : item[:href]
+                item_data = request link
+                complete_data.push item_data
+              end
+            end
           end
+          ThreadsWait.all_waits threads
         end
+        payload.sort { |a, b| a[:id] <=> b[:id] }
       end
 
       protected

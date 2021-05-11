@@ -24,7 +24,7 @@ module BlizzardApi
       #
       # @!macro response
       def border_media(id, **options)
-        api_request "#{base_url(:media)}/#{@endpoint}/border/#{id}", default_options.merge(options)
+        api_request "#{base_url(:media)}/#{@endpoint}/border/#{id}", **default_options.merge(options)
       end
 
       ##
@@ -37,7 +37,7 @@ module BlizzardApi
       #
       # @!macro response
       def emblem_media(id, **options)
-        api_request "#{base_url(:media)}/#{@endpoint}/emblem/#{id}", default_options.merge(options)
+        api_request "#{base_url(:media)}/#{@endpoint}/emblem/#{id}", **default_options.merge(options)
       end
 
       protected
