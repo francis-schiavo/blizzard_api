@@ -13,7 +13,7 @@ module BlizzardApi
         realm_data = @realm.index
         assert realm_data[:realms]
 
-        realm_data = @realm.index classic: true
+        realm_data = @realm.index classic1x: true
         assert realm_data[:realms]
       end
 
@@ -21,7 +21,7 @@ module BlizzardApi
         realm_data = @realm.get 'azralon'
         assert_equal 'azralon', realm_data[:slug]
 
-        realm_data = @realm.get 'atiesh', classic: true
+        realm_data = @realm.get 'atiesh', classic1x: true
         assert_equal 'atiesh', realm_data[:slug]
       end
 
@@ -29,7 +29,7 @@ module BlizzardApi
         realm_data = @realm.complete
         assert_equal 'lightbringer', realm_data[0][:slug]
 
-        realm_data = @realm.complete classic: true
+        realm_data = @realm.complete classic1x: true
         assert_equal 'herod', realm_data[0][:slug]
       end
 
@@ -39,10 +39,10 @@ module BlizzardApi
         end
         assert_equal 2, realm_data[:results].size
 
-        realm_data = @realm.search(1, 100, classic: true) do |search_options|
+        realm_data = @realm.search(1, 100, classic1x: true) do |search_options|
           search_options.where 'name.en_US', %w[Mankrik Pagle]
         end
-        assert_equal 4, realm_data[:results].size
+        assert_equal 2, realm_data[:results].size
       end
     end
   end

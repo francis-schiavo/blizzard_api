@@ -10,7 +10,6 @@ module BlizzardApi
     # You can get an instance of this class using the default region as follows:
     #   api_instance = BlizzardApi::Starcraft.legacy
     class Legacy < Starcraft::Request
-      
       ##
       # Profile data
       #
@@ -49,7 +48,7 @@ module BlizzardApi
         opts = { ttl: CACHE_DAY }.merge(options)
         api_request "#{base_url(:community)}/legacy/profile/#{reg}/#{realm_id}/#{profile_id}/matches", opts
       end
-      
+
       ##
       # Ladder
       #
@@ -61,7 +60,7 @@ module BlizzardApi
         opts = { ttl: CACHE_DAY }.merge(options)
         api_request "#{base_url(:community)}/legacy/ladder/#{reg}/#{ladder_id}", opts
       end
-      
+
       ##
       # Achievement data
       #
@@ -72,7 +71,7 @@ module BlizzardApi
         opts = { ttl: CACHE_DAY }.merge(options)
         api_request "#{base_url(:community)}/legacy/data/achievements/#{reg}", opts
       end
-      
+
       ##
       # Rewards data
       #

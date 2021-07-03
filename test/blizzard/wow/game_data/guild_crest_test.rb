@@ -14,6 +14,9 @@ module BlizzardApi
         assert_equal 6, guild_crest_data[:borders].count
         assert_equal 196, guild_crest_data[:emblems].count
 
+        guild_crest_data = @guild_crest.index classic1x: true
+        assert_equal 6, guild_crest_data[:borders].count
+
         guild_crest_data = @guild_crest.index classic: true
         assert_equal 6, guild_crest_data[:borders].count
       end
@@ -23,8 +26,12 @@ module BlizzardApi
         assert_equal 'https://render-us.worldofwarcraft.com/guild/tabards/border_00.png',
                      guild_crest_data[:assets][0][:value]
 
-        guild_crest_data = @guild_crest.border_media 0, classic: true
+        guild_crest_data = @guild_crest.border_media 0, classic1x: true
         assert_equal 'https://render-classic-us.worldofwarcraft.com/guild/tabards/border_00.png',
+                     guild_crest_data[:assets][0][:value]
+
+        guild_crest_data = @guild_crest.border_media 0, classic: true
+        assert_equal 'https://render.worldofwarcraft.com/classic-us/guild/tabards/border_00.png',
                      guild_crest_data[:assets][0][:value]
       end
 
@@ -33,8 +40,12 @@ module BlizzardApi
         assert_equal 'https://render-us.worldofwarcraft.com/guild/tabards/emblem_00.png',
                      guild_crest_data[:assets][0][:value]
 
-        guild_crest_data = @guild_crest.emblem_media 0, classic: true
+        guild_crest_data = @guild_crest.emblem_media 0, classic1x: true
         assert_equal 'https://render-classic-us.worldofwarcraft.com/guild/tabards/emblem_00.png',
+                     guild_crest_data[:assets][0][:value]
+
+        guild_crest_data = @guild_crest.emblem_media 0, classic: true
+        assert_equal 'https://render.worldofwarcraft.com/classic-us/guild/tabards/emblem_00.png',
                      guild_crest_data[:assets][0][:value]
       end
     end

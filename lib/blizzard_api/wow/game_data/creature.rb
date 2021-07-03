@@ -13,7 +13,7 @@ module BlizzardApi
       include BlizzardApi::Wow::Searchable
 
       def index
-        raise BlizzardApi::ApiException, 'Creatures endpoint doesn\'t have a index method'
+        raise BlizzardApi::ApiException, 'Creatures endpoint doesn\'t have an index method'
       end
 
       def complete
@@ -25,6 +25,7 @@ module BlizzardApi
       #
       # @!macro request_options
       # @option options [Boolean] :classic If set to true, this method will call the classic version
+      # @option options [Boolean] :classic1x If set to true, this method will call the classic era version
       #
       # @!macro response
       def families(**options)
@@ -38,6 +39,7 @@ module BlizzardApi
       #
       # @!macro request_options
       # @option options [Boolean] :classic If set to true, this method will call the classic version
+      # @option options [Boolean] :classic1x If set to true, this method will call the classic era version
       #
       # @!macro response
       def family(id, **options)
@@ -51,6 +53,7 @@ module BlizzardApi
       #
       # @!macro request_options
       # @option options [Boolean] :classic If set to true, this method will call the classic version
+      # @option options [Boolean] :classic1x If set to true, this method will call the classic era version
       #
       # @!macro response
       def family_media(id, **options)
@@ -62,6 +65,7 @@ module BlizzardApi
       #
       # @!macro request_options
       # @option options [Boolean] :classic If set to true, this method will call the classic version
+      # @option options [Boolean] :classic1x If set to true, this method will call the classic era version
       #
       # @!macro response
       def types(**options)
@@ -75,6 +79,7 @@ module BlizzardApi
       #
       # @!macro request_options
       # @option options [Boolean] :classic If set to true, this method will call the classic version
+      # @option options [Boolean] :classic1x If set to true, this method will call the classic era version
       #
       # @!macro response
       def type(id, **options)
@@ -88,6 +93,7 @@ module BlizzardApi
       #
       # @!macro request_options
       # @option options [Boolean] :classic If set to true, this method will call the classic version
+      # @option options [Boolean] :classic1x If set to true, this method will call the classic era version
       #
       # @!macro response
       def display_media(id, **options)

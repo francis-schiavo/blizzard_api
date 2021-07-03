@@ -30,7 +30,7 @@ module BlizzardApi
       # This method overrides the inherited default behavior to prevent high server load and fetch time
       #
       # @!macro response
-      def get(_id, **options)
+      def get(_id)
         raise BlizzardApi::ApiException, 'This endpoint does not have a get method'
       end
 

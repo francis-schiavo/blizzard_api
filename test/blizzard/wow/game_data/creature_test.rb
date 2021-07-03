@@ -13,6 +13,9 @@ module BlizzardApi
         creature_data = @creature.get 42_722
         assert_equal 'Young Mastiff', creature_data[:name][:en_US]
 
+        creature_data = @creature.get 107, classic1x: true
+        assert_equal 'Raptor', creature_data[:name][:en_US]
+
         creature_data = @creature.get 107, classic: true
         assert_equal 'Raptor', creature_data[:name][:en_US]
       end
@@ -21,12 +24,18 @@ module BlizzardApi
         creature_families_data = @creature.families
         assert_equal 81, creature_families_data[:creature_families].count
 
-        creature_families_data = @creature.families classic: true
+        creature_families_data = @creature.families classic1x: true
         assert_equal 23, creature_families_data[:creature_families].count
+
+        creature_families_data = @creature.families classic: true
+        assert_equal 31, creature_families_data[:creature_families].count
       end
 
       def test_creature_family
         creature_family_data = @creature.family 1
+        assert_equal 'Wolf', creature_family_data[:name][:en_US]
+
+        creature_family_data = @creature.family 1, classic1x: true
         assert_equal 'Wolf', creature_family_data[:name][:en_US]
 
         creature_family_data = @creature.family 1, classic: true
@@ -38,8 +47,12 @@ module BlizzardApi
         assert_equal 'https://render-us.worldofwarcraft.com/icons/56/ability_hunter_pet_wolf.jpg',
                      creature_family_media_data[:assets][0][:value]
 
-        creature_family_media_data = @creature.family_media 1, classic: true
+        creature_family_media_data = @creature.family_media 1, classic1x: true
         assert_equal 'https://render-classic-us.worldofwarcraft.com/icons/56/ability_hunter_pet_wolf.jpg',
+                     creature_family_media_data[:assets][0][:value]
+
+        creature_family_media_data = @creature.family_media 1, classic: true
+        assert_equal 'https://render.worldofwarcraft.com/classic-us/icons/56/ability_hunter_pet_wolf.jpg',
                      creature_family_media_data[:assets][0][:value]
       end
 
@@ -47,12 +60,18 @@ module BlizzardApi
         creature_types_data = @creature.types
         assert_equal 15, creature_types_data[:creature_types].count
 
-        creature_types_data = @creature.types classic: true
+        creature_types_data = @creature.types classic1x: true
         assert_equal 11, creature_types_data[:creature_types].count
+
+        creature_types_data = @creature.types classic: true
+        assert_equal 13, creature_types_data[:creature_types].count
       end
 
       def test_creature_type
         creature_type_data = @creature.type 1
+        assert_equal 'Beast', creature_type_data[:name][:en_US]
+
+        creature_type_data = @creature.type 1, classic1x: true
         assert_equal 'Beast', creature_type_data[:name][:en_US]
 
         creature_type_data = @creature.type 1, classic: true
@@ -64,8 +83,12 @@ module BlizzardApi
         assert_equal 'https://render-us.worldofwarcraft.com/npcs/zoom/creature-display-30221.jpg',
                      creature_display_media_data[:assets][0][:value]
 
-        creature_display_media_data = @creature.display_media 180, classic: true
+        creature_display_media_data = @creature.display_media 180, classic1x: true
         assert_equal 'https://render-classic-us.worldofwarcraft.com/npcs/portrait/creature-display-180.jpg',
+                     creature_display_media_data[:assets][0][:value]
+
+        creature_display_media_data = @creature.display_media 180, classic: true
+        assert_equal 'https://render.worldofwarcraft.com/classic-us/npcs/zoom/creature-display-180.jpg',
                      creature_display_media_data[:assets][0][:value]
       end
 

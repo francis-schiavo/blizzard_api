@@ -25,6 +25,7 @@ module BlizzardApi
       # @!macro complete
       #
       # @option options [Boolean] :classic If set to true, this method will call the classic version
+      # @option options [Boolean] :classic1x If set to true, this method will call the classic era version
       def complete(**options)
         index_data = index(**options)
         [].tap do |classes|
@@ -43,6 +44,7 @@ module BlizzardApi
       #
       # @!macro request_options
       # @option options [Boolean] :classic If set to true, this method will call the classic version
+      # @option options [Boolean] :classic1x If set to true, this method will call the classic era version
       #
       # @!macro response
       def get(id, **options)

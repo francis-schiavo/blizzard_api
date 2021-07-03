@@ -50,7 +50,7 @@ module BlizzardApi
     #   How many threads to use for WoW game data `complete` payloads. Defaults to 4.
     #   Should be set to the amount of available cores on the system.
     #   @return [Integer] Concurrency
-    attr_accessor :concurrency
+    attr_writer :concurrency
 
     ##
     # @!attribute access_token

@@ -1,5 +1,9 @@
 Please view this file on the master branch, otherwise it may be outdated
 
+**Version 0.6.1**
+
+Added support for TBCC and Classice Era endpoints.
+
 **Version 0.6.0**
 
 Upgraded gem dependencies and refactored the code to support Ruby 3.0.0

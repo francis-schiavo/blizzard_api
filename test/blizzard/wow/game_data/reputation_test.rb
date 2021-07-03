@@ -21,7 +21,7 @@ module BlizzardApi
 
       def test_reputation_tier_index
         reputation_data = @reputation.tiers
-        assert_equal 56, reputation_data[:reputation_tiers].count
+        assert_equal 57, reputation_data[:reputation_tiers].count
       end
 
       def test_reputation_tier_get

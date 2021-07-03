@@ -21,6 +21,7 @@ module BlizzardApi
       #
       # @!macro request_options
       # @option options [Boolean] :classic If set to true, this method will call the classic version
+      # @option options [Boolean] :classic1x If set to true, this method will call the classic era version
       #
       # @!macro response
       def border_media(id, **options)
@@ -32,6 +33,7 @@ module BlizzardApi
       #
       # @param id [Integer] Emblem id
       # @option options [Boolean] :classic If set to true, this method will call the classic version
+      # @option options [Boolean] :classic1x If set to true, this method will call the classic era version
       #
       # @!macro request_options
       #

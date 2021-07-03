@@ -33,6 +33,7 @@ module BlizzardApi
       #
       # @!macro request_options
       # @option options [Boolean] :classic If set to true, this method will call the classic version
+      # @option options [Boolean] :classic1x If set to true, this method will call the classic era version
       #
       # @!macro response
       def classes(**options)
@@ -45,6 +46,7 @@ module BlizzardApi
       # @param id [Integer] Item class id
       # @!macro request_options
       # @option options [Boolean] :classic If set to true, this method will call the classic version
+      # @option options [Boolean] :classic1x If set to true, this method will call the classic era version
       #
       # @!macro response
       def class(id, **options)
@@ -58,6 +60,7 @@ module BlizzardApi
       # @param subclass_id [Integer] Item subclass id
       # @!macro request_options
       # @option options [Boolean] :classic If set to true, this method will call the classic version
+      # @option options [Boolean] :classic1x If set to true, this method will call the classic era version
       #
       # @!macro response
       def subclass(id, subclass_id, **options)
@@ -71,6 +74,7 @@ module BlizzardApi
       #
       # @!macro request_options
       # @option options [Boolean] :classic If set to true, this method will call the classic version
+      # @option options [Boolean] :classic1x If set to true, this method will call the classic era version
       #
       # @!macro response
       def media(id, **options)

@@ -41,7 +41,7 @@ module BlizzardApi
     def self.account(region = BlizzardApi.region)
       BlizzardApi::Starcraft::Account.new(region)
     end
-    
+
     ##
     # @return {Legacy}
     def self.legacy(region = BlizzardApi.region)

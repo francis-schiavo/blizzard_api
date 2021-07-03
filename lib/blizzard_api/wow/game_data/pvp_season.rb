@@ -14,6 +14,7 @@ module BlizzardApi
       # Returns a index of pvp leaderboard for a season
       #
       # @!macro request_options
+      # @option options [Boolean] :classic1x If set to true, this method will call the classic era version
       #
       # @!macro response
       def leaderboards(season_id, **options)
@@ -24,6 +25,7 @@ module BlizzardApi
       # Returns the leaderboard for a given season and bracket
       #
       # @!macro request_options
+      # @option options [Boolean] :classic1x If set to true, this method will call the classic era version
       #
       # @!macro response
       def leaderboard(season_id, brackets, **options)

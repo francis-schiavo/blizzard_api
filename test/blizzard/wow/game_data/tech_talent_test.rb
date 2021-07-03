@@ -30,8 +30,8 @@ module BlizzardApi
       end
 
       def test_tech_talent_tree
-        talent_data = @talent.tech_talent_tree 272
-        assert_equal 5, talent_data[:max_tiers]
+        talent_data = @talent.tech_talent_tree 275
+        assert_equal 12, talent_data[:max_tiers]
       end
     end
   end

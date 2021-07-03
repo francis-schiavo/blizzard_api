@@ -9,7 +9,8 @@
 #   @option options [Boolean] :ignore_cache If set to true the request will not use the cache
 #   @option options [Integer] :ttl Override the default time (in seconds) a request should be cached
 #   @option options [DateTime] :since Adds the If-modified-since headers. Will always ignore cache when set.
-#   @option options [Integer] :concurrency How many threads to use for complete sets of data. BEWARE: Might cause 429 responses, in this case lower the number.
+#   @option options [Integer] :concurrency How many threads to use for complete sets of data.
+#     BEWARE: Might cause 429 responses, in this case lower the number.
 
 ##
 # @!macro [new] regions
@@ -85,15 +86,30 @@ module BlizzardApi
     end
 
     ##
+    # Returns a valid version namespace
+    #
+    # @param [Hash] options A hash containing a valid namespace key
+    def endpoint_version(options)
+      if options.key? :classic
+        'classic-'
+      elsif options.key? :classic1x
+        'classic1x-'
+      else
+        ''
+      end
+    end
+
+    ##
     # Returns a valid namespace string for consuming the api endpoints
     #
     # @param [Hash] options A hash containing the namespace key
     def endpoint_namespace(options)
+      version = endpoint_version(options)
       case options[:namespace]
       when :dynamic
-        options.include?(:classic) ? "dynamic-classic-#{region}" : "dynamic-#{region}"
+        "dynamic-#{version}#{region}"
       when :static
-        options.include?(:classic) ? "static-classic-#{region}" : "static-#{region}"
+        "static-#{version}#{region}"
       when :profile
         "profile-#{region}"
       else
@@ -137,7 +153,7 @@ module BlizzardApi
 
     def api_request(uri, **query_string)
       # List of request options
-      options_key = %i[ignore_cache ttl format access_token namespace classic headers since]
+      options_key = %i[ignore_cache ttl format access_token namespace classic classic1x headers since]
 
       # Separates request options from api fields and options. Any user-defined option will be treated as api field.
       options = query_string.select { |k, _v| query_string.delete(k) || true if options_key.include? k }

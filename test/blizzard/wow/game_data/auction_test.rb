@@ -24,6 +24,11 @@ module BlizzardApi
         auction_data = @auction.get 4, since: DateTime.parse('2099-01-01Z')
         assert_nil auction_data
       end
+
+      def test_auction_classic_get
+        auction_data = @auction.get 4372, 6, classic: true
+        assert auction_data.key? :auctions
+      end
     end
   end
 end
