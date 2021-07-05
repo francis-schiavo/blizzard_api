@@ -26,9 +26,9 @@ module BlizzardApi
 
       def test_azerite_essence_search
         data = @azerite_essence.search(1, 100) do |search_options|
-          search_options.where 'name.en_US', 'Worldvein Resonance'
+          search_options.where 'name.pt_BR', 'Ressonância da Veia do Mundo'
         end
-        assert_equal 'Ressonância da Veia do Mundo', data[:results][0][:data][:name][:pt_BR]
+        assert_equal 'Worldvein Resonance', data[:results][0][:data][:name][:en_US]
       end
     end
   end

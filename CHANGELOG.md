@@ -1,5 +1,9 @@
 Please view this file on the master branch, otherwise it may be outdated
 
+**Version 0.6.2**
+
+Fixed an encoding problem on search endpoints.
+
 **Version 0.6.1**
 
 Added support for TBCC and Classice Era endpoints.

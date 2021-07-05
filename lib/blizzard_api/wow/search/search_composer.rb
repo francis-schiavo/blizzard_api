@@ -27,7 +27,7 @@ module BlizzardApi
       #
       # @return {SearchComposer}
       def where(field, value)
-        fields.push "#{field}=#{resolve_value(value)}"
+        fields.push "#{field}=#{URI.encode_www_form_component(resolve_value(value))}"
         self
       end
 
@@ -44,7 +44,7 @@ module BlizzardApi
       #
       # @return {SearchComposer}
       def where_not(field, value)
-        fields.push "#{field}!=#{resolve_value(value)}"
+        fields.push "#{field}!=#{URI.encode_www_form_component(resolve_value(value))}"
         self
       end
 
