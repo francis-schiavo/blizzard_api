@@ -68,7 +68,7 @@ module BlizzardApi
         { ttl: CACHE_HOUR, namespace: :profile }
       end
 
-      def api_request(_uri, query_string = {})
+      def api_request(_uri, **query_string)
         query_string.merge! access_token: @token
         super
       end
