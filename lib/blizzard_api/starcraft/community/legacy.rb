@@ -20,7 +20,7 @@ module BlizzardApi
       def profile(region_id, realm_id, profile_id, **options)
         reg = resolve_region(region_id)
         opts = { ttl: CACHE_DAY }.merge(options)
-        api_request "#{base_url(:community)}/legacy/profile/#{reg}/#{realm_id}/#{profile_id}", opts
+        api_request "#{base_url(:community)}/legacy/profile/#{reg}/#{realm_id}/#{profile_id}", **opts
       end
 
       ##
@@ -33,7 +33,7 @@ module BlizzardApi
       def ladders(region_id, realm_id, profile_id, **options)
         reg = resolve_region(region_id)
         opts = { ttl: CACHE_DAY }.merge(options)
-        api_request "#{base_url(:community)}/legacy/profile/#{reg}/#{realm_id}/#{profile_id}/ladder ", opts
+        api_request "#{base_url(:community)}/legacy/profile/#{reg}/#{realm_id}/#{profile_id}/ladder ", **opts
       end
 
       ##
@@ -46,7 +46,7 @@ module BlizzardApi
       def match(region_id, realm_id, profile_id, **options)
         reg = resolve_region(region_id)
         opts = { ttl: CACHE_DAY }.merge(options)
-        api_request "#{base_url(:community)}/legacy/profile/#{reg}/#{realm_id}/#{profile_id}/matches", opts
+        api_request "#{base_url(:community)}/legacy/profile/#{reg}/#{realm_id}/#{profile_id}/matches", **opts
       end
 
       ##
@@ -58,7 +58,7 @@ module BlizzardApi
       def ladder(region_id, ladder_id, **options)
         reg = resolve_region(region_id)
         opts = { ttl: CACHE_DAY }.merge(options)
-        api_request "#{base_url(:community)}/legacy/ladder/#{reg}/#{ladder_id}", opts
+        api_request "#{base_url(:community)}/legacy/ladder/#{reg}/#{ladder_id}", **opts
       end
 
       ##
@@ -69,7 +69,7 @@ module BlizzardApi
       def achievements(region_id, **options)
         reg = resolve_region(region_id)
         opts = { ttl: CACHE_DAY }.merge(options)
-        api_request "#{base_url(:community)}/legacy/data/achievements/#{reg}", opts
+        api_request "#{base_url(:community)}/legacy/data/achievements/#{reg}", **opts
       end
 
       ##
@@ -80,7 +80,7 @@ module BlizzardApi
       def rewards(region_id, **options)
         reg = resolve_region(region_id)
         opts = { ttl: CACHE_DAY }.merge(options)
-        api_request "#{base_url(:community)}/legacy/data/rewards/#{reg}", opts
+        api_request "#{base_url(:community)}/legacy/data/rewards/#{reg}", **opts
       end
     end
   end
