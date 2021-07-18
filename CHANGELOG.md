@@ -1,5 +1,9 @@
 Please view this file on the master branch, otherwise it may be outdated
 
+**Version 0.6.4**
+
+Fixed argument propagation in SC2 legacy profile methods.
+
 **Version 0.6.3**
 
 Fixed argument propagation in some profile methods.
