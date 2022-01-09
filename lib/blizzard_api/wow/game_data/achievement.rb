@@ -10,13 +10,7 @@ module BlizzardApi
     # You can get an instance of this class using the default region as follows:
     #   api_instance = BlizzardApi::Wow.achievement
     class Achievement < Wow::GenericDataEndpoint
-      ##
-      # This method overrides the inherited default behavior to prevent high server load and fetch time
-      #
-      # @!macro response
-      def complete
-        raise BlizzardApi::ApiException, 'There are too many achievements to fetch complete data'
-      end
+      setup 'achievement', :static, CACHE_TRIMESTER
 
       ##
       # Return a list of possible achievement categories.
@@ -46,15 +40,6 @@ module BlizzardApi
       # @!macro response
       def media(id, **options)
         api_request "#{base_url(:media)}/achievement/#{id}", **default_options.merge(options)
-      end
-
-      protected
-
-      def endpoint_setup
-        @endpoint = 'achievement'
-        @namespace = :static
-        @collection = 'achievements'
-        @ttl = CACHE_TRIMESTER
       end
     end
   end

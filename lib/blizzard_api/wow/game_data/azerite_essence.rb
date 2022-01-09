@@ -12,6 +12,8 @@ module BlizzardApi
     class AzeriteEssence < Wow::GenericDataEndpoint
       include BlizzardApi::Wow::Searchable
 
+      setup 'azerite-essence', :static, CACHE_TRIMESTER
+
       ##
       # Fetch media for one of the azerite essences listed by the {#index} using its *id*
       #
@@ -22,15 +24,6 @@ module BlizzardApi
       # @!macro response
       def media(id, **options)
         api_request "#{base_url(:media)}/azerite-essence/#{id}", **default_options.merge(options)
-      end
-
-      protected
-
-      def endpoint_setup
-        @endpoint = 'azerite-essence'
-        @namespace = :static
-        @collection = 'azerite_essences'
-        @ttl = CACHE_TRIMESTER
       end
     end
   end

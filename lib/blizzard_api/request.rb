@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
 ##
+# @!macro [new] init_options
+#   @param [Hash] options
+#   @option options [String] :region API Region
+#   @option options [Symbol] :mode API Mode
+
+##
 # @!macro [new] request_options
 #   @param {Hash} options You can specify some options
 #   @option options [String] :locale Overrides the default locale for a single call
@@ -9,47 +15,24 @@
 #   @option options [Boolean] :ignore_cache If set to true the request will not use the cache
 #   @option options [Integer] :ttl Override the default time (in seconds) a request should be cached
 #   @option options [DateTime] :since Adds the If-modified-since headers. Will always ignore cache when set.
-#   @option options [Integer] :concurrency How many threads to use for complete sets of data.
-#     BEWARE: Might cause 429 responses, in this case lower the number.
-
-##
-# @!macro [new] regions
-#   @param {Symbol} region One of the valid API regions *:us*, *:eu*, *:ko*, and *:tw*
-#   @note This gem do not support nor will support China endpoints
 
 ##
 # @!macro [new] response
 #   @return [Hash] API Response. The actual type of the returned object depends on the *format* option
 #   in the configuration module
 
-##
-# @!macro [new] complete
-#   Iterates through the {index} response data and fetch additional information using {get}, it results in a more
-#   complete set of data
-#   @note IT MAY PERFORM MANY REQUESTS TO FETCH ALL DATA
-#   @!macro request_options
-#   @!macro response
-
 module BlizzardApi
   ##
   # Simplifies the requests to Blizzard APIS
   class Request
+    include ApiStandards
+
     # One hour cache
     CACHE_HOUR = 3600
     # One day cache
     CACHE_DAY = 24 * CACHE_HOUR
     # Three (commercial) months cache
     CACHE_TRIMESTER = CACHE_DAY * 90
-
-    # Common endpoints
-    BASE_URLS = {
-      game_data: 'https://%s.api.blizzard.com/data/%s',
-      community: 'https://%s.api.blizzard.com/%s',
-      profile: 'https://%s.api.blizzard.com/profile/%s',
-      media: 'https://%s.api.blizzard.com/data/%s/media',
-      user_profile: 'https://%s.api.blizzard.com/profile/user/%s',
-      search: 'https://%s.api.blizzard.com/data/%s/search'
-    }.freeze
 
     ##
     # @!attribute region
@@ -62,14 +45,14 @@ module BlizzardApi
     attr_accessor :mode
 
     ##
-    # @!macro regions
-    def initialize(region = nil, mode = :regular)
-      self.region = region || BlizzardApi.region
-      @redis = Redis.new(host: BlizzardApi.redis_host, port: BlizzardApi.redis_port) if BlizzardApi.use_cache
+    # @!macro init_options
+    def initialize(**options)
+      self.region = options[:region] || BlizzardApi.region
       # Use the shared access_token, or create one if it doesn't exists. This avoids unnecessary calls to create tokens.
-      @access_token = BlizzardApi.access_token || create_access_token
+      create_access_token if BlizzardApi.access_token_expired?
+
       # Mode
-      @mode = mode
+      @mode = options[:mode] || BlizzardApi.mode
     end
 
     require 'net/http'
@@ -79,45 +62,9 @@ module BlizzardApi
 
     protected
 
-    def base_url(scope)
-      raise ArgumentError, 'Invalid scope' unless BASE_URLS.include? scope
-
-      format BASE_URLS[scope], region, @game
-    end
-
-    ##
-    # Returns a valid version namespace
-    #
-    # @param [Hash] options A hash containing a valid namespace key
-    def endpoint_version(options)
-      if options.key? :classic
-        'classic-'
-      elsif options.key? :classic1x
-        'classic1x-'
-      else
-        ''
-      end
-    end
-
-    ##
-    # Returns a valid namespace string for consuming the api endpoints
-    #
-    # @param [Hash] options A hash containing the namespace key
-    def endpoint_namespace(options)
-      version = endpoint_version(options)
-      case options[:namespace]
-      when :dynamic
-        "dynamic-#{version}#{region}"
-      when :static
-        "static-#{version}#{region}"
-      when :profile
-        "profile-#{region}"
-      else
-        raise ArgumentError, 'Invalid namespace scope'
-      end
-    end
-
     def create_access_token
+      return if BlizzardApi.restore_access_token
+
       uri = URI.parse("https://#{BlizzardApi.region}.battle.net/oauth/token")
 
       http = Net::HTTP.new(uri.host, uri.port)
@@ -129,7 +76,7 @@ module BlizzardApi
       request.set_form_data grant_type: 'client_credentials'
 
       response = http.request(request)
-      BlizzardApi.access_token = JSON.parse(response.body)['access_token']
+      BlizzardApi.save_access_token(JSON.parse(response.body))
     end
 
     def request(url, **options)
@@ -180,16 +127,20 @@ module BlizzardApi
       !options.fetch(:ignore_cache, false)
     end
 
+    def http_connection(url)
+      Net::HTTP.new(url.host, url.port).tap do |http|
+        http.use_ssl = true
+      end
+    end
+
     def consume_api(url, **options)
       # Creates a HTTP connection and request to ensure thread safety
-      http = Net::HTTP.new(url.host, url.port)
-      http.use_ssl = true
       request = Net::HTTP::Get.new(url)
 
       add_headers request, options
 
       # Executes the request
-      http.request(request).tap do |response|
+      http_connection(url).request(request).tap do |response|
         if mode.eql?(:regular) && ![200, 304].include?(response.code.to_i)
           raise BlizzardApi::ApiException.new "Request failed with code '#{response.code}' details: #{response.to_hash}", response.code.to_i
         end
@@ -198,20 +149,20 @@ module BlizzardApi
 
     def add_headers(request, options)
       # Blizzard API documentation states the preferred way to send the access_token is using Bearer token on header
-      request['Authorization'] = "Bearer #{options.fetch(:access_token, @access_token)}"
+      request['Authorization'] = "Bearer #{options.fetch(:access_token, BlizzardApi.access_token)}"
       # Format If-modified-since option
       request['If-Modified-Since'] = options[:since].httpdate if options.key? :since
       options[:headers]&.each { |header, content| request[header] = content }
     end
 
     def save_in_cache(resource_url, data, ttl)
-      @redis.setex resource_url, ttl, data if BlizzardApi.use_cache
+      BlizzardApi.redis_connection.setex resource_url, ttl, data if BlizzardApi.use_cache
     end
 
     def find_in_cache(resource_url)
       return false unless BlizzardApi.use_cache
 
-      @redis.get resource_url if @redis.exists? resource_url
+      BlizzardApi.redis_connection.get resource_url if BlizzardApi.redis_connection.exists? resource_url
     end
   end
 end

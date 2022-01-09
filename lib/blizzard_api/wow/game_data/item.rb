@@ -12,20 +12,14 @@ module BlizzardApi
     class Item < Wow::GenericDataEndpoint
       include BlizzardApi::Wow::Searchable
 
+      setup 'item', :static, CACHE_TRIMESTER
+
       ##
       # This method overrides the inherited default behavior to prevent high server load and fetch time
       #
       # @!macro response
       def index
         raise BlizzardApi::ApiException, 'This endpoint does not have a index method'
-      end
-
-      ##
-      # This method overrides the inherited default behavior to prevent high server load and fetch time
-      #
-      # @!macro response
-      def complete
-        raise BlizzardApi::ApiException, 'This endpoint does not have a complete method'
       end
 
       ##
@@ -49,7 +43,7 @@ module BlizzardApi
       # @option options [Boolean] :classic1x If set to true, this method will call the classic era version
       #
       # @!macro response
-      def class(id, **options)
+      def item_class(id, **options)
         api_request "#{endpoint_uri('class')}/#{id}", **default_options.merge(options)
       end
 
@@ -100,15 +94,6 @@ module BlizzardApi
       # @!macro response
       def set(id, **options)
         api_request "#{endpoint_uri('set')}/#{id}", **default_options.merge(options)
-      end
-
-      protected
-
-      def endpoint_setup
-        @endpoint = 'item'
-        @namespace = :static
-        @collection = 'items'
-        @ttl = CACHE_TRIMESTER
       end
     end
   end

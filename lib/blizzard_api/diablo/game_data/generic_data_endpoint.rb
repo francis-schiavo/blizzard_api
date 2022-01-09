@@ -4,8 +4,8 @@ module BlizzardApi
   module Diablo
     # Generic endpoint to support most data requests with minor configurations
     class GenericDataEndpoint < Diablo::Request
-      def initialize(region = nil, mode = :regular)
-        super region, mode
+      def initialize(**options)
+        super(**options)
         endpoint_setup
         @ttl ||= CACHE_DAY
       end

@@ -1,5 +1,17 @@
 Please view this file on the master branch, otherwise it may be outdated
 
+**Version 1.0.0**
+
+Removed the `complete` method from WoW game data endpoints.
+Removed the `concurrency` request and configuration option as it is not necessary anymore.
+Removed the `thwait` dependency.
+
+Added the `redis_database` option to support selecting the redis database for caching data.
+The gem will now share a single Redis connection across all calls.
+The gem now creates a new token on demand if the previous one has expired.
+It is now possible to cache the token in Redis to avoid needlessly creating a new token.
+It is now possible to set the default mode for API calls
+
 **Version 0.6.4**
 
 Fixed argument propagation in SC2 legacy profile methods.

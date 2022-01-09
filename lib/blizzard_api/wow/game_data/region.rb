@@ -10,14 +10,7 @@ module BlizzardApi
     # You can get an instance of this class using the default region as follows:
     #   api_instance = BlizzardApi::Wow.region
     class Region < Wow::GenericDataEndpoint
-      protected
-
-      def endpoint_setup
-        @endpoint = 'region'
-        @namespace = :dynamic
-        @collection = 'regions'
-        @ttl = CACHE_TRIMESTER
-      end
+      setup 'region', :dynamic, CACHE_TRIMESTER
     end
   end
 end

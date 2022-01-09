@@ -12,14 +12,7 @@ module BlizzardApi
     class Mount < Wow::GenericDataEndpoint
       include BlizzardApi::Wow::Searchable
 
-      protected
-
-      def endpoint_setup
-        @endpoint = 'mount'
-        @namespace = :static
-        @collection = 'mounts'
-        @ttl = CACHE_TRIMESTER
-      end
+      setup 'mount', :static, CACHE_TRIMESTER
     end
   end
 end

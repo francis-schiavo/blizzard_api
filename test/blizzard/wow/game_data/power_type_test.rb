@@ -18,11 +18,6 @@ module BlizzardApi
         power_type_data = @power_types.get 0
         assert_equal 'Mana', power_type_data[:name][:en_US]
       end
-
-      def test_power_type_complete
-        power_type_data = @power_types.complete
-        assert_equal 'Mana', power_type_data[0][:name][:en_US]
-      end
     end
   end
 end

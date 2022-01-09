@@ -12,25 +12,14 @@ module BlizzardApi
     class Media < Wow::GenericDataEndpoint
       include BlizzardApi::Wow::Searchable
 
+      setup 'media', :static, CACHE_TRIMESTER
+
       def index(_options = nil)
         raise BlizzardApi::ApiException, 'This endpoint does not have a index method'
       end
 
       def get(_options = nil)
         raise BlizzardApi::ApiException, 'This endpoint does not have a get method'
-      end
-
-      def complete(_options = nil)
-        raise BlizzardApi::ApiException, 'This endpoint does not have a complete method'
-      end
-
-      protected
-
-      def endpoint_setup
-        @endpoint = 'media'
-        @namespace = :static
-        @collection = 'medias'
-        @ttl = CACHE_TRIMESTER
       end
     end
   end

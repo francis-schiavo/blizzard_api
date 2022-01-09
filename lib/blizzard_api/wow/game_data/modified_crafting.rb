@@ -10,9 +10,7 @@ module BlizzardApi
     # You can get an instance of this class using the default region as follows:
     #   api_instance = BlizzardApi::Wow.modified_crafting
     class ModifiedCrafting < Wow::GenericDataEndpoint
-      def complete
-        raise BlizzardApi::ApiException, 'This endpoint does not have a complete method.'
-      end
+      setup 'modified-crafting', :static, CACHE_TRIMESTER
 
       ##
       # Fetch modified crafting category index
@@ -52,15 +50,6 @@ module BlizzardApi
       # @!macro response
       def slot_type(id, **options)
         api_request "#{base_url(:game_data)}/modified-crafting/reagent-slot-type/#{id}", **default_options.merge(options)
-      end
-
-      protected
-
-      def endpoint_setup
-        @endpoint = 'modified-crafting'
-        @namespace = :static
-        @collection = 'professions'
-        @ttl = CACHE_TRIMESTER
       end
     end
   end

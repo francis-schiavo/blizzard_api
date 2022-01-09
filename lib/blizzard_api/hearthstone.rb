@@ -1,5 +1,11 @@
 # frozen_string_literal: true
 
+##
+# @!macro [new] init_options
+#   @param options [Hash] Initialization options
+#     @option options [String] :region API region
+#     @option options [Symbol] :model API mode (:regular, :extended)
+
 module BlizzardApi
   # Hearthstone related classes
   module Hearthstone
@@ -13,31 +19,31 @@ module BlizzardApi
     require_relative 'hearthstone/game_data/metadata'
 
     ##
-    # @param region [String] API Region
+    # @!macro init_options
     # @return {Card}
-    def self.card(region = BlizzardApi.region)
-      BlizzardApi::Hearthstone::Card.new(region)
+    def self.card(**options)
+      BlizzardApi::Hearthstone::Card.new(**options)
     end
 
     ##
-    # @param region [String] API Region
+    # @!macro init_options
     # @return {Back}
-    def self.back(region = BlizzardApi.region)
-      BlizzardApi::Hearthstone::Back.new(region)
+    def self.back(**options)
+      BlizzardApi::Hearthstone::Back.new(**options)
     end
 
     ##
-    # @param region [String] API Region
+    # @!macro init_options
     # @return {Deck}
-    def self.deck(region = BlizzardApi.region)
-      BlizzardApi::Hearthstone::Deck.new(region)
+    def self.deck(**options)
+      BlizzardApi::Hearthstone::Deck.new(**options)
     end
 
     ##
-    # @param region [String] API Region
+    # @!macro init_options
     # @return {Metadata}
-    def self.metadata(region = BlizzardApi.region)
-      BlizzardApi::Hearthstone::Metadata.new(region)
+    def self.metadata(**options)
+      BlizzardApi::Hearthstone::Metadata.new(**options)
     end
   end
 end

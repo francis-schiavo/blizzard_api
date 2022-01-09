@@ -10,6 +10,8 @@ module BlizzardApi
     # You can get an instance of this class using the default region as follows:
     #   api_instance = BlizzardApi::Wow.quest
     class Quest < Wow::GenericDataEndpoint
+      setup 'quest', :static, CACHE_TRIMESTER
+
       ##
       # Return a list of quest categories
       #
@@ -71,15 +73,6 @@ module BlizzardApi
       # @!macro response
       def type(id, **options)
         api_request "#{endpoint_uri}/type/#{id}", **default_options.merge(options)
-      end
-
-      protected
-
-      def endpoint_setup
-        @endpoint = 'quest'
-        @namespace = :static
-        @collection = 'quests'
-        @ttl = CACHE_TRIMESTER
       end
     end
   end

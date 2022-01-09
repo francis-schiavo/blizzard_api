@@ -10,6 +10,8 @@ module BlizzardApi
     # You can get an instance of this class using the default region as follows:
     #   api_instance = BlizzardApi::Wow.talent
     class TechTalent < Wow::GenericDataEndpoint
+      setup 'tech-talent', :static, CACHE_TRIMESTER
+
       ##
       # Fetch tech talent trees
       #
@@ -42,15 +44,6 @@ module BlizzardApi
       # @!macro response
       def media(id, **options)
         api_request "#{base_url(:media)}/tech-talent/#{id}", **default_options.merge(options)
-      end
-
-      protected
-
-      def endpoint_setup
-        @endpoint = 'tech-talent'
-        @namespace = :static
-        @collection = 'tech-talents'
-        @ttl = CACHE_TRIMESTER
       end
     end
   end

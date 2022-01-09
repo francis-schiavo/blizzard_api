@@ -1,5 +1,11 @@
 # frozen_string_literal: true
 
+##
+# @!macro [new] init_options
+#   @param options [Hash] Initialization options
+#     @option options [String] :region API region
+#     @option options [Symbol] :model API mode (:regular, :extended)
+
 module BlizzardApi
   # Diablo III related classes
   module Diablo
@@ -11,17 +17,17 @@ module BlizzardApi
     require_relative 'diablo/game_data/era'
 
     ##
-    # @param region [String] API Region
+    # @!macro init_options
     # @return {Season}
-    def self.season(region = BlizzardApi.region)
-      BlizzardApi::Diablo::Season.new(region)
+    def self.season(**options)
+      BlizzardApi::Diablo::Season.new(**options)
     end
 
     ##
-    # @param region [String] API Region
+    # @!macro init_options
     # @return {Era}
-    def self.era(region = BlizzardApi.region)
-      BlizzardApi::Diablo::Era.new(region)
+    def self.era(**options)
+      BlizzardApi::Diablo::Era.new(**options)
     end
 
     # Diablo community api
@@ -34,52 +40,52 @@ module BlizzardApi
     require_relative 'diablo/community/profile'
 
     ##
-    # @param region [String] API Region
+    # @!macro init_options
     # @return {Act}
-    def self.act(region = BlizzardApi.region)
-      BlizzardApi::Diablo::Act.new(region)
+    def self.act(**options)
+      BlizzardApi::Diablo::Act.new(**options)
     end
 
     ##
-    # @param region [String] API Region
+    # @!macro init_options
     # @return {Artisan}
-    def self.artisan(region = BlizzardApi.region)
-      BlizzardApi::Diablo::Artisan.new(region)
+    def self.artisan(**options)
+      BlizzardApi::Diablo::Artisan.new(**options)
     end
 
     ##
-    # @param region [String] API Region
+    # @!macro init_options
     # @return {Follower}
-    def self.follower(region = BlizzardApi.region)
-      BlizzardApi::Diablo::Follower.new(region)
+    def self.follower(**options)
+      BlizzardApi::Diablo::Follower.new(**options)
     end
 
     ##
-    # @param region [String] API Region
+    # @!macro init_options
     # @return {Character}
-    def self.character(region = BlizzardApi.region)
-      BlizzardApi::Diablo::Character.new(region)
+    def self.character(**options)
+      BlizzardApi::Diablo::Character.new(**options)
     end
 
     ##
-    # @param region [String] API Region
+    # @!macro init_options
     # @return {ItemType}
-    def self.item_type(region = BlizzardApi.region)
-      BlizzardApi::Diablo::ItemType.new(region)
+    def self.item_type(**options)
+      BlizzardApi::Diablo::ItemType.new(**options)
     end
 
     ##
-    # @param region [String] API Region
+    # @!macro init_options
     # @return {Type}
-    def self.item(region = BlizzardApi.region)
-      BlizzardApi::Diablo::Item.new(region)
+    def self.item(**options)
+      BlizzardApi::Diablo::Item.new(**options)
     end
 
     ##
-    # @param region [String] API Region
+    # @!macro init_options
     # @return {Profile}
-    def self.profile(region = BlizzardApi.region)
-      BlizzardApi::Diablo::Profile.new(region)
+    def self.profile(**options)
+      BlizzardApi::Diablo::Profile.new(**options)
     end
   end
 end

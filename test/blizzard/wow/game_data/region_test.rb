@@ -30,17 +30,6 @@ module BlizzardApi
         region_data = @region.get 41, classic: true
         assert_equal 'US', region_data[:tag]
       end
-
-      def test_region_complete
-        region_data = @region.complete
-        assert_equal 'North America', region_data[0][:name][:en_US]
-
-        region_data = @region.complete classic1x: true
-        assert_equal 'Classic Era North America', region_data[0][:name][:en_US]
-
-        region_data = @region.complete classic: true
-        assert_equal 'Classic North America', region_data[0][:name][:en_US]
-      end
     end
   end
 end

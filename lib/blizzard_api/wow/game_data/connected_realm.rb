@@ -12,14 +12,7 @@ module BlizzardApi
     class ConnectedRealm < Wow::GenericDataEndpoint
       include BlizzardApi::Wow::Searchable
 
-      protected
-
-      def endpoint_setup
-        @endpoint = 'connected-realm'
-        @namespace = :dynamic
-        @collection = 'connected_realms'
-        @ttl = CACHE_TRIMESTER
-      end
+      setup 'connected-realm', :dynamic, CACHE_TRIMESTER
     end
   end
 end

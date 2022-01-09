@@ -10,14 +10,7 @@ module BlizzardApi
     # You can get an instance of this class using the default region as follows:
     #   race = BlizzardApi::Wow.playable_race
     class PlayableRace < Wow::GenericDataEndpoint
-      protected
-
-      def endpoint_setup
-        @endpoint = 'playable-race'
-        @namespace = :static
-        @collection = 'races'
-        @ttl = CACHE_TRIMESTER
-      end
+      setup 'playable-race', :static, CACHE_TRIMESTER
     end
   end
 end

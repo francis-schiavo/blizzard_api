@@ -13,9 +13,6 @@ module BlizzardApi
         data = @playable_class.index
         assert_equal 12, data[:classes].count
 
-        data = @playable_class.index classic1x: true
-        assert_equal 9, data[:classes].count
-
         data = @playable_class.index classic: true
         assert_equal 9, data[:classes].count
       end
@@ -24,22 +21,8 @@ module BlizzardApi
         data = @playable_class.get 11
         assert_equal 'Druid', data[:name][:en_US]
 
-        data = @playable_class.get 11, classic1x: true
-        assert_equal 'Druid', data[:name][:en_US]
-
         data = @playable_class.get 11, classic: true
         assert_equal 'Druid', data[:name][:en_US]
-      end
-
-      def test_playable_class_complete
-        data = @playable_class.complete
-        assert_equal 'Warrior', data[0][:name][:en_US]
-
-        data = @playable_class.complete classic1x: true
-        assert_equal 'Warrior', data[0][:name][:en_US]
-
-        data = @playable_class.complete classic: true
-        assert_equal 'Warrior', data[0][:name][:en_US]
       end
 
       def test_playable_class_talent_slots

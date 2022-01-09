@@ -10,15 +10,7 @@ module BlizzardApi
     # You can get an instance of this class using the default region as follows:
     #   spec = BlizzardApi::Wow.playable_specialization
     class PlayableSpecialization < Wow::GenericDataEndpoint
-      ##
-      # @!macro complete
-      def complete(**options)
-        index_data = index(**options)
-        {}.tap do |response_data|
-          response_data[:character_specializations] = character_data(index_data, options)
-          response_data[:pet_specializations] = pet_data(index_data, options)
-        end
-      end
+      setup 'playable-specialization', :static, CACHE_TRIMESTER
 
       ##
       # Fetch media for one of the playable specializations listed by the {#index} using its *id*
@@ -30,15 +22,6 @@ module BlizzardApi
       # @!macro response
       def media(id, **options)
         api_request "#{base_url(:media)}/playable-specialization/#{id}", **default_options.merge(options)
-      end
-
-      protected
-
-      def endpoint_setup
-        @endpoint = 'playable-specialization'
-        @namespace = :static
-        @collection = 'playable_specialization'
-        @ttl = CACHE_TRIMESTER
       end
 
       private

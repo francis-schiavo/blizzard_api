@@ -24,6 +24,12 @@ module BlizzardApi
     attr_accessor :region
 
     ##
+    # @!attribute mode
+    #   Api response mode :regular or :extended.
+    #   @return [Symbol] Default API response mode
+    attr_accessor :mode
+
+    ##
     # @!attribute use_cache
     #   If true requests will be cached using a Redis server.
     #   @see https://redis.io/
@@ -45,18 +51,17 @@ module BlizzardApi
     attr_accessor :redis_port
 
     ##
-    #
-    # @!attribute concurrency
-    #   How many threads to use for WoW game data `complete` payloads. Defaults to 4.
-    #   Should be set to the amount of available cores on the system.
-    #   @return [Integer] Concurrency
-    attr_writer :concurrency
+    # @!attribute redis_database
+    #   Redis databse.
+    #   @see https://redis.io/
+    #   @return [Integer] Redis database
+    attr_accessor :redis_database
 
     ##
-    # @!attribute access_token
-    #   Access token. Optional. If you don't provide one it will be generate using your client credentials.
-    #   @return [String] Access token.
-    attr_accessor :access_token
+    # @!attribute cache_access_token
+    #   If set to true and cache is enabled the current access token will be cached and recovered from Redis
+    #   @return [Boolean] Access token.
+    attr_accessor :cache_access_token
 
     ##
     # This method return the singleton instance of the configuration module. Use this to initialize the default values
@@ -73,18 +78,16 @@ module BlizzardApi
     #     config.use_cache = true
     #     config.redis_host = ENV['REDIS_HOST']
     #     config.redis_port = ENV['REDIS_PORT']
-    #     config.format = :json
-    #
-    #     config.icons_directory = './wow/icons'
-    #     config.guild_crest_directory = './wow/guild_crest'
-    #     config.wow_character_profile_directory = './wow/profile'
     #   end
     def configure
       yield self
     end
 
-    def concurrency
-      @concurrency ||= 4
+    ##
+    # Initializes some default values for the main module
+    def self.extended(base)
+      base.redis_port = 1
+      base.mode = :regular
     end
   end
 end

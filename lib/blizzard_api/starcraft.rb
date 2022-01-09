@@ -1,5 +1,11 @@
 # frozen_string_literal: true
 
+##
+# @!macro [new] init_options
+#   @param options [Hash] Initialization options
+#     @option options [String] :region API region
+#     @option options [Symbol] :model API mode (:regular, :extended)
+
 module BlizzardApi
   # Starcraft II related classes
   module Starcraft
@@ -9,10 +15,10 @@ module BlizzardApi
     require_relative 'starcraft/game_data/league'
 
     ##
-    # @param region [String] API Region
+    # @!macro init_options
     # @return {League}
-    def self.league(region = BlizzardApi.region)
-      BlizzardApi::Starcraft::League.new(region)
+    def self.league(**options)
+      BlizzardApi::Starcraft::League.new(**options)
     end
 
     # Starcraft community api
@@ -22,30 +28,30 @@ module BlizzardApi
     require_relative 'starcraft/community/legacy'
 
     ##
-    # @param region [String] API Region
+    # @!macro init_options
     # @return {Profile}
-    def self.profile(region = BlizzardApi.region)
-      BlizzardApi::Starcraft::Profile.new(region)
+    def self.profile(**options)
+      BlizzardApi::Starcraft::Profile.new(**options)
     end
 
     ##
-    # @param region [String] API Region
+    # @!macro init_options
     # @return {Ladder}
-    def self.ladder(region = BlizzardApi.region)
-      BlizzardApi::Starcraft::Ladder.new(region)
+    def self.ladder(**options)
+      BlizzardApi::Starcraft::Ladder.new(**options)
     end
 
     ##
-    # @param region [String] API Region
+    # @!macro init_options
     # @return {Account}
-    def self.account(region = BlizzardApi.region)
-      BlizzardApi::Starcraft::Account.new(region)
+    def self.account(**options)
+      BlizzardApi::Starcraft::Account.new(**options)
     end
 
     ##
     # @return {Legacy}
-    def self.legacy(region = BlizzardApi.region)
-      BlizzardApi::Starcraft::Legacy.new(region)
+    def self.legacy(**options)
+      BlizzardApi::Starcraft::Legacy.new(**options)
     end
   end
 end

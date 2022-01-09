@@ -10,6 +10,8 @@ module BlizzardApi
     # You can get an instance of this class using the default region as follows:
     #   api_instance = BlizzardApi::Wow.reputation
     class Reputation < Wow::GenericDataEndpoint
+      setup 'reputation', :static, CACHE_TRIMESTER
+
       ##
       # This method overrides the inherited default behavior to prevent high server load and fetch time
       #
@@ -66,15 +68,6 @@ module BlizzardApi
       # @!macro response
       def tier(id, **options)
         api_request "#{endpoint_uri('tiers')}/#{id}", **default_options.merge(options)
-      end
-
-      protected
-
-      def endpoint_setup
-        @endpoint = 'reputation'
-        @namespace = :static
-        @collection = 'reputations'
-        @ttl = CACHE_TRIMESTER
       end
     end
   end
