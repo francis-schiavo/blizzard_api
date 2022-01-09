@@ -11,7 +11,7 @@ module BlizzardApi
 
       def test_pvp_tier_index
         pvp_data = @pvp.index
-        assert_equal 18, pvp_data[:tiers].count
+        assert_equal 27, pvp_data[:tiers].count
       end
 
       def test_pvp_tier_get

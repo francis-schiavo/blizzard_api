@@ -10,12 +10,10 @@ module BlizzardApi
     # You can get an instance of this class using the default region as follows:
     #   api_instance = BlizzardApi::Wow.mythic_keystone
     class MythicKeystone < Wow::GenericDataEndpoint
+      setup 'mythic-keystone', :dynamic, CACHE_TRIMESTER
+
       def get
         raise BlizzardApi::ApiException, 'Mythic keystone endpoint does not have a get method'
-      end
-
-      def complete
-        raise BlizzardApi::ApiException, 'There are too many creatures to fetch complete data'
       end
 
       ##
@@ -82,15 +80,6 @@ module BlizzardApi
       # @!macro response
       def season(id, **options)
         api_request "#{endpoint_uri}/season/#{id}", **default_options.merge(options)
-      end
-
-      protected
-
-      def endpoint_setup
-        @endpoint = 'mythic-keystone'
-        @namespace = :dynamic
-        @collection = 'mythic-keystones'
-        @ttl = CACHE_TRIMESTER
       end
     end
   end

@@ -10,6 +10,8 @@ module BlizzardApi
     # You can get an instance of this class using the default region as follows:
     #   api_instance = BlizzardApi::Wow.azerite_essence
     class Covenant < Wow::GenericDataEndpoint
+      setup 'covenant', :static, CACHE_TRIMESTER
+
       ##
       # Fetch media for one of the covenants listed by the {#index} using its *id*
       #
@@ -64,15 +66,6 @@ module BlizzardApi
       # @!macro response
       def conduit(id, **options)
         api_request "#{base_url(:game_data)}/covenant/conduit/#{id}", **default_options.merge(options)
-      end
-
-      protected
-
-      def endpoint_setup
-        @endpoint = 'covenant'
-        @namespace = :static
-        @collection = 'covenants'
-        @ttl = CACHE_TRIMESTER
       end
     end
   end

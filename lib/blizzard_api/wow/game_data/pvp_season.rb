@@ -10,8 +10,12 @@ module BlizzardApi
     # You can get an instance of this class using the default region as follows:
     #   api_instance = BlizzardApi::Wow.pvp_season
     class PvpSeason < Wow::GenericDataEndpoint
+      setup 'pvp-season', :dynamic, CACHE_TRIMESTER
+
       ##
       # Returns a index of pvp leaderboard for a season
+      #
+      # @param [Integer] season_id Season ID
       #
       # @!macro request_options
       # @option options [Boolean] :classic1x If set to true, this method will call the classic era version
@@ -23,6 +27,9 @@ module BlizzardApi
 
       ##
       # Returns the leaderboard for a given season and bracket
+      #
+      # @param [Integer] season_id Season ID
+      # @param [String] brackets Brackets
       #
       # @!macro request_options
       # @option options [Boolean] :classic1x If set to true, this method will call the classic era version
@@ -40,15 +47,6 @@ module BlizzardApi
       # @!macro response
       def rewards(season_id, **options)
         api_request "#{endpoint_uri}/#{season_id}/pvp-reward/index", **default_options.merge(options)
-      end
-
-      protected
-
-      def endpoint_setup
-        @endpoint = 'pvp-season'
-        @namespace = :dynamic
-        @collection = 'power_types'
-        @ttl = CACHE_TRIMESTER
       end
     end
   end

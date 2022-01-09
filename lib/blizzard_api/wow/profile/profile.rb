@@ -7,8 +7,8 @@ module BlizzardApi
     class AccountProfile < Request
       ##
       # @param token [String] A token obtained using the authorization_code flow
-      def initialize(token, region = nil, mode = :regular)
-        super region, mode
+      def initialize(token, **options)
+        super(**options)
         @token = token
       end
 

@@ -20,11 +20,6 @@ module BlizzardApi
         assert_equal 11, realm_data[:realms][0][:id]
       end
 
-      def test_connected_realm_complete
-        realm_data = @connected_realm.complete
-        assert realm_data.is_a? Array
-      end
-
       def test_connected_realm_pagination
         realm_data = @connected_realm.search(1, 10)
         assert 10, realm_data[:results].size

@@ -10,14 +10,7 @@ module BlizzardApi
     # You can get an instance of this class using the default region as follows:
     #   api_instance = BlizzardApi::Wow.power_type
     class PowerType < Wow::GenericDataEndpoint
-      protected
-
-      def endpoint_setup
-        @endpoint = 'power-type'
-        @namespace = :static
-        @collection = 'power_types'
-        @ttl = CACHE_TRIMESTER
-      end
+      setup 'power-type', :static, CACHE_TRIMESTER
     end
   end
 end

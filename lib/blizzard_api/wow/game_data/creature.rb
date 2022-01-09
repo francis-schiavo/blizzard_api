@@ -12,12 +12,10 @@ module BlizzardApi
     class Creature < Wow::GenericDataEndpoint
       include BlizzardApi::Wow::Searchable
 
+      setup 'creature', :static, CACHE_TRIMESTER
+
       def index
         raise BlizzardApi::ApiException, 'Creatures endpoint doesn\'t have an index method'
-      end
-
-      def complete
-        raise BlizzardApi::ApiException, 'There are too many creatures to fetch complete data'
       end
 
       ##
@@ -98,15 +96,6 @@ module BlizzardApi
       # @!macro response
       def display_media(id, **options)
         api_request "#{base_url(:media)}/creature-display/#{id}", **default_options.merge(options)
-      end
-
-      protected
-
-      def endpoint_setup
-        @endpoint = 'creature'
-        @namespace = :static
-        @collection = 'achievements'
-        @ttl = CACHE_TRIMESTER
       end
     end
   end

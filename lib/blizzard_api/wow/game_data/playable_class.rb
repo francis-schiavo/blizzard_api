@@ -10,6 +10,8 @@ module BlizzardApi
     # You can get an instance of this class using the default region as follows:
     #   api_instance = BlizzardApi::Wow.playable_class
     class PlayableClass < Wow::GenericDataEndpoint
+      setup 'playable-class', :static, CACHE_TRIMESTER
+
       ##
       # Returns the PvP talent slots data of a specific class
       #
@@ -19,22 +21,6 @@ module BlizzardApi
       # @!macro response
       def talent_slots(id, **options)
         api_request "#{endpoint_uri}/#{id}/pvp-talent-slots", **default_options.merge(options)
-      end
-
-      ##
-      # @!macro complete
-      #
-      # @option options [Boolean] :classic If set to true, this method will call the classic version
-      # @option options [Boolean] :classic1x If set to true, this method will call the classic era version
-      def complete(**options)
-        index_data = index(**options)
-        [].tap do |classes|
-          index_data[:classes].each do |pclass|
-            class_id = %r{playable-class/([0-9]+)}.match(pclass[:key].to_s)[1]
-            class_data = get class_id, **options
-            classes.push class_data
-          end
-        end
       end
 
       ##
@@ -66,13 +52,6 @@ module BlizzardApi
       end
 
       protected
-
-      def endpoint_setup
-        @endpoint = 'playable-class'
-        @namespace = :static
-        @collection = 'classes'
-        @ttl = CACHE_TRIMESTER
-      end
 
       def get_class_icon(media_url, **options)
         return if options.include? :classic

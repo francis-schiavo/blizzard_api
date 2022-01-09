@@ -6,9 +6,9 @@ module BlizzardApi
     # World of Warcraft requests
     class Request < BlizzardApi::Request
       ##
-      # @!macro regions
-      def initialize(region = nil, mode = :regular)
-        super region, mode
+      # @!macro init_options
+      def initialize(**options)
+        super(**options)
         @game = 'wow'
       end
     end

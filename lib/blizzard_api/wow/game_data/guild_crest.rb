@@ -10,6 +10,8 @@ module BlizzardApi
     # You can get an instance of this class using the default region as follows:
     #   api_instance = BlizzardApi::Wow.guild_crest
     class GuildCrest < Wow::GenericDataEndpoint
+      setup 'guild-crest', :static, CACHE_TRIMESTER
+
       def get
         raise BlizzardApi::ApiException, 'This endpoint doens\'t have a get method'
       end
@@ -25,7 +27,7 @@ module BlizzardApi
       #
       # @!macro response
       def border_media(id, **options)
-        api_request "#{base_url(:media)}/#{@endpoint}/border/#{id}", **default_options.merge(options)
+        api_request "#{base_url(:media)}/#{self.class.endpoint}/border/#{id}", **default_options.merge(options)
       end
 
       ##
@@ -39,15 +41,7 @@ module BlizzardApi
       #
       # @!macro response
       def emblem_media(id, **options)
-        api_request "#{base_url(:media)}/#{@endpoint}/emblem/#{id}", **default_options.merge(options)
-      end
-
-      protected
-
-      def endpoint_setup
-        @endpoint = 'guild-crest'
-        @namespace = :static
-        @ttl = CACHE_TRIMESTER
+        api_request "#{base_url(:media)}/#{self.class.endpoint}/emblem/#{id}", **default_options.merge(options)
       end
     end
   end
