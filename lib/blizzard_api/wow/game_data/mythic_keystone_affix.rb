@@ -10,6 +10,8 @@ module BlizzardApi
     # You can get an instance of this class using the default region as follows:
     #   api_instance = BlizzardApi::Wow.mythic_keystone_affix
     class MythicKeystoneAffix < Wow::GenericDataEndpoint
+      setup 'keystone-affix', :static, CACHE_TRIMESTER
+
       ##
       # Fetch media for one of the affixes listed by the {#index} using its *id*
       #
@@ -20,15 +22,6 @@ module BlizzardApi
       # @!macro response
       def media(id, **options)
         api_request "#{base_url(:media)}/keystone-affix/#{id}", **default_options.merge(options)
-      end
-
-      protected
-
-      def endpoint_setup
-        @endpoint = 'keystone-affix'
-        @namespace = :static
-        @collection = 'affixes'
-        @ttl = CACHE_TRIMESTER
       end
     end
   end

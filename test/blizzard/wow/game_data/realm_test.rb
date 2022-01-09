@@ -25,14 +25,6 @@ module BlizzardApi
         assert_equal 'atiesh', realm_data[:slug]
       end
 
-      def test_realm_complete
-        realm_data = @realm.complete
-        assert_equal 'lightbringer', realm_data[0][:slug]
-
-        realm_data = @realm.complete classic1x: true
-        assert_equal 'herod', realm_data[0][:slug]
-      end
-
       def test_realm_search
         realm_data = @realm.search do |options|
           options.where 'name.en_US', %w[Azralon Nemesis]

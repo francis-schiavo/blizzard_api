@@ -10,6 +10,8 @@ module BlizzardApi
     # You can get an instance of this class using the default region as follows:
     #   api_instance = BlizzardApi::Wow.profession
     class Profession < Wow::GenericDataEndpoint
+      setup 'profession', :static, CACHE_TRIMESTER
+
       ##
       # Fetch media for a profession using its *id*
       #
@@ -57,15 +59,6 @@ module BlizzardApi
       # @!macro response
       def recipe_media(id, **options)
         api_request "#{base_url(:media)}/recipe/#{id}", **default_options.merge(options)
-      end
-
-      protected
-
-      def endpoint_setup
-        @endpoint = 'profession'
-        @namespace = :static
-        @collection = 'professions'
-        @ttl = CACHE_TRIMESTER
       end
     end
   end

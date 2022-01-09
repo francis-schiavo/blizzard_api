@@ -18,11 +18,6 @@ module BlizzardApi
         race_data = @race.get 6
         assert_equal 'Tauren', race_data[:name][:en_US]
       end
-
-      def test_playable_race_complete
-        race_data = @race.complete
-        assert_equal 'Human', race_data[0][:gender_name][:male][:en_US]
-      end
     end
   end
 end

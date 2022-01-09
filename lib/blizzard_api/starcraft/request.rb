@@ -14,9 +14,9 @@ module BlizzardApi
       SC_REGION = { US: 1, EU: 2, KO: 3, TW: 3 }.freeze
 
       ##
-      # @!macro regions
-      def initialize(region = nil, mode = :regular)
-        super region, mode
+      # @!macro init_options
+      def initialize(**options)
+        super(**options)
         @game = 'sc2'
       end
 

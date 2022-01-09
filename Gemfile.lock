@@ -1,24 +1,22 @@
 PATH
   remote: .
   specs:
-    blizzard_api (0.6.3)
+    blizzard_api (1.0.0)
       redis (~> 4.1, >= 4.1.0)
-      thwait (~> 0.2.0)
 
 GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.2)
     dotenv (2.7.6)
-    e2mmap (0.1.0)
-    minitest (5.14.4)
-    parallel (1.20.1)
-    parser (3.0.2.0)
+    minitest (5.15.0)
+    parallel (1.21.0)
+    parser (3.0.3.2)
       ast (~> 2.4.1)
     rainbow (3.0.0)
     rake (13.0.6)
-    redis (4.3.1)
-    regexp_parser (2.1.1)
+    redis (4.5.1)
+    regexp_parser (2.2.0)
     rexml (3.2.5)
     rubocop (0.93.1)
       parallel (~> 1.10)
@@ -29,13 +27,13 @@ GEM
       rubocop-ast (>= 0.6.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 2.0)
-    rubocop-ast (1.8.0)
+    rubocop-ast (1.15.1)
       parser (>= 3.0.1.1)
     ruby-progressbar (1.11.0)
-    thwait (0.2.0)
-      e2mmap
-    unicode-display_width (1.7.0)
-    yard (0.9.26)
+    unicode-display_width (1.8.0)
+    webrick (1.7.0)
+    yard (0.9.27)
+      webrick (~> 1.7.0)
 
 PLATFORMS
   ruby

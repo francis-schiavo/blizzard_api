@@ -10,6 +10,8 @@ module BlizzardApi
     # You can get an instance of this class using the default region as follows:
     #   api_instance = BlizzardApi::Wow.talent
     class Talent < Wow::GenericDataEndpoint
+      setup 'talent', :static, CACHE_TRIMESTER
+
       ##
       # Fetch pvp talents
       #
@@ -30,15 +32,6 @@ module BlizzardApi
       # @!macro response
       def pvp_talent(id, **options)
         api_request "#{base_url(:game_data)}/pvp-talent/#{id}", **default_options.merge(options)
-      end
-
-      protected
-
-      def endpoint_setup
-        @endpoint = 'talent'
-        @namespace = :static
-        @collection = 'talents'
-        @ttl = CACHE_TRIMESTER
       end
     end
   end

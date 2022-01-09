@@ -19,12 +19,6 @@ module BlizzardApi
         assert_equal 'Level 10', achievement_data[:name][:en_US]
       end
 
-      def test_achievement_complete
-        assert_raises BlizzardApi::ApiException do
-          @achievement.complete
-        end
-      end
-
       def test_achievement_categories
         achievement_categories_data = @achievement.categories
         assert achievement_categories_data.key?(:root_categories)

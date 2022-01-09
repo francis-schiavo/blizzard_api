@@ -12,14 +12,7 @@ module BlizzardApi
     class Realm < Wow::GenericDataEndpoint
       include BlizzardApi::Wow::Searchable
 
-      protected
-
-      def endpoint_setup
-        @endpoint = 'realm'
-        @namespace = :dynamic
-        @collection = 'realms'
-        @ttl = CACHE_TRIMESTER
-      end
+      setup 'realm', :dynamic, CACHE_TRIMESTER
     end
   end
 end

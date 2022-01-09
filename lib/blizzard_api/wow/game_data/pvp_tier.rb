@@ -10,6 +10,8 @@ module BlizzardApi
     # You can get an instance of this class using the default region as follows:
     #   api_instance = BlizzardApi::Wow.pvp_tier
     class PvpTier < Wow::GenericDataEndpoint
+      setup 'pvp-tier',  :static, CACHE_TRIMESTER
+
       ##
       # Returns media assets for a pvp tier
       #
@@ -17,16 +19,7 @@ module BlizzardApi
       #
       # @!macro response
       def tier_media(id, **options)
-        api_request "#{base_url(:media)}/#{@endpoint}/#{id}", **default_options.merge(options)
-      end
-
-      protected
-
-      def endpoint_setup
-        @endpoint = 'pvp-tier'
-        @namespace = :static
-        @collection = 'tiers'
-        @ttl = CACHE_TRIMESTER
+        api_request "#{base_url(:media)}/#{self.class.endpoint}/#{id}", **default_options.merge(options)
       end
     end
   end
