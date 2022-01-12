@@ -1,5 +1,10 @@
 Please view this file on the master branch, otherwise it may be outdated
 
+**Version 2.0.0**
+
+Removed the `icon` field from PlayableClass, it was meant to mimic the old communit API behavior during the transition
+  to the new game_data version.
+
 **Version 1.0.0**
 
 Removed the `complete` method from WoW game data endpoints.
