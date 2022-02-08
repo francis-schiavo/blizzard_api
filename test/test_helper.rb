@@ -8,7 +8,6 @@ require 'dotenv'
 Dotenv.load
 
 BlizzardApi.configure do |config|
-  puts ENV['BNET_APPLICATION_ID']
   config.app_id = ENV['BNET_APPLICATION_ID']
   config.app_secret = ENV['BNET_APPLICATION_SECRET']
   config.region = 'us'

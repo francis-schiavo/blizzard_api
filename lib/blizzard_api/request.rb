@@ -86,16 +86,14 @@ module BlizzardApi
       data = using_cache?(options) ? find_in_cache(parsed_url.to_s) : nil
 
       # If data was found that means cache is enabled and valid
-      return JSON.parse(data, symbolize_names: true) if data
+      return prepare_response data if data
 
       response = consume_api parsed_url, **options
 
+      response_data = response.code.to_i.eql?(304) ? nil : response.body
       save_in_cache parsed_url.to_s, response.body, options[:ttl] || CACHE_DAY if using_cache? options
 
-      response_data = response.code.to_i.eql?(304) ? nil : JSON.parse(response.body, symbolize_names: true)
-      return [response, response_data] if mode.eql? :extended
-
-      response_data
+      prepare_response response_data, response
     end
 
     def api_request(uri, **query_string)
@@ -110,7 +108,7 @@ module BlizzardApi
 
       # In case uri already have query string parameters joins them with &
       if query_string.size.positive?
-        query_string = URI.encode_www_form(query_string, false)
+        query_string = URI.encode_www_form(query_string)
         uri = uri.include?('?') ? "#{uri}&#{query_string}" : "#{uri}?#{query_string}"
       end
 
@@ -120,9 +118,21 @@ module BlizzardApi
     private
 
     ##
+    # Resolves the response based on the mode
+    def prepare_response(data, response = false)
+      parsed_data = data.nil? ? data : JSON.parse(data, symbolize_names: true)
+
+      return parsed_data unless mode.eql? :extended
+
+      response = ApiResponse.new(data) unless response
+
+      [response, parsed_data]
+    end
+
+    ##
     # @param options [Hash] Request options
     def using_cache?(options)
-      return false if mode.eql?(:extended) || options.key?(:since)
+      return false if options.key?(:since)
 
       !options.fetch(:ignore_cache, false)
     end
@@ -130,6 +140,7 @@ module BlizzardApi
     def http_connection(url)
       Net::HTTP.new(url.host, url.port).tap do |http|
         http.use_ssl = true
+        http.keep_alive_timeout = 30
       end
     end
 

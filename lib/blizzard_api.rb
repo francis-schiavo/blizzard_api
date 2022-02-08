@@ -3,6 +3,7 @@
 require_relative 'blizzard_api/configuration'
 require_relative 'blizzard_api/token_manager'
 require_relative 'blizzard_api/api_standards'
+require_relative 'blizzard_api/api_response'
 require_relative 'blizzard_api/request'
 require_relative 'blizzard_api/exception'
 require_relative 'blizzard_api/version'

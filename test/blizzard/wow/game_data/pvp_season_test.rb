@@ -21,8 +21,8 @@ module BlizzardApi
         pvp_data = @pvp.get 27
         assert_equal 1_561_471_200_000, pvp_data[:season_end_timestamp]
 
-        pvp_data = @pvp.get 1, classic: true
-        assert_equal 1_623_769_200_000, pvp_data[:season_start_timestamp]
+        pvp_data = @pvp.get 2, classic: true
+        assert pvp_data.key? :season_start_timestamp
       end
 
       def test_pvp_season_leaderboards

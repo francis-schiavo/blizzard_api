@@ -1,5 +1,14 @@
 Please view this file on the master branch, otherwise it may be outdated
 
+**Version 3.0.0**
+
+Changed the way `:extended` mode is handled regarding caching. Now the extended mode will use cache and return a fake
+  response object if the content is cached (Cache is still ignored when using the `:since` option).
+A cached response can be identified by the presence of a `cached?` method on the response object.
+
+Some automated tests for SC2 endpoints are now ignoring `503` errors. The state of the API is somehow unknown since it
+  is down most of the time.
+
 **Version 2.0.0**
 
 Removed the `icon` field from PlayableClass, it was meant to mimic the old communit API behavior during the transition
