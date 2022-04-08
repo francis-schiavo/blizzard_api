@@ -37,7 +37,7 @@ module BlizzardApi
 
       def test_mythic_keystone_seasons
         mythic_keystone_seasons_data = @mythic_keystone.seasons
-        assert_equal 6, mythic_keystone_seasons_data[:seasons].count
+        assert_equal 7, mythic_keystone_seasons_data[:seasons].count
       end
 
       def test_mythic_keystone_season

@@ -10,7 +10,7 @@ module BlizzardApi
       end
 
       def test_back_index
-        back_data = @back.index
+        back_data = @back.search
         assert back_data[:cardBacks]
       end
 

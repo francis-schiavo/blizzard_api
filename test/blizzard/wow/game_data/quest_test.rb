@@ -12,6 +12,8 @@ module BlizzardApi
       def test_quest_index
         quest_data = @quest.index
         assert quest_data.key? :categories
+        assert quest_data.key? :areas
+        assert quest_data.key? :types
       end
 
       def test_quest_get
@@ -21,32 +23,32 @@ module BlizzardApi
 
       def test_quest_categories
         quest_data = @quest.categories
-        assert 122, quest_data[:categories].count
+        assert quest_data.key? :categories
       end
 
       def test_quest_category
         quest_data = @quest.category 1
-        assert 'Epic', quest_data[:category][:en_US]
+        assert_equal 'Epic', quest_data[:category][:en_US]
       end
 
       def test_quest_types
         quest_data = @quest.types
-        assert 10, quest_data[:types].count
+        assert quest_data.key? :types
       end
 
       def test_quest_type
         quest_data = @quest.type 1
-        assert 'Group', quest_data[:type][:en_US]
+        assert_equal 'Group', quest_data[:type][:en_US]
       end
 
       def test_quest_areas
         quest_data = @quest.areas
-        assert 321, quest_data[:areas].count
+        assert quest_data.key? :areas
       end
 
       def test_quest_area
         quest_data = @quest.area 215
-        assert 'Mulgore', quest_data[:area][:en_US]
+        assert_equal 'Mulgore', quest_data[:area][:en_US]
       end
     end
   end

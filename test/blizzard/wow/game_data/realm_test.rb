@@ -11,10 +11,10 @@ module BlizzardApi
 
       def test_realm_index
         realm_data = @realm.index
-        assert realm_data[:realms]
+        assert realm_data.key? :realms
 
         realm_data = @realm.index classic1x: true
-        assert realm_data[:realms]
+        assert realm_data.key? :realms
       end
 
       def test_realm_get

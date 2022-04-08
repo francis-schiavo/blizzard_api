@@ -82,7 +82,6 @@ module BlizzardApi
     def request(url, **options)
       # Creates the whole url for request
       parsed_url = URI.parse(url)
-
       data = using_cache?(options) ? find_in_cache(parsed_url.to_s) : nil
 
       # If data was found that means cache is enabled and valid
@@ -90,9 +89,20 @@ module BlizzardApi
 
       response = consume_api parsed_url, **options
 
-      response_data = response.code.to_i.eql?(304) ? nil : response.body
-      save_in_cache parsed_url.to_s, response.body, options[:ttl] || CACHE_DAY if using_cache? options
+      handle_cache_on_response parsed_url, response, **options
+    end
 
+    def handle_cache_on_response(parsed_url, response, **options)
+      case response.code.to_i
+      when 304
+        response_data = nil
+      when 200
+        response_data = response.body
+      else
+        return nil, response
+      end
+
+      save_in_cache parsed_url.to_s, response.body, options[:ttl] || CACHE_DAY if using_cache? options
       prepare_response response_data, response
     end
 
@@ -119,12 +129,12 @@ module BlizzardApi
 
     ##
     # Resolves the response based on the mode
-    def prepare_response(data, response = false)
+    def prepare_response(data, response = nil)
       parsed_data = data.nil? ? data : JSON.parse(data, symbolize_names: true)
 
       return parsed_data unless mode.eql? :extended
 
-      response = ApiResponse.new(data) unless response
+      response ||= ApiResponse.new(data)
 
       [response, parsed_data]
     end

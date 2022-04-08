@@ -13,7 +13,7 @@ module BlizzardApi
       setup 'guild-crest', :static, CACHE_TRIMESTER
 
       def get
-        raise BlizzardApi::ApiException, 'This endpoint doens\'t have a get method'
+        raise BlizzardApi::ApiException, 'This endpoint does not have a get method'
       end
 
       ##

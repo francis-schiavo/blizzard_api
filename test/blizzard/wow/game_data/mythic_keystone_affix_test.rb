@@ -21,7 +21,7 @@ module BlizzardApi
 
       def test_mythic_keystone_affix_media
         affix_data = @affix.media 1
-        assert_equal 'https://render-us.worldofwarcraft.com/icons/56/inv_misc_volatilewater.jpg', affix_data[:assets][0][:value]
+        assert_equal 'https://render.worldofwarcraft.com/us/icons/56/inv_misc_volatilewater.jpg', affix_data[:assets][0][:value]
       end
     end
   end

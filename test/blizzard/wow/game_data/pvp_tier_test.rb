@@ -11,7 +11,7 @@ module BlizzardApi
 
       def test_pvp_tier_index
         pvp_data = @pvp.index
-        assert_equal 27, pvp_data[:tiers].count
+        assert pvp_data.key? :tiers
       end
 
       def test_pvp_tier_get
@@ -21,7 +21,7 @@ module BlizzardApi
 
       def test_pvp_tier_media
         pvp_data = @pvp.tier_media 1
-        assert_equal 'https://render-us.worldofwarcraft.com/icons/56/ui_rankedpvp_01.jpg', pvp_data[:assets][0][:value]
+        assert_equal 'https://render.worldofwarcraft.com/us/icons/56/ui_rankedpvp_01.jpg', pvp_data[:assets][0][:value]
       end
     end
   end

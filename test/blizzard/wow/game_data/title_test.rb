@@ -11,7 +11,7 @@ module BlizzardApi
 
       def test_title_index
         title_data = @title.index
-        assert title_data.key?(:titles)
+        assert title_data.key? :titles
       end
 
       def test_title_get

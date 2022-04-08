@@ -11,7 +11,7 @@ module BlizzardApi
 
       def test_specialization_index
         specs_data = @playable_specialization.index
-        assert_equal 62, specs_data[:character_specializations][0][:id]
+        assert specs_data.key? :character_specializations
       end
 
       def test_specialization_get
@@ -21,7 +21,7 @@ module BlizzardApi
 
       def test_specialization_media
         specs_data = @playable_specialization.media 262
-        assert_equal 'https://render-us.worldofwarcraft.com/icons/56/spell_nature_lightning.jpg', specs_data[:assets][0][:value]
+        assert_equal 'https://render.worldofwarcraft.com/us/icons/56/spell_nature_lightning.jpg', specs_data[:assets][0][:value]
       end
     end
   end

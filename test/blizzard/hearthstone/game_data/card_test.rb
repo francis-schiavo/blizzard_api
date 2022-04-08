@@ -10,7 +10,7 @@ module BlizzardApi
       end
 
       def test_card_index
-        card_data = @card.index
+        card_data = @card.search
         assert card_data[:cards]
       end
 

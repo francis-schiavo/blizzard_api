@@ -34,7 +34,7 @@ module BlizzardApi
     require_relative 'diablo/community/act'
     require_relative 'diablo/community/artisan'
     require_relative 'diablo/community/follower'
-    require_relative 'diablo/community/character'
+    require_relative 'diablo/community/character_class'
     require_relative 'diablo/community/item_type'
     require_relative 'diablo/community/item'
     require_relative 'diablo/community/profile'
@@ -64,7 +64,7 @@ module BlizzardApi
     # @!macro init_options
     # @return {Character}
     def self.character(**options)
-      BlizzardApi::Diablo::Character.new(**options)
+      BlizzardApi::Diablo::CharacterClass.new(**options)
     end
 
     ##

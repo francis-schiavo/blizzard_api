@@ -11,12 +11,32 @@ module BlizzardApi
 
       def test_journal_expansions
         journal_data = @journal.expansions
-        assert_equal 9, journal_data[:tiers].count
+        assert journal_data.key? :tiers
       end
 
       def test_journal_expansion
         journal_data = @journal.expansion 72
         assert_equal 'Wrath of the Lich King', journal_data[:name][:en_US]
+      end
+
+      def test_journal_instances
+        journal_data = @journal.instances
+        assert journal_data.key? :instances
+      end
+
+      def test_journal_instance
+        journal_data = @journal.instance(226)
+        assert_equal 'Ragefire Chasm', journal_data[:name][:en_US]
+      end
+
+      def test_journal_encounters
+        journal_data = @journal.encounters
+        assert journal_data.key? :encounters
+      end
+
+      def test_journal_encounter
+        journal_data = @journal.encounter(89)
+        assert_equal 'Glubtok', journal_data[:name][:en_US]
       end
 
       def test_journal_encounter_search

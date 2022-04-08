@@ -32,7 +32,7 @@ module BlizzardApi
 
       def test_modified_crafting_slot_type
         data = @modified_crafting.slot_type 16
-        assert_equal 'Set Item Level', data[:description][:en_US]
+        assert_equal 'Modify Item Level - Major', data[:description][:en_US]
       end
     end
   end

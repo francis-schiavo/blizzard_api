@@ -35,7 +35,7 @@ module BlizzardApi
       # Fetch leaderboard data for the current endpoint
       #
       # @param [Integer] id One of the IDs returned by the {index}
-      # @param [Integer] leaderboard_id Leaderboard id
+      # @param [String] leaderboard_id Leaderboard id
       # @!macro request_options
       #
       # @!macro response

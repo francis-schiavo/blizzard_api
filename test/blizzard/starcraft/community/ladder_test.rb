@@ -9,13 +9,6 @@ module BlizzardApi
         @ladder = BlizzardApi::Starcraft.ladder
       end
 
-      def test_ladder_grandmaster
-        ladder_data = @ladder.grandmaster :US
-        assert ladder_data[:ladderTeams]
-      rescue BlizzardApi::ApiException => e
-        raise e unless e.code.eql? 503 # API is constantly down (abandoned?)
-      end
-
       def test_ladder_season
         ladder_data = @ladder.season :US
         assert ladder_data[:year]

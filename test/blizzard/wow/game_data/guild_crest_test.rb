@@ -20,7 +20,7 @@ module BlizzardApi
 
       def test_guild_crest_border
         guild_crest_data = @guild_crest.border_media 0
-        assert_equal 'https://render-us.worldofwarcraft.com/guild/tabards/border_00.png',
+        assert_equal 'https://render.worldofwarcraft.com/us/guild/tabards/border_00.png',
                      guild_crest_data[:assets][0][:value]
 
         guild_crest_data = @guild_crest.border_media 0, classic: true
@@ -30,7 +30,7 @@ module BlizzardApi
 
       def test_guild_crest_emblem
         guild_crest_data = @guild_crest.emblem_media 0
-        assert_equal 'https://render-us.worldofwarcraft.com/guild/tabards/emblem_00.png',
+        assert_equal 'https://render.worldofwarcraft.com/us/guild/tabards/emblem_00.png',
                      guild_crest_data[:assets][0][:value]
 
         guild_crest_data = @guild_crest.emblem_media 0, classic: true

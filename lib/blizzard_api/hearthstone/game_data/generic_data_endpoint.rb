@@ -20,7 +20,7 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def index(**options)
+      def search(**options)
         api_request "#{base_url(:community)}/#{@endpoint}/", **default_options.merge(options)
       end
 

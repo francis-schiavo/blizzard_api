@@ -11,12 +11,12 @@ module BlizzardApi
         @artisan = BlizzardApi::Diablo.artisan
       end
 
-      def test_artisan_index
+      def test_artisan_get
         artisan_data = @artisan.get 'blacksmith'
         assert artisan_data[:training]
       end
 
-      def test_artisan_get
+      def test_artisan_recipe
         artisan_data = @artisan.recipe 'blacksmith', 'apprentice-flamberge'
         assert artisan_data[:reagents]
       end

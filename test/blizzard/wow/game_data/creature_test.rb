@@ -35,7 +35,7 @@ module BlizzardApi
 
       def test_creature_family_media
         creature_family_media_data = @creature.family_media 1
-        assert_equal 'https://render-us.worldofwarcraft.com/icons/56/ability_hunter_pet_wolf.jpg',
+        assert_equal 'https://render.worldofwarcraft.com/us/icons/56/ability_hunter_pet_wolf.jpg',
                      creature_family_media_data[:assets][0][:value]
 
         creature_family_media_data = @creature.family_media 1, classic: true
@@ -61,7 +61,7 @@ module BlizzardApi
 
       def test_creature_display_media
         creature_display_media_data = @creature.display_media 30_221
-        assert_equal 'https://render-us.worldofwarcraft.com/npcs/zoom/creature-display-30221.jpg',
+        assert_equal 'https://render.worldofwarcraft.com/us/npcs/zoom/creature-display-30221.jpg',
                      creature_display_media_data[:assets][0][:value]
 
         creature_display_media_data = @creature.display_media 180, classic: true

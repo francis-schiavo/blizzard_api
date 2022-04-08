@@ -1,5 +1,9 @@
 Please view this file on the master branch, otherwise it may be outdated
 
+**Version 3.1.0**
+
+Fixed the latest build to exclude non 200 responses from caching.
+
 **Version 3.0.0**
 
 Changed the way `:extended` mode is handled regarding caching. Now the extended mode will use cache and return a fake

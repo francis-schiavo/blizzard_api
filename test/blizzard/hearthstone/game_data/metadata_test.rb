@@ -10,7 +10,7 @@ module BlizzardApi
       end
 
       def test_metadata_index
-        metadata_data = @metadata.index
+        metadata_data = @metadata.search
         assert metadata_data[:sets]
       end
 

@@ -11,13 +11,13 @@ module BlizzardApi
 
       def test_region_index
         region_data = @region.index
-        assert_equal 1, region_data[:regions].count
+        assert region_data.key? :regions
 
         region_data = @region.index classic1x: true
-        assert_equal 1, region_data[:regions].count
+        assert region_data.key? :regions
 
         region_data = @region.index classic: true
-        assert_equal 1, region_data[:regions].count
+        assert region_data.key? :regions
       end
 
       def test_region_get

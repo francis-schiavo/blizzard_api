@@ -14,7 +14,7 @@ module BlizzardApi
           search_options.where 'tags', 'item'
           search_options.order_by 'id'
         end
-        assert_equal 'https://render-us.worldofwarcraft.com/icons/56/inv_sword_04.jpg', data[:results][0][:data][:assets][0][:value]
+        assert_equal 'https://render.worldofwarcraft.com/us/icons/56/inv_sword_04.jpg', data[:results][0][:data][:assets][0][:value]
       end
     end
   end

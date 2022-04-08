@@ -21,7 +21,7 @@ module BlizzardApi
 
       def test_pet_media
         pet_data = @pet.media 39
-        assert_equal 'https://render-us.worldofwarcraft.com/icons/56/inv_pet_mechanicalsquirrel.jpg', pet_data[:assets][0][:value]
+        assert_equal 'https://render.worldofwarcraft.com/us/icons/56/inv_pet_mechanicalsquirrel.jpg', pet_data[:assets][0][:value]
       end
 
       def test_pet_ability_index
@@ -36,7 +36,7 @@ module BlizzardApi
 
       def test_pet_ability_media
         pet_data = @pet.ability_media 110
-        assert_equal 'https://render-us.worldofwarcraft.com/icons/56/ability_druid_ferociousbite.jpg', pet_data[:assets][0][:value]
+        assert_equal 'https://render.worldofwarcraft.com/us/icons/56/ability_druid_ferociousbite.jpg', pet_data[:assets][0][:value]
       end
     end
   end

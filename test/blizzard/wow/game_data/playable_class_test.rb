@@ -32,7 +32,7 @@ module BlizzardApi
 
       def test_playable_class_media
         data = @playable_class.media 11
-        assert_equal 'https://render-us.worldofwarcraft.com/icons/56/classicon_druid.jpg', data[:assets][0][:value]
+        assert_equal 'https://render.worldofwarcraft.com/us/icons/56/classicon_druid.jpg', data[:assets][0][:value]
       end
     end
   end

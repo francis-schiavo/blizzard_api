@@ -21,7 +21,7 @@ module BlizzardApi
 
       def test_tech_talent_media
         talent_data = @talent.media 863
-        assert_equal 'https://render-us.worldofwarcraft.com/icons/56/ability_racial_runningwild.jpg', talent_data[:assets][0][:value]
+        assert_equal 'https://render.worldofwarcraft.com/us/icons/56/ability_racial_runningwild.jpg', talent_data[:assets][0][:value]
       end
 
       def test_tech_talent_tree_index

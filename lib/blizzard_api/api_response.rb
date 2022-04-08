@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module BlizzardApi
   ##
   # Simple replacement for the http response object for cached data
@@ -16,6 +18,7 @@ module BlizzardApi
 end
 
 module Net
+  # Workaround for fake response payloads
   class HTTPResponse
     def cached?
       false

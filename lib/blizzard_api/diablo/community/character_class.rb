@@ -9,7 +9,7 @@ module BlizzardApi
     #
     # You can get an instance of this class using the default region as follows:
     #   api_instance = BlizzardApi::Diablo.character
-    class Character < BlizzardApi::Diablo::Request
+    class CharacterClass < BlizzardApi::Diablo::Request
       ##
       # Return information about a class
       #

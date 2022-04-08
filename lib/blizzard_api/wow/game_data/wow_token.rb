@@ -9,16 +9,11 @@ module BlizzardApi
     #
     # You can get an instance of this class using the default region as follows:
     #   api_instance = BlizzardApi::Wow.wow_token
-    class WowToken < Wow::Request
-      ##
-      # Returns wow token data
-      #
-      # @!macro request_options
-      #
-      # @!macro response
-      def get(**options)
-        opts = { namespace: :dynamic, ttl: CACHE_HOUR }.merge(options)
-        api_request "#{base_url(:game_data)}/token/index", **opts
+    class WowToken < GenericDataEndpoint
+      setup 'token', :dynamic, CACHE_HOUR
+
+      def get
+        raise BlizzardApi::ApiException, 'This endpoint does not have a index method'
       end
     end
   end

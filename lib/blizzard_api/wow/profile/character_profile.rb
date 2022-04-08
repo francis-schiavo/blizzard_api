@@ -13,7 +13,7 @@ module BlizzardApi
       include BlizzardApi::Wow::Slug
 
       ##
-      # Return character achievements
+      # Return character basic data
       #
       # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
       #

@@ -11,7 +11,7 @@ module BlizzardApi
 
       def test_profession_index
         profession_data = @profession.index
-        assert profession_data[:professions].count.positive?
+        assert profession_data.key? :professions
       end
 
       def test_profession_get
@@ -21,7 +21,7 @@ module BlizzardApi
 
       def test_profession_media
         profession_data = @profession.media 164
-        assert_equal 'https://render-us.worldofwarcraft.com/icons/56/trade_blacksmithing.jpg', profession_data[:assets][0][:value]
+        assert_equal 'https://render.worldofwarcraft.com/us/icons/56/trade_blacksmithing.jpg', profession_data[:assets][0][:value]
       end
 
       def test_profession_tier
@@ -36,7 +36,7 @@ module BlizzardApi
 
       def test_recipe_media
         recipe_data = @profession.recipe_media 1631
-        assert_equal 'https://render-us.worldofwarcraft.com/icons/56/inv_stone_sharpeningstone_01.jpg', recipe_data[:assets][0][:value]
+        assert_equal 'https://render.worldofwarcraft.com/us/icons/56/inv_stone_sharpeningstone_01.jpg', recipe_data[:assets][0][:value]
       end
     end
   end

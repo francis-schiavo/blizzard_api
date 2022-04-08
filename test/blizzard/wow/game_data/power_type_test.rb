@@ -11,7 +11,7 @@ module BlizzardApi
 
       def test_power_type_index
         power_type_data = @power_types.index
-        assert_equal 'Mana', power_type_data[:power_types][0][:name][:en_US]
+        assert power_type_data.key? :power_types
       end
 
       def test_power_type_get

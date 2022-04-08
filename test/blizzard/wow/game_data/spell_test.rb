@@ -16,7 +16,7 @@ module BlizzardApi
 
       def test_spell_media
         spell_data = @spell.display_media 196_607
-        assert_equal 'https://render-us.worldofwarcraft.com/icons/56/ability_druid_primalprecision.jpg', spell_data[:assets][0][:value]
+        assert_equal 'https://render.worldofwarcraft.com/us/icons/56/ability_druid_primalprecision.jpg', spell_data[:assets][0][:value]
       end
 
       def test_spell_search
