@@ -15,6 +15,11 @@ module BlizzardApi
         assert auction_data.key? :auctions
       end
 
+      def test_auction_commodities
+        auction_data = @auction.commodities
+        assert auction_data.key? :auctions
+      end
+
       def test_auction_modified_get
         auction_data = @auction.get 4, since: DateTime.parse('2000-01-01Z')
         assert auction_data.key? :auctions

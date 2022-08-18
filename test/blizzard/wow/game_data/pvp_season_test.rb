@@ -13,15 +13,16 @@ module BlizzardApi
         pvp_data = @pvp.index
         assert pvp_data.key? :seasons
 
+
         pvp_data = @pvp.index classic: true
         assert pvp_data.key? :seasons
       end
 
       def test_pvp_season_get
-        pvp_data = @pvp.get 27
+        pvp_data = @pvp.get 33
         assert pvp_data.key? :season_start_timestamp
 
-        pvp_data = @pvp.get 2, classic: true
+        pvp_data = @pvp.get 4, classic: true
         assert pvp_data.key? :season_start_timestamp
       end
 

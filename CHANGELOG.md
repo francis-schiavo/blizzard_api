@@ -1,5 +1,9 @@
 Please view this file on the master branch, otherwise it may be outdated
 
+**Version 3.2.0**
+
+Added new AH commodities endpoint.
+
 **Version 3.1.0**
 
 Fixed the latest build to exclude non 200 responses from caching.

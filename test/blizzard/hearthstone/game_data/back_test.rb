@@ -15,7 +15,7 @@ module BlizzardApi
       end
 
       def test_back_get
-        back_data = @back.get 1
+        back_data = @back.get 2
         assert back_data[:slug]
       end
     end

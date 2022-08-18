@@ -39,6 +39,12 @@ module BlizzardApi
 
         api_request "#{base_url(:game_data)}/connected-realm/#{connected_realm_id}/auctions", **opts
       end
+
+      def commodities(**options)
+        opts = { ttl: CACHE_HOUR, namespace: :dynamic }.merge(options)
+
+        api_request "#{base_url(:game_data)}/auctions/commodities", **opts
+      end
     end
   end
 end

@@ -19,7 +19,7 @@ module BlizzardApi
 
       def test_item_set_index
         item_data = @item.sets
-        assert_equal 'The Gladiator', item_data[:item_sets][0][:name][:en_US]
+        assert_equal 'Iceborne Embrace', item_data[:item_sets][0][:name][:en_US]
       end
 
       def test_item_set

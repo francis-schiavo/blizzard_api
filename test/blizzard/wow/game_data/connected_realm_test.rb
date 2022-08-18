@@ -11,7 +11,7 @@ module BlizzardApi
 
       def test_connected_realm_index
         realm_data = @connected_realm.index
-        assert_equal 'https://us.api.blizzard.com/data/wow/connected-realm/4?namespace=dynamic-us',
+        assert_equal 'https://us.api.blizzard.com/data/wow/connected-realm/121?namespace=dynamic-us',
                      realm_data[:connected_realms][0][:href]
       end
 
