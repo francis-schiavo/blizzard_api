@@ -8,9 +8,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Set up Ruby
-        uses: ruby/setup-ruby@21351ecc0a7c196081abca5dc55b08f085efe09a
+        uses: ruby/setup-ruby@359bebbc29cbe6c87da6bc9ea3bc930432750108
         with:
-          ruby-version: 3.0.0-preview1
+          ruby-version: 3.1
       - name: Install dependencies
         run: bundle install
       - name: Run tests
