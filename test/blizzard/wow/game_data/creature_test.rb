@@ -74,7 +74,7 @@ module BlizzardApi
           search_options.where 'name.en_US', 'Dragon'
           search_options.order_by 'id'
         end
-        assert_equal 'Pequeno Dragão Verde', data[:results][0][:data][:name][:pt_BR]
+        assert_equal 'Dragonete Cintilante', data[:results][0][:data][:name][:pt_BR]
       end
     end
   end
