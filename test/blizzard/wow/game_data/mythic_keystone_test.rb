@@ -15,8 +15,8 @@ module BlizzardApi
       end
 
       def test_mythic_keystone_dungeon
-        mythic_keystone_dungeon_data = @mythic_keystone.dungeon 375
-        assert_equal 'Mists of Tirna Scithe', mythic_keystone_dungeon_data[:name][:en_US]
+        mythic_keystone_dungeon_data = @mythic_keystone.dungeon 2
+        assert_equal 'Temple of the Jade Serpent', mythic_keystone_dungeon_data[:name][:en_US]
       end
 
       def test_mythic_keystone
