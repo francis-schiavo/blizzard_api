@@ -13,6 +13,30 @@ module BlizzardApi
       setup 'talent', :static, CACHE_TRIMESTER
 
       ##
+      # Fetch talent trees
+      #
+      # @!macro request_options
+      #
+      # @!macro response
+      def talent_trees(**options)
+        api_request "#{base_url(:game_data)}/talent-tree/index", **default_options.merge(options)
+      end
+
+      ##
+      # Fetch a talent tree
+      #
+      # @param talent_tree_id [Integer] talent tree id
+      #
+      # @param spec_id [Integer] playable specialization id
+      #
+      # @!macro request_options
+      #
+      # @!macro response
+      def talent_tree(talent_tree_id, spec_id, **options)
+        api_request "#{base_url(:game_data)}/talent-tree/#{talent_tree_id}/playable-specialization/#{spec_id}", **default_options.merge(options)
+      end
+
+      ##
       # Fetch pvp talents
       #
       # @!macro request_options
@@ -23,7 +47,7 @@ module BlizzardApi
       end
 
       ##
-      # Fetch pvp a talent
+      # Fetch a pvp talent
       #
       # @param id [Integer] Pvp talent id
       #
