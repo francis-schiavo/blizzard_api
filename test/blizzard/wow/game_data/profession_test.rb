@@ -21,7 +21,7 @@ module BlizzardApi
 
       def test_profession_media
         profession_data = @profession.media 164
-        assert_equal 'https://render.worldofwarcraft.com/us/icons/56/trade_blacksmithing.jpg', profession_data[:assets][0][:value]
+        assert_equal 'https://render.worldofwarcraft.com/us/icons/56/ui_profession_blacksmithing.jpg', profession_data[:assets][0][:value]
       end
 
       def test_profession_tier

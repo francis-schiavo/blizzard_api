@@ -29,18 +29,18 @@ module BlizzardApi
 
       def test_item_classes
         item_data = @item.classes
-        assert_equal 17, item_data[:item_classes].count
+        assert item_data[:item_classes]
 
         item_data = @item.classes classic: true
-        assert_equal 14, item_data[:item_classes].count
+        assert item_data[:item_classes]
       end
 
       def test_item_class
         item_data = @item.item_class 1
-        assert_equal 11, item_data[:item_subclasses].count
+        assert item_data[:item_subclasses]
 
         item_data = @item.item_class 1, classic: true
-        assert_equal 8, item_data[:item_subclasses].count
+        assert item_data[:item_subclasses]
       end
 
       def test_subclass
