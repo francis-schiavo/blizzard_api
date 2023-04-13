@@ -33,7 +33,20 @@ module BlizzardApi
       #
       # @!macro response
       def talent_tree(talent_tree_id, spec_id, **options)
-        api_request "#{base_url(:game_data)}/talent-tree/#{talent_tree_id}/playable-specialization/#{spec_id}", **default_options.merge(options)
+        api_request "#{base_url(:game_data)}/talent-tree/#{talent_tree_id}/playable-specialization/#{spec_id}",
+                    **default_options.merge(options)
+      end
+
+      ##
+      # Fetch a talent tree node
+      #
+      # @param talent_tree_id [Integer] talent tree id
+      #
+      # @!macro request_options
+      #
+      # @!macro response
+      def talent_tree_nodes(talent_tree_id, **options)
+        api_request "#{base_url(:game_data)}/talent-tree/#{talent_tree_id}", **default_options.merge(options)
       end
 
       ##

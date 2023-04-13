@@ -6,15 +6,15 @@ module BlizzardApi
   module Wow
     class MediaTest < Minitest::Test
       def setup
-        @media = BlizzardApi::Wow.media
+        @endpoint = BlizzardApi::Wow.media
       end
 
       def test_media_search
-        data = @media.search(1, 100) do |search_options|
+        data = @endpoint.search(1, 100) do |search_options|
           search_options.where 'tags', 'item'
           search_options.order_by 'id'
         end
-        assert_equal 'https://render.worldofwarcraft.com/us/icons/56/inv_sword_04.jpg', data[:results][0][:data][:assets][0][:value]
+        assert_equal 'https://render.worldofwarcraft.com/us/icons/56/inv_sword_04.jpg', data.dig(:results, 0, :data, :assets, 0, :value)
       end
     end
   end

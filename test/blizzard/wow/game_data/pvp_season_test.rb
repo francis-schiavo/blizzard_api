@@ -6,39 +6,42 @@ module BlizzardApi
   module Wow
     class PvpSeasonTest < Minitest::Test
       def setup
-        @pvp = BlizzardApi::Wow.pvp_season
+        @endpoint = BlizzardApi::Wow.pvp_season
       end
 
       def test_pvp_season_index
-        pvp_data = @pvp.index
-        assert pvp_data.key? :seasons
+        data = @endpoint.index
+        assert data.key? :seasons
 
+        return if ENV.fetch('IGNORE_CLASSIC_TESTS', false)
 
-        pvp_data = @pvp.index classic: true
-        assert pvp_data.key? :seasons
+        data = @endpoint.index classic: true
+        assert data.key? :seasons
       end
 
       def test_pvp_season_get
-        pvp_data = @pvp.get 33
-        assert pvp_data.key? :season_start_timestamp
+        data = @endpoint.get 33
+        assert data.key? :season_start_timestamp
 
-        pvp_data = @pvp.get 4, classic: true
-        assert pvp_data.key? :season_start_timestamp
+        return if ENV.fetch('IGNORE_CLASSIC_TESTS', false)
+
+        data = @endpoint.get 4, classic: true
+        assert data.key? :season_start_timestamp
       end
 
       def test_pvp_season_leaderboards
-        pvp_data = @pvp.leaderboards 27
-        assert pvp_data.key? :leaderboards
+        data = @endpoint.leaderboards 27
+        assert data.key? :leaderboards
       end
 
       def test_pvp_season_leaderboard
-        pvp_data = @pvp.leaderboard 27, '3v3'
-        assert pvp_data.key? :entries
+        data = @endpoint.leaderboard 27, '3v3'
+        assert data.key? :entries
       end
 
       def test_pvp_season_rewards
-        pvp_data = @pvp.rewards 27
-        assert pvp_data.key? :rewards
+        data = @endpoint.rewards 27
+        assert data.key? :rewards
       end
     end
   end

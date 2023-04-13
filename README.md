@@ -129,6 +129,7 @@ end
 * [BlizzardApi::Wow.covenant](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/Covenant)
 * [BlizzardApi::Wow.creature](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/Creature)
 * [BlizzardApi::Wow.guild_crest](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/GuildCrest)
+* [BlizzardApi::Wow.heirloom](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/Heirloom)
 * [BlizzardApi::Wow.item](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/Item)
 * [BlizzardApi::Wow.journal](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/Journal)
 * [BlizzardApi::Wow.media](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/Media)
@@ -154,6 +155,7 @@ end
 * [BlizzardApi::Wow.talent](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/Talent)
 * [BlizzardApi::Wow.tech_talent](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/TechTalent)
 * [BlizzardApi::Wow.title](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/Title)
+* [BlizzardApi::Wow.toy](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/Toy)
 * [BlizzardApi::Wow.wow_token](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/WowToken)
 
 * [BlizzardApi::Wow.profile](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/Profile)

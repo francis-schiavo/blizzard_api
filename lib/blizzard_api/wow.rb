@@ -23,6 +23,7 @@ module BlizzardApi
     require_relative 'wow/game_data/covenant'
     require_relative 'wow/game_data/creature'
     require_relative 'wow/game_data/guild_crest'
+    require_relative 'wow/game_data/heirloom'
     require_relative 'wow/game_data/item'
     require_relative 'wow/game_data/journal'
     require_relative 'wow/game_data/media'
@@ -49,6 +50,7 @@ module BlizzardApi
     require_relative 'wow/game_data/talent'
     require_relative 'wow/game_data/tech_talent'
     require_relative 'wow/game_data/title'
+    require_relative 'wow/game_data/toy'
     require_relative 'wow/game_data/wow_token'
 
     ##
@@ -98,6 +100,13 @@ module BlizzardApi
     # @return {GuildCrest}
     def self.guild_crest(**options)
       BlizzardApi::Wow::GuildCrest.new(**options)
+    end
+
+    ##
+    # @!macro init_options
+    # @return {Heirloom}
+    def self.heirloom(**options)
+      BlizzardApi::Wow::Heirloom.new(**options)
     end
 
     ##
@@ -280,6 +289,13 @@ module BlizzardApi
     # @return {Title}
     def self.title(**options)
       BlizzardApi::Wow::Title.new(**options)
+    end
+
+    ##
+    # @!macro init_options
+    # @return {Toy}
+    def self.toy(**options)
+      BlizzardApi::Wow::Toy.new(**options)
     end
 
     ##

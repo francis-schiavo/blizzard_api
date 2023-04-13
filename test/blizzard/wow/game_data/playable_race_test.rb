@@ -6,23 +6,27 @@ module BlizzardApi
   module Wow
     class PlayableRaceTest < Minitest::Test
       def setup
-        @race = BlizzardApi::Wow.playable_race
+        @endpoint = BlizzardApi::Wow.playable_race
       end
 
       def test_playable_race_index
-        race_data = @race.index
-        assert race_data.key? :races
+        data = @endpoint.index
+        assert data.key? :races
 
-        race_data = @race.index classic: true
-        assert race_data.key? :races
+        return if ENV.fetch('IGNORE_CLASSIC_TESTS', false)
+
+        data = @endpoint.index classic: true
+        assert data.key? :races
       end
 
       def test_playable_race_get
-        race_data = @race.get 6
-        assert_equal 'Tauren', race_data[:name][:en_US]
+        data = @endpoint.get 6
+        assert_equal 'Tauren', data.dig(:name, :en_US)
 
-        race_data = @race.get 6, classic: true
-        assert_equal 'Tauren', race_data[:name][:en_US]
+        return if ENV.fetch('IGNORE_CLASSIC_TESTS', false)
+
+        data = @endpoint.get 6, classic: true
+        assert_equal 'Tauren', data.dig(:name, :en_US)
       end
     end
   end

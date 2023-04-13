@@ -6,17 +6,17 @@ module BlizzardApi
   module Wow
     class TitleTest < Minitest::Test
       def setup
-        @title = BlizzardApi::Wow.title
+        @endpoint = BlizzardApi::Wow.title
       end
 
       def test_title_index
-        title_data = @title.index
-        assert title_data.key? :titles
+        data = @endpoint.index
+        assert data.key? :titles
       end
 
       def test_title_get
-        title_data = @title.get 10
-        assert_equal 'Lieutenant Commander', title_data[:name][:en_US]
+        data = @endpoint.get 10
+        assert_equal 'Lieutenant Commander', data.dig(:name, :en_US)
       end
     end
   end

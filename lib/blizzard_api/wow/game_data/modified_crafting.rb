@@ -12,6 +12,10 @@ module BlizzardApi
     class ModifiedCrafting < Wow::GenericDataEndpoint
       setup 'modified-crafting', :static, CACHE_TRIMESTER
 
+      def get(_id, **_options)
+        raise BlizzardApi::ApiException, 'This endpoint does not have a get method'
+      end
+
       ##
       # Fetch modified crafting category index
       #

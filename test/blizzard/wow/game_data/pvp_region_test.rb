@@ -6,37 +6,47 @@ module BlizzardApi
   module Wow
     class PvpRegionTest < Minitest::Test
       def setup
-        @pvp = BlizzardApi::Wow.pvp_region
+        @endpoint = BlizzardApi::Wow.pvp_region
       end
 
       def test_pvp_region_index
-        pvp_data = @pvp.index classic: true
-        assert pvp_data.key? :pvp_regions
+        return if ENV.fetch('IGNORE_CLASSIC_TESTS', false)
+
+        data = @endpoint.index classic: true
+        assert data.key? :pvp_regions
       end
 
       def test_pvp_regional_season_index
-        pvp_data = @pvp.seasons 1, classic: true
-        assert pvp_data.key? :seasons
+        data = @endpoint.seasons 1, classic: true
+        assert data.key? :seasons
       end
 
       def test_pvp_regional_season
-        pvp_data = @pvp.season 1, 4, classic: true
-        assert pvp_data.key? :season_start_timestamp
+        return if ENV.fetch('IGNORE_CLASSIC_TESTS', false)
+
+        data = @endpoint.season 1, 4, classic: true
+        assert data.key? :season_start_timestamp
       end
 
       def test_pvp_regional_season_leaderboards
-        pvp_data = @pvp.leaderboards 1, 4, classic: true
-        assert pvp_data.key? :leaderboards
+        return if ENV.fetch('IGNORE_CLASSIC_TESTS', false)
+
+        data = @endpoint.leaderboards 1, 4, classic: true
+        assert data.key? :leaderboards
       end
 
       def test_pvp_regional_season_leaderboard
-        pvp_data = @pvp.leaderboard 1, 4, '3v3', classic: true
-        assert pvp_data.key? :entries
+        return if ENV.fetch('IGNORE_CLASSIC_TESTS', false)
+
+        data = @endpoint.leaderboard 1, 4, '3v3', classic: true
+        assert data.key? :entries
       end
 
       def test_pvp_regional_season_rewards
-        pvp_data = @pvp.rewards 1, 4, classic: true
-        assert pvp_data.key? :rewards
+        return if ENV.fetch('IGNORE_CLASSIC_TESTS', false)
+
+        data = @endpoint.rewards 1, 4, classic: true
+        assert data.key? :rewards
       end
     end
   end

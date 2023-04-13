@@ -58,7 +58,7 @@ module BlizzardApi
 
       def resolve_icon(media_url)
         media_data = api_request(media_url)
-        media_data[:assets][0][:value]
+        media_data.dig(:assets, 0, :value)
       end
     end
   end
