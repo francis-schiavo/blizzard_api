@@ -1,5 +1,9 @@
 Please view this file on the master branch, otherwise it may be outdated
 
+**Version 3.4.0**
+
+Added new collections endpoints for toys and heirlooms.
+
 **Version 3.2.0**
 
 Added new WoW Dragonflight talents endpoint.

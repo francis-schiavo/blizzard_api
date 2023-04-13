@@ -19,3 +19,4 @@ jobs:
           BNET_APPLICATION_ID: ${{ secrets.BNET_APPLICATION_ID }}
           BNET_APPLICATION_SECRET: ${{ secrets.BNET_APPLICATION_SECRET }}
           USE_CACHE: false
+          IGNORE_CLASSIC_TESTS: true

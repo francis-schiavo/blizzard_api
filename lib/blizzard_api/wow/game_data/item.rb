@@ -33,6 +33,7 @@ module BlizzardApi
       def classes(**options)
         api_request "#{endpoint_uri('class')}/index", **default_options.merge(options)
       end
+      alias item_classes classes
 
       ##
       # Return data about an item class
@@ -60,6 +61,7 @@ module BlizzardApi
       def subclass(id, subclass_id, **options)
         api_request "#{endpoint_uri('class')}/#{id}/item-subclass/#{subclass_id}", **default_options.merge(options)
       end
+      alias item_subclass subclass
 
       ##
       # Fetch media for an item using its *id*

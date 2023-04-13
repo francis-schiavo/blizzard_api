@@ -15,7 +15,7 @@ module BlizzardApi
       setup 'creature', :static, CACHE_TRIMESTER
 
       def index
-        raise BlizzardApi::ApiException, 'Creatures endpoint doesn\'t have an index method'
+        raise BlizzardApi::ApiException, 'Creatures endpoint does not have an index method'
       end
 
       ##
