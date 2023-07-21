@@ -111,6 +111,34 @@ module BlizzardApi
       end
 
       ##
+      # Return a character's toy collection
+      #
+      # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
+      #
+      # @param realm [String] The character realm's slug
+      # @param character [String] The character name
+      # @!macro request_options
+      #
+      # @!macro response
+      def toys(realm, character, **options)
+        character_request realm, character, 'collections/toys', **options
+      end
+
+      ##
+      # Return a character's heirloom collection
+      #
+      # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
+      #
+      # @param realm [String] The character realm's slug
+      # @param character [String] The character name
+      # @!macro request_options
+      #
+      # @!macro response
+      def heirlooms(realm, character, **options)
+        character_request realm, character, 'collections/heirlooms', **options
+      end
+
+      ##
       # Return a character's encounter summary
       #
       # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api

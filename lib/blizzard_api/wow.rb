@@ -305,7 +305,7 @@ module BlizzardApi
       BlizzardApi::Wow::WowToken.new(**options)
     end
 
-    require_relative 'wow/profile/profile'
+    require_relative 'wow/profile/account_profile'
     require_relative 'wow/profile/guild'
     require_relative 'wow/profile/character_profile'
 
