@@ -41,8 +41,8 @@ module BlizzardApi
       end
 
       def test_pvp_talent_get
-        data = @endpoint.pvp_talent 11
-        assert_equal 'Bane of Fragility', data.dig(:spell, :name, :en_US)
+        data = @endpoint.pvp_talent 100
+        assert_equal 'Purification', data.dig(:spell, :name, :en_US)
       end
     end
   end

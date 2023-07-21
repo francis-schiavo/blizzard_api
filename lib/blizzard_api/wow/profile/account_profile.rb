@@ -53,6 +53,26 @@ module BlizzardApi
       end
 
       ##
+      # Returns the toy collection index for the account
+      #
+      # @!macro request_options
+      #
+      # @!macro response
+      def toys(**options)
+        api_request "#{base_url(:user_profile)}/collections/toys", **default_options.merge(options)
+      end
+
+      ##
+      # Returns the heirloom collection index for the account
+      #
+      # @!macro request_options
+      #
+      # @!macro response
+      def heirloom(**options)
+        api_request "#{base_url(:user_profile)}/collections/heirloom", **default_options.merge(options)
+      end
+
+      ##
       # Returns the pet collection index for the account
       #
       # @!macro request_options

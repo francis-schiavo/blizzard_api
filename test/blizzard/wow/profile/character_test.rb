@@ -29,6 +29,22 @@ module BlizzardApi
         assert character_data.key? :customizations
       end
 
+      def test_character_collections
+        character_data = @character.collections 'Azralon', 'Schiller'
+        assert character_data.key? :pets
+        assert character_data.key? :mounts
+      end
+
+      def test_character_mounts
+        character_data = @character.mounts 'Azralon', 'Schiller'
+        assert character_data.key? :mounts
+      end
+
+      def test_character_pets
+        character_data = @character.pets 'Azralon', 'Schiller'
+        assert character_data.key? :pets
+      end
+
       def test_character_encounters
         character_data = @character.encounters 'Azralon', 'Schiller'
         assert character_data.key? :dungeons
