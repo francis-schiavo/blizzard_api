@@ -47,7 +47,7 @@ module BlizzardApi
 
       return "static-#{version}#{region}" if options[:namespace].eql? :static
 
-      return "profile-#{region}" if options[:namespace].eql? :profile
+      return "profile-#{version}#{region}" if options[:namespace].eql? :profile
 
       raise ArgumentError, 'Invalid namespace scope'
     end
