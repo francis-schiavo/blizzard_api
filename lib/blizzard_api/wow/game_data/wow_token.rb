@@ -13,7 +13,7 @@ module BlizzardApi
       setup 'token', :dynamic, CACHE_HOUR
 
       def get
-        raise BlizzardApi::ApiException, 'This endpoint does not have a index method'
+        raise BlizzardApi::ApiException, 'This endpoint does not have a get method'
       end
     end
   end
