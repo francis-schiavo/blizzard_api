@@ -1,24 +1,24 @@
 PATH
   remote: .
   specs:
-    blizzard_api (3.4.3)
+    blizzard_api (4.0.0)
       redis (~> 4.1, >= 4.1.0)
 
 GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.2)
-    dotenv (2.8.1)
-    minitest (5.20.0)
-    parallel (1.23.0)
-    parser (3.2.2.4)
+    dotenv (3.1.0)
+    minitest (5.22.3)
+    parallel (1.24.0)
+    parser (3.3.1.0)
       ast (~> 2.4.1)
       racc
-    racc (1.7.1)
+    racc (1.7.3)
     rainbow (3.1.1)
-    rake (13.0.6)
+    rake (13.2.1)
     redis (4.8.1)
-    regexp_parser (2.8.2)
+    regexp_parser (2.9.0)
     rexml (3.2.6)
     rubocop (0.93.1)
       parallel (~> 1.10)
@@ -29,22 +29,25 @@ GEM
       rubocop-ast (>= 0.6.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 2.0)
-    rubocop-ast (1.29.0)
-      parser (>= 3.2.1.0)
+    rubocop-ast (1.31.2)
+      parser (>= 3.3.0.4)
+    rubocop-minitest (0.27.0)
+      rubocop (>= 0.90, < 2.0)
     ruby-progressbar (1.13.0)
     unicode-display_width (1.8.0)
-    yard (0.9.34)
+    yard (0.9.36)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   blizzard_api!
-  dotenv
-  minitest (~> 5.0)
-  rake (~> 13.0)
-  rubocop (~> 0.61)
-  yard
+  dotenv (~> 3.1)
+  minitest (~> 5.22)
+  rake (~> 13.2)
+  rubocop (~> 0.93.1)
+  rubocop-minitest (~> 0.27.0)
+  yard (~> 0.9.36)
 
 BUNDLED WITH
-   2.2.17
+   2.5.4

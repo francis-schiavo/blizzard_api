@@ -20,12 +20,12 @@ module BlizzardApi
       end
 
       def test_card_search
-        search_options = { set: 'rise-of-shadows', class: 'mage', mana_cost: 10, attack: 4, health: 10, collectible: 1,
-                           rarity: 'legendary', type: 'minion', minion_type: 'dragon', keyword: 'battlecry',
-                           text_filter: 'kalecgos', page: 1, page_size: 5, sort: 'name', order: 'desc' }
+        search_options = { class: 'mage', mana_cost: 8, attack: 4, health: 12, collectible: 1,
+                           rarity: 'legendary', type: 'minion', minion_type: 'dragon', text_filter: 'kalecgos',
+                           page: 1, page_size: 5, sort: 'name', order: 'desc' }
 
         card_data = @card.search(**search_options)
-        assert_equal 1, card_data[:cardCount]
+        assert_equal 3, card_data[:cardCount]
         assert_equal 53_002, card_data[:cards][0][:id]
       end
     end

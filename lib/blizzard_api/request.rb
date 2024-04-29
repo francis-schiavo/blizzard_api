@@ -177,11 +177,11 @@ module BlizzardApi
     end
 
     def save_in_cache(resource_url, data, ttl)
-      BlizzardApi.redis_connection.setex resource_url, ttl, data if BlizzardApi.use_cache
+      BlizzardApi.redis_connection.setex resource_url, ttl, data if BlizzardApi.use_cache?
     end
 
     def find_in_cache(resource_url)
-      return false unless BlizzardApi.use_cache
+      return false unless BlizzardApi.use_cache?
 
       BlizzardApi.redis_connection.get resource_url if BlizzardApi.redis_connection.exists? resource_url
     end

@@ -19,8 +19,8 @@ module BlizzardApi
   extend Configuration
 
   def self.redis_connection
-    return nil unless use_cache
+    return nil unless use_cache?
 
-    @redis_connection ||= Redis.new(host: redis_host, port: redis_port, db: redis_database)
+    @redis_connection ||= Redis.new(url: BlizzardApi.redis_url)
   end
 end

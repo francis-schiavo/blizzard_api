@@ -89,6 +89,12 @@ module BlizzardApi
           search_options.order_by 'id'
         end
         assert_equal 'Dragonete Cintilante', data.dig(:results, 0, :data, :name, :pt_BR)
+
+        data = @endpoint.search(1, 100, classic: true) do |search_options|
+          search_options.where 'name.en_US', 'Brown Kodo'
+          search_options.order_by 'id'
+        end
+        assert_equal 'Urso Marrom', data.dig(:results, 0, :data, :name, :pt_BR)
       end
     end
   end

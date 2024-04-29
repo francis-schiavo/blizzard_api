@@ -17,6 +17,9 @@ module BlizzardApi
 
         data = @endpoint.get 21_877, classic: true
         assert_equal 'Netherweave Cloth', data.dig(:name, :en_US)
+
+        data = @endpoint.get 21_877, classic: true
+        assert_equal 'Netherweave Cloth', data.dig(:name, :en_US)
       end
 
       def test_item_set_index

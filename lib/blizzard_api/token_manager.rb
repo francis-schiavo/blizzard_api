@@ -29,7 +29,7 @@ module BlizzardApi
     end
 
     def restore_access_token
-      return false unless use_cache && cache_access_token
+      return false unless use_cache? && cache_access_token
 
       return false unless redis_connection.exists? REDIS_TOKEN_KEY
 
@@ -43,7 +43,7 @@ module BlizzardApi
       self.expires_at = Time.now + ttl
       self.access_token = token_data['access_token']
 
-      redis_connection.setex REDIS_TOKEN_KEY, ttl, access_token if use_cache && cache_access_token
+      redis_connection.setex REDIS_TOKEN_KEY, ttl, access_token if use_cache? && cache_access_token
     end
   end
 end

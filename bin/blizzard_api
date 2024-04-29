@@ -1,0 +1,124 @@
+#!/usr/bin/env ruby
+
+require 'logger'
+logger = Logger.new(STDOUT)
+
+require 'bundler/setup'
+require 'blizzard_api'
+require 'irb'
+require 'optparse'
+
+begin
+  require 'dotenv/load'
+rescue LoadError
+  logger.warn 'Dotenv gem not found. You must provide all arguments via the command line or system environment variables.'
+end
+
+options = {}
+parser = OptionParser.new do |opts|
+  opts.banner = 'Interactive console for testing the BlizzardApi gem.'
+  opts.on('-a', '--auth AUTH', 'A pair of application ID and secret created on the Blizzard API dev portal. Argument must be provided as APP_ID:APP_SECRET') do |c|
+    ENV['BNET_APPLICATION_ID'], ENV['BNET_APPLICATION_SECRET'] = c.split(':')
+  end
+  opts.on('-c', '--cache REDIS_URL', 'A valid Redis connection string. redis://user:password@host:port/db', ) { |c| ENV['REDIS_URL'] = c }
+  opts.on('-h', '--help', 'Prints this help') { puts opts; exit }
+  opts.on('-j', '--json', 'Outputs the payload as JSON.') { options[:format] = 'json' }
+  opts.on('-J', '--formatted-json', 'Outputs the payload as pretty formatted JSON.') { options[:format] = 'json'; options[:pretty_print] = true }
+  opts.on('-l', '--locale LOCALE', 'Locale to use when retrieving data.') { |l| options[:locale] = l.to_sym }
+  opts.on('-o', '--output FILENAME', 'Path to an output file.') { |o| options[:output] = o }
+  opts.on('-r', '--region REGION', 'Region to use for the API calls. Default is us') { |r| ENV['REGION'] = r }
+  opts.on('-t', '--cache-access-token', 'Cache the access token in Redis') { ENV['CACHE_ACCESS_TOKEN]'] = 'true' }
+  opts.on('-v', '--version', 'Prints the version') { puts BlizzardApi::VERSION; exit }
+end
+parser.parse!
+
+app_id = ENV.fetch('BNET_APPLICATION_ID', false)
+app_secret = ENV.fetch('BNET_APPLICATION_SECRET', false)
+
+if !app_id || !app_secret
+  logger.fatal 'You must provide an application ID and secret.'
+  exit 1
+end
+
+BlizzardApi.configure do |config|
+  config.app_id = app_id
+  config.app_secret = app_secret
+  config.region = ENV.fetch('REGION', 'us')
+  config.redis_url = ENV['REDIS_URL']
+  config.cache_access_token = ENV.fetch('CACHE_ACCESS_TOKEN', 'false').eql? 'true'
+end
+
+unless ARGV.length.positive?
+  IRB.start(__FILE__)
+  exit
+end
+
+class Runner
+  attr_reader :options
+
+  def initialize(api, endpoint, method, *args, **options)
+    @api = nested_class(BlizzardApi, api, 'Invalid API name. Valid APIs are: diablo, hearthstone, overwatch_league, starcraft and wow')
+    @endpoint = nested_class(@api, endpoint, 'Invalid endpoint name.')
+    @method = method
+    @args = parse_args args
+    @options = options
+  end
+
+  def run
+    data = consume_endpoint
+    if options[:output]
+      File.open(options[:output], 'w') { |f| f.write(data) }
+    else
+      puts data
+    end
+  end
+
+  private
+
+  def camelize(s)
+    s.split('_').map(&:capitalize).join
+  end
+
+  def nested_class(instance, class_name, msg)
+    class_name = camelize(class_name)
+    instance.const_get(class_name)
+  rescue NameError
+    raise StandardError, msg
+  end
+
+  def parse_args(args)
+    args.map do |arg|
+      begin
+        return arg.to_i if arg.match?(/^\d+$/)
+        return arg.to_sym if arg.match?(/^:[a-z_]+$/)
+        return arg.to_f if arg.match?(/^\d+\.\d+$/)
+        return arg.to_bool if arg.match?(/^(true|false)$/i)
+        if arg.match?(/^\{.*}$/)
+          result = arg.scan(/(\w+):\s+([^(;|})]+)/).each_with_object({}) do |(k,v), hash|
+            hash[k.to_sym] = v.strip
+          end
+          return [result]
+        end
+        arg
+      end
+    end
+  end
+
+  def consume_endpoint
+    opts = options.slice :locale
+    api_client = @endpoint.new
+    data = api_client.send(@method, *@args, **opts)
+    if options[:format].eql? 'json'
+      data = if options[:pretty_print]
+               JSON.pretty_generate data
+             else
+               JSON.generate data
+             end
+    end
+
+    data
+  end
+end
+
+runner = Runner.new(*ARGV, **options)
+runner.run

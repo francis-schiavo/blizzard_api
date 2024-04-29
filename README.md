@@ -25,8 +25,15 @@ gem 'blizzard_api'
 ```
 
 And then execute:
+```bash
+$ bundle
+```
 
-    $ bundle
+You can also install the gem and use as a standalone binary:
+
+```bash
+gem install blizzard_api
+```
 
 ## 2. Configuration
 
@@ -39,15 +46,84 @@ BlizzardApi.configure do |config|
   config.app_id = ENV['BNET_APPLICATION_ID']
   config.app_secret = ENV['BNET_APPLICATION_SECRET']
   config.region = 'us'
-  config.use_cache = true
-  config.redis_host = ENV['REDIS_HOST']
-  config.redis_port = ENV['REDIS_PORT']
+  config.redis_url = 'redis://localhost:6379/0'
+  config.cache_access_token = true
 end
 ```
 
 It is highly recommended to use [redis](https://redis.io/) to cache all requests as it avoids unnecessary calls and speeds up your application.
 
-## 3. Basic usage
+## 3. Using the shipped binary
+
+This gem ships with a binary that allows you to perform requests to the api directly from the command line. Suppoerted arguments:
+
+## 3.1 Configuration
+
+| Argument                 | Description                                                                                                                |
+|--------------------------|----------------------------------------------------------------------------------------------------------------------------|
+| -a, --auth               | A pair of application ID and secret created on the Blizzard API dev portal. Argument must be provided as APP_ID:APP_SECRET |
+| -c, --cache              | A valid Redis connection string. redis://user:password@host:port/db                                                        |
+| -h, --help               | Prints this help                                                                                                           |
+| -j, --json               | Outputs the payload as JSON.                                                                                               |
+| -J, --formatted-json     | Outputs the payload as pretty formatted JSON.                                                                              |
+| -l, --locale             | Locale to use when retrieving data.                                                                                        |
+| -o, --output             | Path to an output file.                                                                                                    |
+| -r, --region             | Region to use for the API calls. Default is **us**                                                                         |
+| -t, --cache-access-token | Cache the access token in Redis                                                                                            |
+| -v, --version            | Prints the version                                                                                                         |
+
+Some arguments can be loaded from environment variables:
+
+| Environment Variable    | Description                     | Replaced argument |
+|-------------------------|---------------------------------|-------------------|
+| BNET_APPLICATION_ID     | Blizzard API application ID     | -a                |
+| BNET_APPLICATION_SECRET | Blizzard API application secret | -a                |
+| REGION                  | Blizzard API region             | -r                |
+| BNET_REDIS_URL          | Redis connection string         | -c                |
+| BNET_CACHE_ACCESS_TOKEN | Cache the access token in Redis | -t                |
+
+**Note**: You can also use Dotenv to load the environment variables from a `.env` file as long as you have Dotenv installed
+  and the `.env` file is present in the same directory you are invoking the binary from.
+
+## 3.2. Command line usage
+
+You can fetch API endpoints data by using the following format:
+
+```bash
+blizzard_api <game namespace> <api endpoint> <endpoint method> [arguments]
+```
+
+## 3.3. Examples
+
+### 3.3.1. Using the binary to get a list of realms
+
+```bash
+blizzard_api wow realm index
+````
+
+### 3.3.1. Using the binary to get a specific realm
+
+Full payload:
+```bash
+blizzard_api wow realm get 5909
+````
+
+Full payload as formatted JSON:
+```bash
+blizzard_api -J wow realm get 5909
+````
+
+Full payload as formatted JSON to file:
+```bash
+blizzard_api -Jo realm.json wow realm get 5909
+````
+
+en-US only payload as formatted JSON:
+```bash
+blizzard_api -Jl en_US wow realm get 5909
+````
+
+## 4. Basic usage
 
 You can now consume the api by instantiating a specific endpoint:
 
@@ -69,7 +145,7 @@ Most **game data** endpoints will have always 3 methods available `index`, `get`
 * `get` is used to get all information about a entry of the index returned data. It receives an id or slug as the first parameter, that depends on the endpoint.
 * `complete` is a complete information of all items listed in index. **This may perform various calls to the blizzard api** only use if you really need all information.
 
-### 3.1 Searchable endpoints
+### 4.1 Searchable endpoints
 
 Some endpoints support search filters. To perform a search you can use the following formats:
 
@@ -108,7 +184,7 @@ realm_data = realm.search(1, 100) do |options|
 end
 ```
 
-## 4. Available endpoints
+## 5. Available endpoints
 
 **Hint**: All methods support an additional optional hash parameter that allows you to override the following configurations for a single call:
 
@@ -120,7 +196,7 @@ end
 * **use_community_endpoint**: Some methods in game data still have an odl community version available.
 * **classic**: Set to true to query WoW Classic data, only works for some game data endpoints.  
 
-### 4.1. World of Warcraft endpoints
+### 5.1. World of Warcraft endpoints
 
 * [BlizzardApi::Wow.achievement](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/Achievement)
 * [BlizzardApi::Wow.auction](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/Auction)
@@ -162,7 +238,7 @@ end
 * [BlizzardApi::Wow.guild](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/Guild)
 * [BlizzardApi::Wow.character_profile](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Wow/CharacterProfile)
 
-### 4.2. Diablo III endpoints
+### 5.2. Diablo III endpoints
 
 * [BlizzardApi::Diablo.season](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Diablo/Season)
 * [BlizzardApi::Diablo.era](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Diablo/Era)
@@ -174,14 +250,14 @@ end
 * [BlizzardApi::Diablo.item](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Diablo/Item)
 * [BlizzardApi::Diablo.profile](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Diablo/Profile)
 
-### 4.3. Hearthstone endpoints
+### 5.3. Hearthstone endpoints
 
 * [BlizzardApi::Hearthstone.card](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Hearthstone/Card)
 * [BlizzardApi::Hearthstone.back](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Hearthstone/Back)
 * [BlizzardApi::Hearthstone.deck](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Hearthstone/Deck)
 * [BlizzardApi::Hearthstone.metadata](https://rubydoc.info/gems/blizzard_api/BlizzardApi/Hearthstone/Metadata)
   
-### 4.4. Starcraft II endpoints
+### 5.4. Starcraft II endpoints
 
 Every endpoint requiring a *region_id* parameter will accepts either the integer representation of the region described in the api docs or a symbol: `:US`, `:EU`, `:KO` or `:TW` 
 

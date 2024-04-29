@@ -30,32 +30,10 @@ module BlizzardApi
     attr_accessor :mode
 
     ##
-    # @!attribute use_cache
-    #   If true requests will be cached using a Redis server.
-    #   @see https://redis.io/
-    #   @return [Boolean] Application ID
-    attr_accessor :use_cache
-
-    ##
-    # @!attribute redis_host
-    #   Redis host.
-    #   @see https://redis.io/
-    #   @return [String] Redis host
-    attr_accessor :redis_host
-
-    ##
-    # @!attribute redis_port
-    #   Redis port.
-    #   @see https://redis.io/
-    #   @return [Integer] Redis port
-    attr_accessor :redis_port
-
-    ##
-    # @!attribute redis_database
-    #   Redis databse.
-    #   @see https://redis.io/
-    #   @return [Integer] Redis database
-    attr_accessor :redis_database
+    # @!attribute redis_url
+    #  Redis connection string. Overrides redis_host, redis_port and redis_database.
+    # @see https://redis.io/
+    attr_accessor :redis_url
 
     ##
     # @!attribute cache_access_token
@@ -70,15 +48,13 @@ module BlizzardApi
     # @yield self
     #
     # @example
-    #   BlizzardApi.configure do |config|
-    #     config.app_id = ENV['BNET_APPLICATION_ID']
-    #     config.app_secret = ENV['BNET_APPLICATION_SECRET']
-    #     config.region = 'us'
-    #
-    #     config.use_cache = true
-    #     config.redis_host = ENV['REDIS_HOST']
-    #     config.redis_port = ENV['REDIS_PORT']
-    #   end
+    # BlizzardApi.configure do |config|
+    #   config.app_id = ENV['BNET_APPLICATION_ID']
+    #   config.app_secret = ENV['BNET_APPLICATION_SECRET']
+    #   config.region = 'us'
+    #   config.redis_url = 'redis://localhost:6379/0'
+    #   config.cache_access_token = true
+    # end
     def configure
       yield self
     end
@@ -86,8 +62,11 @@ module BlizzardApi
     ##
     # Initializes some default values for the main module
     def self.extended(base)
-      base.redis_port = 1
       base.mode = :regular
+    end
+
+    def use_cache?
+      @use_cache ||= !redis_url.nil?
     end
   end
 end

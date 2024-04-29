@@ -1,5 +1,14 @@
 Please view this file on the master branch, otherwise it may be outdated
 
+**Version 4.0.0**
+
+**Warning**: This version introduces breaking changes to the way the gem handles the Redis connection.
+  Instead of providing the HOST, PORT and DB as separate options, now you should provide the full URL in the `redis_url` option.
+
+This allows for more flexibility when using Redis, as it is now possible to use a password protected database.
+
+Added a binary for experimenting with the gem or using it as a command line tool.
+
 **Version 3.4.0**
 
 Added new collections endpoints for toys and heirlooms.
