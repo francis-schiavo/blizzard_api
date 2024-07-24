@@ -32,7 +32,7 @@ module BlizzardApi
 
       def test_talent_tree_nodes
         data = @endpoint.talent_tree_nodes 786
-        assert_equal 'Elemental', data.dig(:spec_talent_trees, 0, :name, :en_US)
+        assert_equal 'Restoration', data.dig(:spec_talent_trees, 0, :name, :en_US)
       end
 
       def test_pvp_talent_index

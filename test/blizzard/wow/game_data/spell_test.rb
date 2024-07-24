@@ -10,13 +10,13 @@ module BlizzardApi
       end
 
       def test_spell_get
-        data = @endpoint.get 196_607
-        assert_equal 'Eye of the Tiger', data.dig(:name, :en_US)
+        data = @endpoint.get 412_733
+        assert_equal 'Unyielding Domain', data.dig(:name, :en_US)
       end
 
       def test_spell_media
-        data = @endpoint.display_media 196_607
-        assert_equal 'https://render.worldofwarcraft.com/us/icons/56/ability_druid_primalprecision.jpg', data.dig(:assets, 0, :value)
+        data = @endpoint.display_media 412_733
+        assert_equal 'https://render.worldofwarcraft.com/us/icons/56/spell_shaman_stormearthfire.jpg', data.dig(:assets, 0, :value)
       end
 
       def test_spell_search

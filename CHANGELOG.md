@@ -1,5 +1,14 @@
 Please view this file on the master branch, otherwise it may be outdated
 
+**Version 4.1.0**
+
+Removed the discontinued Overwatch League API
+
+Updated all dependencies to latest version
+
+Note: While this introduces a breaking change, I did not bump version to 5.x.x
+since the Overwatch League API was already broken.
+
 **Version 4.0.0**
 
 **Warning**: This version introduces breaking changes to the way the gem handles the Redis connection.
