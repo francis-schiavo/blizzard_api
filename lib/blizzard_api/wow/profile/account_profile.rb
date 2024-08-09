@@ -38,9 +38,10 @@ module BlizzardApi
       # @!macro request_options
       #
       # @!macro response
-      def collection(**options)
+      def collections(**options)
         api_request "#{base_url(:user_profile)}/collections", **default_options.merge(options)
       end
+      alias collection collections
 
       ##
       # Returns the mount collection index for the account
@@ -80,6 +81,16 @@ module BlizzardApi
       # @!macro response
       def pets(**options)
         api_request "#{base_url(:user_profile)}/collections/pets", **default_options.merge(options)
+      end
+
+      ##
+      # Returns the transmogs collection index for the account
+      #
+      # @!macro request_options
+      #
+      # @!macro response
+      def transmogs(**options)
+        api_request "#{base_url(:user_profile)}/collections/transmogs", **default_options.merge(options)
       end
 
       protected

@@ -25,6 +25,7 @@ module BlizzardApi
     require_relative 'wow/game_data/guild_crest'
     require_relative 'wow/game_data/heirloom'
     require_relative 'wow/game_data/item'
+    require_relative 'wow/game_data/item_appearance'
     require_relative 'wow/game_data/journal'
     require_relative 'wow/game_data/media'
     require_relative 'wow/game_data/modified_crafting'
@@ -114,6 +115,13 @@ module BlizzardApi
     # @return {Item}
     def self.item(**options)
       BlizzardApi::Wow::Item.new(**options)
+    end
+
+    ##
+    # @!macro init_options
+    # @return {Item}
+    def self.item_appearance(**options)
+      BlizzardApi::Wow::ItemAppearance.new(**options)
     end
 
     ##

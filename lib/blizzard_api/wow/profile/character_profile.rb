@@ -397,6 +397,20 @@ module BlizzardApi
         character_request realm, character, 'titles', **options
       end
 
+      ##
+      # Return a character's transmogs
+      #
+      # @see https://develop.battle.net/documentation/api-reference/world-of-warcraft-profile-api
+      #
+      # @param realm [String] The character realm's slug
+      # @param character [String] The character name
+      # @!macro request_options
+      #
+      # @!macro response
+      def transmogs(realm, character, **options)
+        character_request realm, character, 'transmogs', **options
+      end
+
       private
 
       def default_options(user_token = nil)

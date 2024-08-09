@@ -99,6 +99,11 @@ module BlizzardApi
         assert character_data[:active_title][:name][:en_US]
       end
 
+      def test_character_transmogs
+        character_data = @character.titles 'Azralon', 'Schiller'
+        assert 13, character_data.dig(:appearance_sets, 0, :id)
+      end
+
       def test_character_mythic_keystone_profile
         character_data = @character.mythic_keystone_profile 'Azralon', 'Schiller'
         assert character_data.key? :current_period

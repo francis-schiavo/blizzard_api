@@ -19,7 +19,7 @@ module BlizzardApi
       #
       # @!macro response
       def index
-        raise BlizzardApi::ApiException, 'This endpoint does not have a index method'
+        raise BlizzardApi::ApiException, 'This endpoint does not have an index method'
       end
 
       ##

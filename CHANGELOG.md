@@ -1,5 +1,9 @@
 Please view this file on the master branch, otherwise it may be outdated
 
+**Version 4.2.0**
+
+Added new collections endpoints (https://us.forums.blizzard.com/en/blizzard/t/item-appearance-and-transmog-apis/51532)
+
 **Version 4.1.0**
 
 Removed the discontinued Overwatch League API
